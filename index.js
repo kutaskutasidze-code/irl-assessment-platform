@@ -1,19 +1,26 @@
-// index.js - Simplified version for Vercel deployment
+// index.js - IRL Assessment Platform with Frontend
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.static(__dirname)); // Serve static files from root directory
 
 // Simple in-memory storage for demo
 const users = [];
 const assessments = [];
 
-// Root endpoint
+// Serve HTML file at root
 app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// API endpoint for platform info
+app.get('/api', (req, res) => {
   res.json({
     message: 'IRL Assessment Platform API',
     version: '1.0.0',
@@ -74,6 +81,15 @@ app.post('/api/auth/login', (req, res) => {
     });
   } else {
     res.status(401).json({ error: 'Invalid credentials' });
+  }
+});
+
+// Catch all route - serve index.html for client-side routing
+app.get('*', (req, res) => {
+  if (!req.url.startsWith('/api')) {
+    res.sendFile(path.join(__dirname, 'index.html'));
+  } else {
+    res.status(404).json({ error: 'API endpoint not found' });
   }
 });
 
