@@ -53,7 +53,7 @@
         .logo-icon {
             width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #667eea;
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -114,9 +114,7 @@
         .stat-value {
             font-size: 2rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #667eea;
         }
 
         /* Main Content */
@@ -219,7 +217,7 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #667eea;
             color: white;
         }
 
@@ -388,7 +386,7 @@
                 <div class="card">
                     <h2 class="card-title">Start Your IRL Assessment</h2>
                     <p class="card-description">Complete the comprehensive assessment to determine your Innovation Readiness Level and receive personalized recommendations.</p>
-                    <button class="btn btn-primary" onclick="startAssessment()">Begin Assessment →</button>
+                    <button class="btn btn-primary" onclick="startAssessment()">Begin Assessment</button>
                 </div>
 
                 <div id="resultsSection" class="card hidden">
@@ -547,55 +545,232 @@
             currentQuestion: 0,
             answers: [],
             questions: [
-                {
-                    text: "Have you identified your target customer segment?",
-                    help: "Understanding your ideal customers is crucial for success.",
-                    dimension: 'Customer'
-                },
+                // Customer Readiness (Questions 1-3)
                 {
                     text: "How many customer interviews have you conducted?",
-                    help: "Direct customer feedback validates your assumptions.",
-                    dimension: 'Customer'
+                    help: "Customer interviews validate problem-solution fit",
+                    dimension: 'Customer',
+                    options: [
+                        "No interviews yet",
+                        "1-10 interviews",
+                        "11-50 interviews",
+                        "More than 50 interviews"
+                    ]
                 },
                 {
-                    text: "What is your product development stage?",
-                    help: "Your technical readiness determines market entry timing.",
-                    dimension: 'Technology'
+                    text: "What is the status of your MVP/prototype?",
+                    help: "A working prototype validates technical feasibility",
+                    dimension: 'Technology',
+                    options: [
+                        "No prototype yet",
+                        "In development",
+                        "Internal testing",
+                        "Beta testing with users"
+                    ]
                 },
                 {
-                    text: "Have you validated technical feasibility?",
-                    help: "Technical validation reduces implementation risks.",
-                    dimension: 'Technology'
+                    text: "How many paying customers do you have?",
+                    help: "Paying customers validate market demand",
+                    dimension: 'Customer',
+                    options: [
+                        "No paying customers",
+                        "1-5 customers",
+                        "6-20 customers",
+                        "More than 20 customers"
+                    ]
+                },
+                // Business Model (Questions 4-6)
+                {
+                    text: "What is your monthly recurring revenue (MRR)?",
+                    help: "Revenue indicates business viability",
+                    dimension: 'Business',
+                    options: [
+                        "No revenue yet",
+                        "$1-$1,000",
+                        "$1,001-$10,000",
+                        "More than $10,000"
+                    ]
                 },
                 {
-                    text: "Have you defined your revenue model?",
-                    help: "A clear revenue model is essential for sustainability.",
-                    dimension: 'Business'
+                    text: "Have you validated your unit economics?",
+                    help: "Understanding CAC vs LTV is crucial",
+                    dimension: 'Business',
+                    options: [
+                        "Not yet analyzed",
+                        "Initial calculations done",
+                        "Path to profitability clear",
+                        "Positive unit economics proven"
+                    ]
                 },
+                {
+                    text: "What is your business model status?",
+                    help: "A clear business model drives growth",
+                    dimension: 'Business',
+                    options: [
+                        "Still exploring",
+                        "Model defined",
+                        "Model tested",
+                        "Model validated with revenue"
+                    ]
+                },
+                // Team Readiness (Questions 7-9)
+                {
+                    text: "How many full-time team members do you have?",
+                    help: "Team size indicates execution capacity",
+                    dimension: 'Team',
+                    options: [
+                        "Solo founder",
+                        "2-3 members",
+                        "4-6 members",
+                        "More than 6 members"
+                    ]
+                },
+                {
+                    text: "What is the team's relevant experience?",
+                    help: "Domain expertise accelerates success",
+                    dimension: 'Team',
+                    options: [
+                        "Limited experience",
+                        "Some relevant experience",
+                        "Strong industry experience",
+                        "Serial entrepreneurs/experts"
+                    ]
+                },
+                {
+                    text: "Do you have advisors or mentors?",
+                    help: "External guidance provides valuable insights",
+                    dimension: 'Team',
+                    options: [
+                        "No advisors",
+                        "1-2 informal advisors",
+                        "3-5 engaged advisors",
+                        "Strong advisory board"
+                    ]
+                },
+                // Technology Readiness (Questions 10-12)
+                {
+                    text: "What is your technology stack maturity?",
+                    help: "Scalable architecture supports growth",
+                    dimension: 'Technology',
+                    options: [
+                        "Not built yet",
+                        "Basic architecture",
+                        "Solid foundation",
+                        "Scalable and robust"
+                    ]
+                },
+                {
+                    text: "Have you conducted security audits?",
+                    help: "Security is crucial for customer trust",
+                    dimension: 'Technology',
+                    options: [
+                        "Not considered",
+                        "Basic security measures",
+                        "Security review done",
+                        "Regular security audits"
+                    ]
+                },
+                {
+                    text: "What is your data/analytics infrastructure?",
+                    help: "Data-driven decisions accelerate growth",
+                    dimension: 'Technology',
+                    options: [
+                        "No analytics",
+                        "Basic metrics",
+                        "Key metrics tracked",
+                        "Advanced analytics"
+                    ]
+                },
+                // Funding Readiness (Questions 13-15)
                 {
                     text: "What is your current funding status?",
-                    help: "Adequate funding enables growth and scaling.",
-                    dimension: 'Funding'
+                    help: "Funding enables scaling and growth",
+                    dimension: 'Funding',
+                    options: [
+                        "Bootstrapped",
+                        "Friends & Family",
+                        "Angel/Pre-seed",
+                        "Seed or beyond"
+                    ]
                 },
                 {
-                    text: "What is your team composition?",
-                    help: "A strong team is crucial for execution.",
-                    dimension: 'Team'
+                    text: "What is your runway (months)?",
+                    help: "Runway determines urgency and options",
+                    dimension: 'Funding',
+                    options: [
+                        "Less than 3 months",
+                        "3-6 months",
+                        "6-12 months",
+                        "More than 12 months"
+                    ]
                 },
                 {
-                    text: "Do you have intellectual property protection?",
-                    help: "IP protection can provide competitive advantages.",
-                    dimension: 'IP'
+                    text: "Do you have a financial model?",
+                    help: "Financial planning is essential for fundraising",
+                    dimension: 'Funding',
+                    options: [
+                        "No financial model",
+                        "Basic projections",
+                        "Detailed model",
+                        "Model validated with actuals"
+                    ]
+                },
+                // Market Readiness (Questions 16-18)
+                {
+                    text: "Have you achieved product-market fit?",
+                    help: "PMF is when users would be disappointed without your product",
+                    dimension: 'Market',
+                    options: [
+                        "Not yet",
+                        "Early signals",
+                        "Partial PMF",
+                        "Strong PMF"
+                    ]
                 },
                 {
-                    text: "What is your go-to-market strategy status?",
-                    help: "A clear GTM strategy accelerates market entry.",
-                    dimension: 'Business'
+                    text: "What is your customer retention rate?",
+                    help: "Retention shows product stickiness",
+                    dimension: 'Market',
+                    options: [
+                        "Not measured",
+                        "Less than 40%",
+                        "40-70%",
+                        "More than 70%"
+                    ]
                 },
                 {
-                    text: "How would you rate your competitive advantage?",
-                    help: "Understanding your differentiation is key.",
-                    dimension: 'Market'
+                    text: "How strong is your competitive advantage?",
+                    help: "Differentiation drives sustainable growth",
+                    dimension: 'Market',
+                    options: [
+                        "No clear advantage",
+                        "Minimal differentiation",
+                        "Strong differentiation",
+                        "Market leader"
+                    ]
+                },
+                // Legal/IP (Questions 19-20)
+                {
+                    text: "What is your intellectual property status?",
+                    help: "IP protection can provide competitive advantages",
+                    dimension: 'Legal',
+                    options: [
+                        "No IP considerations",
+                        "IP strategy planned",
+                        "IP filed/pending",
+                        "IP granted/protected"
+                    ]
+                },
+                {
+                    text: "What is your regulatory compliance status?",
+                    help: "Compliance is crucial for scaling safely",
+                    dimension: 'Legal',
+                    options: [
+                        "Not yet addressed",
+                        "Understanding requirements",
+                        "Partially compliant",
+                        "Fully compliant"
+                    ]
                 }
             ]
         };
@@ -802,24 +977,17 @@
                     <p class="question-help">${question.help}</p>
                     
                     <div class="answer-options">
-                        <div class="answer-option" onclick="selectAnswer(0, this)">
-                            <span>Not started</span>
-                        </div>
-                        <div class="answer-option" onclick="selectAnswer(1, this)">
-                            <span>Early stage</span>
-                        </div>
-                        <div class="answer-option" onclick="selectAnswer(2, this)">
-                            <span>In progress</span>
-                        </div>
-                        <div class="answer-option" onclick="selectAnswer(3, this)">
-                            <span>Completed</span>
-                        </div>
+                        ${question.options.map((option, index) => `
+                            <div class="answer-option" onclick="selectAnswer(${index}, this)">
+                                <span>${option}</span>
+                            </div>
+                        `).join('')}
                     </div>
                     
                     <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-                        ${assessmentData.currentQuestion > 0 ? '<button class="btn btn-secondary" onclick="previousQuestion()">← Previous</button>' : ''}
+                        ${assessmentData.currentQuestion > 0 ? '<button class="btn btn-secondary" onclick="previousQuestion()">Previous</button>' : ''}
                         <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>
-                            ${questionNum === totalQuestions ? 'Complete Assessment' : 'Next →'}
+                            ${questionNum === totalQuestions ? 'Complete Assessment' : 'Next'}
                         </button>
                     </div>
                 </div>
@@ -857,9 +1025,9 @@
         }
 
         function completeAssessment() {
-            // Calculate IRL level
+            // Calculate IRL level based on answers
             const avgScore = assessmentData.answers.reduce((a, b) => a + b, 0) / assessmentData.answers.length;
-            const irlLevel = Math.ceil(avgScore * 3) || 1; // Scale to 1-9
+            const irlLevel = Math.min(9, Math.max(1, Math.ceil(avgScore * 3) + 1));
             
             // Save assessment
             const assessment = {
@@ -891,7 +1059,7 @@
             const resultsContent = document.getElementById('resultsContent');
             resultsContent.innerHTML = `
                 <div style="text-align: center; padding: 2rem;">
-                    <div style="font-size: 4rem; font-weight: 700; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                    <div style="font-size: 4rem; font-weight: 700; color: #667eea;">
                         IRL ${assessment.level}
                     </div>
                     <h3 style="margin-top: 1rem;">${getIRLTitle(assessment.level)}</h3>
