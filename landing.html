@@ -58,12 +58,13 @@
         .logo-icon {
             width: 40px;
             height: 40px;
-            background: #667eea;
+            background: #f8f9fa;
+            border: 2px solid #1a1a1a;
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: #1a1a1a;
             font-weight: 700;
         }
 
@@ -76,9 +77,10 @@
         .hero {
             margin-top: 72px;
             padding: 5rem 2rem;
-            background: #667eea;
-            color: white;
+            background: #f8f9fa;
+            color: #1a1a1a;
             text-align: center;
+            border-bottom: 1px solid #e9ecef;
         }
 
         .hero h1 {
@@ -92,7 +94,7 @@
 
         .hero p {
             font-size: 1.25rem;
-            opacity: 0.95;
+            opacity: 0.8;
             max-width: 600px;
             margin: 0 auto 2.5rem;
         }
@@ -128,6 +130,7 @@
             padding: 2rem;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e9ecef;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -139,7 +142,8 @@
         .feature-icon {
             width: 60px;
             height: 60px;
-            background: #667eea;
+            background: #f8f9fa;
+            border: 2px solid #1a1a1a;
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -147,7 +151,7 @@
             font-size: 1.75rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: white;
+            color: #1a1a1a;
         }
 
         .feature-title {
@@ -199,6 +203,7 @@
             padding: 2.5rem;
             text-align: center;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e9ecef;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -211,14 +216,15 @@
             width: 80px;
             height: 80px;
             margin: 0 auto 1.5rem;
-            background: #667eea;
+            background: #f8f9fa;
+            border: 2px solid #1a1a1a;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
             font-weight: 700;
-            color: white;
+            color: #1a1a1a;
         }
 
         .account-title {
@@ -250,7 +256,7 @@
 
         .account-features li::before {
             content: '✓';
-            color: #667eea;
+            color: #1a1a1a;
             font-weight: 600;
         }
 
@@ -268,45 +274,47 @@
         }
 
         .btn-primary {
-            background: white;
-            color: #667eea;
+            background: #1a1a1a;
+            color: white;
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            background: #333;
         }
 
         .btn-secondary {
             background: transparent;
-            color: white;
-            border: 2px solid white;
+            color: #1a1a1a;
+            border: 2px solid #1a1a1a;
         }
 
         .btn-secondary:hover {
-            background: white;
-            color: #667eea;
+            background: #1a1a1a;
+            color: white;
         }
 
         .btn-outline {
             background: transparent;
-            color: #667eea;
-            border: 2px solid #667eea;
+            color: #1a1a1a;
+            border: 2px solid #1a1a1a;
         }
 
         .btn-outline:hover {
-            background: #667eea;
+            background: #1a1a1a;
             color: white;
         }
 
         .btn-gradient {
-            background: #667eea;
+            background: #1a1a1a;
             color: white;
         }
 
         .btn-gradient:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            background: #333;
         }
 
         /* Modal */
@@ -404,7 +412,7 @@
         input:focus,
         select:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #1a1a1a;
             background: white;
         }
 
@@ -440,7 +448,7 @@
         }
 
         .form-footer a {
-            color: #667eea;
+            color: #1a1a1a;
             text-decoration: none;
             font-weight: 600;
         }
@@ -741,7 +749,7 @@
             </form>
             
             <div class="form-footer">
-                Already have an account? <a href="#" onclick="closeModal('signUpModal'); showSignIn();">Sign In</a>
+                Already have an account? <a href="#" onclick="closeModal('signUpModal'); showSignIn();">Sign Up</a>
             </div>
         </div>
     </div>
