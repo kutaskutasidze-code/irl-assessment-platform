@@ -1,11 +1,11 @@
-ewogICJuYW1lIjogImlyb
--assessment-platform",
+{
+  "name": "irl-assessment-platform",
   "version": "1.0.0",
   "description": "Innovation Readiness Level Assessment Platform for Startups",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "build": "webpack --mode production",
     "test": "jest",
     "migrate": "node scripts/migrate.js",
