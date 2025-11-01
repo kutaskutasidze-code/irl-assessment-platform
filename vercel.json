@@ -1,1 +1,15 @@
-ewogICJ2ZXJzaW9uIjogMiwKICAiYnVpbGRzIjogWwogICAgewogICAgICAic3JjIjogImluZGV4LmpzIiwKICAgICAgInVzZSI6ICJAdmVyY2VsL25vZGUiCiAgICB9CiAgXSwKICAicm91dGVzIjogWwogICAgewogICAgICAic3JjIjogIi8oLiopIiwKICAgICAgImRlc3QiOiAiL2luZGV4LmpzIgogICAgfQogIF0KfQ==
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.js"
+    }
+  ]
+}
