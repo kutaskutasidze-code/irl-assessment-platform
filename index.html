@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IRL Assessment Tool - Innovation Readiness Level</title>
+    <title>IRL Assessment Platform - Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * {
@@ -12,1216 +12,903 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --apple-blue: #007AFF;
-            --apple-gray-1: #F2F2F7;
-            --apple-gray-2: #E5E5EA;
-            --apple-gray-3: #D1D1D6;
-            --apple-gray-4: #C7C7CC;
-            --apple-gray-5: #8E8E93;
-            --apple-gray-6: #636366;
-            --apple-text: #1D1D1F;
-            --apple-bg: #FFFFFF;
-            --apple-green: #34C759;
-            --apple-red: #FF3B30;
-            --apple-orange: #FF9500;
-            --apple-purple: #AF52DE;
-            --apple-pink: #FF2D55;
-        }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
-            line-height: 1.47059;
-            font-weight: 400;
-            letter-spacing: -0.022em;
-            color: var(--apple-text);
-            background: var(--apple-bg);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        .container {
-            max-width: 980px;
-            margin: 0 auto;
-            padding: 0 20px;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+            min-height: 100vh;
         }
 
         /* Header */
         .header {
-            background: rgba(255, 255, 255, 0.72);
-            backdrop-filter: saturate(180%) blur(20px);
-            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid var(--apple-gray-2);
+            padding: 1rem 0;
         }
 
-        .header-content {
-            padding: 16px 0;
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
         }
 
         .logo {
-            font-size: 21px;
-            font-weight: 600;
-            letter-spacing: 0.011em;
-            color: var(--apple-text);
-        }
-
-        .progress-indicator {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 700;
+            font-size: 1.5rem;
         }
 
-        .progress-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--apple-gray-3);
-            transition: all 0.3s ease;
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
         }
 
-        .progress-dot.active {
-            background: var(--apple-blue);
-            transform: scale(1.25);
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
-        .progress-dot.completed {
-            background: var(--apple-green);
+        .user-details {
+            text-align: right;
+            margin-right: 1rem;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .user-role {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Dashboard Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         /* Main Content */
         .main-content {
-            min-height: calc(100vh - 80px);
-            padding: 60px 0;
+            margin-top: 2rem;
         }
 
-        /* Welcome Screen */
-        .screen {
-            display: none;
-            animation: fadeIn 0.6s ease;
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
         }
 
-        .screen.active {
-            display: block;
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-title {
-            font-size: 56px;
-            line-height: 1.07143;
+        .card-title {
+            font-size: 1.5rem;
             font-weight: 600;
-            letter-spacing: -0.005em;
-            text-align: center;
-            margin-bottom: 24px;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
         }
 
-        .hero-subtitle {
-            font-size: 24px;
-            line-height: 1.16667;
-            font-weight: 400;
-            letter-spacing: 0.009em;
-            text-align: center;
-            color: var(--apple-gray-6);
-            margin-bottom: 60px;
+        .card-description {
+            color: #666;
+            margin-bottom: 1.5rem;
         }
 
-        /* Category Grid */
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 60px;
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
         }
 
-        .category-card {
-            background: var(--apple-gray-1);
-            border-radius: 18px;
-            padding: 32px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
+        table {
+            width: 100%;
+            border-collapse: collapse;
         }
 
-        .category-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, transparent, rgba(0, 122, 255, 0.1));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .category-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-        }
-
-        .category-card:hover::before {
-            opacity: 1;
-        }
-
-        .category-card.selected {
-            background: var(--apple-blue);
-            color: white;
-        }
-
-        .category-icon {
-            font-size: 48px;
-            margin-bottom: 16px;
-            display: block;
-        }
-
-        .category-title {
-            font-size: 19px;
-            line-height: 1.21053;
+        th {
+            background: #f8f9fa;
+            padding: 1rem;
+            text-align: left;
             font-weight: 600;
-            letter-spacing: 0.012em;
-            margin-bottom: 8px;
+            font-size: 0.875rem;
+            color: #666;
+            border-bottom: 2px solid #e9ecef;
         }
 
-        .category-description {
-            font-size: 14px;
-            line-height: 1.42859;
-            letter-spacing: -0.016em;
-            opacity: 0.8;
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
         }
 
-        /* Question Screen */
-        .question-container {
-            max-width: 720px;
-            margin: 0 auto;
+        tr:hover {
+            background: #f8f9fa;
         }
 
-        .question-number {
-            font-size: 17px;
-            line-height: 1.29412;
-            font-weight: 600;
-            color: var(--apple-gray-6);
-            margin-bottom: 16px;
-        }
-
-        .question-text {
-            font-size: 32px;
-            line-height: 1.125;
-            font-weight: 600;
-            letter-spacing: 0.004em;
-            margin-bottom: 12px;
-        }
-
-        .question-help {
-            font-size: 17px;
-            line-height: 1.47059;
-            color: var(--apple-gray-6);
-            margin-bottom: 40px;
-        }
-
-        .answers-container {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .answer-option {
-            background: var(--apple-gray-1);
-            border: 2px solid transparent;
+        /* Status Badges */
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
             border-radius: 12px;
-            padding: 20px 24px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 16px;
+            font-size: 0.75rem;
+            font-weight: 600;
         }
 
-        .answer-option:hover {
-            background: var(--apple-gray-2);
+        .badge-success {
+            background: rgba(34, 197, 94, 0.1);
+            color: #22c55e;
         }
 
-        .answer-option.selected {
-            background: var(--apple-bg);
-            border-color: var(--apple-blue);
-            box-shadow: 0 0 0 1px var(--apple-blue);
+        .badge-warning {
+            background: rgba(251, 146, 60, 0.1);
+            color: #fb923c;
         }
 
-        .answer-radio {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--apple-gray-4);
-            border-radius: 50%;
-            position: relative;
-            flex-shrink: 0;
-            transition: all 0.2s ease;
-        }
-
-        .answer-option.selected .answer-radio {
-            border-color: var(--apple-blue);
-        }
-
-        .answer-option.selected .answer-radio::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 8px;
-            height: 8px;
-            background: var(--apple-blue);
-            border-radius: 50%;
-        }
-
-        .answer-text {
-            font-size: 17px;
-            line-height: 1.47059;
-            letter-spacing: -0.022em;
+        .badge-info {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
         }
 
         /* Buttons */
-        .button-container {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            margin-top: 60px;
-        }
-
         .btn {
-            padding: 14px 32px;
-            border-radius: 980px;
-            font-size: 17px;
-            line-height: 1.17648;
-            font-weight: 400;
-            letter-spacing: -0.022em;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            padding: 0.875rem 2rem;
             border: none;
-            background: var(--apple-gray-1);
-            color: var(--apple-text);
-            min-width: 140px;
-            text-align: center;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
         }
 
         .btn-primary {
-            background: var(--apple-blue);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
         }
 
         .btn-primary:hover {
-            background: #0051D5;
-        }
-
-        .btn:hover:not(.btn-primary) {
-            background: var(--apple-gray-2);
-        }
-
-        .btn:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
-
-        /* Results Screen */
-        .results-container {
-            max-width: 980px;
-            margin: 0 auto;
-        }
-
-        .result-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .result-level {
-            font-size: 96px;
-            line-height: 1;
-            font-weight: 600;
-            letter-spacing: -0.015em;
-            background: linear-gradient(90deg, var(--apple-blue), var(--apple-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 24px;
-        }
-
-        .result-title {
-            font-size: 40px;
-            line-height: 1.1;
-            font-weight: 600;
-            letter-spacing: 0em;
-            margin-bottom: 16px;
-        }
-
-        .result-description {
-            font-size: 21px;
-            line-height: 1.38105;
-            font-weight: 400;
-            letter-spacing: 0.011em;
-            color: var(--apple-gray-6);
-        }
-
-        /* Radar Chart Container */
-        .chart-section {
-            background: var(--apple-gray-1);
-            border-radius: 18px;
-            padding: 40px;
-            margin-bottom: 40px;
-        }
-
-        .chart-title {
-            font-size: 28px;
-            line-height: 1.14286;
-            font-weight: 600;
-            letter-spacing: 0.007em;
-            text-align: center;
-            margin-bottom: 32px;
-        }
-
-        .chart-container {
-            position: relative;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        /* Dimension Cards */
-        .dimensions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .dimension-card {
-            background: white;
-            border-radius: 12px;
-            padding: 24px;
-            border: 1px solid var(--apple-gray-2);
-        }
-
-        .dimension-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 12px;
-        }
-
-        .dimension-name {
-            font-size: 17px;
-            font-weight: 600;
-            letter-spacing: -0.022em;
-        }
-
-        .dimension-score {
-            font-size: 24px;
-            font-weight: 600;
-            color: var(--apple-blue);
-        }
-
-        .dimension-label {
-            font-size: 14px;
-            color: var(--apple-gray-6);
-            margin-bottom: 8px;
-        }
-
-        .dimension-progress {
-            height: 6px;
-            background: var(--apple-gray-2);
-            border-radius: 3px;
-            overflow: hidden;
-        }
-
-        .dimension-progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--apple-blue), var(--apple-purple));
-            border-radius: 3px;
-            transition: width 0.6s ease;
-        }
-
-        /* Recommendations */
-        .recommendations-section {
-            margin-top: 60px;
-        }
-
-        .recommendations-title {
-            font-size: 32px;
-            line-height: 1.125;
-            font-weight: 600;
-            letter-spacing: 0.004em;
-            margin-bottom: 32px;
-        }
-
-        .recommendation-card {
-            background: white;
-            border: 1px solid var(--apple-gray-2);
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 16px;
-            display: flex;
-            gap: 20px;
-            transition: all 0.2s ease;
-        }
-
-        .recommendation-card:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
         }
 
-        .recommendation-number {
-            width: 40px;
-            height: 40px;
-            background: var(--apple-blue);
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
             color: white;
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+        }
+
+        /* Assessment Specific */
+        .assessment-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .question-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+        }
+
+        .question-number {
+            font-size: 0.875rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .question-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .question-help {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .answer-option {
+            background: #f8f9fa;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .answer-option:hover {
+            border-color: #667eea;
+            background: white;
+        }
+
+        .answer-option.selected {
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+        }
+
+        /* Hide/Show Classes */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+
+        .empty-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 3px solid #e9ecef;
+            border-top-color: #667eea;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            flex-shrink: 0;
+            animation: spin 1s linear infinite;
         }
 
-        .recommendation-content {
-            flex: 1;
-        }
-
-        .recommendation-title {
-            font-size: 19px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .recommendation-text {
-            font-size: 15px;
-            line-height: 1.46667;
-            color: var(--apple-gray-6);
-        }
-
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 40px;
-            }
-
-            .hero-subtitle {
-                font-size: 19px;
-            }
-
-            .category-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .question-text {
-                font-size: 24px;
-            }
-
-            .dimensions-grid {
-                grid-template-columns: 1fr;
-            }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">IRL Assessment</div>
-                <div class="progress-indicator" id="progressIndicator">
-                    <div class="progress-dot active"></div>
-                    <div class="progress-dot"></div>
-                    <div class="progress-dot"></div>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">IRL</div>
+                <span>Platform</span>
+            </a>
+            <div class="user-info">
+                <div class="user-details">
+                    <div class="user-name" id="userName">Loading...</div>
+                    <div class="user-role" id="userRole">...</div>
+                </div>
+                <button class="btn btn-secondary btn-sm" onclick="logout()">Logout</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Startup Dashboard -->
+        <div id="startupDashboard" class="hidden">
+            <h1 class="section-title">Welcome back, <span id="startupName"></span>!</h1>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Your IRL Level</div>
+                    <div class="stat-value" id="irlLevel">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Assessment Status</div>
+                    <div class="stat-value" id="assessmentStatus">Not Started</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Action Plans</div>
+                    <div class="stat-value" id="actionPlanCount">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Last Updated</div>
+                    <div class="stat-value" id="lastUpdated">-</div>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <div class="card">
+                    <h2 class="card-title">Start Your IRL Assessment</h2>
+                    <p class="card-description">Complete the comprehensive assessment to determine your Innovation Readiness Level and receive personalized recommendations.</p>
+                    <button class="btn btn-primary" onclick="startAssessment()">Begin Assessment →</button>
+                </div>
+
+                <div id="resultsSection" class="card hidden">
+                    <h2 class="card-title">Your Assessment Results</h2>
+                    <div id="resultsContent">
+                        <!-- Results will be populated here -->
+                    </div>
+                </div>
+
+                <div id="actionPlansSection" class="card hidden">
+                    <h2 class="card-title">Your Action Plans</h2>
+                    <div id="actionPlansContent">
+                        <!-- Action plans will be populated here -->
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="main-content">
-        <div class="container">
-            <!-- Welcome Screen -->
-            <div class="screen active" id="welcomeScreen">
-                <h1 class="hero-title">Innovation Readiness Level</h1>
-                <p class="hero-subtitle">Evaluate your startup's maturity across 6 key dimensions</p>
-
-                <div class="category-grid">
-                    <div class="category-card" data-category="software">
-                        <span class="category-icon">💻</span>
-                        <div class="category-title">Software & Data</div>
-                        <div class="category-description">SaaS, AI/ML, Analytics, Developer Tools</div>
-                    </div>
-                    <div class="category-card" data-category="healthtech">
-                        <span class="category-icon">🏥</span>
-                        <div class="category-title">Healthtech</div>
-                        <div class="category-description">Digital Health, MedTech, Biotech</div>
-                    </div>
-                    <div class="category-card" data-category="fintech">
-                        <span class="category-icon">💳</span>
-                        <div class="category-title">Fintech</div>
-                        <div class="category-description">Payments, Banking, Insurance, Crypto</div>
-                    </div>
-                    <div class="category-card" data-category="ecommerce">
-                        <span class="category-icon">🛒</span>
-                        <div class="category-title">E-commerce & Retail</div>
-                        <div class="category-description">Marketplaces, D2C, Retail Tech</div>
-                    </div>
-                    <div class="category-card" data-category="edtech">
-                        <span class="category-icon">📚</span>
-                        <div class="category-title">EdTech</div>
-                        <div class="category-description">Online Learning, Skills, K-12</div>
-                    </div>
-                    <div class="category-card" data-category="sustainability">
-                        <span class="category-icon">🌱</span>
-                        <div class="category-title">Sustainability</div>
-                        <div class="category-description">CleanTech, Energy, Environment</div>
-                    </div>
+        <!-- Organization Dashboard -->
+        <div id="organizationDashboard" class="hidden">
+            <h1 class="section-title">Organization Dashboard</h1>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Total Startups</div>
+                    <div class="stat-value" id="totalStartups">0</div>
                 </div>
-
-                <div class="button-container">
-                    <button class="btn btn-primary" id="startBtn" disabled>Continue</button>
+                <div class="stat-card">
+                    <div class="stat-label">Completed Assessments</div>
+                    <div class="stat-value" id="completedAssessments">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Action Plans Created</div>
+                    <div class="stat-value" id="actionPlansCreated">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Average IRL</div>
+                    <div class="stat-value" id="avgIRL">-</div>
                 </div>
             </div>
 
-            <!-- Question Screen -->
-            <div class="screen" id="questionScreen">
-                <div class="question-container">
-                    <div class="question-number" id="questionNumber">Question 1 of 20</div>
-                    <h2 class="question-text" id="questionText">Loading question...</h2>
-                    <p class="question-help" id="questionHelp">Loading help text...</p>
-
-                    <div class="answers-container" id="answersContainer">
-                        <!-- Answers will be dynamically inserted -->
-                    </div>
-
-                    <div class="button-container">
-                        <button class="btn" id="prevBtn">Back</button>
-                        <button class="btn btn-primary" id="nextBtn" disabled>Continue</button>
+            <div class="main-content">
+                <div class="card">
+                    <h2 class="card-title">Managed Startups</h2>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Startup Name</th>
+                                    <th>Contact</th>
+                                    <th>IRL Level</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="startupsTable">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Results Screen -->
-            <div class="screen" id="resultsScreen">
-                <div class="results-container">
-                    <div class="result-header">
-                        <div class="result-level" id="resultLevel">IRL 5</div>
-                        <h2 class="result-title" id="resultTitle">Solution Validation Stage</h2>
-                        <p class="result-description" id="resultDescription">
-                            Your innovation has validated key assumptions and is ready for market development.
-                        </p>
-                    </div>
+        <!-- Admin Dashboard -->
+        <div id="adminDashboard" class="hidden">
+            <h1 class="section-title">Admin Dashboard</h1>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Total Users</div>
+                    <div class="stat-value" id="totalUsers">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Organizations</div>
+                    <div class="stat-value" id="totalOrgs">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Startups</div>
+                    <div class="stat-value" id="totalStartupsAdmin">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Assessments</div>
+                    <div class="stat-value" id="totalAssessments">0</div>
+                </div>
+            </div>
 
-                    <!-- Radar Chart Section -->
-                    <div class="chart-section">
-                        <h3 class="chart-title">Innovation Readiness Analysis</h3>
-                        <div class="chart-container">
-                            <canvas id="radarChart"></canvas>
-                        </div>
+            <div class="main-content">
+                <div class="card">
+                    <h2 class="card-title">All Users</h2>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Type</th>
+                                    <th>Organization</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTable">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
                     </div>
+                </div>
+            </div>
+        </div>
 
-                    <!-- Dimension Cards -->
-                    <div class="dimensions-grid" id="dimensionsGrid">
-                        <!-- Dimension cards will be dynamically inserted -->
-                    </div>
-
-                    <!-- Recommendations -->
-                    <div class="recommendations-section">
-                        <h3 class="recommendations-title">Recommended Next Steps</h3>
-                        <div id="recommendationsList">
-                            <!-- Recommendations will be dynamically inserted -->
-                        </div>
-                    </div>
-
-                    <div class="button-container">
-                        <button class="btn" onclick="window.print()">Download Report</button>
-                        <button class="btn btn-primary" onclick="location.reload()">Start New Assessment</button>
-                    </div>
+        <!-- Assessment Section (Hidden by default) -->
+        <div id="assessmentSection" class="hidden">
+            <div class="assessment-container">
+                <div id="assessmentContent">
+                    <!-- Assessment questions will be loaded here -->
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Assessment Questions (20 questions covering 6 dimensions)
-        const assessmentQuestions = [
-            // Customer Readiness (CRL) - Questions 1-3
-            {
-                id: 1,
-                dimension: 'CRL',
-                text: "Have you identified your target customer segment?",
-                help: "Do you have a clear definition of who your ideal customers are?",
-                answers: [
-                    { text: "Yes, with detailed personas and validation", value: 3 },
-                    { text: "Yes, but needs more validation", value: 2 },
-                    { text: "General idea only", value: 1 },
-                    { text: "Not yet defined", value: 0 }
-                ]
-            },
-            {
-                id: 2,
-                dimension: 'CRL',
-                text: "How many customer interviews have you conducted?",
-                help: "Direct conversations to understand customer needs and pain points",
-                answers: [
-                    { text: "More than 50 interviews", value: 3 },
-                    { text: "20-50 interviews", value: 2 },
-                    { text: "5-20 interviews", value: 1 },
-                    { text: "Less than 5 interviews", value: 0 }
-                ]
-            },
-            {
-                id: 3,
-                dimension: 'CRL',
-                text: "Do you have paying customers or committed pilots?",
-                help: "Evidence of customer willingness to pay for your solution",
-                answers: [
-                    { text: "Multiple paying customers", value: 3 },
-                    { text: "1-3 paying customers or pilots", value: 2 },
-                    { text: "LOIs or verbal commitments", value: 1 },
-                    { text: "No commitments yet", value: 0 }
-                ]
-            },
-
-            // Technology Readiness (TRL) - Questions 4-7
-            {
-                id: 4,
-                dimension: 'TRL',
-                text: "What is your product development stage?",
-                help: "Current state of your technical solution",
-                answers: [
-                    { text: "Fully deployed and operational", value: 3 },
-                    { text: "Working MVP or beta version", value: 2 },
-                    { text: "Prototype or proof of concept", value: 1 },
-                    { text: "Concept or design only", value: 0 }
-                ]
-            },
-            {
-                id: 5,
-                dimension: 'TRL',
-                text: "Have you validated technical feasibility?",
-                help: "Confirmation that your solution works as intended",
-                answers: [
-                    { text: "Validated in real environment", value: 3 },
-                    { text: "Validated in test environment", value: 2 },
-                    { text: "Theoretical validation only", value: 1 },
-                    { text: "Not yet validated", value: 0 }
-                ]
-            },
-            {
-                id: 6,
-                dimension: 'TRL',
-                text: "What is your product's scalability status?",
-                help: "Ability to handle growth in users or transactions",
-                answers: [
-                    { text: "Proven scalability with load testing", value: 3 },
-                    { text: "Architecture designed for scale", value: 2 },
-                    { text: "Scalability planned", value: 1 },
-                    { text: "Not yet considered", value: 0 }
-                ]
-            },
-            {
-                id: 7,
-                dimension: 'TRL',
-                text: "How mature is your technology stack?",
-                help: "Stability and reliability of your technical infrastructure",
-                answers: [
-                    { text: "Production-ready with monitoring", value: 3 },
-                    { text: "Stable but needs optimization", value: 2 },
-                    { text: "Functional but basic", value: 1 },
-                    { text: "Still being defined", value: 0 }
-                ]
-            },
-
-            // Business Model (BRL) - Questions 8-10
-            {
-                id: 8,
-                dimension: 'BRL',
-                text: "Have you defined your revenue model?",
-                help: "How your business will generate income",
-                answers: [
-                    { text: "Validated with actual revenue", value: 3 },
-                    { text: "Defined and tested with customers", value: 2 },
-                    { text: "Defined but not tested", value: 1 },
-                    { text: "Still exploring options", value: 0 }
-                ]
-            },
-            {
-                id: 9,
-                dimension: 'BRL',
-                text: "What is your current monthly revenue?",
-                help: "Recurring or total monthly revenue",
-                answers: [
-                    { text: "$10,000+ per month", value: 3 },
-                    { text: "$1,000 - $10,000 per month", value: 2 },
-                    { text: "Under $1,000 per month", value: 1 },
-                    { text: "Pre-revenue", value: 0 }
-                ]
-            },
-            {
-                id: 10,
-                dimension: 'BRL',
-                text: "Have you validated unit economics?",
-                help: "Understanding of customer acquisition cost vs lifetime value",
-                answers: [
-                    { text: "Positive unit economics proven", value: 3 },
-                    { text: "Path to positive economics clear", value: 2 },
-                    { text: "Initial calculations done", value: 1 },
-                    { text: "Not yet analyzed", value: 0 }
-                ]
-            },
-
-            // IP Readiness (IPRL) - Questions 11-13
-            {
-                id: 11,
-                dimension: 'IPRL',
-                text: "What is your intellectual property status?",
-                help: "Protection of your innovations and competitive advantages",
-                answers: [
-                    { text: "Patents filed or granted", value: 3 },
-                    { text: "Patent applications in process", value: 2 },
-                    { text: "Trade secrets or copyrights only", value: 1 },
-                    { text: "No IP protection yet", value: 0 }
-                ]
-            },
-            {
-                id: 12,
-                dimension: 'IPRL',
-                text: "Have you conducted an IP landscape analysis?",
-                help: "Understanding of existing patents and freedom to operate",
-                answers: [
-                    { text: "Comprehensive analysis completed", value: 3 },
-                    { text: "Basic search conducted", value: 2 },
-                    { text: "Planning to conduct", value: 1 },
-                    { text: "Not yet considered", value: 0 }
-                ]
-            },
-            {
-                id: 13,
-                dimension: 'IPRL',
-                text: "Do you have a documented IP strategy?",
-                help: "Plan for protecting and leveraging intellectual property",
-                answers: [
-                    { text: "Comprehensive IP strategy in place", value: 3 },
-                    { text: "Basic strategy documented", value: 2 },
-                    { text: "Informal strategy only", value: 1 },
-                    { text: "No IP strategy", value: 0 }
-                ]
-            },
-
-            // Team Readiness (TMRL) - Questions 14-17
-            {
-                id: 14,
-                dimension: 'TMRL',
-                text: "What is your founding team composition?",
-                help: "Skills and experience of core team members",
-                answers: [
-                    { text: "Complete team with all key roles", value: 3 },
-                    { text: "Core team with some gaps", value: 2 },
-                    { text: "Small team, major gaps", value: 1 },
-                    { text: "Solo founder", value: 0 }
-                ]
-            },
-            {
-                id: 15,
-                dimension: 'TMRL',
-                text: "What is the team's relevant experience?",
-                help: "Prior experience in the industry or with startups",
-                answers: [
-                    { text: "Extensive industry and startup experience", value: 3 },
-                    { text: "Good industry or startup experience", value: 2 },
-                    { text: "Some relevant experience", value: 1 },
-                    { text: "Limited relevant experience", value: 0 }
-                ]
-            },
-            {
-                id: 16,
-                dimension: 'TMRL',
-                text: "How many full-time team members do you have?",
-                help: "People working full-time on the venture",
-                answers: [
-                    { text: "5 or more full-time", value: 3 },
-                    { text: "3-4 full-time", value: 2 },
-                    { text: "1-2 full-time", value: 1 },
-                    { text: "No full-time members yet", value: 0 }
-                ]
-            },
-            {
-                id: 17,
-                dimension: 'TMRL',
-                text: "Do you have advisors or board members?",
-                help: "External support and governance structure",
-                answers: [
-                    { text: "Active board and advisors", value: 3 },
-                    { text: "2-3 engaged advisors", value: 2 },
-                    { text: "1 advisor or mentor", value: 1 },
-                    { text: "No external advisors", value: 0 }
-                ]
-            },
-
-            // Funding Readiness (FRL) - Questions 18-20
-            {
-                id: 18,
-                dimension: 'FRL',
-                text: "What is your current funding status?",
-                help: "Capital raised or available for operations",
-                answers: [
-                    { text: "Raised institutional funding", value: 3 },
-                    { text: "Raised angel or seed funding", value: 2 },
-                    { text: "Self-funded or grants", value: 1 },
-                    { text: "No funding yet", value: 0 }
-                ]
-            },
-            {
-                id: 19,
-                dimension: 'FRL',
-                text: "What is your current runway?",
-                help: "Months of operation with current funds",
-                answers: [
-                    { text: "12+ months runway", value: 3 },
-                    { text: "6-12 months runway", value: 2 },
-                    { text: "3-6 months runway", value: 1 },
-                    { text: "Less than 3 months", value: 0 }
-                ]
-            },
-            {
-                id: 20,
-                dimension: 'FRL',
-                text: "Do you have a financial model and projections?",
-                help: "Understanding of financial needs and growth trajectory",
-                answers: [
-                    { text: "Detailed model validated with actuals", value: 3 },
-                    { text: "Complete model and projections", value: 2 },
-                    { text: "Basic financial projections", value: 1 },
-                    { text: "No financial model yet", value: 0 }
-                ]
-            }
-        ];
-
-        // State Management
-        let state = {
-            screen: 'welcome',
-            category: null,
-            currentQuestion: 0,
-            answers: new Array(20).fill(null),
-            dimensionScores: {
-                CRL: 0,
-                TRL: 0,
-                BRL: 0,
-                IPRL: 0,
-                TMRL: 0,
-                FRL: 0
-            }
+        // Mock Database
+        const mockDB = {
+            users: [
+                {
+                    id: 1,
+                    email: 'startup@example.com',
+                    password: 'startup123',
+                    name: 'John Startup',
+                    type: 'startup',
+                    startupName: 'InnoTech Solutions',
+                    organizationId: 2
+                },
+                {
+                    id: 2,
+                    email: 'org@example.com',
+                    password: 'org123',
+                    name: 'Sarah Organization',
+                    type: 'organization',
+                    organizationName: 'Tech University'
+                },
+                {
+                    id: 3,
+                    email: 'admin@example.com',
+                    password: 'admin123',
+                    name: 'Admin User',
+                    type: 'admin'
+                }
+            ],
+            assessments: [],
+            actionPlans: []
         };
 
-        // Initialize
+        let currentUser = null;
+        let assessmentData = {
+            currentQuestion: 0,
+            answers: [],
+            questions: [
+                {
+                    text: "Have you identified your target customer segment?",
+                    help: "Understanding your ideal customers is crucial for success.",
+                    dimension: 'Customer'
+                },
+                {
+                    text: "How many customer interviews have you conducted?",
+                    help: "Direct customer feedback validates your assumptions.",
+                    dimension: 'Customer'
+                },
+                {
+                    text: "What is your product development stage?",
+                    help: "Your technical readiness determines market entry timing.",
+                    dimension: 'Technology'
+                },
+                {
+                    text: "Have you validated technical feasibility?",
+                    help: "Technical validation reduces implementation risks.",
+                    dimension: 'Technology'
+                },
+                {
+                    text: "Have you defined your revenue model?",
+                    help: "A clear revenue model is essential for sustainability.",
+                    dimension: 'Business'
+                },
+                {
+                    text: "What is your current funding status?",
+                    help: "Adequate funding enables growth and scaling.",
+                    dimension: 'Funding'
+                },
+                {
+                    text: "What is your team composition?",
+                    help: "A strong team is crucial for execution.",
+                    dimension: 'Team'
+                },
+                {
+                    text: "Do you have intellectual property protection?",
+                    help: "IP protection can provide competitive advantages.",
+                    dimension: 'IP'
+                },
+                {
+                    text: "What is your go-to-market strategy status?",
+                    help: "A clear GTM strategy accelerates market entry.",
+                    dimension: 'Business'
+                },
+                {
+                    text: "How would you rate your competitive advantage?",
+                    help: "Understanding your differentiation is key.",
+                    dimension: 'Market'
+                }
+            ]
+        };
+
+        // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
-            setupEventListeners();
+            checkAuthentication();
         });
 
-        function setupEventListeners() {
-            // Category selection
-            document.querySelectorAll('.category-card').forEach(card => {
-                card.addEventListener('click', function() {
-                    selectCategory(this);
-                });
-            });
+        function checkAuthentication() {
+            // Check if coming from landing page with auth data
+            const authEmail = localStorage.getItem('authEmail');
+            const authPassword = localStorage.getItem('authPassword');
+            const signupData = localStorage.getItem('signupData');
 
-            // Navigation buttons
-            document.getElementById('startBtn').addEventListener('click', startAssessment);
-            document.getElementById('nextBtn').addEventListener('click', nextQuestion);
-            document.getElementById('prevBtn').addEventListener('click', prevQuestion);
+            if (authEmail && authPassword) {
+                // Try to login with stored credentials
+                const user = mockDB.users.find(u => u.email === authEmail && u.password === authPassword);
+                if (user) {
+                    currentUser = user;
+                    localStorage.removeItem('authEmail');
+                    localStorage.removeItem('authPassword');
+                    initializeDashboard();
+                } else {
+                    redirectToLanding();
+                }
+            } else if (signupData) {
+                // Handle new signup
+                const data = JSON.parse(signupData);
+                const newUser = {
+                    id: mockDB.users.length + 1,
+                    ...data
+                };
+                mockDB.users.push(newUser);
+                currentUser = newUser;
+                localStorage.removeItem('signupData');
+                initializeDashboard();
+            } else {
+                // Check if user is already logged in
+                const savedUser = localStorage.getItem('currentUser');
+                if (savedUser) {
+                    currentUser = JSON.parse(savedUser);
+                    initializeDashboard();
+                } else {
+                    redirectToLanding();
+                }
+            }
         }
 
-        function selectCategory(card) {
-            document.querySelectorAll('.category-card').forEach(c => c.classList.remove('selected'));
-            card.classList.add('selected');
-            state.category = card.dataset.category;
-            document.getElementById('startBtn').disabled = false;
+        function redirectToLanding() {
+            window.location.href = 'landing.html';
+        }
+
+        function initializeDashboard() {
+            // Save current user to localStorage
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+            // Update header
+            document.getElementById('userName').textContent = currentUser.name;
+            document.getElementById('userRole').textContent = currentUser.type.charAt(0).toUpperCase() + currentUser.type.slice(1);
+
+            // Show appropriate dashboard
+            hideAllDashboards();
+            
+            if (currentUser.type === 'startup') {
+                showStartupDashboard();
+            } else if (currentUser.type === 'organization') {
+                showOrganizationDashboard();
+            } else if (currentUser.type === 'admin') {
+                showAdminDashboard();
+            }
+        }
+
+        function hideAllDashboards() {
+            document.getElementById('startupDashboard').classList.add('hidden');
+            document.getElementById('organizationDashboard').classList.add('hidden');
+            document.getElementById('adminDashboard').classList.add('hidden');
+            document.getElementById('assessmentSection').classList.add('hidden');
+        }
+
+        function showStartupDashboard() {
+            document.getElementById('startupDashboard').classList.remove('hidden');
+            document.getElementById('startupName').textContent = currentUser.startupName || currentUser.name;
+            
+            // Load startup data
+            loadStartupData();
+        }
+
+        function showOrganizationDashboard() {
+            document.getElementById('organizationDashboard').classList.remove('hidden');
+            
+            // Load organization data
+            loadOrganizationData();
+        }
+
+        function showAdminDashboard() {
+            document.getElementById('adminDashboard').classList.remove('hidden');
+            
+            // Load admin data
+            loadAdminData();
+        }
+
+        function loadStartupData() {
+            const userAssessments = mockDB.assessments.filter(a => a.userId === currentUser.id);
+            const userActionPlans = mockDB.actionPlans.filter(a => a.startupId === currentUser.id);
+            
+            if (userAssessments.length > 0) {
+                const latest = userAssessments[userAssessments.length - 1];
+                document.getElementById('irlLevel').textContent = latest.level || '-';
+                document.getElementById('assessmentStatus').textContent = 'Completed';
+                document.getElementById('lastUpdated').textContent = new Date(latest.date).toLocaleDateString();
+                
+                // Show results
+                document.getElementById('resultsSection').classList.remove('hidden');
+                displayResults(latest);
+            }
+            
+            document.getElementById('actionPlanCount').textContent = userActionPlans.length;
+            
+            if (userActionPlans.length > 0) {
+                document.getElementById('actionPlansSection').classList.remove('hidden');
+                displayActionPlans(userActionPlans);
+            }
+        }
+
+        function loadOrganizationData() {
+            const startups = mockDB.users.filter(u => u.type === 'startup' && u.organizationId === currentUser.id);
+            const assessments = mockDB.assessments.filter(a => 
+                startups.some(s => s.id === a.userId)
+            );
+            
+            document.getElementById('totalStartups').textContent = startups.length;
+            document.getElementById('completedAssessments').textContent = assessments.length;
+            
+            // Populate startups table
+            const tableBody = document.getElementById('startupsTable');
+            tableBody.innerHTML = '';
+            
+            startups.forEach(startup => {
+                const assessment = assessments.find(a => a.userId === startup.id);
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${startup.startupName}</td>
+                    <td>${startup.email}</td>
+                    <td>${assessment ? assessment.level : '-'}</td>
+                    <td>
+                        <span class="badge ${assessment ? 'badge-success' : 'badge-warning'}">
+                            ${assessment ? 'Completed' : 'Pending'}
+                        </span>
+                    </td>
+                    <td>
+                        <button class="btn btn-secondary btn-sm" onclick="viewStartup(${startup.id})">View</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function loadAdminData() {
+            const users = mockDB.users;
+            const organizations = users.filter(u => u.type === 'organization');
+            const startups = users.filter(u => u.type === 'startup');
+            
+            document.getElementById('totalUsers').textContent = users.length;
+            document.getElementById('totalOrgs').textContent = organizations.length;
+            document.getElementById('totalStartupsAdmin').textContent = startups.length;
+            document.getElementById('totalAssessments').textContent = mockDB.assessments.length;
+            
+            // Populate users table
+            const tableBody = document.getElementById('usersTable');
+            tableBody.innerHTML = '';
+            
+            users.forEach(user => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${user.name}</td>
+                    <td>${user.email}</td>
+                    <td><span class="badge badge-info">${user.type}</span></td>
+                    <td>${user.organizationName || user.startupName || '-'}</td>
+                    <td><span class="badge badge-success">Active</span></td>
+                `;
+                tableBody.appendChild(row);
+            });
         }
 
         function startAssessment() {
-            if (!state.category) return;
-            
-            state.screen = 'questions';
-            state.currentQuestion = 0;
-            showScreen('questionScreen');
-            updateProgressIndicator(1);
+            hideAllDashboards();
+            document.getElementById('assessmentSection').classList.remove('hidden');
+            assessmentData.currentQuestion = 0;
+            assessmentData.answers = [];
             showQuestion();
         }
 
-        function showScreen(screenId) {
-            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-            document.getElementById(screenId).classList.add('active');
-        }
-
-        function updateProgressIndicator(step) {
-            const dots = document.querySelectorAll('.progress-dot');
-            dots.forEach((dot, index) => {
-                dot.classList.remove('active', 'completed');
-                if (index < step - 1) {
-                    dot.classList.add('completed');
-                } else if (index === step - 1) {
-                    dot.classList.add('active');
-                }
-            });
-        }
-
         function showQuestion() {
-            const question = assessmentQuestions[state.currentQuestion];
+            const question = assessmentData.questions[assessmentData.currentQuestion];
+            const questionNum = assessmentData.currentQuestion + 1;
+            const totalQuestions = assessmentData.questions.length;
             
-            document.getElementById('questionNumber').textContent = `Question ${state.currentQuestion + 1} of 20`;
-            document.getElementById('questionText').textContent = question.text;
-            document.getElementById('questionHelp').textContent = question.help;
-            
-            // Render answers
-            const container = document.getElementById('answersContainer');
-            container.innerHTML = '';
-            
-            question.answers.forEach((answer, index) => {
-                const answerDiv = document.createElement('div');
-                answerDiv.className = 'answer-option';
-                if (state.answers[state.currentQuestion] === index) {
-                    answerDiv.classList.add('selected');
-                }
-                
-                answerDiv.innerHTML = `
-                    <div class="answer-radio"></div>
-                    <div class="answer-text">${answer.text}</div>
-                `;
-                
-                answerDiv.addEventListener('click', () => selectAnswer(index));
-                container.appendChild(answerDiv);
-            });
-            
-            // Update navigation
-            document.getElementById('prevBtn').style.display = state.currentQuestion > 0 ? 'block' : 'none';
-            document.getElementById('nextBtn').textContent = state.currentQuestion === 19 ? 'Get Results' : 'Continue';
-            document.getElementById('nextBtn').disabled = state.answers[state.currentQuestion] === null;
+            const content = document.getElementById('assessmentContent');
+            content.innerHTML = `
+                <div class="question-card">
+                    <div class="question-number">Question ${questionNum} of ${totalQuestions}</div>
+                    <h2 class="question-text">${question.text}</h2>
+                    <p class="question-help">${question.help}</p>
+                    
+                    <div class="answer-options">
+                        <div class="answer-option" onclick="selectAnswer(0, this)">
+                            <span>Not started</span>
+                        </div>
+                        <div class="answer-option" onclick="selectAnswer(1, this)">
+                            <span>Early stage</span>
+                        </div>
+                        <div class="answer-option" onclick="selectAnswer(2, this)">
+                            <span>In progress</span>
+                        </div>
+                        <div class="answer-option" onclick="selectAnswer(3, this)">
+                            <span>Completed</span>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                        ${assessmentData.currentQuestion > 0 ? '<button class="btn btn-secondary" onclick="previousQuestion()">← Previous</button>' : ''}
+                        <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>
+                            ${questionNum === totalQuestions ? 'Complete Assessment' : 'Next →'}
+                        </button>
+                    </div>
+                </div>
+            `;
         }
 
-        function selectAnswer(index) {
-            state.answers[state.currentQuestion] = index;
+        function selectAnswer(value, element) {
+            // Remove previous selection
+            document.querySelectorAll('.answer-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
             
-            document.querySelectorAll('.answer-option').forEach(opt => opt.classList.remove('selected'));
-            document.querySelectorAll('.answer-option')[index].classList.add('selected');
+            // Add selection
+            element.classList.add('selected');
+            assessmentData.answers[assessmentData.currentQuestion] = value;
             
+            // Enable next button
             document.getElementById('nextBtn').disabled = false;
         }
 
         function nextQuestion() {
-            if (state.currentQuestion < 19) {
-                state.currentQuestion++;
+            if (assessmentData.currentQuestion < assessmentData.questions.length - 1) {
+                assessmentData.currentQuestion++;
                 showQuestion();
             } else {
-                calculateResults();
+                completeAssessment();
             }
         }
 
-        function prevQuestion() {
-            if (state.currentQuestion > 0) {
-                state.currentQuestion--;
+        function previousQuestion() {
+            if (assessmentData.currentQuestion > 0) {
+                assessmentData.currentQuestion--;
                 showQuestion();
             }
         }
 
-        function calculateResults() {
-            // Reset dimension scores
-            Object.keys(state.dimensionScores).forEach(key => {
-                state.dimensionScores[key] = 0;
-            });
+        function completeAssessment() {
+            // Calculate IRL level
+            const avgScore = assessmentData.answers.reduce((a, b) => a + b, 0) / assessmentData.answers.length;
+            const irlLevel = Math.ceil(avgScore * 3) || 1; // Scale to 1-9
             
-            // Calculate scores for each dimension
-            const dimensionCounts = {};
+            // Save assessment
+            const assessment = {
+                id: mockDB.assessments.length + 1,
+                userId: currentUser.id,
+                level: irlLevel,
+                answers: assessmentData.answers,
+                date: new Date().toISOString()
+            };
             
-            assessmentQuestions.forEach((question, index) => {
-                const answerIndex = state.answers[index];
-                if (answerIndex !== null) {
-                    const score = question.answers[answerIndex].value;
-                    state.dimensionScores[question.dimension] += score;
-                    
-                    if (!dimensionCounts[question.dimension]) {
-                        dimensionCounts[question.dimension] = 0;
-                    }
-                    dimensionCounts[question.dimension]++;
-                }
-            });
+            mockDB.assessments.push(assessment);
             
-            // Normalize scores to 0-9 scale
-            Object.keys(state.dimensionScores).forEach(key => {
-                if (dimensionCounts[key]) {
-                    const maxPossible = dimensionCounts[key] * 3;
-                    const normalized = (state.dimensionScores[key] / maxPossible) * 9;
-                    state.dimensionScores[key] = Math.round(normalized);
-                }
-            });
+            // Show loading
+            document.getElementById('assessmentContent').innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <h2 style="margin-top: 1rem;">Calculating your IRL level...</h2>
+                </div>
+            `;
             
-            showResults();
+            // Show results after delay
+            setTimeout(() => {
+                hideAllDashboards();
+                showStartupDashboard();
+            }, 2000);
         }
 
-        function showResults() {
-            updateProgressIndicator(3);
-            showScreen('resultsScreen');
-            
-            // Calculate overall IRL level
-            const avgScore = Object.values(state.dimensionScores).reduce((a, b) => a + b, 0) / 6;
-            const irlLevel = Math.max(1, Math.ceil(avgScore));
-            
-            // Update result header
-            document.getElementById('resultLevel').textContent = `IRL ${irlLevel}`;
-            document.getElementById('resultTitle').textContent = getIRLTitle(irlLevel);
-            document.getElementById('resultDescription').textContent = getIRLDescription(irlLevel);
-            
-            // Create radar chart
-            createRadarChart();
-            
-            // Create dimension cards
-            createDimensionCards();
-            
-            // Create recommendations
-            createRecommendations(irlLevel);
-        }
-
-        function createRadarChart() {
-            const ctx = document.getElementById('radarChart').getContext('2d');
-            
-            new Chart(ctx, {
-                type: 'radar',
-                data: {
-                    labels: [
-                        'Customer',
-                        'Technology',
-                        'Business Model',
-                        'IP',
-                        'Team',
-                        'Funding'
-                    ],
-                    datasets: [{
-                        label: 'Your Score',
-                        data: [
-                            state.dimensionScores.CRL,
-                            state.dimensionScores.TRL,
-                            state.dimensionScores.BRL,
-                            state.dimensionScores.IPRL,
-                            state.dimensionScores.TMRL,
-                            state.dimensionScores.FRL
-                        ],
-                        backgroundColor: 'rgba(0, 122, 255, 0.2)',
-                        borderColor: '#007AFF',
-                        borderWidth: 2,
-                        pointBackgroundColor: '#007AFF',
-                        pointBorderColor: '#fff',
-                        pointHoverBackgroundColor: '#fff',
-                        pointHoverBorderColor: '#007AFF',
-                        pointRadius: 4,
-                        pointHoverRadius: 6
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: true,
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return `Level ${context.parsed.r} of 9`;
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        r: {
-                            beginAtZero: true,
-                            max: 9,
-                            min: 0,
-                            ticks: {
-                                stepSize: 3,
-                                font: {
-                                    size: 11
-                                }
-                            },
-                            grid: {
-                                color: '#E5E5EA'
-                            },
-                            pointLabels: {
-                                font: {
-                                    size: 14,
-                                    family: '-apple-system, BlinkMacSystemFont, sans-serif'
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-        function createDimensionCards() {
-            const container = document.getElementById('dimensionsGrid');
-            container.innerHTML = '';
-            
-            const dimensions = [
-                { key: 'CRL', name: 'Customer Readiness', label: 'Market validation and user adoption' },
-                { key: 'TRL', name: 'Technology Readiness', label: 'Technical development and maturity' },
-                { key: 'BRL', name: 'Business Model', label: 'Revenue model and viability' },
-                { key: 'IPRL', name: 'IP Readiness', label: 'Intellectual property protection' },
-                { key: 'TMRL', name: 'Team Readiness', label: 'Team capability and composition' },
-                { key: 'FRL', name: 'Funding Readiness', label: 'Financial resources and planning' }
-            ];
-            
-            dimensions.forEach(dim => {
-                const card = document.createElement('div');
-                card.className = 'dimension-card';
-                
-                const score = state.dimensionScores[dim.key];
-                const percentage = (score / 9) * 100;
-                
-                card.innerHTML = `
-                    <div class="dimension-header">
-                        <div class="dimension-name">${dim.name}</div>
-                        <div class="dimension-score">${score}/9</div>
+        function displayResults(assessment) {
+            const resultsContent = document.getElementById('resultsContent');
+            resultsContent.innerHTML = `
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="font-size: 4rem; font-weight: 700; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                        IRL ${assessment.level}
                     </div>
-                    <div class="dimension-label">${dim.label}</div>
-                    <div class="dimension-progress">
-                        <div class="dimension-progress-fill" style="width: ${percentage}%"></div>
-                    </div>
-                `;
-                
-                container.appendChild(card);
-            });
+                    <h3 style="margin-top: 1rem;">${getIRLTitle(assessment.level)}</h3>
+                    <p style="color: #666; margin-top: 0.5rem;">${getIRLDescription(assessment.level)}</p>
+                </div>
+            `;
         }
 
-        function createRecommendations(level) {
-            const container = document.getElementById('recommendationsList');
-            container.innerHTML = '';
-            
-            const recommendations = getRecommendations(level);
-            
-            recommendations.forEach((rec, index) => {
-                const card = document.createElement('div');
-                card.className = 'recommendation-card';
-                
-                card.innerHTML = `
-                    <div class="recommendation-number">${index + 1}</div>
-                    <div class="recommendation-content">
-                        <div class="recommendation-title">${rec.title}</div>
-                        <div class="recommendation-text">${rec.description}</div>
-                    </div>
-                `;
-                
-                container.appendChild(card);
-            });
+        function displayActionPlans(plans) {
+            const content = document.getElementById('actionPlansContent');
+            content.innerHTML = plans.map(plan => `
+                <div style="padding: 1rem; border-left: 4px solid #667eea; margin-bottom: 1rem;">
+                    <h4>${plan.title}</h4>
+                    <p style="color: #666;">${plan.description}</p>
+                    <small style="color: #999;">Created: ${new Date(plan.date).toLocaleDateString()}</small>
+                </div>
+            `).join('');
         }
 
         function getIRLTitle(level) {
@@ -1241,69 +928,27 @@
 
         function getIRLDescription(level) {
             const descriptions = {
-                1: "You're at the beginning of your innovation journey with an initial idea that needs validation.",
-                2: "Your concept is taking shape through research and initial problem validation.",
-                3: "You're developing and testing solution concepts based on validated problems.",
-                4: "Technical feasibility has been demonstrated and you're ready for early validation.",
-                5: "Your solution has been validated with early adopters and shows promise.",
-                6: "Market demand is confirmed and you're preparing for broader deployment.",
-                7: "Your solution is complete and ready for full market launch.",
+                1: "You're at the beginning of your innovation journey.",
+                2: "Your concept is taking shape through research.",
+                3: "You're developing and testing solution concepts.",
+                4: "Technical feasibility has been demonstrated.",
+                5: "Your solution has been validated with early adopters.",
+                6: "Market demand is confirmed.",
+                7: "Your solution is complete and ready for launch.",
                 8: "You have initial customers successfully using your innovation.",
-                9: "Your innovation has proven market success and is ready to scale."
+                9: "Your innovation has proven market success."
             };
-            return descriptions[level] || "Your innovation assessment is complete.";
+            return descriptions[level] || "Your assessment is complete.";
         }
 
-        function getRecommendations(level) {
-            const allRecommendations = {
-                1: [
-                    { title: "Conduct Customer Discovery", description: "Interview at least 30 potential customers to validate the problem exists and understand their pain points." },
-                    { title: "Define Value Proposition", description: "Create a clear value proposition canvas that articulates how you solve customer problems." },
-                    { title: "Market Research", description: "Analyze market size, competition, and trends to validate opportunity." }
-                ],
-                2: [
-                    { title: "Build Initial Prototype", description: "Create a basic prototype or mockup to visualize your solution concept." },
-                    { title: "Form Core Team", description: "Identify co-founders or key team members with complementary skills." },
-                    { title: "Develop Business Model", description: "Create initial business model canvas to understand value creation and capture." }
-                ],
-                3: [
-                    { title: "Develop MVP", description: "Build a minimum viable product focusing on core features that solve the main problem." },
-                    { title: "User Testing", description: "Conduct user testing sessions with 10-20 target customers to gather feedback." },
-                    { title: "IP Strategy", description: "Evaluate intellectual property opportunities and file provisional patents if applicable." }
-                ],
-                4: [
-                    { title: "Run Pilot Program", description: "Launch a pilot with 5-10 potential customers to validate solution in real environment." },
-                    { title: "Refine Technology", description: "Iterate on your technical solution based on pilot feedback and performance data." },
-                    { title: "Financial Planning", description: "Develop financial projections and understand funding requirements for next stage." }
-                ],
-                5: [
-                    { title: "Scale Customer Base", description: "Expand from pilots to 50+ customers to validate broader market appeal." },
-                    { title: "Optimize Unit Economics", description: "Focus on improving CAC/LTV ratio and path to profitability." },
-                    { title: "Build Operations", description: "Establish customer support, onboarding, and operational processes for scale." }
-                ],
-                6: [
-                    { title: "Go-to-Market Strategy", description: "Develop and execute comprehensive GTM strategy including sales and marketing." },
-                    { title: "Raise Growth Capital", description: "Prepare for and execute Series A funding round to fuel growth." },
-                    { title: "Scale Team", description: "Hire key positions in sales, marketing, and product development." }
-                ],
-                7: [
-                    { title: "Product Optimization", description: "Refine product features and user experience based on customer feedback." },
-                    { title: "Sales Process", description: "Build repeatable and scalable sales process with clear metrics." },
-                    { title: "Strategic Partnerships", description: "Develop partnerships to accelerate market penetration." }
-                ],
-                8: [
-                    { title: "Customer Success", description: "Implement customer success programs to drive retention and expansion." },
-                    { title: "Market Expansion", description: "Explore adjacent markets or customer segments for growth." },
-                    { title: "Operational Excellence", description: "Optimize operations for efficiency and scalability." }
-                ],
-                9: [
-                    { title: "International Expansion", description: "Evaluate and execute international market entry strategies." },
-                    { title: "Platform Strategy", description: "Build ecosystem and platform capabilities around your core product." },
-                    { title: "M&A Opportunities", description: "Consider strategic acquisitions to accelerate growth or add capabilities." }
-                ]
-            };
-            
-            return allRecommendations[level] || allRecommendations[5];
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'landing.html';
+        }
+
+        function viewStartup(startupId) {
+            // Implementation for viewing startup details
+            alert('View startup ' + startupId);
         }
     </script>
 </body>
