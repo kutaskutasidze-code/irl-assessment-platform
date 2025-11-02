@@ -368,13 +368,22 @@
 
             // Calculate scores
             setTimeout(() => {
-                assessmentEngine.calculateScores();
-                assessmentEngine.saveAssessmentToStorage();
-                
-                // Redirect to results
-                window.location.href = 'results.html';
-            }, 2000);
-        }
+                try {
+                    console.log("Starting score calculation...");
+                    assessmentEngine.calculateScores();
+                    console.log("Scores calculated:", assessmentEngine.currentAssessment.scores);
+                    
+                    console.log("Saving assessment...");
+                    assessmentEngine.saveAssessmentToStorage();
+                    console.log("Assessment saved successfully");
+                    
+                    console.log("Redirecting to results...");
+                    window.location.href = "results.html";
+                } catch (error) {
+                    console.error("Error completing assessment:", error);
+                    alert("Error saving assessment: " + error.message);
+                }
+            }, 2000);        }
 
         // Initialize on load
         init();
