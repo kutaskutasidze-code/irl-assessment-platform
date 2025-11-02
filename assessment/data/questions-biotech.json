@@ -1,0 +1,440 @@
+{
+  "category": "biotech",
+  "industryQuestions": [
+    {
+      "id": "biotech_001",
+      "dimension": "technology",
+      "text": "What stage is your lead compound/therapy in the development pipeline?",
+      "help": "Drug development stages from discovery through FDA approval",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Discovery/preclinical research",
+          "score": 0
+        },
+        {
+          "text": "Preclinical studies (animal models)",
+          "score": 2
+        },
+        {
+          "text": "Phase I clinical trials",
+          "score": 3.5
+        },
+        {
+          "text": "Phase II clinical trials",
+          "score": 4.5
+        },
+        {
+          "text": "Phase III or FDA approved",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "biotech_002",
+      "dimension": "operations",
+      "text": "What is your FDA Investigational New Drug (IND) application status?",
+      "help": "IND is required before human clinical trials can begin",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No IND application",
+          "score": 0
+        },
+        {
+          "text": "Pre-IND meeting with FDA",
+          "score": 2
+        },
+        {
+          "text": "IND application submitted",
+          "score": 3.5
+        },
+        {
+          "text": "IND approved, trials initiated",
+          "score": 4.5
+        },
+        {
+          "text": "Multiple INDs + Fast Track designation",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "biotech_003",
+      "dimension": "technology",
+      "text": "What is the strength of your intellectual property portfolio?",
+      "help": "Patents protecting mechanism of action, formulation, manufacturing",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No patents filed",
+          "score": 0
+        },
+        {
+          "text": "Provisional patent applications",
+          "score": 2
+        },
+        {
+          "text": "1-2 granted patents",
+          "score": 3.5
+        },
+        {
+          "text": "3-5 granted patents, key claims",
+          "score": 4.5
+        },
+        {
+          "text": "Patent portfolio (6+) + orphan drug status",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "biotech_004",
+      "dimension": "financial",
+      "text": "What is your current cash runway at current burn rate?",
+      "help": "Months of funding available. BioTech typically needs 18-24+ months",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Under 6 months",
+          "score": 0
+        },
+        {
+          "text": "6-12 months",
+          "score": 2
+        },
+        {
+          "text": "12-18 months",
+          "score": 3.5
+        },
+        {
+          "text": "18-24 months",
+          "score": 4.5
+        },
+        {
+          "text": "24+ months runway",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "biotech_005",
+      "dimension": "operations",
+      "text": "What is your GMP manufacturing and CMO partnership status?",
+      "help": "Good Manufacturing Practice facilities for clinical/commercial supply",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No manufacturing plan",
+          "score": 0
+        },
+        {
+          "text": "In discussions with CMOs",
+          "score": 2
+        },
+        {
+          "text": "CMO selected, tech transfer started",
+          "score": 3.5
+        },
+        {
+          "text": "GMP manufacturing validated",
+          "score": 4.5
+        },
+        {
+          "text": "Commercial-scale manufacturing ready",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "biotech_006",
+      "dimension": "customer",
+      "text": "What is your target addressable patient population size?",
+      "help": "Market size determines commercial potential and pricing strategy",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not yet defined",
+          "score": 0
+        },
+        {
+          "text": "Ultra-rare disease (<10K patients)",
+          "score": 2
+        },
+        {
+          "text": "Rare disease (10K-200K patients)",
+          "score": 3.5
+        },
+        {
+          "text": "Specialty market (200K-2M patients)",
+          "score": 4.5
+        },
+        {
+          "text": "Large market (>2M patients)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "biotech_007",
+      "dimension": "business",
+      "text": "What strategic pharma partnerships or collaborations do you have?",
+      "help": "Big pharma partnerships provide validation, funding, and expertise",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No pharma partnerships",
+          "score": 0
+        },
+        {
+          "text": "Early discussions/due diligence",
+          "score": 2
+        },
+        {
+          "text": "Research collaboration agreement",
+          "score": 3.5
+        },
+        {
+          "text": "Co-development deal with milestone payments",
+          "score": 4.5
+        },
+        {
+          "text": "Strategic partnership + commercialization rights",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "biotech_008",
+      "dimension": "technology",
+      "text": "How novel and differentiated is your mechanism of action?",
+      "help": "First-in-class therapies command higher valuations and pricing",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Me-too drug (generic approach)",
+          "score": 0
+        },
+        {
+          "text": "Incremental improvement",
+          "score": 2
+        },
+        {
+          "text": "Novel approach with clinical data",
+          "score": 3.5
+        },
+        {
+          "text": "First-in-class with strong IP",
+          "score": 4.5
+        },
+        {
+          "text": "Platform technology (multiple indications)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "biotech_009",
+      "dimension": "operations",
+      "text": "What is your clinical trial execution track record?",
+      "help": "Successfully enrolling, executing, and completing trials on time/budget",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No trial experience",
+          "score": 0
+        },
+        {
+          "text": "Planning first trial",
+          "score": 2
+        },
+        {
+          "text": "Phase I trial completed",
+          "score": 3.5
+        },
+        {
+          "text": "Multiple trials, positive results",
+          "score": 4.5
+        },
+        {
+          "text": "Pivotal trials with regulatory endpoints",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "biotech_010",
+      "dimension": "financial",
+      "text": "What non-dilutive funding have you secured?",
+      "help": "NIH SBIR/STTR grants, disease foundation funding, government contracts",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No non-dilutive funding",
+          "score": 0
+        },
+        {
+          "text": "Grant applications submitted",
+          "score": 2
+        },
+        {
+          "text": "Phase I SBIR/STTR ($250K-500K)",
+          "score": 3.5
+        },
+        {
+          "text": "Phase II SBIR/STTR ($1M-2M)",
+          "score": 4.5
+        },
+        {
+          "text": "Multiple grants + foundation funding ($3M+)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "biotech_011",
+      "dimension": "business",
+      "text": "What is the composition of your Scientific Advisory Board?",
+      "help": "Key opinion leaders (KOLs) provide credibility and guidance",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No scientific advisors",
+          "score": 0
+        },
+        {
+          "text": "1-2 academic advisors",
+          "score": 2
+        },
+        {
+          "text": "SAB with 3-5 members",
+          "score": 3.5
+        },
+        {
+          "text": "Strong SAB (6+) including KOLs",
+          "score": 4.5
+        },
+        {
+          "text": "World-class SAB + clinical advisors",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "biotech_012",
+      "dimension": "technology",
+      "text": "What is the strength and maturity of your preclinical/clinical data package?",
+      "help": "Quality and quantity of efficacy, safety, and mechanism data",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No experimental data",
+          "score": 0
+        },
+        {
+          "text": "In vitro data only",
+          "score": 2
+        },
+        {
+          "text": "Animal model proof-of-concept",
+          "score": 3.5
+        },
+        {
+          "text": "Phase I/II clinical data",
+          "score": 4.5
+        },
+        {
+          "text": "Phase III data with regulatory endpoints",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "biotech_013",
+      "dimension": "operations",
+      "text": "What is your regulatory strategy and FDA interaction history?",
+      "help": "Regulatory pathway planning and FDA feedback meetings",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No regulatory strategy",
+          "score": 0
+        },
+        {
+          "text": "Internal regulatory planning",
+          "score": 2
+        },
+        {
+          "text": "Regulatory consultant engaged",
+          "score": 3.5
+        },
+        {
+          "text": "Pre-IND or Type C meeting held",
+          "score": 4.5
+        },
+        {
+          "text": "Fast Track/Breakthrough/Orphan designation",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "biotech_014",
+      "dimension": "customer",
+      "text": "What patient advocacy and KOL relationships have you established?",
+      "help": "Patient organizations and physician champions accelerate trials and adoption",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No patient advocacy relationships",
+          "score": 0
+        },
+        {
+          "text": "Informal patient organization contact",
+          "score": 2
+        },
+        {
+          "text": "1-2 patient advocacy partnerships",
+          "score": 3.5
+        },
+        {
+          "text": "Multiple patient orgs + clinical KOLs",
+          "score": 4.5
+        },
+        {
+          "text": "Strategic partnerships + advisory board",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "biotech_015",
+      "dimension": "financial",
+      "text": "What is your fundraising progress and valuation trajectory?",
+      "help": "Investment rounds completed and valuation growth",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Pre-seed/friends & family",
+          "score": 0
+        },
+        {
+          "text": "Seed round (<$5M)",
+          "score": 2
+        },
+        {
+          "text": "Series A ($5M-$20M)",
+          "score": 3.5
+        },
+        {
+          "text": "Series B+ ($20M-$100M)",
+          "score": 4.5
+        },
+        {
+          "text": "Late-stage funding (>$100M) or IPO ready",
+          "score": 5
+        }
+      ]
+    }
+  ]
+}

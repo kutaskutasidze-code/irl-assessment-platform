@@ -1,0 +1,440 @@
+{
+  "category": "wealthtech",
+  "industryQuestions": [
+    {
+      "id": "wealth_001",
+      "dimension": "financial",
+      "text": "What is your total Assets Under Management (AUM)?",
+      "help": "Total value of client assets managed on your platform",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No AUM yet",
+          "score": 0
+        },
+        {
+          "text": "Under $10M",
+          "score": 2
+        },
+        {
+          "text": "$10M-$100M",
+          "score": 3.5
+        },
+        {
+          "text": "$100M-$1B",
+          "score": 4.5
+        },
+        {
+          "text": "Over $1B AUM",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "wealth_002",
+      "dimension": "customer",
+      "text": "What is your average account size per client?",
+      "help": "Average portfolio value indicates market positioning (retail vs. HNW)",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No funded accounts",
+          "score": 0
+        },
+        {
+          "text": "Under $10K (mass market)",
+          "score": 2
+        },
+        {
+          "text": "$10K-$50K (affluent)",
+          "score": 3.5
+        },
+        {
+          "text": "$50K-$250K (high net worth)",
+          "score": 4.5
+        },
+        {
+          "text": "Over $250K (ultra-HNW)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "wealth_003",
+      "dimension": "technology",
+      "text": "What portfolio management and rebalancing sophistication do you have?",
+      "help": "Algorithm quality determines returns and tax efficiency",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Manual portfolio management",
+          "score": 0
+        },
+        {
+          "text": "Basic rule-based rebalancing",
+          "score": 2
+        },
+        {
+          "text": "Modern portfolio theory (MPT)",
+          "score": 3.5
+        },
+        {
+          "text": "ML-optimized with factor models",
+          "score": 4.5
+        },
+        {
+          "text": "AI + tax optimization + direct indexing",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "wealth_004",
+      "dimension": "operations",
+      "text": "What is your regulatory registration and compliance status?",
+      "help": "SEC RIA registration, state licenses, FINRA broker-dealer",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not registered",
+          "score": 0
+        },
+        {
+          "text": "Planning SEC registration",
+          "score": 2
+        },
+        {
+          "text": "SEC registration in progress",
+          "score": 3.5
+        },
+        {
+          "text": "SEC RIA registered",
+          "score": 4.5
+        },
+        {
+          "text": "RIA + multi-state licensed + BD partner",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "wealth_005",
+      "dimension": "financial",
+      "text": "What is your revenue model and fee structure?",
+      "help": "Advisory fees (AUM-based), subscription, or commission model",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No revenue yet",
+          "score": 0
+        },
+        {
+          "text": "Commission-based only",
+          "score": 2
+        },
+        {
+          "text": "Subscription model ($5-$20/mo)",
+          "score": 3.5
+        },
+        {
+          "text": "AUM-based fees (0.25-1%)",
+          "score": 4.5
+        },
+        {
+          "text": "Hybrid: AUM + subscription + planning fees",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "wealth_006",
+      "dimension": "customer",
+      "text": "What is your annual client retention rate?",
+      "help": "% of clients who remain active year-over-year. Target: 90%+",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracking retention",
+          "score": 0
+        },
+        {
+          "text": "Below 75% retention",
+          "score": 2
+        },
+        {
+          "text": "75-85% retention",
+          "score": 3.5
+        },
+        {
+          "text": "85-95% retention (strong)",
+          "score": 4.5
+        },
+        {
+          "text": "Above 95% retention (excellent)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "wealth_007",
+      "dimension": "technology",
+      "text": "What tax optimization capabilities do you offer?",
+      "help": "Tax-loss harvesting, asset location, withdrawal strategies",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No tax optimization",
+          "score": 0
+        },
+        {
+          "text": "Basic tax reporting only",
+          "score": 2
+        },
+        {
+          "text": "Automated tax-loss harvesting",
+          "score": 3.5
+        },
+        {
+          "text": "TLH + asset location optimization",
+          "score": 4.5
+        },
+        {
+          "text": "Advanced: TLH + direct indexing + Roth conversions",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "wealth_008",
+      "dimension": "business",
+      "text": "What is your portfolio performance vs. relevant benchmarks?",
+      "help": "Risk-adjusted returns compared to S&P 500, 60/40 portfolio, etc.",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No performance tracking",
+          "score": 0
+        },
+        {
+          "text": "Underperforming benchmarks",
+          "score": 2
+        },
+        {
+          "text": "Matching benchmarks (0-1% alpha)",
+          "score": 3.5
+        },
+        {
+          "text": "Outperforming by 1-3% (strong)",
+          "score": 4.5
+        },
+        {
+          "text": "Consistent outperformance >3% (excellent)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "wealth_009",
+      "dimension": "customer",
+      "text": "What is your Net Promoter Score (NPS) from clients?",
+      "help": "Client satisfaction and likelihood to recommend. Target: 50+",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not measuring NPS",
+          "score": 0
+        },
+        {
+          "text": "Below 30 (needs improvement)",
+          "score": 2
+        },
+        {
+          "text": "30-50 (acceptable)",
+          "score": 3.5
+        },
+        {
+          "text": "50-70 (good)",
+          "score": 4.5
+        },
+        {
+          "text": "Above 70 (excellent)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "wealth_010",
+      "dimension": "operations",
+      "text": "What custodian partnerships do you have for asset custody?",
+      "help": "Qualified custodians (Schwab, Fidelity, Pershing) hold client assets",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No custodian partnership",
+          "score": 0
+        },
+        {
+          "text": "In negotiations",
+          "score": 2
+        },
+        {
+          "text": "1 custodian integrated",
+          "score": 3.5
+        },
+        {
+          "text": "2 custodians (redundancy)",
+          "score": 4.5
+        },
+        {
+          "text": "Multiple tier-1 custodians + backup",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "wealth_011",
+      "dimension": "technology",
+      "text": "What is your portfolio rebalancing frequency and automation?",
+      "help": "More frequent rebalancing improves tax efficiency and performance",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Manual rebalancing only",
+          "score": 0
+        },
+        {
+          "text": "Quarterly rebalancing",
+          "score": 2
+        },
+        {
+          "text": "Monthly automated rebalancing",
+          "score": 3.5
+        },
+        {
+          "text": "Daily automated rebalancing",
+          "score": 4.5
+        },
+        {
+          "text": "Real-time opportunistic rebalancing",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "wealth_012",
+      "dimension": "financial",
+      "text": "What is your Customer Acquisition Cost (CAC) payback period?",
+      "help": "Months to recover acquisition cost from advisory fees. Target: <12 months",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not calculated",
+          "score": 0
+        },
+        {
+          "text": "Over 24 months",
+          "score": 2
+        },
+        {
+          "text": "12-24 months",
+          "score": 3.5
+        },
+        {
+          "text": "6-12 months (strong)",
+          "score": 4.5
+        },
+        {
+          "text": "Under 6 months (excellent)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "wealth_013",
+      "dimension": "business",
+      "text": "What financial planning and advisory services do you provide?",
+      "help": "Beyond basic investing - retirement, tax, estate, insurance planning",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Investment management only",
+          "score": 0
+        },
+        {
+          "text": "Basic goal-based planning",
+          "score": 2
+        },
+        {
+          "text": "Comprehensive financial planning",
+          "score": 3.5
+        },
+        {
+          "text": "CFP\u00ae advisor access + planning",
+          "score": 4.5
+        },
+        {
+          "text": "Holistic wealth management + family office services",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "wealth_014",
+      "dimension": "customer",
+      "text": "What is your account funding conversion rate?",
+      "help": "% of opened accounts that get funded with investable assets",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracking",
+          "score": 0
+        },
+        {
+          "text": "Below 40% funding rate",
+          "score": 2
+        },
+        {
+          "text": "40-60% funding rate",
+          "score": 3.5
+        },
+        {
+          "text": "60-80% funding rate (strong)",
+          "score": 4.5
+        },
+        {
+          "text": "Above 80% funding rate (excellent)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "wealth_015",
+      "dimension": "technology",
+      "text": "What is your mobile and digital experience maturity?",
+      "help": "Mobile app quality, UX, features vs. web platform",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No mobile app, web only",
+          "score": 0
+        },
+        {
+          "text": "Basic mobile app (view only)",
+          "score": 2
+        },
+        {
+          "text": "Full-featured mobile app",
+          "score": 3.5
+        },
+        {
+          "text": "Award-winning app with advanced features",
+          "score": 4.5
+        },
+        {
+          "text": "Best-in-class omnichannel experience",
+          "score": 5
+        }
+      ]
+    }
+  ]
+}
