@@ -36,7 +36,7 @@ function handleSignIn(event) {
     // Store credentials and redirect to main app
     localStorage.setItem('authEmail', email);
     localStorage.setItem('authPassword', password);
-    window.location.href = '../index.html';
+    window.location.href = '/irl-assessment-platform/index.html';
 }
 
 // Sign Up Handler
@@ -71,5 +71,5 @@ function handleSignUp(event) {
     
     // Store signup data and redirect to main app
     localStorage.setItem('signupData', JSON.stringify(userData));
-    window.location.href = '../index.html';
+    window.location.href = '/irl-assessment-platform/index.html';
 }
