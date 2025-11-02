@@ -1,0 +1,440 @@
+{
+  "category": "socialimpact",
+  "industryQuestions": [
+    {
+      "id": "impact_001",
+      "dimension": "customer",
+      "text": "How many beneficiaries served?",
+      "help": "People impacted",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "None",
+          "score": 0
+        },
+        {
+          "text": "1-10",
+          "score": 2
+        },
+        {
+          "text": "11-50",
+          "score": 3.5
+        },
+        {
+          "text": "51-200",
+          "score": 4.5
+        },
+        {
+          "text": "200+",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "impact_002",
+      "dimension": "operations",
+      "text": "What SDGs do you address?",
+      "help": "UN Sustainable Development Goals",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "impact_003",
+      "dimension": "financial",
+      "text": "What is your impact per dollar?",
+      "help": "Efficiency of impact",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "impact_004",
+      "dimension": "business",
+      "text": "Do you have impact measurement framework?",
+      "help": "IRIS, GIIRS, Theory of Change",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "Partial",
+          "score": 3.5
+        },
+        {
+          "text": "Yes",
+          "score": 4.5
+        },
+        {
+          "text": "Advanced",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "impact_005",
+      "dimension": "customer",
+      "text": "What measurable outcomes achieved?",
+      "help": "Lives improved, emissions reduced",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "impact_006",
+      "dimension": "financial",
+      "text": "What is your revenue model?",
+      "help": "Grants, earned revenue, hybrid",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "impact_007",
+      "dimension": "operations",
+      "text": "Do you have B-Corp or similar certification?",
+      "help": "Impact certification",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "Partial",
+          "score": 3.5
+        },
+        {
+          "text": "Yes",
+          "score": 4.5
+        },
+        {
+          "text": "Advanced",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "impact_008",
+      "dimension": "business",
+      "text": "How many stakeholder partnerships?",
+      "help": "NGOs, governments, corporates",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "None",
+          "score": 0
+        },
+        {
+          "text": "1-10",
+          "score": 2
+        },
+        {
+          "text": "11-50",
+          "score": 3.5
+        },
+        {
+          "text": "51-200",
+          "score": 4.5
+        },
+        {
+          "text": "200+",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "impact_009",
+      "dimension": "customer",
+      "text": "What is your beneficiary satisfaction?",
+      "help": "Feedback from those served",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "impact_010",
+      "dimension": "financial",
+      "text": "What is your cost per beneficiary?",
+      "help": "Efficiency metric",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "impact_011",
+      "dimension": "technology",
+      "text": "Do you have impact tracking technology?",
+      "help": "Data collection systems",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "Partial",
+          "score": 3.5
+        },
+        {
+          "text": "Yes",
+          "score": 4.5
+        },
+        {
+          "text": "Advanced",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "impact_012",
+      "dimension": "operations",
+      "text": "What is your program scalability?",
+      "help": "Geographic/population expansion",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "impact_013",
+      "dimension": "business",
+      "text": "Do you have grant/funding track record?",
+      "help": "Foundation support",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "Partial",
+          "score": 3.5
+        },
+        {
+          "text": "Yes",
+          "score": 4.5
+        },
+        {
+          "text": "Advanced",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "impact_014",
+      "dimension": "financial",
+      "text": "What is your sustainability model?",
+      "help": "Path to financial self-sufficiency",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "impact_015",
+      "dimension": "customer",
+      "text": "What is your community engagement level?",
+      "help": "Participation rates",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    }
+  ]
+}
