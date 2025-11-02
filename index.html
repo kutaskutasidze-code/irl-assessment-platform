@@ -540,7 +540,8 @@
             actionPlans: []
         };
 
-        let currentUser = null;
+        window.mockDB = mockDB; // Expose globally for assessment system        let currentUser = null;
+        window.currentUser = currentUser; // Expose globally for assessment system
         let assessmentData = {
             currentQuestion: 0,
             answers: [],
@@ -791,6 +792,7 @@
                 const user = mockDB.users.find(u => u.email === authEmail && u.password === authPassword);
                 if (user) {
                     currentUser = user;
+                    window.currentUser = currentUser; // Update global
                     localStorage.removeItem('authEmail');
                     localStorage.removeItem('authPassword');
                     initializeDashboard();
@@ -806,6 +808,7 @@
                 };
                 mockDB.users.push(newUser);
                 currentUser = newUser;
+                window.currentUser = currentUser; // Update global
                 localStorage.removeItem('signupData');
                 initializeDashboard();
             } else {
@@ -897,10 +900,9 @@
         }
 
         function loadOrganizationData() {
-            const startups = mockDB.users.filter(u => u.type === 'startup' && u.organizationId === currentUser.id);
             const assessments = mockDB.assessments.filter(a => 
-                startups.some(s => s.id === a.userId)
-            );
+                a.organizationId === currentUser.id || startups.some(s => s.id === a.userId || s.id === a.startupId)
+            );            );
             
             document.getElementById('totalStartups').textContent = startups.length;
             document.getElementById('completedAssessments').textContent = assessments.length;
@@ -910,7 +912,7 @@
             tableBody.innerHTML = '';
             
             startups.forEach(startup => {
-                const assessment = assessments.find(a => a.userId === startup.id);
+                const assessment = assessments.find(a => a.userId === startup.id || a.startupId === startup.id);
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${startup.startupName}</td>
@@ -1199,7 +1201,7 @@ function showToast(message) {
 // Replace the viewStartup function with this full implementation
 function viewStartup(startupId) {
     const startup = mockDB.users.find(u => u.id === startupId);
-    const assessment = mockDB.assessments.find(a => a.userId === startupId);
+    const assessment = mockDB.assessments.find(a => a.userId === startupId || a.startupId === startupId);
     
     if (!startup) {
         alert('Startup not found');

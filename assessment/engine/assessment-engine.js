@@ -283,10 +283,15 @@ class AssessmentEngine {
   }
 
   saveAssessmentToStorage() {
+    // Get current user from global scope (set by index.html after login)
+    const user = (typeof window !== 'undefined' && window.currentUser) || null;
+    
     const assessment = {
       ...this.currentAssessment,
-      userId: null, // TODO: Integrate with auth system
-      userEmail: null // TODO: Integrate with auth system
+      userId: user?.id || null,
+      userEmail: user?.email || null,
+      startupId: user?.type === 'startup' ? user.id : null,
+      organizationId: user?.organizationId || null
     };
 
     // Save to localStorage
@@ -296,20 +301,26 @@ class AssessmentEngine {
 
     // Also save to mockDB if available
     if (typeof mockDB !== 'undefined') {
-      mockDB.assessments.push({
+      const newAssessment = {
         id: mockDB.assessments.length + 1,
-        userId: null, // TODO: Integrate with auth system
+        userId: user?.id || null,
+        startupId: user?.type === 'startup' ? user.id : null,
+        organizationId: user?.organizationId || null,
         categoryId: assessment.categoryId,
+        categoryName: assessment.category?.name || '',
         level: assessment.irlLevel,
         scores: assessment.scores,
+        totalScore: assessment.totalScore,
         answers: assessment.answers,
         date: assessment.completedAt
-      });
+      };
+      
+      mockDB.assessments.push(newAssessment);
+      console.log('Assessment saved to mockDB:', newAssessment);
     }
 
     return assessment;
   }
-}
 
 // Export for use in other files
 if (typeof module !== 'undefined' && module.exports) {
