@@ -1,0 +1,440 @@
+{
+  "category": "medtech",
+  "industryQuestions": [
+    {
+      "id": "medtech_001",
+      "dimension": "operations",
+      "text": "What is your FDA regulatory pathway and classification?",
+      "help": "510(k), De Novo, PMA, or exempt. Determines approval timeline and cost",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not yet determined",
+          "score": 0
+        },
+        {
+          "text": "Planning pathway (consulting)",
+          "score": 2
+        },
+        {
+          "text": "Pathway identified (510k or De Novo)",
+          "score": 3.5
+        },
+        {
+          "text": "Pre-submission filed with FDA",
+          "score": 4.5
+        },
+        {
+          "text": "FDA cleared/approved (510k/PMA)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "medtech_002",
+      "dimension": "technology",
+      "text": "What is your medical device classification (Class I/II/III)?",
+      "help": "Higher class = more regulation. Class I (low risk), Class II (moderate), Class III (high risk)",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not classified yet",
+          "score": 0
+        },
+        {
+          "text": "Class III (high risk, PMA required)",
+          "score": 2
+        },
+        {
+          "text": "Class II (moderate risk, 510k)",
+          "score": 3.5
+        },
+        {
+          "text": "Class I (low risk, exempt)",
+          "score": 4.5
+        },
+        {
+          "text": "Class II with special 510k (faster)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "medtech_003",
+      "dimension": "operations",
+      "text": "What quality management system certifications do you have?",
+      "help": "ISO 13485 required for medical devices. FDA QSR compliance mandatory",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No QMS certification",
+          "score": 0
+        },
+        {
+          "text": "QMS implementation in progress",
+          "score": 2
+        },
+        {
+          "text": "ISO 13485 certification pending",
+          "score": 3.5
+        },
+        {
+          "text": "ISO 13485 certified",
+          "score": 4.5
+        },
+        {
+          "text": "ISO 13485 + FDA QSR + EU MDR",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "medtech_004",
+      "dimension": "customer",
+      "text": "How many clinical sites or healthcare facilities use your device?",
+      "help": "Hospital/clinic adoption demonstrates clinical validation and traction",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No clinical sites yet",
+          "score": 0
+        },
+        {
+          "text": "1-3 pilot sites",
+          "score": 2
+        },
+        {
+          "text": "4-10 sites",
+          "score": 3.5
+        },
+        {
+          "text": "11-50 sites",
+          "score": 4.5
+        },
+        {
+          "text": "50+ sites or IDN contracts",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "medtech_005",
+      "dimension": "financial",
+      "text": "What is your reimbursement and CPT code status?",
+      "help": "Insurance reimbursement critical for adoption. CPT codes enable billing",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No reimbursement strategy",
+          "score": 0
+        },
+        {
+          "text": "Reimbursement pathway identified",
+          "score": 2
+        },
+        {
+          "text": "Category III CPT code (temporary)",
+          "score": 3.5
+        },
+        {
+          "text": "Category I CPT code (permanent)",
+          "score": 4.5
+        },
+        {
+          "text": "CPT + coverage from major payers",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "medtech_006",
+      "dimension": "technology",
+      "text": "What is your design verification and validation (V&V) status?",
+      "help": "Required FDA documentation proving device works as intended",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No V&V documentation",
+          "score": 0
+        },
+        {
+          "text": "V&V protocol defined",
+          "score": 2
+        },
+        {
+          "text": "V&V testing in progress",
+          "score": 3.5
+        },
+        {
+          "text": "V&V completed, documented",
+          "score": 4.5
+        },
+        {
+          "text": "V&V complete + clinical validation",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "medtech_007",
+      "dimension": "operations",
+      "text": "What is your manufacturing capability and scalability?",
+      "help": "In-house vs contract manufacturing, capacity for commercialization",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No manufacturing capability",
+          "score": 0
+        },
+        {
+          "text": "Prototype manufacturing only",
+          "score": 2
+        },
+        {
+          "text": "Contract manufacturer identified",
+          "score": 3.5
+        },
+        {
+          "text": "Small-scale production (100s/year)",
+          "score": 4.5
+        },
+        {
+          "text": "Commercial-scale manufacturing (1000s+)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "medtech_008",
+      "dimension": "customer",
+      "text": "What clinical evidence and outcomes data do you have?",
+      "help": "Peer-reviewed studies, RCTs, real-world evidence showing clinical benefit",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No clinical data",
+          "score": 0
+        },
+        {
+          "text": "Case studies or case series",
+          "score": 2
+        },
+        {
+          "text": "Pilot study with positive results",
+          "score": 3.5
+        },
+        {
+          "text": "Peer-reviewed publication",
+          "score": 4.5
+        },
+        {
+          "text": "Multiple RCTs + systematic review",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "medtech_009",
+      "dimension": "business",
+      "text": "What key opinion leader (KOL) relationships have you established?",
+      "help": "Physician champions accelerate adoption and provide credibility",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No KOL relationships",
+          "score": 0
+        },
+        {
+          "text": "1-2 informal advisors",
+          "score": 2
+        },
+        {
+          "text": "3-5 KOLs engaged",
+          "score": 3.5
+        },
+        {
+          "text": "Strong KOL network (6-10)",
+          "score": 4.5
+        },
+        {
+          "text": "National KOL network + clinical champions",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "medtech_010",
+      "dimension": "financial",
+      "text": "What is your average selling price (ASP) per device/procedure?",
+      "help": "Unit economics - price per device or per procedure revenue",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No pricing determined",
+          "score": 0
+        },
+        {
+          "text": "Under $1K per unit",
+          "score": 2
+        },
+        {
+          "text": "$1K-$10K per unit",
+          "score": 3.5
+        },
+        {
+          "text": "$10K-$50K per unit",
+          "score": 4.5
+        },
+        {
+          "text": "Over $50K per unit/procedure",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "medtech_011",
+      "dimension": "operations",
+      "text": "What is your EU regulatory status (MDR/IVDR compliance)?",
+      "help": "CE marking required for European market access",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No EU regulatory strategy",
+          "score": 0
+        },
+        {
+          "text": "Planning EU submission",
+          "score": 2
+        },
+        {
+          "text": "Technical file preparation",
+          "score": 3.5
+        },
+        {
+          "text": "CE Mark obtained (MDR/IVDR)",
+          "score": 4.5
+        },
+        {
+          "text": "CE + multiple country registrations",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "medtech_012",
+      "dimension": "technology",
+      "text": "What is your device reliability and mean time between failures (MTBF)?",
+      "help": "Reliability critical for patient safety and hospital adoption",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not yet measured",
+          "score": 0
+        },
+        {
+          "text": "Under 1000 hours MTBF",
+          "score": 2
+        },
+        {
+          "text": "1000-5000 hours MTBF",
+          "score": 3.5
+        },
+        {
+          "text": "5000-10000 hours MTBF",
+          "score": 4.5
+        },
+        {
+          "text": "Over 10000 hours + predictive maintenance",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "medtech_013",
+      "dimension": "customer",
+      "text": "What is your user training completion and competency rate?",
+      "help": "Healthcare providers must be trained for safe, effective device use",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No formal training program",
+          "score": 0
+        },
+        {
+          "text": "Basic training materials",
+          "score": 2
+        },
+        {
+          "text": "Structured training program",
+          "score": 3.5
+        },
+        {
+          "text": "Certification program + competency assessment",
+          "score": 4.5
+        },
+        {
+          "text": "Online + in-person + ongoing support",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "medtech_014",
+      "dimension": "business",
+      "text": "What distribution and sales channel partnerships do you have?",
+      "help": "GPO contracts, distributor networks, or direct sales force",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No distribution partnerships",
+          "score": 0
+        },
+        {
+          "text": "1 regional distributor",
+          "score": 2
+        },
+        {
+          "text": "Multiple regional distributors",
+          "score": 3.5
+        },
+        {
+          "text": "GPO contract + national distributor",
+          "score": 4.5
+        },
+        {
+          "text": "Multiple GPOs + direct sales force",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "medtech_015",
+      "dimension": "operations",
+      "text": "What post-market surveillance and vigilance system do you have?",
+      "help": "Required monitoring for adverse events, recalls, and device performance",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No surveillance system",
+          "score": 0
+        },
+        {
+          "text": "Manual adverse event tracking",
+          "score": 2
+        },
+        {
+          "text": "Basic post-market surveillance",
+          "score": 3.5
+        },
+        {
+          "text": "Automated surveillance + MDR/complaint system",
+          "score": 4.5
+        },
+        {
+          "text": "Comprehensive vigilance system + registry participation",
+          "score": 5
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,440 @@
+{
+  "category": "logisticstech",
+  "industryQuestions": [
+    {
+      "id": "log_001",
+      "dimension": "operations",
+      "text": "What is your on-time delivery rate?",
+      "help": "% of deliveries completed within promised window. Target: 95%+",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not yet tracking",
+          "score": 0
+        },
+        {
+          "text": "Below 85% on-time",
+          "score": 2
+        },
+        {
+          "text": "85-90% on-time",
+          "score": 3.5
+        },
+        {
+          "text": "90-95% on-time (good)",
+          "score": 4.5
+        },
+        {
+          "text": "Above 95% on-time (excellent)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "log_002",
+      "dimension": "financial",
+      "text": "What is your cost per delivery/shipment?",
+      "help": "All-in cost per delivery including fuel, labor, maintenance",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracking delivery costs",
+          "score": 0
+        },
+        {
+          "text": "Over $20 per delivery",
+          "score": 2
+        },
+        {
+          "text": "$10-$20 per delivery",
+          "score": 3.5
+        },
+        {
+          "text": "$5-$10 per delivery (good)",
+          "score": 4.5
+        },
+        {
+          "text": "Under $5 per delivery (excellent)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "log_003",
+      "dimension": "technology",
+      "text": "What route optimization and planning technology do you use?",
+      "help": "AI-powered routing reduces miles, time, and fuel costs by 15-30%",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Manual route planning",
+          "score": 0
+        },
+        {
+          "text": "Basic GPS navigation",
+          "score": 2
+        },
+        {
+          "text": "Route optimization software",
+          "score": 3.5
+        },
+        {
+          "text": "AI-powered dynamic routing",
+          "score": 4.5
+        },
+        {
+          "text": "Real-time AI + traffic prediction + autonomous",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "log_004",
+      "dimension": "customer",
+      "text": "What is your customer satisfaction (CSAT) score?",
+      "help": "Delivery experience rating from customers. Target: 4.5+ / 5.0",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not measuring satisfaction",
+          "score": 0
+        },
+        {
+          "text": "Below 3.5 / 5.0",
+          "score": 2
+        },
+        {
+          "text": "3.5-4.0 / 5.0",
+          "score": 3.5
+        },
+        {
+          "text": "4.0-4.5 / 5.0 (good)",
+          "score": 4.5
+        },
+        {
+          "text": "Above 4.5 / 5.0 (excellent)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "log_005",
+      "dimension": "operations",
+      "text": "What is your vehicle/fleet utilization rate?",
+      "help": "% of time vehicles are productively used. Target: 75%+ for profitability",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracking utilization",
+          "score": 0
+        },
+        {
+          "text": "Below 50% utilization",
+          "score": 2
+        },
+        {
+          "text": "50-65% utilization",
+          "score": 3.5
+        },
+        {
+          "text": "65-80% utilization (good)",
+          "score": 4.5
+        },
+        {
+          "text": "Above 80% utilization (excellent)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "log_006",
+      "dimension": "technology",
+      "text": "What real-time tracking and visibility do you provide?",
+      "help": "GPS tracking, ETA updates, proof of delivery for customers",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No real-time tracking",
+          "score": 0
+        },
+        {
+          "text": "Basic status updates",
+          "score": 2
+        },
+        {
+          "text": "GPS tracking + ETAs",
+          "score": 3.5
+        },
+        {
+          "text": "Real-time map + notifications",
+          "score": 4.5
+        },
+        {
+          "text": "Live tracking + predictive ETAs + POD",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "log_007",
+      "dimension": "financial",
+      "text": "What is your fuel efficiency or cost per mile?",
+      "help": "MPG or electric equivalent efficiency. Major cost driver (30-40% of costs)",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracking fuel efficiency",
+          "score": 0
+        },
+        {
+          "text": "Below industry average",
+          "score": 2
+        },
+        {
+          "text": "Industry average (~7 MPG trucks)",
+          "score": 3.5
+        },
+        {
+          "text": "Above average + route optimization",
+          "score": 4.5
+        },
+        {
+          "text": "Electric/hybrid fleet + optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "log_008",
+      "dimension": "operations",
+      "text": "What is your warehouse automation level?",
+      "help": "Robotics, AS/RS, automated picking/packing, conveyor systems",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Fully manual warehouse",
+          "score": 0
+        },
+        {
+          "text": "Basic mechanization (forklifts)",
+          "score": 2
+        },
+        {
+          "text": "Partial automation (conveyor)",
+          "score": 3.5
+        },
+        {
+          "text": "High automation (robotics, AS/RS)",
+          "score": 4.5
+        },
+        {
+          "text": "Full automation + AI orchestration",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "log_009",
+      "dimension": "customer",
+      "text": "What is your damage/loss rate?",
+      "help": "% of shipments damaged, lost, or stolen. Target: <1%",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracking damage rate",
+          "score": 0
+        },
+        {
+          "text": "Above 3% damage/loss",
+          "score": 2
+        },
+        {
+          "text": "2-3% damage/loss",
+          "score": 3.5
+        },
+        {
+          "text": "1-2% damage/loss (good)",
+          "score": 4.5
+        },
+        {
+          "text": "Below 1% damage/loss (excellent)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "log_010",
+      "dimension": "business",
+      "text": "How many delivery zones or geographic markets do you cover?",
+      "help": "Local, regional, national, or international coverage",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No active coverage",
+          "score": 0
+        },
+        {
+          "text": "Single city/metro area",
+          "score": 2
+        },
+        {
+          "text": "Regional (multi-city)",
+          "score": 3.5
+        },
+        {
+          "text": "National coverage",
+          "score": 4.5
+        },
+        {
+          "text": "International + cross-border",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "log_011",
+      "dimension": "technology",
+      "text": "What predictive maintenance and IoT fleet monitoring do you have?",
+      "help": "Sensors for engine health, tire pressure, fuel, reducing breakdowns",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No fleet monitoring",
+          "score": 0
+        },
+        {
+          "text": "Manual maintenance schedules",
+          "score": 2
+        },
+        {
+          "text": "Basic telematics (GPS + diagnostics)",
+          "score": 3.5
+        },
+        {
+          "text": "IoT sensors + predictive alerts",
+          "score": 4.5
+        },
+        {
+          "text": "AI predictive maintenance + remote diagnostics",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "log_012",
+      "dimension": "operations",
+      "text": "What return/reverse logistics capability do you have?",
+      "help": "Returns processing, refurbishment, disposal - critical for e-commerce",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No returns capability",
+          "score": 0
+        },
+        {
+          "text": "Manual returns processing",
+          "score": 2
+        },
+        {
+          "text": "Structured returns process",
+          "score": 3.5
+        },
+        {
+          "text": "Automated returns + refurbishment",
+          "score": 4.5
+        },
+        {
+          "text": "Full circular logistics + resale platform",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "log_013",
+      "dimension": "financial",
+      "text": "What is your revenue per vehicle/driver?",
+      "help": "Fleet productivity metric. Higher revenue per asset = better efficiency",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracking productivity",
+          "score": 0
+        },
+        {
+          "text": "Below $100K/vehicle/year",
+          "score": 2
+        },
+        {
+          "text": "$100K-$250K/vehicle/year",
+          "score": 3.5
+        },
+        {
+          "text": "$250K-$500K/vehicle/year (good)",
+          "score": 4.5
+        },
+        {
+          "text": "Above $500K/vehicle/year (excellent)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "log_014",
+      "dimension": "customer",
+      "text": "What is your first-attempt delivery success rate?",
+      "help": "% of deliveries completed on first attempt (no redelivery needed)",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracking first-attempt",
+          "score": 0
+        },
+        {
+          "text": "Below 70% first-attempt",
+          "score": 2
+        },
+        {
+          "text": "70-80% first-attempt",
+          "score": 3.5
+        },
+        {
+          "text": "80-90% first-attempt (good)",
+          "score": 4.5
+        },
+        {
+          "text": "Above 90% first-attempt (excellent)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "log_015",
+      "dimension": "technology",
+      "text": "What last-mile delivery optimization do you have?",
+      "help": "Last-mile is 50% of total cost. Micro-fulfillment, crowd-sourcing, lockers",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No last-mile optimization",
+          "score": 0
+        },
+        {
+          "text": "Traditional hub-and-spoke",
+          "score": 2
+        },
+        {
+          "text": "Zone-based routing",
+          "score": 3.5
+        },
+        {
+          "text": "Micro-fulfillment + alternative delivery",
+          "score": 4.5
+        },
+        {
+          "text": "AI optimization + drones/robots + lockers",
+          "score": 5
+        }
+      ]
+    }
+  ]
+}

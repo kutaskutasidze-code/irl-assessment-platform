@@ -1,0 +1,440 @@
+{
+  "category": "proptech",
+  "industryQuestions": [
+    {
+      "id": "prop_001",
+      "dimension": "financial",
+      "text": "What is your total property portfolio value under management?",
+      "help": "Total real estate value managed through your platform (owned or managed)",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No properties yet",
+          "score": 0
+        },
+        {
+          "text": "Under $10M",
+          "score": 2
+        },
+        {
+          "text": "$10M-$100M",
+          "score": 3.5
+        },
+        {
+          "text": "$100M-$1B",
+          "score": 4.5
+        },
+        {
+          "text": "Over $1B in property value",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "prop_002",
+      "dimension": "customer",
+      "text": "What is your average occupancy rate across properties?",
+      "help": "% of units/space occupied. Target: 95%+ for residential, 90%+ commercial",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No occupancy data",
+          "score": 0
+        },
+        {
+          "text": "Below 85% occupancy",
+          "score": 2
+        },
+        {
+          "text": "85-90% occupancy",
+          "score": 3.5
+        },
+        {
+          "text": "90-95% occupancy (good)",
+          "score": 4.5
+        },
+        {
+          "text": "Above 95% occupancy (excellent)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "prop_003",
+      "dimension": "technology",
+      "text": "What smart building and IoT integration do you have?",
+      "help": "Sensors, automation, energy management, access control systems",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No IoT integration",
+          "score": 0
+        },
+        {
+          "text": "Basic sensors (1-2 types)",
+          "score": 2
+        },
+        {
+          "text": "Multiple IoT systems (3-5)",
+          "score": 3.5
+        },
+        {
+          "text": "Integrated smart building platform",
+          "score": 4.5
+        },
+        {
+          "text": "AI-powered building automation + predictive",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "prop_004",
+      "dimension": "operations",
+      "text": "What is your tenant satisfaction score (NPS)?",
+      "help": "Net Promoter Score from tenants/residents. Target: 50+",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not measuring satisfaction",
+          "score": 0
+        },
+        {
+          "text": "Below 30 NPS",
+          "score": 2
+        },
+        {
+          "text": "30-45 NPS",
+          "score": 3.5
+        },
+        {
+          "text": "45-60 NPS (good)",
+          "score": 4.5
+        },
+        {
+          "text": "Above 60 NPS (excellent)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "prop_005",
+      "dimension": "financial",
+      "text": "What is your rent collection rate and days outstanding?",
+      "help": "% of rent collected on time. Target: 98%+ within 5 days",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracking collections",
+          "score": 0
+        },
+        {
+          "text": "Below 90% on-time collection",
+          "score": 2
+        },
+        {
+          "text": "90-95% on-time collection",
+          "score": 3.5
+        },
+        {
+          "text": "95-98% on-time collection",
+          "score": 4.5
+        },
+        {
+          "text": "Above 98% + automated reminders",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "prop_006",
+      "dimension": "technology",
+      "text": "What virtual touring and 3D visualization capabilities do you offer?",
+      "help": "Virtual tours, 3D models, VR showings for prospective tenants",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No virtual touring",
+          "score": 0
+        },
+        {
+          "text": "Basic photo galleries",
+          "score": 2
+        },
+        {
+          "text": "360\u00b0 virtual tours",
+          "score": 3.5
+        },
+        {
+          "text": "3D Matterport + VR ready",
+          "score": 4.5
+        },
+        {
+          "text": "AI-powered virtual staging + AR",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "prop_007",
+      "dimension": "operations",
+      "text": "What is your average maintenance response and resolution time?",
+      "help": "Time from maintenance request to completion. Target: <48 hours",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracking maintenance",
+          "score": 0
+        },
+        {
+          "text": "Over 7 days resolution",
+          "score": 2
+        },
+        {
+          "text": "3-7 days resolution",
+          "score": 3.5
+        },
+        {
+          "text": "24-72 hours resolution",
+          "score": 4.5
+        },
+        {
+          "text": "Under 24 hours + predictive maintenance",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "prop_008",
+      "dimension": "customer",
+      "text": "What is your lease renewal rate?",
+      "help": "% of tenants who renew vs move out. Target: 70%+ residential, 80%+ commercial",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracking renewals",
+          "score": 0
+        },
+        {
+          "text": "Below 60% renewal rate",
+          "score": 2
+        },
+        {
+          "text": "60-75% renewal rate",
+          "score": 3.5
+        },
+        {
+          "text": "75-85% renewal rate (good)",
+          "score": 4.5
+        },
+        {
+          "text": "Above 85% renewal rate (excellent)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "prop_009",
+      "dimension": "business",
+      "text": "How many properties or units do you manage?",
+      "help": "Total property count or unit count shows scale and operational complexity",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No properties managed",
+          "score": 0
+        },
+        {
+          "text": "1-10 properties",
+          "score": 2
+        },
+        {
+          "text": "11-100 properties",
+          "score": 3.5
+        },
+        {
+          "text": "101-1000 properties",
+          "score": 4.5
+        },
+        {
+          "text": "Over 1000 properties/units",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "prop_010",
+      "dimension": "financial",
+      "text": "What is your Customer Acquisition Cost (CAC) per tenant/lease?",
+      "help": "Marketing + leasing cost per signed lease. Varies by market/property type",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracking CAC",
+          "score": 0
+        },
+        {
+          "text": "Over $2000 per lease",
+          "score": 2
+        },
+        {
+          "text": "$1000-$2000 per lease",
+          "score": 3.5
+        },
+        {
+          "text": "$500-$1000 per lease",
+          "score": 4.5
+        },
+        {
+          "text": "Under $500 per lease",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "prop_011",
+      "dimension": "technology",
+      "text": "What energy management and sustainability features do you have?",
+      "help": "Smart thermostats, solar, EV charging, energy monitoring, green certifications",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No energy management",
+          "score": 0
+        },
+        {
+          "text": "Basic energy monitoring",
+          "score": 2
+        },
+        {
+          "text": "Smart thermostats + LED",
+          "score": 3.5
+        },
+        {
+          "text": "Solar + EV charging + monitoring",
+          "score": 4.5
+        },
+        {
+          "text": "Net-zero ready + LEED/Energy Star certified",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "prop_012",
+      "dimension": "operations",
+      "text": "What is your vacancy duration (time to lease)?",
+      "help": "Average days from move-out to new tenant move-in. Target: <30 days",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracking vacancy time",
+          "score": 0
+        },
+        {
+          "text": "Over 90 days",
+          "score": 2
+        },
+        {
+          "text": "60-90 days",
+          "score": 3.5
+        },
+        {
+          "text": "30-60 days (good)",
+          "score": 4.5
+        },
+        {
+          "text": "Under 30 days (excellent)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "prop_013",
+      "dimension": "customer",
+      "text": "What is your showing-to-lease conversion rate?",
+      "help": "% of property tours/showings that result in signed leases",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracking conversions",
+          "score": 0
+        },
+        {
+          "text": "Below 20% conversion",
+          "score": 2
+        },
+        {
+          "text": "20-30% conversion",
+          "score": 3.5
+        },
+        {
+          "text": "30-40% conversion (good)",
+          "score": 4.5
+        },
+        {
+          "text": "Above 40% conversion (excellent)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "prop_014",
+      "dimension": "business",
+      "text": "What property management software integrations or partnerships do you have?",
+      "help": "Yardi, AppFolio, Buildium, or other PM system integrations",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No PM partnerships",
+          "score": 0
+        },
+        {
+          "text": "Manual data entry/export",
+          "score": 2
+        },
+        {
+          "text": "1 PM system integration",
+          "score": 3.5
+        },
+        {
+          "text": "2-3 major PM integrations",
+          "score": 4.5
+        },
+        {
+          "text": "Multiple PM systems + API partnerships",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "prop_015",
+      "dimension": "financial",
+      "text": "What is your Net Operating Income (NOI) growth rate?",
+      "help": "Year-over-year NOI improvement. Measures operational efficiency gains",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracking NOI",
+          "score": 0
+        },
+        {
+          "text": "Declining or flat NOI",
+          "score": 2
+        },
+        {
+          "text": "0-5% NOI growth",
+          "score": 3.5
+        },
+        {
+          "text": "5-15% NOI growth (good)",
+          "score": 4.5
+        },
+        {
+          "text": "Above 15% NOI growth (excellent)",
+          "score": 5
+        }
+      ]
+    }
+  ]
+}
