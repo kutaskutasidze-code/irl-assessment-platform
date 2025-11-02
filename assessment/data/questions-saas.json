@@ -1,0 +1,214 @@
+{
+  "category": "saas",
+  "industryQuestions": [
+    {
+      "id": "saas_001",
+      "dimension": "customer",
+      "text": "What is your Monthly Recurring Revenue (MRR)?",
+      "help": "MRR is the predictable revenue your business generates each month from subscriptions",
+      "type": "multiple",
+      "options": [
+        {"text": "No revenue yet", "score": 0},
+        {"text": "$1-$10K MRR", "score": 2},
+        {"text": "$10K-$50K MRR", "score": 3.5},
+        {"text": "$50K-$100K MRR", "score": 4.5},
+        {"text": "$100K+ MRR", "score": 5}
+      ]
+    },
+    {
+      "id": "saas_002",
+      "dimension": "customer",
+      "text": "What is your monthly customer churn rate?",
+      "help": "Churn rate measures the percentage of customers who cancel subscriptions each month",
+      "type": "multiple",
+      "options": [
+        {"text": "Not yet measured", "score": 0},
+        {"text": "Above 10% monthly", "score": 1},
+        {"text": "5-10% monthly", "score": 2.5},
+        {"text": "3-5% monthly", "score": 4},
+        {"text": "Below 3% monthly", "score": 5}
+      ]
+    },
+    {
+      "id": "saas_003",
+      "dimension": "financial",
+      "text": "What is your Customer Acquisition Cost (CAC)?",
+      "help": "CAC is the total cost to acquire one new customer (marketing + sales costs)",
+      "type": "multiple",
+      "options": [
+        {"text": "Not tracking CAC", "score": 0},
+        {"text": "Over $1000", "score": 2},
+        {"text": "$500-$1000", "score": 3.5},
+        {"text": "$100-$500", "score": 4.5},
+        {"text": "Under $100", "score": 5}
+      ]
+    },
+    {
+      "id": "saas_004",
+      "dimension": "financial",
+      "text": "What is your LTV:CAC ratio?",
+      "help": "Customer Lifetime Value divided by CAC. Healthy SaaS companies have 3:1 or higher",
+      "type": "multiple",
+      "options": [
+        {"text": "Not yet calculated", "score": 0},
+        {"text": "Less than 1:1", "score": 1},
+        {"text": "1:1 to 3:1", "score": 3},
+        {"text": "3:1 to 5:1", "score": 4.5},
+        {"text": "Above 5:1", "score": 5}
+      ]
+    },
+    {
+      "id": "saas_005",
+      "dimension": "financial",
+      "text": "What is your CAC Payback Period?",
+      "help": "Number of months to recover customer acquisition costs. Target: 5-12 months",
+      "type": "multiple",
+      "options": [
+        {"text": "Not calculated", "score": 0},
+        {"text": "Over 18 months", "score": 1.5},
+        {"text": "12-18 months", "score": 3},
+        {"text": "5-12 months", "score": 4.5},
+        {"text": "Under 5 months", "score": 5}
+      ]
+    },
+    {
+      "id": "saas_006",
+      "dimension": "customer",
+      "text": "What is your Net Revenue Retention (NRR)?",
+      "help": "NRR measures revenue retained from existing customers including upgrades. Over 100% is excellent",
+      "type": "multiple",
+      "options": [
+        {"text": "Not tracking NRR", "score": 0},
+        {"text": "Below 90%", "score": 1.5},
+        {"text": "90-100%", "score": 3},
+        {"text": "100-120%", "score": 4.5},
+        {"text": "Above 120%", "score": 5}
+      ]
+    },
+    {
+      "id": "saas_007",
+      "dimension": "operations",
+      "text": "What is your product's uptime/availability?",
+      "help": "SaaS reliability is critical. 99.9% uptime is industry standard",
+      "type": "multiple",
+      "options": [
+        {"text": "Not yet measured", "score": 0},
+        {"text": "Below 99%", "score": 2},
+        {"text": "99-99.5%", "score": 3.5},
+        {"text": "99.5-99.9%", "score": 4.5},
+        {"text": "Above 99.9%", "score": 5}
+      ]
+    },
+    {
+      "id": "saas_008",
+      "dimension": "technology",
+      "text": "How scalable is your infrastructure?",
+      "help": "Can your system handle 10x current users without major refactoring?",
+      "type": "multiple",
+      "options": [
+        {"text": "Not designed for scale", "score": 0},
+        {"text": "Can handle 2x growth", "score": 2},
+        {"text": "Can handle 5x growth", "score": 3.5},
+        {"text": "Can handle 10x growth", "score": 4.5},
+        {"text": "Auto-scales infinitely", "score": 5}
+      ]
+    },
+    {
+      "id": "saas_009",
+      "dimension": "customer",
+      "text": "What is your Customer Engagement Score?",
+      "help": "Daily/Weekly Active Users as percentage of Monthly Active Users",
+      "type": "multiple",
+      "options": [
+        {"text": "Not tracking engagement", "score": 0},
+        {"text": "Below 20% DAU/MAU", "score": 2},
+        {"text": "20-40% DAU/MAU", "score": 3.5},
+        {"text": "40-60% DAU/MAU", "score": 4.5},
+        {"text": "Above 60% DAU/MAU", "score": 5}
+      ]
+    },
+    {
+      "id": "saas_010",
+      "dimension": "business",
+      "text": "Do you have a self-service onboarding process?",
+      "help": "Can customers sign up and start using your product without sales assistance?",
+      "type": "multiple",
+      "options": [
+        {"text": "No, requires sales demos", "score": 0},
+        {"text": "Partially self-service", "score": 2.5},
+        {"text": "Fully self-service", "score": 4},
+        {"text": "Self-service + automated activation", "score": 5}
+      ]
+    },
+    {
+      "id": "saas_011",
+      "dimension": "technology",
+      "text": "What is your API maturity level?",
+      "help": "APIs enable integrations and ecosystem growth",
+      "type": "multiple",
+      "options": [
+        {"text": "No API yet", "score": 0},
+        {"text": "Internal API only", "score": 2},
+        {"text": "Public API, basic docs", "score": 3.5},
+        {"text": "RESTful API + SDKs", "score": 4.5},
+        {"text": "API + webhooks + marketplace", "score": 5}
+      ]
+    },
+    {
+      "id": "saas_012",
+      "dimension": "operations",
+      "text": "Do you have automated customer success processes?",
+      "help": "Health scoring, automated alerts for at-risk customers, expansion triggers",
+      "type": "multiple",
+      "options": [
+        {"text": "No CS processes", "score": 0},
+        {"text": "Manual tracking only", "score": 2},
+        {"text": "Basic health scoring", "score": 3.5},
+        {"text": "Automated alerts + playbooks", "score": 4.5},
+        {"text": "Full predictive CS automation", "score": 5}
+      ]
+    },
+    {
+      "id": "saas_013",
+      "dimension": "financial",
+      "text": "What is your Gross Margin?",
+      "help": "Revenue minus COGS (hosting, support, etc). Target: 70%+ for SaaS",
+      "type": "multiple",
+      "options": [
+        {"text": "Not yet calculated", "score": 0},
+        {"text": "Below 50%", "score": 1.5},
+        {"text": "50-70%", "score": 3},
+        {"text": "70-80%", "score": 4.5},
+        {"text": "Above 80%", "score": 5}
+      ]
+    },
+    {
+      "id": "saas_014",
+      "dimension": "business",
+      "text": "Do you meet the 'Rule of 40'?",
+      "help": "Growth rate + Profit margin should exceed 40%",
+      "type": "multiple",
+      "options": [
+        {"text": "Not yet applicable", "score": 0},
+        {"text": "Below 20", "score": 1.5},
+        {"text": "20-40", "score": 3},
+        {"text": "40-60", "score": 4.5},
+        {"text": "Above 60", "score": 5}
+      ]
+    },
+    {
+      "id": "saas_015",
+      "dimension": "customer",
+      "text": "What is your Net Promoter Score (NPS)?",
+      "help": "NPS measures customer satisfaction and likelihood to recommend. 50+ is excellent",
+      "type": "multiple",
+      "options": [
+        {"text": "Not measuring NPS", "score": 0},
+        {"text": "Below 0", "score": 1},
+        {"text": "0-30", "score": 2.5},
+        {"text": "30-50", "score": 4},
+        {"text": "Above 50", "score": 5}
+      ]
+    }
+  ]
+}

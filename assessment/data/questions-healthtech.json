@@ -1,0 +1,214 @@
+{
+  "category": "healthtech",
+  "industryQuestions": [
+    {
+      "id": "healthtech_001",
+      "dimension": "operations",
+      "text": "What is your HIPAA compliance status?",
+      "help": "HIPAA compliance is mandatory for handling Protected Health Information (PHI)",
+      "type": "multiple",
+      "options": [
+        {"text": "Not started", "score": 0},
+        {"text": "Planning compliance", "score": 1.5},
+        {"text": "In progress (3-6 months)", "score": 3},
+        {"text": "Compliant, not certified", "score": 4},
+        {"text": "HIPAA certified + audited", "score": 5}
+      ]
+    },
+    {
+      "id": "healthtech_002",
+      "dimension": "operations",
+      "text": "Do you have Business Associate Agreements (BAAs) in place?",
+      "help": "BAAs are required with all vendors who handle PHI",
+      "type": "multiple",
+      "options": [
+        {"text": "No BAAs", "score": 0},
+        {"text": "BAAs with some vendors", "score": 2.5},
+        {"text": "BAAs with all vendors", "score": 4},
+        {"text": "BAAs + compliance monitoring", "score": 5}
+      ]
+    },
+    {
+      "id": "healthtech_003",
+      "dimension": "technology",
+      "text": "What is your patient data encryption level?",
+      "help": "PHI must be encrypted at rest and in transit",
+      "type": "multiple",
+      "options": [
+        {"text": "No encryption", "score": 0},
+        {"text": "Basic encryption", "score": 2},
+        {"text": "Encryption at rest", "score": 3.5},
+        {"text": "End-to-end encryption", "score": 4.5},
+        {"text": "E2E + zero-knowledge architecture", "score": 5}
+      ]
+    },
+    {
+      "id": "healthtech_004",
+      "dimension": "customer",
+      "text": "How many healthcare providers use your platform?",
+      "help": "Provider adoption is key for healthtech traction",
+      "type": "multiple",
+      "options": [
+        {"text": "No providers yet", "score": 0},
+        {"text": "1-5 providers", "score": 2},
+        {"text": "5-20 providers", "score": 3.5},
+        {"text": "20-100 providers", "score": 4.5},
+        {"text": "100+ providers", "score": 5}
+      ]
+    },
+    {
+      "id": "healthtech_005",
+      "dimension": "customer",
+      "text": "What is your patient engagement rate?",
+      "help": "Percentage of patients actively using the platform",
+      "type": "multiple",
+      "options": [
+        {"text": "No patients yet", "score": 0},
+        {"text": "Below 20%", "score": 2},
+        {"text": "20-40%", "score": 3.5},
+        {"text": "40-60%", "score": 4.5},
+        {"text": "Above 60%", "score": 5}
+      ]
+    },
+    {
+      "id": "healthtech_006",
+      "dimension": "operations",
+      "text": "What is your FDA/regulatory approval status?",
+      "help": "Medical devices and certain software require FDA clearance",
+      "type": "multiple",
+      "options": [
+        {"text": "Not applicable/not started", "score": 0},
+        {"text": "Planning submission", "score": 2},
+        {"text": "Submitted for review", "score": 3.5},
+        {"text": "510(k) cleared or exempt", "score": 4.5},
+        {"text": "FDA approved/CE marked", "score": 5}
+      ]
+    },
+    {
+      "id": "healthtech_007",
+      "dimension": "technology",
+      "text": "Do you have EHR/EMR integration capabilities?",
+      "help": "Integration with Electronic Health Records is critical for adoption",
+      "type": "multiple",
+      "options": [
+        {"text": "No integrations", "score": 0},
+        {"text": "Planning integrations", "score": 2},
+        {"text": "1-2 EHR integrations", "score": 3.5},
+        {"text": "Multiple EHR integrations", "score": 4.5},
+        {"text": "FHIR-compliant + major EHRs", "score": 5}
+      ]
+    },
+    {
+      "id": "healthtech_008",
+      "dimension": "customer",
+      "text": "What clinical outcomes improvement can you demonstrate?",
+      "help": "Measurable health improvements are essential for reimbursement",
+      "type": "multiple",
+      "options": [
+        {"text": "No outcomes data", "score": 0},
+        {"text": "Anecdotal evidence", "score": 2},
+        {"text": "Small pilot study", "score": 3.5},
+        {"text": "Peer-reviewed study", "score": 4.5},
+        {"text": "Multiple RCTs + publications", "score": 5}
+      ]
+    },
+    {
+      "id": "healthtech_009",
+      "dimension": "financial",
+      "text": "What is your reimbursement model status?",
+      "help": "Insurance reimbursement is critical for sustainability",
+      "type": "multiple",
+      "options": [
+        {"text": "No reimbursement strategy", "score": 0},
+        {"text": "Strategy defined", "score": 2},
+        {"text": "CPT codes identified", "score": 3.5},
+        {"text": "Some payer agreements", "score": 4.5},
+        {"text": "Major payer coverage", "score": 5}
+      ]
+    },
+    {
+      "id": "healthtech_010",
+      "dimension": "operations",
+      "text": "What is your security incident response capability?",
+      "help": "Breach notification is required within 60 days for PHI",
+      "type": "multiple",
+      "options": [
+        {"text": "No incident response plan", "score": 0},
+        {"text": "Basic plan documented", "score": 2},
+        {"text": "Plan + designated team", "score": 3.5},
+        {"text": "Tested response plan", "score": 4.5},
+        {"text": "24/7 SOC + automated response", "score": 5}
+      ]
+    },
+    {
+      "id": "healthtech_011",
+      "dimension": "technology",
+      "text": "Do you have interoperability standards compliance?",
+      "help": "HL7, FHIR, DICOM standards enable data exchange",
+      "type": "multiple",
+      "options": [
+        {"text": "No standards compliance", "score": 0},
+        {"text": "Planning implementation", "score": 2},
+        {"text": "One standard implemented", "score": 3.5},
+        {"text": "Multiple standards", "score": 4.5},
+        {"text": "Full FHIR + HL7 + certifications", "score": 5}
+      ]
+    },
+    {
+      "id": "healthtech_012",
+      "dimension": "customer",
+      "text": "What is your provider satisfaction (NPS)?",
+      "help": "Healthcare providers are key stakeholders and advocates",
+      "type": "multiple",
+      "options": [
+        {"text": "Not measured", "score": 0},
+        {"text": "Below 20", "score": 2},
+        {"text": "20-40", "score": 3.5},
+        {"text": "40-60", "score": 4.5},
+        {"text": "Above 60", "score": 5}
+      ]
+    },
+    {
+      "id": "healthtech_013",
+      "dimension": "operations",
+      "text": "How often do you conduct security risk assessments?",
+      "help": "Annual Security Risk Assessments (SRA) are required by HIPAA",
+      "type": "multiple",
+      "options": [
+        {"text": "Never conducted", "score": 0},
+        {"text": "Once, over 2 years ago", "score": 1.5},
+        {"text": "Once in last 2 years", "score": 3},
+        {"text": "Annually", "score": 4.5},
+        {"text": "Quarterly + continuous monitoring", "score": 5}
+      ]
+    },
+    {
+      "id": "healthtech_014",
+      "dimension": "business",
+      "text": "Do you have clinical advisors on your team?",
+      "help": "Clinical expertise is essential for product-market fit in healthcare",
+      "type": "multiple",
+      "options": [
+        {"text": "No clinical advisors", "score": 0},
+        {"text": "1 informal advisor", "score": 2},
+        {"text": "1-2 formal advisors", "score": 3.5},
+        {"text": "Advisory board", "score": 4.5},
+        {"text": "Clinical team + advisory board", "score": 5}
+      ]
+    },
+    {
+      "id": "healthtech_015",
+      "dimension": "financial",
+      "text": "What is your average contract value with healthcare providers?",
+      "help": "ACV indicates market positioning and revenue potential",
+      "type": "multiple",
+      "options": [
+        {"text": "No contracts yet", "score": 0},
+        {"text": "Under $10K/year", "score": 2},
+        {"text": "$10K-$50K/year", "score": 3.5},
+        {"text": "$50K-$200K/year", "score": 4.5},
+        {"text": "Above $200K/year", "score": 5}
+      ]
+    }
+  ]
+}
