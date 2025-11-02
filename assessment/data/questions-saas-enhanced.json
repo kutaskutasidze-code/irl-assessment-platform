@@ -1,0 +1,581 @@
+{
+  "categories": [
+    {
+      "id": "saas",
+      "name": "SaaS",
+      "description": "Software as a Service platform metrics and growth",
+      "questions": [
+        {
+          "id": "saas_mrr_arr",
+          "text": "What is your Monthly Recurring Revenue (MRR) or Annual Recurring Revenue (ARR)?",
+          "category": "saas",
+          "helpText": "Core SaaS metric showing predictable revenue. IRL 1-2: No recurring revenue, IRL 3-4: <$10K MRR, IRL 5-6: $10K-$100K MRR, IRL 7-8: $100K-$1M MRR, IRL 9: $1M+ MRR with strong growth",
+          "options": [
+            {
+              "text": "No recurring revenue yet",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "<$10K MRR with first paying customers",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "$10K-$50K MRR with growing customer base",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "$50K-$100K MRR with product-market fit signals",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "$100K-$1M MRR with repeatable sales motion",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "$1M+ MRR ($12M+ ARR) with strong unit economics",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "saas_net_revenue_retention",
+          "text": "What is your Net Revenue Retention (NRR) rate?",
+          "category": "saas",
+          "helpText": "Measures revenue retention including expansion. IRL 1-2: No data, IRL 3-4: <90%, IRL 5-6: 90-100%, IRL 7-8: 100-120%, IRL 9: 120%+ (best-in-class)",
+          "options": [
+            {
+              "text": "No cohort data to calculate NRR",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "<90% NRR (high churn, limited expansion)",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "90-100% NRR (stable retention, some expansion)",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "100-110% NRR (neutral churn with expansion)",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "110-120% NRR (strong expansion offsetting churn)",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "120%+ NRR (best-in-class, significant expansion)",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "saas_cac_payback_period",
+          "text": "What is your Customer Acquisition Cost (CAC) payback period?",
+          "category": "saas",
+          "helpText": "Months to recover CAC from gross margin. IRL 1-2: Unknown, IRL 3-4: 24+ months, IRL 5-6: 12-24 months, IRL 7-8: 6-12 months, IRL 9: <6 months",
+          "options": [
+            {
+              "text": "Don't track CAC or payback period",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "24+ months payback (economics need improvement)",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "12-24 months payback (acceptable for early stage)",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "8-12 months payback (good unit economics)",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "6-8 months payback (strong unit economics)",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "<6 months payback (best-in-class efficiency)",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "saas_ltv_cac_ratio",
+          "text": "What is your LTV:CAC ratio?",
+          "category": "saas",
+          "helpText": "Lifetime Value to Customer Acquisition Cost ratio. IRL 1-2: Unknown, IRL 3-4: <1:1, IRL 5-6: 1:1-3:1, IRL 7-8: 3:1-5:1, IRL 9: >5:1",
+          "options": [
+            {
+              "text": "Don't track LTV or CAC",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "<1:1 ratio (losing money on customers)",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "1:1-3:1 ratio (breakeven to marginal profitability)",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "3:1-4:1 ratio (healthy unit economics)",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "4:1-5:1 ratio (strong unit economics)",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": ">5:1 ratio (exceptional unit economics)",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "saas_gross_churn_rate",
+          "text": "What is your monthly gross revenue churn rate?",
+          "category": "saas",
+          "helpText": "Monthly % of revenue lost from cancellations. IRL 1-2: >10%, IRL 3-4: 5-10%, IRL 5-6: 3-5%, IRL 7-8: 1-3%, IRL 9: <1%",
+          "options": [
+            {
+              "text": ">10% monthly churn (major retention issues)",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "5-10% monthly churn (needs improvement)",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "3-5% monthly churn (average for early stage)",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "2-3% monthly churn (good retention)",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "1-2% monthly churn (strong retention)",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "<1% monthly churn (best-in-class retention)",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "saas_product_led_growth",
+          "text": "What is your product-led growth (PLG) motion maturity?",
+          "category": "saas",
+          "helpText": "Self-service adoption and virality. IRL 1-2: Sales-led only, IRL 3-4: Basic freemium, IRL 5-6: Self-serve with activation, IRL 7-8: Strong PLG loop, IRL 9: Viral PLG with network effects",
+          "options": [
+            {
+              "text": "Sales-led only, no self-service option",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Basic freemium or free trial, limited self-serve",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "Self-serve signup with product activation tracking",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "Optimized onboarding, 20-40% of revenue from PLG",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "Strong PLG motion, 40-60% revenue from self-serve",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "Viral PLG with network effects, 60%+ self-serve revenue",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "saas_api_integration_ecosystem",
+          "text": "What is your API and integration ecosystem maturity?",
+          "category": "saas",
+          "helpText": "Platform extensibility. IRL 1-2: No API, IRL 3-4: Basic API, IRL 5-6: Documented API + webhooks, IRL 7-8: SDK + marketplace, IRL 9: Platform ecosystem with partners",
+          "options": [
+            {
+              "text": "No public API or integrations",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Basic REST API with limited documentation",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "Documented API + 5-10 native integrations",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "API + webhooks + 10-25 integrations + developer docs",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "SDK + marketplace + 25-50 integrations + partner program",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "Platform ecosystem with 50+ integrations and revenue share",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "saas_uptime_sla",
+          "text": "What is your platform uptime and SLA commitment?",
+          "category": "saas",
+          "helpText": "System reliability. IRL 1-2: <95%, IRL 3-4: 95-99%, IRL 5-6: 99-99.5%, IRL 7-8: 99.5-99.9%, IRL 9: 99.9%+ with SLA credits",
+          "options": [
+            {
+              "text": "<95% uptime, no SLA",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "95-99% uptime, no formal SLA",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "99-99.5% uptime with basic SLA",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "99.5-99.9% uptime with SLA and monitoring",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "99.9% uptime with SLA credits and incident response",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "99.95%+ uptime with multi-region redundancy and SLA credits",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "saas_security_compliance",
+          "text": "What security certifications and compliance do you have?",
+          "category": "saas",
+          "helpText": "Enterprise readiness. IRL 1-2: Basic security, IRL 3-4: Penetration tested, IRL 5-6: SOC 2 Type I, IRL 7-8: SOC 2 Type II + ISO 27001, IRL 9: Multiple compliance (HIPAA, FedRAMP)",
+          "options": [
+            {
+              "text": "Basic security practices, no certifications",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Penetration tested, security audit in progress",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "SOC 2 Type I or ISO 27001 in progress",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "SOC 2 Type I certified with annual pentesting",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "SOC 2 Type II + ISO 27001 certified",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "SOC 2 Type II + ISO 27001 + industry-specific (HIPAA, FedRAMP, PCI)",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "saas_expansion_revenue",
+          "text": "What percentage of your revenue comes from expansion (upsells/cross-sells)?",
+          "category": "saas",
+          "helpText": "Growth from existing customers. IRL 1-2: 0%, IRL 3-4: <10%, IRL 5-6: 10-20%, IRL 7-8: 20-30%, IRL 9: 30%+",
+          "options": [
+            {
+              "text": "0% expansion revenue (single product, no upsells)",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "<10% expansion revenue (limited upsell motion)",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "10-20% expansion revenue (some usage-based growth)",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "20-25% expansion revenue (strong upsell motion)",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "25-30% expansion revenue (multi-product with cross-sell)",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "30%+ expansion revenue (land-and-expand mastery)",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "saas_sales_efficiency",
+          "text": "What is your sales efficiency (Magic Number)?",
+          "category": "saas",
+          "helpText": "Net new ARR per $ of sales & marketing spend. IRL 1-2: <0.5, IRL 3-4: 0.5-0.75, IRL 5-6: 0.75-1.0, IRL 7-8: 1.0-1.5, IRL 9: >1.5",
+          "options": [
+            {
+              "text": "<0.5 magic number (inefficient GTM)",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "0.5-0.75 magic number (acceptable for early stage)",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "0.75-1.0 magic number (approaching efficiency)",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "1.0-1.2 magic number (efficient growth)",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "1.2-1.5 magic number (highly efficient)",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": ">1.5 magic number (exceptional efficiency)",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "saas_customer_health_scoring",
+          "text": "What customer health scoring and success operations do you have?",
+          "category": "saas",
+          "helpText": "Proactive retention. IRL 1-2: Reactive support, IRL 3-4: Basic health tracking, IRL 5-6: Automated health scores, IRL 7-8: CSM with playbooks, IRL 9: AI-powered success with predictive churn",
+          "options": [
+            {
+              "text": "Reactive support only, no health tracking",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Basic health tracking (login frequency, usage)",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "Multi-factor health scores with manual monitoring",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "Automated health scores with alert workflows",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "Dedicated CSMs with playbooks and QBRs",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "AI-powered predictive churn modeling with automated interventions",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "saas_pricing_packaging",
+          "text": "How sophisticated is your pricing and packaging strategy?",
+          "category": "saas",
+          "helpText": "Monetization optimization. IRL 1-2: Single plan, IRL 3-4: 2-3 tiers, IRL 5-6: Value-based tiers, IRL 7-8: Usage-based + tiers, IRL 9: Dynamic pricing with experimentation",
+          "options": [
+            {
+              "text": "Single plan, one-size-fits-all pricing",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "2-3 pricing tiers with basic feature differentiation",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "Value-based tiers aligned to customer segments",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "Optimized tiers with add-ons and annual discounts",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "Hybrid model (tiered + usage-based) with enterprise plans",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "Dynamic pricing with A/B testing and value metric optimization",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "saas_product_analytics",
+          "text": "What product analytics and instrumentation do you have?",
+          "category": "saas",
+          "helpText": "Data-driven product decisions. IRL 1-2: Basic GA, IRL 3-4: Event tracking, IRL 5-6: Product analytics tool, IRL 7-8: Full funnel analysis, IRL 9: Advanced cohort/retention with experimentation",
+          "options": [
+            {
+              "text": "Basic Google Analytics or no tracking",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Custom event tracking with basic dashboards",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "Product analytics tool (Mixpanel, Amplitude, Heap)",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "Full funnel analysis with feature adoption tracking",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "Cohort analysis, retention curves, and A/B testing",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "Advanced experimentation platform with ML-powered insights",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "saas_multi_tenant_architecture",
+          "text": "What is your multi-tenancy and scalability architecture?",
+          "category": "saas",
+          "helpText": "Platform scalability. IRL 1-2: Single tenant, IRL 3-4: Basic multi-tenant, IRL 5-6: Optimized multi-tenant, IRL 7-8: Elastic scaling, IRL 9: Geo-distributed with auto-scaling",
+          "options": [
+            {
+              "text": "Single tenant or manual scaling",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Basic multi-tenant with shared resources",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "Optimized multi-tenant with tenant isolation",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "Horizontal scaling with load balancing",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "Elastic auto-scaling with container orchestration (K8s)",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "Geo-distributed with auto-scaling and multi-region failover",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

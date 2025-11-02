@@ -1,0 +1,581 @@
+{
+  "categories": [
+    {
+      "id": "cybersecurity",
+      "name": "Cybersecurity",
+      "description": "Cybersecurity products and security operations",
+      "questions": [
+        {
+          "id": "cybersec_threat_detection_capability",
+          "text": "What is your threat detection and response capability?",
+          "category": "cybersecurity",
+          "helpText": "Core security product capability. IRL 1-2: Signature-based, IRL 3-4: Basic behavioral, IRL 5-6: ML-powered detection, IRL 7-8: AI with threat hunting, IRL 9: Autonomous threat response",
+          "options": [
+            {
+              "text": "Signature-based detection only",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Basic behavioral analysis with rule-based detection",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "ML-powered anomaly detection with analyst review",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "AI-driven detection with threat intelligence integration",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "Advanced AI with automated threat hunting and SOAR integration",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "Autonomous threat response with zero-day protection and predictive defense",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "cybersec_false_positive_rate",
+          "text": "What is your false positive rate for security alerts?",
+          "category": "cybersecurity",
+          "helpText": "Alert accuracy. IRL 1-2: >20%, IRL 3-4: 10-20%, IRL 5-6: 5-10%, IRL 7-8: 1-5%, IRL 9: <1% with high true positive rate",
+          "options": [
+            {
+              "text": ">20% false positive rate (alert fatigue)",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "10-20% false positive rate (needs tuning)",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "5-10% false positive rate (acceptable)",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "3-5% false positive rate with context enrichment",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "1-3% false positive rate with high fidelity alerts",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "<1% false positive rate with 95%+ true positive detection",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "cybersec_mean_time_to_detect",
+          "text": "What is your Mean Time to Detect (MTTD) for security incidents?",
+          "category": "cybersecurity",
+          "helpText": "Detection speed. IRL 1-2: >7 days, IRL 3-4: 1-7 days, IRL 5-6: 1-24 hours, IRL 7-8: <1 hour, IRL 9: Real-time (<5 minutes)",
+          "options": [
+            {
+              "text": ">7 days MTTD (reactive posture)",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "1-7 days MTTD (slow detection)",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "1-24 hours MTTD (daily monitoring)",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "15 minutes-1 hour MTTD (near real-time)",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "5-15 minutes MTTD (real-time monitoring)",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "<5 minutes MTTD (instant detection and alerting)",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "cybersec_zero_trust_architecture",
+          "text": "What is your zero-trust architecture implementation?",
+          "category": "cybersecurity",
+          "helpText": "Modern security model. IRL 1-2: Perimeter-based, IRL 3-4: Basic segmentation, IRL 5-6: Identity-based access, IRL 7-8: Full zero-trust, IRL 9: Adaptive zero-trust with continuous verification",
+          "options": [
+            {
+              "text": "Traditional perimeter-based security",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Basic network segmentation and VPN",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "Identity-based access with MFA",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "Micro-segmentation with least-privilege access",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "Full zero-trust with continuous verification and device trust",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "Adaptive zero-trust with AI-driven risk assessment and automated policy",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "cybersec_penetration_testing",
+          "text": "What penetration testing and red team exercises do you conduct?",
+          "category": "cybersecurity",
+          "helpText": "Security validation. IRL 1-2: None, IRL 3-4: Annual pentest, IRL 5-6: Quarterly + bug bounty, IRL 7-8: Continuous + red team, IRL 9: Purple team with adversary simulation",
+          "options": [
+            {
+              "text": "No penetration testing conducted",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Annual third-party penetration test",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "Quarterly pentesting + public bug bounty program",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "Continuous security testing + private bug bounty + red team exercises",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "Regular red team operations with adversary emulation (MITRE ATT&CK)",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "Purple team exercises with continuous adversary simulation and automated validation",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "cybersec_security_certifications",
+          "text": "What security certifications and compliance do you maintain?",
+          "category": "cybersecurity",
+          "helpText": "Industry recognition. IRL 1-2: None, IRL 3-4: ISO 27001 in progress, IRL 5-6: SOC 2 Type II, IRL 7-8: Multiple (ISO, SOC, NIST), IRL 9: FedRAMP + industry leader",
+          "options": [
+            {
+              "text": "No security certifications",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "ISO 27001 or SOC 2 Type I in progress",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "SOC 2 Type II or ISO 27001 certified",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "SOC 2 Type II + ISO 27001 + PCI DSS or HIPAA",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "Multiple certifications + NIST CSF + industry-specific compliance",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "FedRAMP authorized + multiple certifications + Gartner/Forrester recognition",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "cybersec_threat_intelligence",
+          "text": "What threat intelligence capabilities do you have?",
+          "category": "cybersecurity",
+          "helpText": "Proactive defense. IRL 1-2: None, IRL 3-4: Public feeds, IRL 5-6: Commercial TI + STIX/TAXII, IRL 7-8: Proprietary research, IRL 9: Industry-leading TI with sharing community",
+          "options": [
+            {
+              "text": "No threat intelligence integration",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Public threat feeds (AlienVault OTX, MISP)",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "Commercial threat intelligence feeds + IOC matching",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "Multi-source TI with STIX/TAXII integration and enrichment",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "Proprietary threat research team with dark web monitoring",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "Industry-leading TI with information sharing community (ISAC/ISAO)",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "cybersec_incident_response",
+          "text": "What is your incident response capability?",
+          "category": "cybersecurity",
+          "helpText": "Response readiness. IRL 1-2: Ad-hoc, IRL 3-4: Basic playbooks, IRL 5-6: 24/7 SOC, IRL 7-8: SOAR with automation, IRL 9: Autonomous response with forensics",
+          "options": [
+            {
+              "text": "Ad-hoc incident response, no formal process",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Basic incident response playbooks and documentation",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "Dedicated IR team with SIEM and 8x5 coverage",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "24/7 SOC with case management and <15 min response SLA",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "SOAR platform with automated playbooks and orchestration",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "Autonomous incident response with AI-driven forensics and remediation",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "cybersec_vulnerability_management",
+          "text": "What is your vulnerability management program?",
+          "category": "cybersecurity",
+          "helpText": "Patch management. IRL 1-2: Reactive, IRL 3-4: Monthly scanning, IRL 5-6: Continuous scanning + prioritization, IRL 7-8: Automated remediation, IRL 9: Predictive vulnerability management",
+          "options": [
+            {
+              "text": "Reactive patching, no scanning program",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Monthly vulnerability scanning with manual review",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "Weekly scanning with risk-based prioritization",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "Continuous scanning with SLA-based remediation (Critical <24h)",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "Automated vulnerability management with patch orchestration",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "Predictive vulnerability management with exploit prediction and automated mitigation",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "cybersec_devsecops_integration",
+          "text": "What is your DevSecOps maturity?",
+          "category": "cybersecurity",
+          "helpText": "Security in SDLC. IRL 1-2: Manual testing, IRL 3-4: SAST in CI/CD, IRL 5-6: SAST + DAST + SCA, IRL 7-8: Full shift-left, IRL 9: Security as code with policy enforcement",
+          "options": [
+            {
+              "text": "Manual security testing post-deployment",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "SAST (static analysis) integrated in CI/CD pipeline",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "SAST + DAST (dynamic analysis) + dependency scanning",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "Comprehensive scanning (SAST/DAST/SCA/IaC) with auto-remediation",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "Full shift-left with security champions and threat modeling",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "Security as code with policy-as-code enforcement and automated compliance",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "cybersec_cloud_security_posture",
+          "text": "What is your cloud security posture management (CSPM)?",
+          "category": "cybersecurity",
+          "helpText": "Cloud security. IRL 1-2: Manual audits, IRL 3-4: Basic CSPM, IRL 5-6: Automated CSPM + CWPP, IRL 7-8: CNAPP with runtime protection, IRL 9: AI-driven cloud security with auto-remediation",
+          "options": [
+            {
+              "text": "Manual cloud security audits",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Basic CSPM tool with misconfiguration detection",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "Automated CSPM with compliance scanning (CIS benchmarks)",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "CSPM + CWPP (workload protection) with continuous monitoring",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "CNAPP (Cloud-Native Application Protection) with runtime security",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "AI-driven cloud security with automated remediation and drift detection",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "cybersec_security_awareness",
+          "text": "What security awareness and training program do you have?",
+          "category": "cybersecurity",
+          "helpText": "Human factor. IRL 1-2: None, IRL 3-4: Annual training, IRL 5-6: Quarterly + phishing tests, IRL 7-8: Continuous training + simulations, IRL 9: Gamified + role-based with metrics",
+          "options": [
+            {
+              "text": "No formal security awareness program",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Annual security awareness training",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "Quarterly training with phishing simulations",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "Monthly training with simulated attacks and metrics tracking",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "Continuous training platform with role-based curriculum",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "Gamified security culture with behavior analytics and risk scoring",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "cybersec_data_encryption",
+          "text": "What data encryption and key management do you implement?",
+          "category": "cybersecurity",
+          "helpText": "Data protection. IRL 1-2: Basic encryption, IRL 3-4: TLS + encrypted storage, IRL 5-6: End-to-end encryption, IRL 7-8: FIPS 140-2 + HSM, IRL 9: Quantum-resistant encryption",
+          "options": [
+            {
+              "text": "Basic encryption, manual key management",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "TLS in transit + encrypted storage (AES-256)",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "End-to-end encryption with key rotation policies",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "Centralized KMS with automated key lifecycle management",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "FIPS 140-2 Level 2+ with Hardware Security Modules (HSM)",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "Post-quantum cryptography with bring-your-own-key (BYOK) support",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "cybersec_supply_chain_security",
+          "text": "What supply chain security practices do you follow?",
+          "category": "cybersecurity",
+          "helpText": "Third-party risk. IRL 1-2: No program, IRL 3-4: Vendor questionnaires, IRL 5-6: SBOM + SCA, IRL 7-8: Continuous monitoring, IRL 9: Zero-trust supply chain",
+          "options": [
+            {
+              "text": "No supply chain security program",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Vendor security questionnaires and contracts",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "SBOM (Software Bill of Materials) + dependency scanning",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "Third-party risk management platform with periodic assessments",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "Continuous vendor monitoring with security ratings (BitSight, SecurityScorecard)",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "Zero-trust supply chain with SLSA compliance and artifact signing",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "cybersec_customer_deployment",
+          "text": "How many enterprise customers have deployed your security solution?",
+          "category": "cybersecurity",
+          "helpText": "Market validation. IRL 1-2: 0-5 POCs, IRL 3-4: 5-25 customers, IRL 5-6: 25-100 customers, IRL 7-8: 100-500 customers, IRL 9: 500+ customers including F500",
+          "options": [
+            {
+              "text": "0-5 POCs or early pilots",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "5-25 paid customers, mostly SMB",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "25-100 customers including some mid-market",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "100-250 customers including enterprise accounts",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "250-500 customers with multiple Fortune 500 references",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "500+ customers including Global 2000 with case studies",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

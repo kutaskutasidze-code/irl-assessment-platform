@@ -1,0 +1,581 @@
+{
+  "categories": [
+    {
+      "id": "ecommerce",
+      "name": "E-Commerce",
+      "description": "E-commerce platform, marketplace, and direct-to-consumer operations",
+      "questions": [
+        {
+          "id": "ecommerce_gmv_revenue",
+          "text": "What is your monthly Gross Merchandise Value (GMV) or revenue?",
+          "category": "ecommerce",
+          "helpText": "Core commerce metric. IRL 1-2: <$10K/month, IRL 3-4: $10K-$50K/month, IRL 5-6: $50K-$250K/month, IRL 7-8: $250K-$1M/month, IRL 9: $1M+/month",
+          "options": [
+            {
+              "text": "<$10K/month in GMV or revenue",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "$10K-$50K/month with initial traction",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "$50K-$100K/month with growing customer base",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "$100K-$250K/month with proven acquisition channels",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "$250K-$1M/month with scaled operations",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "$1M+/month ($12M+ annual run rate) with strong unit economics",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "ecommerce_conversion_rate",
+          "text": "What is your e-commerce conversion rate?",
+          "category": "ecommerce",
+          "helpText": "Visitors to customers. IRL 1-2: <1%, IRL 3-4: 1-2%, IRL 5-6: 2-3%, IRL 7-8: 3-5%, IRL 9: 5%+ with optimization",
+          "options": [
+            {
+              "text": "<1% conversion rate",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "1-2% conversion rate (industry average)",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "2-3% conversion rate with basic optimization",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "3-4% conversion rate with CRO program",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "4-5% conversion rate with advanced personalization",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "5%+ conversion rate (top decile) with AI optimization",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "ecommerce_customer_acquisition_cost",
+          "text": "What is your blended Customer Acquisition Cost (CAC)?",
+          "category": "ecommerce",
+          "helpText": "Marketing efficiency. IRL 1-2: >$100, IRL 3-4: $50-$100, IRL 5-6: $25-$50, IRL 7-8: $10-$25, IRL 9: <$10 with strong organic",
+          "options": [
+            {
+              "text": ">$100 CAC (unprofitable unit economics)",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "$50-$100 CAC (acceptable for high AOV products)",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "$25-$50 CAC with improving efficiency",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "$15-$25 CAC with optimized paid channels",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "$10-$15 CAC with strong organic and referral",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "<$10 CAC with viral/organic growth and brand loyalty",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "ecommerce_repeat_purchase_rate",
+          "text": "What is your repeat purchase rate within 12 months?",
+          "category": "ecommerce",
+          "helpText": "Customer retention. IRL 1-2: <20%, IRL 3-4: 20-30%, IRL 5-6: 30-40%, IRL 7-8: 40-60%, IRL 9: 60%+ with subscriptions",
+          "options": [
+            {
+              "text": "<20% repeat purchase rate (one-time buyers)",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "20-30% repeat rate (limited retention)",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "30-40% repeat rate with retention programs",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "40-50% repeat rate with loyalty and email marketing",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "50-60% repeat rate with subscription offerings",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "60%+ repeat rate (subscription-first or consumables)",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "ecommerce_average_order_value",
+          "text": "What is your Average Order Value (AOV) trend?",
+          "category": "ecommerce",
+          "helpText": "Transaction size optimization. IRL 1-2: Declining AOV, IRL 3-4: Flat AOV, IRL 5-6: +5-10% YoY, IRL 7-8: +10-20% YoY, IRL 9: +20%+ YoY with upsells",
+          "options": [
+            {
+              "text": "Declining AOV (need bundling/upsells)",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Flat AOV year-over-year",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "+5-10% AOV growth with basic bundling",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "+10-15% AOV growth with cross-sells and recommendations",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "+15-20% AOV growth with personalized upsells",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "+20%+ AOV growth with AI-powered product bundles",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "ecommerce_fulfillment_speed",
+          "text": "What is your order fulfillment and shipping speed?",
+          "category": "ecommerce",
+          "helpText": "Logistics capability. IRL 1-2: 5-7 days, IRL 3-4: 3-5 days, IRL 5-6: 2-3 days, IRL 7-8: 1-2 days, IRL 9: Same-day with own logistics",
+          "options": [
+            {
+              "text": "5-7+ days average fulfillment time",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "3-5 days with standard carriers",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "2-3 days with expedited options",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "1-2 days with 3PL partnership or distributed inventory",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "Next-day delivery in major markets",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "Same-day delivery with own logistics network",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "ecommerce_return_rate",
+          "text": "What is your return/refund rate?",
+          "category": "ecommerce",
+          "helpText": "Product-market fit indicator. IRL 1-2: >20%, IRL 3-4: 10-20%, IRL 5-6: 5-10%, IRL 7-8: 2-5%, IRL 9: <2% with quality control",
+          "options": [
+            {
+              "text": ">20% return rate (quality or fit issues)",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "10-20% return rate (industry dependent)",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "5-10% return rate with improving QC",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "3-5% return rate with size guides and reviews",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "2-3% return rate with strong QC and customer education",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "<2% return rate with exceptional quality and AR/virtual try-on",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "ecommerce_personalization",
+          "text": "What personalization and recommendation capabilities do you have?",
+          "category": "ecommerce",
+          "helpText": "Customer experience. IRL 1-2: None, IRL 3-4: Basic segments, IRL 5-6: Behavioral targeting, IRL 7-8: AI recommendations, IRL 9: Real-time 1:1 personalization",
+          "options": [
+            {
+              "text": "No personalization, same experience for all",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Basic segmentation (new vs returning)",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "Behavioral targeting with product recommendations",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "ML-powered recommendations with email personalization",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "AI recommendations across all touchpoints with dynamic content",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "Real-time 1:1 personalization with predictive analytics",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "ecommerce_marketplace_integration",
+          "text": "What marketplace and channel integration do you have?",
+          "category": "ecommerce",
+          "helpText": "Omnichannel presence. IRL 1-2: Own site only, IRL 3-4: 1-2 marketplaces, IRL 5-6: 3-5 channels, IRL 7-8: Full omnichannel, IRL 9: Global marketplace with unified inventory",
+          "options": [
+            {
+              "text": "Own website only (single channel)",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Own site + 1-2 marketplaces (Amazon, eBay)",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "3-5 online channels with basic inventory sync",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "Full omnichannel (online + retail partnerships) with unified inventory",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "10+ channels with automated repricing and channel optimization",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "Global marketplace presence (15+ channels) with localized pricing",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "ecommerce_mobile_optimization",
+          "text": "What is your mobile commerce optimization?",
+          "category": "ecommerce",
+          "helpText": "Mobile experience. IRL 1-2: Not mobile-responsive, IRL 3-4: Responsive design, IRL 5-6: Mobile-optimized, IRL 7-8: Native app, IRL 9: PWA with mobile-first features",
+          "options": [
+            {
+              "text": "Not mobile-responsive (<30% mobile conversions)",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Basic responsive design (30-40% mobile conversions)",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "Mobile-optimized checkout (40-50% mobile conversions)",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "Fast mobile experience with wallet integration (50-60% mobile)",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "Native mobile app with push notifications (60-70% mobile)",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "PWA with AR/camera features and mobile-first design (70%+ mobile)",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "ecommerce_subscription_revenue",
+          "text": "What percentage of revenue is subscription or recurring?",
+          "category": "ecommerce",
+          "helpText": "Revenue predictability. IRL 1-2: 0%, IRL 3-4: <10%, IRL 5-6: 10-25%, IRL 7-8: 25-50%, IRL 9: 50%+ subscription revenue",
+          "options": [
+            {
+              "text": "0% subscription revenue (transactional only)",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "<10% subscription revenue (early program)",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "10-25% subscription revenue with growing adoption",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "25-40% subscription revenue with low churn (<5%/month)",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "40-50% subscription revenue with strong retention",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "50%+ subscription revenue (subscription-first model)",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "ecommerce_payment_options",
+          "text": "What payment methods and flexibility do you offer?",
+          "category": "ecommerce",
+          "helpText": "Checkout optimization. IRL 1-2: Credit cards only, IRL 3-4: Cards + PayPal, IRL 5-6: Digital wallets, IRL 7-8: BNPL options, IRL 9: Crypto + international with dynamic routing",
+          "options": [
+            {
+              "text": "Credit/debit cards only",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Cards + PayPal",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "Cards + PayPal + digital wallets (Apple Pay, Google Pay)",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "Full wallet support + BNPL (Affirm, Afterpay, Klarna)",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "Multi-currency + local payment methods + BNPL",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "Global payment optimization with crypto and dynamic routing",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "ecommerce_customer_reviews",
+          "text": "What customer review and UGC (user-generated content) do you have?",
+          "category": "ecommerce",
+          "helpText": "Social proof. IRL 1-2: No reviews, IRL 3-4: <100 reviews, IRL 5-6: 100-1K reviews, IRL 7-8: 1K-10K reviews + photos, IRL 9: 10K+ reviews with video",
+          "options": [
+            {
+              "text": "No customer reviews or ratings",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "<100 reviews with basic star ratings",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "100-1,000 reviews with review request automation",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "1,000-5,000 reviews with photo reviews and Q&A",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "5,000-10,000 reviews with UGC program and influencer content",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "10,000+ reviews with video testimonials and social commerce integration",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "ecommerce_inventory_management",
+          "text": "What inventory management and forecasting do you have?",
+          "category": "ecommerce",
+          "helpText": "Operations maturity. IRL 1-2: Manual spreadsheets, IRL 3-4: Basic IMS, IRL 5-6: Multi-channel sync, IRL 7-8: Demand forecasting, IRL 9: AI-powered predictive inventory",
+          "options": [
+            {
+              "text": "Manual inventory tracking in spreadsheets",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Basic inventory management system (IMS)",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "Multi-channel inventory sync with low-stock alerts",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "Demand forecasting with automated reordering",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "Advanced analytics with supplier integration and dropship",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "AI-powered predictive inventory optimization with <1% stockouts",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "ecommerce_customer_support",
+          "text": "What customer support capabilities do you offer?",
+          "category": "ecommerce",
+          "helpText": "Customer service. IRL 1-2: Email only, IRL 3-4: Email + chat, IRL 5-6: Omnichannel support, IRL 7-8: AI chatbot + human, IRL 9: Proactive support with predictive service",
+          "options": [
+            {
+              "text": "Email support only with slow response (>48 hours)",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Email + live chat with 8x5 coverage",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "Omnichannel support (email, chat, phone, social) with <24h response",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "24/7 support with chatbot triage and knowledge base",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "AI chatbot handling 50%+ of inquiries with seamless human handoff",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "Proactive support with predictive service and self-service portal",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
