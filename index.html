@@ -900,9 +900,10 @@
         }
 
         function loadOrganizationData() {
+            const startups = mockDB.users.filter(u => u.type === 'startup' && u.organizationId === currentUser.id);
             const assessments = mockDB.assessments.filter(a => 
                 a.organizationId === currentUser.id || startups.some(s => s.id === a.userId || s.id === a.startupId)
-            );            );
+            );
             
             document.getElementById('totalStartups').textContent = startups.length;
             document.getElementById('completedAssessments').textContent = assessments.length;
