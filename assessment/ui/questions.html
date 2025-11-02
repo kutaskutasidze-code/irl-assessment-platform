@@ -231,7 +231,7 @@
         </div>
     </div>
 
-    <script src="/assessment/engine/assessment-engine.js"></script>
+    <script src="../engine/assessment-engine.js"></script>
     <script>
         const assessmentEngine = new AssessmentEngine();
         let currentQuestionIndex = 0;
@@ -244,7 +244,7 @@
             const categoryId = params.get('category') || localStorage.getItem('selectedCategory');
 
             if (!categoryId) {
-                window.location.href = '/assessment/ui/category-selection.html';
+                window.location.href = 'category-selection.html';
                 return;
             }
 
@@ -255,7 +255,7 @@
             selectedCategory = assessmentEngine.getCategoryById(categoryId);
             if (!selectedCategory) {
                 alert('Invalid category');
-                window.location.href = '/assessment/ui/category-selection.html';
+                window.location.href = 'category-selection.html';
                 return;
             }
 
@@ -372,7 +372,7 @@
                 assessmentEngine.saveAssessmentToStorage();
                 
                 // Redirect to results
-                window.location.href = '/assessment/ui/results.html';
+                window.location.href = 'results.html';
             }, 2000);
         }
 

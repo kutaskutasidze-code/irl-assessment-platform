@@ -24,7 +24,7 @@ class AssessmentEngine {
 
   async loadCategories() {
     try {
-      const response = await fetch('/assessment/data/categories.json');
+      const response = await fetch('../data/categories.json');
       const data = await response.json();
       this.categories = data.categories;
       return this.categories;
@@ -36,7 +36,7 @@ class AssessmentEngine {
 
   async loadQuestions() {
     try {
-      const response = await fetch('/assessment/data/questions-universal.json');
+      const response = await fetch('../data/questions-universal.json');
       const data = await response.json();
       this.questions = data.universalQuestions;
       return this.questions;
