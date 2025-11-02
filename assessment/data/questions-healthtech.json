@@ -1,0 +1,440 @@
+{
+  "category": "healthtech",
+  "industryQuestions": [
+    {
+      "id": "health_001",
+      "dimension": "operations",
+      "text": "What is your HIPAA compliance maturity level?",
+      "help": "Administrative, physical, and technical safeguards + risk assessments",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not HIPAA compliant",
+          "score": 0
+        },
+        {
+          "text": "Partial compliance in progress",
+          "score": 2
+        },
+        {
+          "text": "Compliant, no third-party audit",
+          "score": 3.5
+        },
+        {
+          "text": "Third-party audited compliance",
+          "score": 4.5
+        },
+        {
+          "text": "SOC 2 Type II + HIPAA certified",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "health_002",
+      "dimension": "customer",
+      "text": "How many active healthcare providers use your platform?",
+      "help": "Physicians, nurses, or clinical staff actively using weekly",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No providers yet",
+          "score": 0
+        },
+        {
+          "text": "1-10 providers",
+          "score": 2
+        },
+        {
+          "text": "11-50 providers",
+          "score": 3.5
+        },
+        {
+          "text": "51-200 providers",
+          "score": 4.5
+        },
+        {
+          "text": "200+ providers",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "health_003",
+      "dimension": "customer",
+      "text": "What validated clinical outcomes can you demonstrate?",
+      "help": "Patient health improvements measured through peer-reviewed studies",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No clinical data",
+          "score": 0
+        },
+        {
+          "text": "Anecdotal evidence only",
+          "score": 2
+        },
+        {
+          "text": "Pilot study results",
+          "score": 3.5
+        },
+        {
+          "text": "Peer-reviewed publication",
+          "score": 4.5
+        },
+        {
+          "text": "Multiple RCTs + meta-analysis",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "health_004",
+      "dimension": "operations",
+      "text": "What is your FDA/regulatory clearance status?",
+      "help": "For medical devices or clinical decision support software",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not applicable/Not started",
+          "score": 0
+        },
+        {
+          "text": "Pre-submission planning",
+          "score": 2
+        },
+        {
+          "text": "Submission filed (510k/De Novo)",
+          "score": 3.5
+        },
+        {
+          "text": "FDA cleared/CE marked",
+          "score": 4.5
+        },
+        {
+          "text": "Multiple regulatory approvals",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "health_005",
+      "dimension": "technology",
+      "text": "What is your EHR/EMR interoperability level?",
+      "help": "FHIR, HL7, direct integrations with Epic/Cerner/Athena",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No EHR integration",
+          "score": 0
+        },
+        {
+          "text": "Manual data import/export",
+          "score": 2
+        },
+        {
+          "text": "API integration with 1-2 EHRs",
+          "score": 3.5
+        },
+        {
+          "text": "FHIR compliant + major EHRs",
+          "score": 4.5
+        },
+        {
+          "text": "TEFCA certified + bi-directional sync",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "health_006",
+      "dimension": "financial",
+      "text": "What is your payer reimbursement status?",
+      "help": "Insurance coverage, CPT codes, value-based care contracts",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No reimbursement strategy",
+          "score": 0
+        },
+        {
+          "text": "Strategy defined, no codes",
+          "score": 2
+        },
+        {
+          "text": "Category III CPT code",
+          "score": 3.5
+        },
+        {
+          "text": "Category I CPT + 1-2 payers",
+          "score": 4.5
+        },
+        {
+          "text": "Medicare/major payers covered",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "health_007",
+      "dimension": "operations",
+      "text": "How comprehensive are your Business Associate Agreements (BAAs)?",
+      "help": "HIPAA requires BAAs with all vendors who access PHI",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No BAAs in place",
+          "score": 0
+        },
+        {
+          "text": "BAAs with key vendors only",
+          "score": 2
+        },
+        {
+          "text": "BAAs with all PHI vendors",
+          "score": 3.5
+        },
+        {
+          "text": "BAAs + vendor security audits",
+          "score": 4.5
+        },
+        {
+          "text": "BAAs + continuous monitoring",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "health_008",
+      "dimension": "customer",
+      "text": "What is your patient engagement and adherence rate?",
+      "help": "% of patients actively using platform as prescribed",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No patients enrolled",
+          "score": 0
+        },
+        {
+          "text": "<30% engagement",
+          "score": 2
+        },
+        {
+          "text": "30-50% engagement",
+          "score": 3.5
+        },
+        {
+          "text": "50-70% engagement (strong)",
+          "score": 4.5
+        },
+        {
+          "text": ">70% engagement (excellent)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "health_009",
+      "dimension": "technology",
+      "text": "What is your data security and encryption posture?",
+      "help": "Encryption at rest, in transit, access controls, audit logs",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Basic security only",
+          "score": 0
+        },
+        {
+          "text": "Encryption in transit",
+          "score": 2
+        },
+        {
+          "text": "End-to-end encryption",
+          "score": 3.5
+        },
+        {
+          "text": "E2EE + MFA + audit logs",
+          "score": 4.5
+        },
+        {
+          "text": "Zero-trust + SOC 2 Type II",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "health_010",
+      "dimension": "business",
+      "text": "Do you have clinical advisors and medical oversight?",
+      "help": "Clinical advisory board, medical directors, physician champions",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No clinical advisors",
+          "score": 0
+        },
+        {
+          "text": "1-2 informal advisors",
+          "score": 2
+        },
+        {
+          "text": "Clinical advisory board",
+          "score": 3.5
+        },
+        {
+          "text": "Medical director + board",
+          "score": 4.5
+        },
+        {
+          "text": "Chief Medical Officer + KOLs",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "health_011",
+      "dimension": "operations",
+      "text": "What is your incident response and breach notification capability?",
+      "help": "HIPAA requires breach notification within 60 days",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No incident response plan",
+          "score": 0
+        },
+        {
+          "text": "Basic documented plan",
+          "score": 2
+        },
+        {
+          "text": "Tested response procedures",
+          "score": 3.5
+        },
+        {
+          "text": "24/7 monitoring + IR team",
+          "score": 4.5
+        },
+        {
+          "text": "SOC + automated breach detection",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "health_012",
+      "dimension": "financial",
+      "text": "What is your average contract value with health systems?",
+      "help": "Annual contract value per hospital/clinic/provider group",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No contracts yet",
+          "score": 0
+        },
+        {
+          "text": "<$25K per year",
+          "score": 2
+        },
+        {
+          "text": "$25K-$100K per year",
+          "score": 3.5
+        },
+        {
+          "text": "$100K-$500K per year",
+          "score": 4.5
+        },
+        {
+          "text": ">$500K per year",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "health_013",
+      "dimension": "customer",
+      "text": "What is your Net Promoter Score (NPS) from providers?",
+      "help": "Healthcare provider satisfaction and willingness to recommend",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not measured",
+          "score": 0
+        },
+        {
+          "text": "Below 30 (poor)",
+          "score": 2
+        },
+        {
+          "text": "30-50 (acceptable)",
+          "score": 3.5
+        },
+        {
+          "text": "50-70 (good)",
+          "score": 4.5
+        },
+        {
+          "text": "Above 70 (excellent)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "health_014",
+      "dimension": "operations",
+      "text": "How frequently do you conduct security risk assessments?",
+      "help": "HIPAA-required security risk assessments (SRA)",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Never conducted",
+          "score": 0
+        },
+        {
+          "text": "Once, >2 years ago",
+          "score": 2
+        },
+        {
+          "text": "Annually (minimum required)",
+          "score": 3.5
+        },
+        {
+          "text": "Bi-annually + after major changes",
+          "score": 4.5
+        },
+        {
+          "text": "Quarterly + continuous monitoring",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "health_015",
+      "dimension": "technology",
+      "text": "What is your clinical workflow integration quality?",
+      "help": "How seamlessly does your solution fit into existing clinical workflows?",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Disrupts workflow significantly",
+          "score": 0
+        },
+        {
+          "text": "Parallel workflow, some friction",
+          "score": 2
+        },
+        {
+          "text": "Integrated with minor adjustments",
+          "score": 3.5
+        },
+        {
+          "text": "Seamless integration, minimal clicks",
+          "score": 4.5
+        },
+        {
+          "text": "Enhances workflow, saves time",
+          "score": 5
+        }
+      ]
+    }
+  ]
+}

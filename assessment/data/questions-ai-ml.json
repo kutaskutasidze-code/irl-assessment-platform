@@ -1,0 +1,440 @@
+{
+  "category": "ai-ml",
+  "industryQuestions": [
+    {
+      "id": "aiml_001",
+      "dimension": "technology",
+      "text": "What is your model's production accuracy/F1 score?",
+      "help": "Performance on real-world data, not just test sets. F1 balances precision and recall.",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No model in production",
+          "score": 0
+        },
+        {
+          "text": "Below 70% accuracy",
+          "score": 1.5
+        },
+        {
+          "text": "70-85% (baseline performance)",
+          "score": 3
+        },
+        {
+          "text": "85-95% (production-ready)",
+          "score": 4.5
+        },
+        {
+          "text": "Above 95% (state-of-the-art)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "aiml_002",
+      "dimension": "technology",
+      "text": "What is your training data quality and diversity score?",
+      "help": "Measures data completeness, balance, labeling accuracy, and representativeness",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Low quality, biased data",
+          "score": 0
+        },
+        {
+          "text": "Basic data, some gaps",
+          "score": 2
+        },
+        {
+          "text": "Good quality, labeled data",
+          "score": 3.5
+        },
+        {
+          "text": "High quality, diverse, balanced",
+          "score": 4.5
+        },
+        {
+          "text": "Curated dataset + active learning",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "aiml_003",
+      "dimension": "operations",
+      "text": "Do you have comprehensive MLOps infrastructure?",
+      "help": "Model versioning, experiment tracking, automated testing, CI/CD for ML",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Manual model management",
+          "score": 0
+        },
+        {
+          "text": "Basic version control",
+          "score": 2
+        },
+        {
+          "text": "Model registry + tracking",
+          "score": 3.5
+        },
+        {
+          "text": "Full MLOps pipeline",
+          "score": 4.5
+        },
+        {
+          "text": "Enterprise platform (MLflow/Kubeflow)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "aiml_004",
+      "dimension": "technology",
+      "text": "What is your model inference latency at scale?",
+      "help": "P95 latency under production load. Critical for real-time applications.",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not measured/Over 5s",
+          "score": 0
+        },
+        {
+          "text": "1-5 seconds",
+          "score": 2
+        },
+        {
+          "text": "500ms-1s (acceptable)",
+          "score": 3.5
+        },
+        {
+          "text": "100-500ms (good)",
+          "score": 4.5
+        },
+        {
+          "text": "<100ms (excellent)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "aiml_005",
+      "dimension": "operations",
+      "text": "Do you have model monitoring and drift detection?",
+      "help": "Tracks model performance degradation, data drift, concept drift over time",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No monitoring",
+          "score": 0
+        },
+        {
+          "text": "Manual periodic checks",
+          "score": 2
+        },
+        {
+          "text": "Automated metrics tracking",
+          "score": 3.5
+        },
+        {
+          "text": "Real-time drift detection + alerts",
+          "score": 4.5
+        },
+        {
+          "text": "Auto-retraining triggers",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "aiml_006",
+      "dimension": "business",
+      "text": "What is your AI explainability/interpretability level?",
+      "help": "Can you explain model predictions to users and regulators?",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Black box, no explanations",
+          "score": 0
+        },
+        {
+          "text": "Global feature importance",
+          "score": 2
+        },
+        {
+          "text": "Local explanations (SHAP/LIME)",
+          "score": 3.5
+        },
+        {
+          "text": "Interactive, user-facing explanations",
+          "score": 4.5
+        },
+        {
+          "text": "Regulatory-grade interpretability",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "aiml_007",
+      "dimension": "operations",
+      "text": "What is your AI fairness and bias testing maturity?",
+      "help": "Testing for demographic parity, equal opportunity, disparate impact",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No bias testing",
+          "score": 0
+        },
+        {
+          "text": "Ad-hoc manual review",
+          "score": 2
+        },
+        {
+          "text": "Systematic bias audits",
+          "score": 3.5
+        },
+        {
+          "text": "Automated fairness metrics",
+          "score": 4.5
+        },
+        {
+          "text": "Third-party bias certification",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "aiml_008",
+      "dimension": "technology",
+      "text": "Do you have adversarial robustness testing?",
+      "help": "Testing against adversarial attacks, edge cases, out-of-distribution data",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No security testing",
+          "score": 0
+        },
+        {
+          "text": "Basic edge case testing",
+          "score": 2
+        },
+        {
+          "text": "Adversarial example testing",
+          "score": 3.5
+        },
+        {
+          "text": "Certified robustness bounds",
+          "score": 4.5
+        },
+        {
+          "text": "Red team + adversarial training",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "aiml_009",
+      "dimension": "financial",
+      "text": "What is your ML infrastructure cost efficiency?",
+      "help": "Cost per 1000 inferences or per training run. Model optimization impact.",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracking ML costs",
+          "score": 0
+        },
+        {
+          "text": "High costs, no optimization",
+          "score": 1.5
+        },
+        {
+          "text": "Monitoring costs, basic optimization",
+          "score": 3
+        },
+        {
+          "text": "Optimized inference (quantization, pruning)",
+          "score": 4.5
+        },
+        {
+          "text": "Auto-scaling, spot instances, edge deployment",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "aiml_010",
+      "dimension": "customer",
+      "text": "What measurable business impact does your AI deliver?",
+      "help": "Revenue increase, cost reduction, time savings quantified by customers",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No measured business impact",
+          "score": 0
+        },
+        {
+          "text": "<10% improvement",
+          "score": 2
+        },
+        {
+          "text": "10-30% improvement (moderate)",
+          "score": 3.5
+        },
+        {
+          "text": "30-50% improvement (strong)",
+          "score": 4.5
+        },
+        {
+          "text": ">50% improvement (exceptional)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "aiml_011",
+      "dimension": "business",
+      "text": "Do you have responsible AI governance framework?",
+      "help": "Ethics policies, review boards, impact assessments, audit trails",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No AI governance",
+          "score": 0
+        },
+        {
+          "text": "Internal guidelines only",
+          "score": 2
+        },
+        {
+          "text": "Documented AI ethics policy",
+          "score": 3.5
+        },
+        {
+          "text": "Ethics review board + audits",
+          "score": 4.5
+        },
+        {
+          "text": "Certified AI governance (ISO 42001)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "aiml_012",
+      "dimension": "technology",
+      "text": "What is your model deployment velocity?",
+      "help": "Time from model training to production deployment",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Never deployed models",
+          "score": 0
+        },
+        {
+          "text": "Manual, takes weeks",
+          "score": 2
+        },
+        {
+          "text": "Semi-automated, 1-2 weeks",
+          "score": 3.5
+        },
+        {
+          "text": "Automated CI/CD, <1 week",
+          "score": 4.5
+        },
+        {
+          "text": "Continuous deployment (daily)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "aiml_013",
+      "dimension": "operations",
+      "text": "Do you have A/B testing infrastructure for models?",
+      "help": "Champion-challenger testing, canary deployments, shadow mode",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No A/B testing",
+          "score": 0
+        },
+        {
+          "text": "Manual offline comparison",
+          "score": 2
+        },
+        {
+          "text": "Basic A/B framework",
+          "score": 3.5
+        },
+        {
+          "text": "Multi-armed bandit testing",
+          "score": 4.5
+        },
+        {
+          "text": "Automated experimentation platform",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "aiml_014",
+      "dimension": "technology",
+      "text": "What is your data labeling and annotation strategy?",
+      "help": "Quality control, inter-annotator agreement, active learning",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No systematic labeling",
+          "score": 0
+        },
+        {
+          "text": "Manual ad-hoc labeling",
+          "score": 2
+        },
+        {
+          "text": "Structured labeling process",
+          "score": 3.5
+        },
+        {
+          "text": "QC + inter-annotator agreement",
+          "score": 4.5
+        },
+        {
+          "text": "Active learning + expert review",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "aiml_015",
+      "dimension": "customer",
+      "text": "What is your AI product adoption and engagement rate?",
+      "help": "% of customers actively using AI features weekly/monthly",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No customers using AI",
+          "score": 0
+        },
+        {
+          "text": "<20% adoption",
+          "score": 2
+        },
+        {
+          "text": "20-50% adoption",
+          "score": 3.5
+        },
+        {
+          "text": "50-80% adoption (strong)",
+          "score": 4.5
+        },
+        {
+          "text": ">80% adoption (excellent)",
+          "score": 5
+        }
+      ]
+    }
+  ]
+}

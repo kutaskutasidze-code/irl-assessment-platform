@@ -1,0 +1,440 @@
+{
+  "category": "cybersecurity",
+  "industryQuestions": [
+    {
+      "id": "cyber_001",
+      "dimension": "technology",
+      "text": "What certifications do you have? (SOC 2, ISO 27001, etc.)",
+      "help": "Security certifications demonstrate compliance",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "None",
+          "score": 0
+        },
+        {
+          "text": "Planning certification",
+          "score": 2
+        },
+        {
+          "text": "1 certification",
+          "score": 3.5
+        },
+        {
+          "text": "2-3 certifications",
+          "score": 4.5
+        },
+        {
+          "text": "Multiple + pentested",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "cyber_002",
+      "dimension": "technology",
+      "text": "What is your threat detection capability?",
+      "help": "Real-time monitoring and incident response",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No monitoring",
+          "score": 0
+        },
+        {
+          "text": "Basic logging",
+          "score": 2
+        },
+        {
+          "text": "SIEM deployed",
+          "score": 3.5
+        },
+        {
+          "text": "AI threat detection",
+          "score": 4.5
+        },
+        {
+          "text": "24/7 SOC + AI",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "cyber_003",
+      "dimension": "customer",
+      "text": "How many security incidents have you prevented?",
+      "help": "Demonstrated security effectiveness",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracked",
+          "score": 0
+        },
+        {
+          "text": "Under 100/month",
+          "score": 2
+        },
+        {
+          "text": "100-1K/month",
+          "score": 3.5
+        },
+        {
+          "text": "1K-10K/month",
+          "score": 4.5
+        },
+        {
+          "text": "Over 10K/month",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "cyber_004",
+      "dimension": "operations",
+      "text": "Do you conduct penetration testing?",
+      "help": "Regular security audits",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Never",
+          "score": 0
+        },
+        {
+          "text": "Once",
+          "score": 2
+        },
+        {
+          "text": "Annually",
+          "score": 3.5
+        },
+        {
+          "text": "Quarterly",
+          "score": 4.5
+        },
+        {
+          "text": "Continuous",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "cyber_005",
+      "dimension": "financial",
+      "text": "What is your average contract value?",
+      "help": "Enterprise deals vs SMB",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No customers",
+          "score": 0
+        },
+        {
+          "text": "Under $10K",
+          "score": 2
+        },
+        {
+          "text": "$10K-$50K",
+          "score": 3.5
+        },
+        {
+          "text": "$50K-$250K",
+          "score": 4.5
+        },
+        {
+          "text": "Above $250K",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "cyber_006",
+      "dimension": "technology",
+      "text": "What is your false positive rate?",
+      "help": "Accuracy of threat detection",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not measured",
+          "score": 0
+        },
+        {
+          "text": "Above 30%",
+          "score": 2
+        },
+        {
+          "text": "10-30%",
+          "score": 3.5
+        },
+        {
+          "text": "5-10%",
+          "score": 4.5
+        },
+        {
+          "text": "Below 5%",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "cyber_007",
+      "dimension": "business",
+      "text": "Do you have a bug bounty program?",
+      "help": "Community-driven security testing",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No program",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "Private program",
+          "score": 3.5
+        },
+        {
+          "text": "Public program",
+          "score": 4.5
+        },
+        {
+          "text": "HackerOne/Bugcrowd",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "cyber_008",
+      "dimension": "customer",
+      "text": "What is your customer retention rate?",
+      "help": "Annual renewal rate",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracked",
+          "score": 0
+        },
+        {
+          "text": "Below 70%",
+          "score": 2
+        },
+        {
+          "text": "70-85%",
+          "score": 3.5
+        },
+        {
+          "text": "85-95%",
+          "score": 4.5
+        },
+        {
+          "text": "Above 95%",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "cyber_009",
+      "dimension": "operations",
+      "text": "What is your incident response time?",
+      "help": "Mean time to detect and respond",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not measured",
+          "score": 0
+        },
+        {
+          "text": "Over 24 hours",
+          "score": 2
+        },
+        {
+          "text": "4-24 hours",
+          "score": 3.5
+        },
+        {
+          "text": "1-4 hours",
+          "score": 4.5
+        },
+        {
+          "text": "Under 1 hour",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "cyber_010",
+      "dimension": "technology",
+      "text": "Do you use zero-trust architecture?",
+      "help": "Modern security paradigm",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "Partial implementation",
+          "score": 3.5
+        },
+        {
+          "text": "Mostly implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Full zero-trust",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "cyber_011",
+      "dimension": "financial",
+      "text": "What is your gross margin?",
+      "help": "Revenue minus COGS",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not calculated",
+          "score": 0
+        },
+        {
+          "text": "Below 60%",
+          "score": 2
+        },
+        {
+          "text": "60-75%",
+          "score": 3.5
+        },
+        {
+          "text": "75-85%",
+          "score": 4.5
+        },
+        {
+          "text": "Above 85%",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "cyber_012",
+      "dimension": "business",
+      "text": "Do you have enterprise customers?",
+      "help": "Fortune 500 or equivalent",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "None",
+          "score": 0
+        },
+        {
+          "text": "1 enterprise",
+          "score": 2
+        },
+        {
+          "text": "2-5 enterprises",
+          "score": 3.5
+        },
+        {
+          "text": "6-20 enterprises",
+          "score": 4.5
+        },
+        {
+          "text": "20+ enterprises",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "cyber_013",
+      "dimension": "customer",
+      "text": "What is your NPS score?",
+      "help": "Customer satisfaction",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not measured",
+          "score": 0
+        },
+        {
+          "text": "Below 20",
+          "score": 2
+        },
+        {
+          "text": "20-40",
+          "score": 3.5
+        },
+        {
+          "text": "40-60",
+          "score": 4.5
+        },
+        {
+          "text": "Above 60",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "cyber_014",
+      "dimension": "operations",
+      "text": "Do you have compliance automation?",
+      "help": "Automated compliance monitoring",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Manual only",
+          "score": 0
+        },
+        {
+          "text": "Some automation",
+          "score": 2
+        },
+        {
+          "text": "50% automated",
+          "score": 3.5
+        },
+        {
+          "text": "75% automated",
+          "score": 4.5
+        },
+        {
+          "text": "Fully automated",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "cyber_015",
+      "dimension": "technology",
+      "text": "What is your API security posture?",
+      "help": "API authentication and rate limiting",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No API security",
+          "score": 0
+        },
+        {
+          "text": "Basic auth",
+          "score": 2
+        },
+        {
+          "text": "OAuth + rate limiting",
+          "score": 3.5
+        },
+        {
+          "text": "OAuth + WAF",
+          "score": 4.5
+        },
+        {
+          "text": "Zero-trust API gateway",
+          "score": 5
+        }
+      ]
+    }
+  ]
+}
