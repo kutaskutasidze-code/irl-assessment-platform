@@ -1,0 +1,440 @@
+{
+  "category": "ecommerce",
+  "industryQuestions": [
+    {
+      "id": "ecomm_001",
+      "dimension": "customer",
+      "text": "What is your conversion rate?",
+      "help": "% of visitors who make a purchase",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracked",
+          "score": 0
+        },
+        {
+          "text": "Below 1%",
+          "score": 2
+        },
+        {
+          "text": "1-2%",
+          "score": 3.5
+        },
+        {
+          "text": "2-4%",
+          "score": 4.5
+        },
+        {
+          "text": "Above 4%",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "ecomm_002",
+      "dimension": "customer",
+      "text": "What is your average order value (AOV)?",
+      "help": "Average revenue per transaction",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No sales yet",
+          "score": 0
+        },
+        {
+          "text": "Under $25",
+          "score": 2
+        },
+        {
+          "text": "$25-$75",
+          "score": 3.5
+        },
+        {
+          "text": "$75-$150",
+          "score": 4.5
+        },
+        {
+          "text": "Above $150",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "ecomm_003",
+      "dimension": "customer",
+      "text": "What is your cart abandonment rate?",
+      "help": "% of carts not completed",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracked",
+          "score": 0
+        },
+        {
+          "text": "Above 80%",
+          "score": 2
+        },
+        {
+          "text": "70-80%",
+          "score": 3.5
+        },
+        {
+          "text": "60-70%",
+          "score": 4.5
+        },
+        {
+          "text": "Below 60%",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "ecomm_004",
+      "dimension": "customer",
+      "text": "What is your customer repeat purchase rate?",
+      "help": "% buying more than once",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracked",
+          "score": 0
+        },
+        {
+          "text": "Below 20%",
+          "score": 2
+        },
+        {
+          "text": "20-35%",
+          "score": 3.5
+        },
+        {
+          "text": "35-50%",
+          "score": 4.5
+        },
+        {
+          "text": "Above 50%",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "ecomm_005",
+      "dimension": "financial",
+      "text": "What is your customer LTV:CAC ratio?",
+      "help": "Lifetime value vs acquisition cost",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not calculated",
+          "score": 0
+        },
+        {
+          "text": "Below 1:1",
+          "score": 2
+        },
+        {
+          "text": "1:1 to 3:1",
+          "score": 3.5
+        },
+        {
+          "text": "3:1 to 5:1",
+          "score": 4.5
+        },
+        {
+          "text": "Above 5:1",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "ecomm_006",
+      "dimension": "operations",
+      "text": "What is your fulfillment time?",
+      "help": "Time from order to delivery",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not shipping yet",
+          "score": 0
+        },
+        {
+          "text": "Over 7 days",
+          "score": 2
+        },
+        {
+          "text": "3-7 days",
+          "score": 3.5
+        },
+        {
+          "text": "1-3 days",
+          "score": 4.5
+        },
+        {
+          "text": "Same/next day",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "ecomm_007",
+      "dimension": "operations",
+      "text": "What is your return rate?",
+      "help": "% of products returned",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracked",
+          "score": 0
+        },
+        {
+          "text": "Above 15%",
+          "score": 2
+        },
+        {
+          "text": "10-15%",
+          "score": 3.5
+        },
+        {
+          "text": "5-10%",
+          "score": 4.5
+        },
+        {
+          "text": "Below 5%",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "ecomm_008",
+      "dimension": "technology",
+      "text": "Do you have personalization/recommendation engine?",
+      "help": "AI-powered product recommendations",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No personalization",
+          "score": 0
+        },
+        {
+          "text": "Basic recommendations",
+          "score": 2
+        },
+        {
+          "text": "Rule-based engine",
+          "score": 3.5
+        },
+        {
+          "text": "ML-powered",
+          "score": 4.5
+        },
+        {
+          "text": "Advanced AI + A/B testing",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "ecomm_009",
+      "dimension": "customer",
+      "text": "What is your mobile commerce percentage?",
+      "help": "% of sales from mobile",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracked",
+          "score": 0
+        },
+        {
+          "text": "Below 30%",
+          "score": 2
+        },
+        {
+          "text": "30-50%",
+          "score": 3.5
+        },
+        {
+          "text": "50-70%",
+          "score": 4.5
+        },
+        {
+          "text": "Above 70%",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "ecomm_010",
+      "dimension": "financial",
+      "text": "What is your monthly GMV (Gross Merchandise Value)?",
+      "help": "Total value of goods sold",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No sales",
+          "score": 0
+        },
+        {
+          "text": "Under $10K",
+          "score": 2
+        },
+        {
+          "text": "$10K-$100K",
+          "score": 3.5
+        },
+        {
+          "text": "$100K-$1M",
+          "score": 4.5
+        },
+        {
+          "text": "Above $1M",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "ecomm_011",
+      "dimension": "operations",
+      "text": "Do you have inventory management automation?",
+      "help": "Automated stock tracking and reordering",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Manual tracking",
+          "score": 0
+        },
+        {
+          "text": "Spreadsheets",
+          "score": 2
+        },
+        {
+          "text": "Basic software",
+          "score": 3.5
+        },
+        {
+          "text": "Integrated IMS",
+          "score": 4.5
+        },
+        {
+          "text": "AI-powered forecasting",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "ecomm_012",
+      "dimension": "customer",
+      "text": "What is your email marketing conversion rate?",
+      "help": "% of email recipients who purchase",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No email marketing",
+          "score": 0
+        },
+        {
+          "text": "Below 1%",
+          "score": 2
+        },
+        {
+          "text": "1-3%",
+          "score": 3.5
+        },
+        {
+          "text": "3-5%",
+          "score": 4.5
+        },
+        {
+          "text": "Above 5%",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "ecomm_013",
+      "dimension": "business",
+      "text": "How many SKUs do you offer?",
+      "help": "Product catalog size",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Under 10",
+          "score": 0
+        },
+        {
+          "text": "10-50",
+          "score": 2
+        },
+        {
+          "text": "50-200",
+          "score": 3.5
+        },
+        {
+          "text": "200-1000",
+          "score": 4.5
+        },
+        {
+          "text": "Over 1000",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "ecomm_014",
+      "dimension": "financial",
+      "text": "What is your gross margin per product?",
+      "help": "Profit margin after COGS",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not calculated",
+          "score": 0
+        },
+        {
+          "text": "Below 30%",
+          "score": 2
+        },
+        {
+          "text": "30-50%",
+          "score": 3.5
+        },
+        {
+          "text": "50-70%",
+          "score": 4.5
+        },
+        {
+          "text": "Above 70%",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "ecomm_015",
+      "dimension": "customer",
+      "text": "What is your customer acquisition cost (CAC)?",
+      "help": "Marketing spend per customer",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracked",
+          "score": 0
+        },
+        {
+          "text": "Over $100",
+          "score": 2
+        },
+        {
+          "text": "$50-$100",
+          "score": 3.5
+        },
+        {
+          "text": "$20-$50",
+          "score": 4.5
+        },
+        {
+          "text": "Below $20",
+          "score": 5
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "category": "fintech",
+  "industryQuestions": [
+    {
+      "id": "fintech_001",
+      "dimension": "operations",
+      "text": "What is your regulatory compliance status?",
+      "help": "Financial services require licenses and ongoing compliance (PCI-DSS, SOC 2, etc.)",
+      "type": "multiple",
+      "options": [
+        {"text": "Not started compliance process", "score": 0},
+        {"text": "Planning compliance", "score": 1.5},
+        {"text": "Compliance in progress", "score": 3},
+        {"text": "Partially compliant", "score": 4},
+        {"text": "Fully licensed and compliant", "score": 5}
+      ]
+    },
+    {
+      "id": "fintech_002",
+      "dimension": "operations",
+      "text": "What is your transaction success rate?",
+      "help": "Percentage of successful transactions vs attempted",
+      "type": "multiple",
+      "options": [
+        {"text": "Not yet processing transactions", "score": 0},
+        {"text": "Below 90%", "score": 2},
+        {"text": "90-95%", "score": 3.5},
+        {"text": "95-98%", "score": 4.5},
+        {"text": "Above 98%", "score": 5}
+      ]
+    },
+    {
+      "id": "fintech_003",
+      "dimension": "operations",
+      "text": "What is your fraud detection effectiveness?",
+      "help": "Percentage of fraudulent transactions detected and prevented",
+      "type": "multiple",
+      "options": [
+        {"text": "No fraud detection", "score": 0},
+        {"text": "Basic rules-based detection", "score": 2},
+        {"text": "ML-powered detection", "score": 3.5},
+        {"text": "Real-time AI detection", "score": 4.5},
+        {"text": "Advanced AI + behavioral analytics", "score": 5}
+      ]
+    },
+    {
+      "id": "fintech_004",
+      "dimension": "financial",
+      "text": "What is your liquidity risk percentage?",
+      "help": "Capital at risk as % of total capital. Lower is safer",
+      "type": "multiple",
+      "options": [
+        {"text": "Not calculated", "score": 0},
+        {"text": "Above 80%", "score": 1.5},
+        {"text": "60-80%", "score": 3},
+        {"text": "40-60%", "score": 4.5},
+        {"text": "Below 40%", "score": 5}
+      ]
+    },
+    {
+      "id": "fintech_005",
+      "dimension": "operations",
+      "text": "Do you have KYC/AML processes in place?",
+      "help": "Know Your Customer and Anti-Money Laundering compliance",
+      "type": "multiple",
+      "options": [
+        {"text": "No KYC/AML processes", "score": 0},
+        {"text": "Manual KYC only", "score": 2},
+        {"text": "Automated KYC", "score": 3.5},
+        {"text": "Automated KYC + AML monitoring", "score": 4.5},
+        {"text": "Full automation + AI risk scoring", "score": 5}
+      ]
+    },
+    {
+      "id": "fintech_006",
+      "dimension": "customer",
+      "text": "What is your average transaction value?",
+      "help": "Understanding transaction size helps assess market fit and revenue potential",
+      "type": "multiple",
+      "options": [
+        {"text": "No transactions yet", "score": 0},
+        {"text": "Under $50", "score": 2},
+        {"text": "$50-$500", "score": 3.5},
+        {"text": "$500-$5000", "score": 4.5},
+        {"text": "Above $5000", "score": 5}
+      ]
+    },
+    {
+      "id": "fintech_007",
+      "dimension": "technology",
+      "text": "What is your payment processing latency?",
+      "help": "Speed matters in fintech. How fast are transactions processed?",
+      "type": "multiple",
+      "options": [
+        {"text": "Not yet processing", "score": 0},
+        {"text": "Over 10 seconds", "score": 2},
+        {"text": "3-10 seconds", "score": 3.5},
+        {"text": "1-3 seconds", "score": 4.5},
+        {"text": "Sub-second processing", "score": 5}
+      ]
+    },
+    {
+      "id": "fintech_008",
+      "dimension": "financial",
+      "text": "What is your capital efficiency ratio?",
+      "help": "Revenue generated per dollar of capital deployed",
+      "type": "multiple",
+      "options": [
+        {"text": "Not yet calculated", "score": 0},
+        {"text": "Below 0.5x", "score": 1.5},
+        {"text": "0.5-1x", "score": 3},
+        {"text": "1-2x", "score": 4.5},
+        {"text": "Above 2x", "score": 5}
+      ]
+    },
+    {
+      "id": "fintech_009",
+      "dimension": "operations",
+      "text": "How many regulatory audits have you passed?",
+      "help": "Third-party audits demonstrate compliance maturity",
+      "type": "multiple",
+      "options": [
+        {"text": "None yet", "score": 0},
+        {"text": "Internal audit only", "score": 2},
+        {"text": "1 external audit", "score": 3.5},
+        {"text": "Multiple audits", "score": 4.5},
+        {"text": "Annual audits + certifications", "score": 5}
+      ]
+    },
+    {
+      "id": "fintech_010",
+      "dimension": "customer",
+      "text": "What is your user verification completion rate?",
+      "help": "Percentage of users who complete identity verification",
+      "type": "multiple",
+      "options": [
+        {"text": "Not tracking", "score": 0},
+        {"text": "Below 50%", "score": 2},
+        {"text": "50-70%", "score": 3.5},
+        {"text": "70-85%", "score": 4.5},
+        {"text": "Above 85%", "score": 5}
+      ]
+    },
+    {
+      "id": "fintech_011",
+      "dimension": "technology",
+      "text": "Do you have disaster recovery and backup systems?",
+      "help": "Financial data requires redundancy and recovery capabilities",
+      "type": "multiple",
+      "options": [
+        {"text": "No disaster recovery", "score": 0},
+        {"text": "Basic backups only", "score": 2},
+        {"text": "Daily backups + recovery plan", "score": 3.5},
+        {"text": "Real-time replication", "score": 4.5},
+        {"text": "Multi-region failover", "score": 5}
+      ]
+    },
+    {
+      "id": "fintech_012",
+      "dimension": "business",
+      "text": "Do you have partnerships with financial institutions?",
+      "help": "Bank partnerships are often required for fintech operations",
+      "type": "multiple",
+      "options": [
+        {"text": "No partnerships", "score": 0},
+        {"text": "In discussions", "score": 2},
+        {"text": "1 partnership signed", "score": 3.5},
+        {"text": "Multiple partnerships", "score": 4.5},
+        {"text": "Strategic tier-1 partnerships", "score": 5}
+      ]
+    },
+    {
+      "id": "fintech_013",
+      "dimension": "customer",
+      "text": "What is your customer trust score?",
+      "help": "Measured by security incidents, complaints, and satisfaction surveys",
+      "type": "multiple",
+      "options": [
+        {"text": "Not measured", "score": 0},
+        {"text": "Below 60%", "score": 2},
+        {"text": "60-75%", "score": 3.5},
+        {"text": "75-90%", "score": 4.5},
+        {"text": "Above 90%", "score": 5}
+      ]
+    },
+    {
+      "id": "fintech_014",
+      "dimension": "operations",
+      "text": "What is your compliance incident rate?",
+      "help": "Number of compliance issues or violations per year",
+      "type": "multiple",
+      "options": [
+        {"text": "Not tracking", "score": 0},
+        {"text": "Multiple incidents", "score": 1},
+        {"text": "1-2 incidents/year", "score": 2.5},
+        {"text": "1 minor incident", "score": 4},
+        {"text": "Zero incidents", "score": 5}
+      ]
+    },
+    {
+      "id": "fintech_015",
+      "dimension": "financial",
+      "text": "What is your transaction volume growth rate?",
+      "help": "Month-over-month growth in transaction volume",
+      "type": "multiple",
+      "options": [
+        {"text": "No transactions yet", "score": 0},
+        {"text": "Declining", "score": 1},
+        {"text": "Flat (0-5% growth)", "score": 2.5},
+        {"text": "Growing 5-15%/month", "score": 4},
+        {"text": "Growing >15%/month", "score": 5}
+      ]
+    }
+  ]
+}
