@@ -53,7 +53,7 @@
         .logo-icon {
             width: 40px;
             height: 40px;
-            background: #667eea;
+            background: #1a1a1a;
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -114,7 +114,7 @@
         .stat-value {
             font-size: 2rem;
             font-weight: 700;
-            color: #667eea;
+            color: #1a1a1a;
         }
 
         /* Main Content */
@@ -200,7 +200,7 @@
 
         .badge-info {
             background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
+            color: #1a1a1a;
         }
 
         /* Buttons */
@@ -217,7 +217,7 @@
         }
 
         .btn-primary {
-            background: #667eea;
+            background: #1a1a1a;
             color: white;
         }
 
@@ -228,12 +228,12 @@
 
         .btn-secondary {
             background: white;
-            color: #667eea;
-            border: 2px solid #667eea;
+            color: #1a1a1a;
+            border: 2px solid #1a1a1a;
         }
 
         .btn-secondary:hover {
-            background: #667eea;
+            background: #1a1a1a;
             color: white;
         }
 
@@ -290,12 +290,12 @@
         }
 
         .answer-option:hover {
-            border-color: #667eea;
+            border-color: #1a1a1a;
             background: white;
         }
 
         .answer-option.selected {
-            border-color: #667eea;
+            border-color: #1a1a1a;
             background: white;
             box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
         }
@@ -329,7 +329,7 @@
             width: 50px;
             height: 50px;
             border: 3px solid #e9ecef;
-            border-top-color: #667eea;
+            border-top-color: #1a1a1a;
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
@@ -1059,7 +1059,7 @@
             const resultsContent = document.getElementById('resultsContent');
             resultsContent.innerHTML = `
                 <div style="text-align: center; padding: 2rem;">
-                    <div style="font-size: 4rem; font-weight: 700; color: #667eea;">
+                    <div style="font-size: 4rem; font-weight: 700; color: #1a1a1a;">
                         IRL ${assessment.level}
                     </div>
                     <h3 style="margin-top: 1rem;">${getIRLTitle(assessment.level)}</h3>
@@ -1071,7 +1071,7 @@
         function displayActionPlans(plans) {
             const content = document.getElementById('actionPlansContent');
             content.innerHTML = plans.map(plan => `
-                <div style="padding: 1rem; border-left: 4px solid #667eea; margin-bottom: 1rem;">
+                <div style="padding: 1rem; border-left: 4px solid #1a1a1a; margin-bottom: 1rem;">
                     <h4>${plan.title}</h4>
                     <p style="color: #666;">${plan.description}</p>
                     <small style="color: #999;">Created: ${new Date(plan.date).toLocaleDateString()}</small>
