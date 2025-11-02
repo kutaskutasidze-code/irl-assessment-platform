@@ -1,0 +1,581 @@
+{
+  "categories": [
+    {
+      "id": "retailtech",
+      "name": "RetailTech",
+      "description": "Retail technology, omnichannel commerce, and point-of-sale systems",
+      "questions": [
+        {
+          "id": "retailtech_pos_deployment",
+          "text": "What is your point-of-sale (POS) system deployment scale?",
+          "category": "retailtech",
+          "helpText": "Track number of active POS terminals or stores using your system. IRL 1-2: Concept/demo, IRL 3-4: 1-10 locations, IRL 5-6: 10-100 locations, IRL 7-8: 100-1K locations, IRL 9: 1K+ locations or major retailers",
+          "options": [
+            {
+              "text": "Concept or demo environment only",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "1-10 retail locations or pilot deployment",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "10-100 locations with paying customers",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "100-500 locations or small-to-medium chain deployment",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "500-1,000 locations or regional chain penetration",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "1,000+ locations or multiple national retailers using platform",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "retailtech_transaction_volume",
+          "text": "What is your monthly transaction processing volume?",
+          "category": "retailtech",
+          "helpText": "Measure transactions processed per month. IRL 1-2: <1K transactions, IRL 3-4: 1K-10K, IRL 5-6: 10K-100K, IRL 7-8: 100K-1M, IRL 9: 1M+ transactions/month",
+          "options": [
+            {
+              "text": "<1,000 transactions/month (early testing)",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "1,000-10,000 transactions/month",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "10,000-100,000 transactions/month",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "100,000-500,000 transactions/month",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "500,000-1,000,000 transactions/month",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "1,000,000+ transactions/month with 99.9%+ uptime",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "retailtech_omnichannel_integration",
+          "text": "What omnichannel capabilities have you implemented?",
+          "category": "retailtech",
+          "helpText": "Track unified commerce features: inventory visibility, BOPIS, endless aisle, etc. IRL 1-2: Single channel, IRL 3-4: Basic multi-channel, IRL 5-6: Unified inventory, IRL 7-8: Full omnichannel (BOPIS, ship-from-store), IRL 9: AI-powered unified commerce",
+          "options": [
+            {
+              "text": "Single channel only (in-store OR online)",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Basic multi-channel (separate online and in-store inventory)",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "Unified inventory visibility across channels",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "BOPIS (buy online, pick up in store) and basic cross-channel fulfillment",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "Full omnichannel: BOPIS, ship-from-store, endless aisle, unified customer view",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "AI-powered unified commerce with personalized omnichannel experiences",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "retailtech_inventory_accuracy",
+          "text": "What is your inventory accuracy rate?",
+          "category": "retailtech",
+          "helpText": "Measure real-time inventory accuracy %. IRL 1-2: <80% accuracy, IRL 3-4: 80-90%, IRL 5-6: 90-95%, IRL 7-8: 95-98%, IRL 9: 98%+ accuracy with RFID/real-time tracking",
+          "options": [
+            {
+              "text": "<80% inventory accuracy (manual tracking)",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "80-90% accuracy with periodic cycle counts",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "90-95% accuracy with regular audits and reconciliation",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "95-97% accuracy with automated systems and frequent counts",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "97-98.5% accuracy with RFID or IoT sensors",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "98.5%+ accuracy with real-time tracking and AI-powered reconciliation",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "retailtech_payment_integrations",
+          "text": "What payment methods and integrations do you support?",
+          "category": "retailtech",
+          "helpText": "Track payment flexibility and compliance. IRL 1-2: Cash/basic cards, IRL 3-4: Major credit cards, IRL 5-6: Digital wallets + contactless, IRL 7-8: BNPL + multi-currency, IRL 9: All payment types + PCI Level 1",
+          "options": [
+            {
+              "text": "Cash and basic card processing only",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Major credit cards (Visa, Mastercard, Amex) with EMV support",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "Digital wallets (Apple Pay, Google Pay) and contactless payments",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "BNPL (buy now, pay later) integrations and gift cards",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "Multi-currency, alternative payments, and loyalty integration",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "All payment types, cryptocurrency, PCI DSS Level 1 certified",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "retailtech_customer_data_platform",
+          "text": "What customer data and personalization capabilities do you have?",
+          "category": "retailtech",
+          "helpText": "Assess CDP, segmentation, and personalization. IRL 1-2: No CDP, IRL 3-4: Basic customer database, IRL 5-6: Segmentation and targeting, IRL 7-8: Real-time personalization, IRL 9: AI-powered predictive personalization",
+          "options": [
+            {
+              "text": "No unified customer data platform",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Basic customer database with purchase history",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "Customer segmentation with basic targeting capabilities",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "Unified customer profiles with behavioral data and RFM analysis",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "Real-time personalization with A/B testing and product recommendations",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "AI-powered predictive personalization with CLV optimization and next-best-action",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "retailtech_supply_chain_visibility",
+          "text": "What supply chain visibility and management do you provide?",
+          "category": "retailtech",
+          "helpText": "Track end-to-end supply chain tracking. IRL 1-2: No visibility, IRL 3-4: Basic order tracking, IRL 5-6: Multi-tier visibility, IRL 7-8: Real-time tracking with alerts, IRL 9: AI-powered supply chain optimization",
+          "options": [
+            {
+              "text": "No supply chain visibility beyond immediate orders",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Basic order and shipment tracking",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "Multi-tier supplier visibility and inventory tracking",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "Real-time supply chain visibility with automated alerts",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "End-to-end visibility with predictive analytics and risk management",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "AI-powered supply chain optimization with demand forecasting and automated replenishment",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "retailtech_checkout_experience",
+          "text": "What checkout innovations have you implemented?",
+          "category": "retailtech",
+          "helpText": "Track checkout speed and innovation. IRL 1-2: Traditional cashier, IRL 3-4: Self-checkout, IRL 5-6: Mobile checkout, IRL 7-8: Scan & go or frictionless, IRL 9: Fully autonomous checkout (just walk out)",
+          "options": [
+            {
+              "text": "Traditional cashier-operated checkout only",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Self-checkout kiosks available",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "Mobile checkout or line-busting capabilities",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "Scan & go mobile app or curbside pickup integration",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "Frictionless checkout with computer vision (just walk out technology pilot)",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "Fully autonomous checkout at scale with biometric payment",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "retailtech_loss_prevention",
+          "text": "What loss prevention and shrinkage reduction systems do you have?",
+          "category": "retailtech",
+          "helpText": "Track shrinkage rate and loss prevention tech. IRL 1-2: >3% shrinkage, IRL 3-4: 2-3%, IRL 5-6: 1-2% with basic systems, IRL 7-8: 0.5-1% with AI/video, IRL 9: <0.5% shrinkage with advanced analytics",
+          "options": [
+            {
+              "text": ">3% shrinkage rate (limited loss prevention)",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "2-3% shrinkage with basic EAS tags and cameras",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "1-2% shrinkage with RFID and surveillance systems",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "0.5-1% shrinkage with AI-powered video analytics",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "0.3-0.5% shrinkage with real-time alerts and exception-based reporting",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "<0.3% shrinkage with advanced behavioral analytics and integrated systems",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "retailtech_loyalty_program",
+          "text": "What loyalty program capabilities do you offer?",
+          "category": "retailtech",
+          "helpText": "Assess loyalty features and engagement. IRL 1-2: No loyalty program, IRL 3-4: Basic points, IRL 5-6: Tiered program, IRL 7-8: Personalized rewards, IRL 9: AI-powered loyalty with gamification",
+          "options": [
+            {
+              "text": "No loyalty program integration",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Basic points-based loyalty program",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "Tiered loyalty program with member benefits",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "Personalized rewards and targeted promotions based on purchase history",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "Omnichannel loyalty with experiential rewards and partner integrations",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "AI-powered loyalty with predictive rewards, gamification, and social features",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "retailtech_analytics_reporting",
+          "text": "What analytics and business intelligence capabilities do you provide?",
+          "category": "retailtech",
+          "helpText": "Track reporting sophistication. IRL 1-2: Basic sales reports, IRL 3-4: KPI dashboards, IRL 5-6: Advanced analytics, IRL 7-8: Predictive analytics, IRL 9: AI-powered prescriptive analytics",
+          "options": [
+            {
+              "text": "Basic sales and transaction reports only",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "KPI dashboards with standard retail metrics",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "Advanced analytics with cohort analysis and custom reports",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "Predictive analytics for demand forecasting and inventory optimization",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "Real-time business intelligence with automated insights and anomaly detection",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "AI-powered prescriptive analytics with actionable recommendations and scenario modeling",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "retailtech_ecommerce_integration",
+          "text": "What e-commerce platform integrations do you support?",
+          "category": "retailtech",
+          "helpText": "Track integrations with Shopify, WooCommerce, Magento, etc. IRL 1-2: No integrations, IRL 3-4: 1-2 platforms, IRL 5-6: 3-5 major platforms, IRL 7-8: 5-10 platforms with API, IRL 9: Universal connector with 10+ platforms",
+          "options": [
+            {
+              "text": "No e-commerce platform integrations",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Integration with 1-2 major platforms (e.g., Shopify)",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "3-5 platform integrations (Shopify, WooCommerce, Magento)",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "5-10 platform integrations with bi-directional sync",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "10+ integrations with RESTful API and marketplace apps",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "Universal connector supporting 20+ platforms with no-code integration builder",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "retailtech_employee_management",
+          "text": "What employee management and workforce optimization features do you offer?",
+          "category": "retailtech",
+          "helpText": "Track scheduling, time tracking, and performance management. IRL 1-2: Manual scheduling, IRL 3-4: Basic digital scheduling, IRL 5-6: Time tracking and payroll, IRL 7-8: Performance analytics, IRL 9: AI-powered workforce optimization",
+          "options": [
+            {
+              "text": "Manual scheduling with no time tracking",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Basic digital scheduling and shift management",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "Time clock integration and payroll connectivity",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "Performance tracking with sales per hour and conversion metrics",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "Advanced workforce analytics with labor forecasting and compliance tracking",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "AI-powered workforce optimization with predictive scheduling and task management",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "retailtech_marketplace_capabilities",
+          "text": "What marketplace or third-party seller capabilities do you support?",
+          "category": "retailtech",
+          "helpText": "For marketplace retailers, track multi-seller management. IRL 1-2: Single seller only, IRL 3-4: <10 sellers, IRL 5-6: 10-100 sellers, IRL 7-8: 100-1K sellers with automation, IRL 9: 1K+ sellers with AI moderation",
+          "options": [
+            {
+              "text": "Single seller/retailer only (no marketplace)",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "<10 third-party sellers with manual onboarding",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "10-100 sellers with seller dashboard and basic tools",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "100-1,000 sellers with automated onboarding and performance tracking",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "1,000-10,000 sellers with seller financing and marketing tools",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "10,000+ sellers with AI-powered seller matching, fraud detection, and moderation",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        },
+        {
+          "id": "retailtech_sustainability_tracking",
+          "text": "What sustainability and ESG tracking do you provide for retail operations?",
+          "category": "retailtech",
+          "helpText": "Track environmental impact metrics for retail. IRL 1-2: No tracking, IRL 3-4: Basic energy monitoring, IRL 5-6: Carbon footprint tracking, IRL 7-8: Circular economy features, IRL 9: Full ESG reporting with product lifecycle",
+          "options": [
+            {
+              "text": "No sustainability or ESG tracking",
+              "score": 0,
+              "irlLevel": "1-2"
+            },
+            {
+              "text": "Basic energy consumption monitoring",
+              "score": 1,
+              "irlLevel": "3"
+            },
+            {
+              "text": "Carbon footprint tracking for operations and shipping",
+              "score": 2,
+              "irlLevel": "4"
+            },
+            {
+              "text": "Product sustainability scores and eco-friendly product badges",
+              "score": 3.5,
+              "irlLevel": "5-6"
+            },
+            {
+              "text": "Circular economy features (returns, refurbishment, recycling programs)",
+              "score": 4.5,
+              "irlLevel": "7-8"
+            },
+            {
+              "text": "Full ESG reporting with product lifecycle analysis and supply chain transparency",
+              "score": 5,
+              "irlLevel": "9"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
