@@ -1,0 +1,440 @@
+{
+  "category": "insurtech",
+  "industryQuestions": [
+    {
+      "id": "insur_001",
+      "dimension": "business",
+      "text": "What types of insurance products do you offer?",
+      "help": "Product diversity and market coverage (auto, home, life, health, commercial)",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No products launched yet",
+          "score": 0
+        },
+        {
+          "text": "Single product line",
+          "score": 2
+        },
+        {
+          "text": "2-3 product lines",
+          "score": 3.5
+        },
+        {
+          "text": "4-6 product lines",
+          "score": 4.5
+        },
+        {
+          "text": "Full suite (7+ products)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "insur_002",
+      "dimension": "operations",
+      "text": "What is your average claims processing time?",
+      "help": "Speed from claim submission to resolution. Target: <7 days",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not processing claims yet",
+          "score": 0
+        },
+        {
+          "text": "Over 30 days",
+          "score": 2
+        },
+        {
+          "text": "15-30 days",
+          "score": 3.5
+        },
+        {
+          "text": "7-15 days (good)",
+          "score": 4.5
+        },
+        {
+          "text": "Under 7 days (excellent)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "insur_003",
+      "dimension": "operations",
+      "text": "What is your claims approval rate and customer satisfaction?",
+      "help": "% of claims approved vs denied. Balance between profitability and satisfaction",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracking metrics",
+          "score": 0
+        },
+        {
+          "text": "Below 70% approval rate",
+          "score": 2
+        },
+        {
+          "text": "70-80% approval rate",
+          "score": 3.5
+        },
+        {
+          "text": "80-90% approval rate (balanced)",
+          "score": 4.5
+        },
+        {
+          "text": "Above 90% with profitability",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "insur_004",
+      "dimension": "financial",
+      "text": "What is your loss ratio (claims paid / premiums earned)?",
+      "help": "Key profitability metric. Target: 60-75% for sustainable business",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not calculated yet",
+          "score": 0
+        },
+        {
+          "text": "Above 90% (unsustainable)",
+          "score": 1.5
+        },
+        {
+          "text": "75-90% (needs improvement)",
+          "score": 3
+        },
+        {
+          "text": "60-75% (target range)",
+          "score": 4.5
+        },
+        {
+          "text": "Below 60% (excellent)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "insur_005",
+      "dimension": "technology",
+      "text": "What AI/ML capabilities do you use for underwriting and pricing?",
+      "help": "Automated risk assessment and dynamic pricing sophistication",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Manual underwriting only",
+          "score": 0
+        },
+        {
+          "text": "Rule-based automation",
+          "score": 2
+        },
+        {
+          "text": "Basic ML models for risk scoring",
+          "score": 3.5
+        },
+        {
+          "text": "Advanced AI with telematics",
+          "score": 4.5
+        },
+        {
+          "text": "Real-time AI + behavioral analytics + IoT",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "insur_006",
+      "dimension": "customer",
+      "text": "What is your policy renewal rate?",
+      "help": "Annual retention of policies. Target: 85%+ for healthy book",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracking renewals",
+          "score": 0
+        },
+        {
+          "text": "Below 75% renewal rate",
+          "score": 2
+        },
+        {
+          "text": "75-85% renewal rate",
+          "score": 3.5
+        },
+        {
+          "text": "85-92% renewal rate (strong)",
+          "score": 4.5
+        },
+        {
+          "text": "Above 92% renewal rate (excellent)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "insur_007",
+      "dimension": "operations",
+      "text": "What is your state licensing and regulatory approval status?",
+      "help": "Insurance licenses required in each state of operation",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No licenses obtained",
+          "score": 0
+        },
+        {
+          "text": "1-3 states licensed",
+          "score": 2
+        },
+        {
+          "text": "4-15 states licensed",
+          "score": 3.5
+        },
+        {
+          "text": "16-35 states licensed",
+          "score": 4.5
+        },
+        {
+          "text": "Nationwide (50 states + territories)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "insur_008",
+      "dimension": "financial",
+      "text": "What is your Customer Acquisition Cost (CAC) per policy?",
+      "help": "Marketing and sales cost per new policy sold. Varies by product type",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracking CAC",
+          "score": 0
+        },
+        {
+          "text": "Over $500 per policy",
+          "score": 2
+        },
+        {
+          "text": "$250-$500 per policy",
+          "score": 3.5
+        },
+        {
+          "text": "$100-$250 per policy (good)",
+          "score": 4.5
+        },
+        {
+          "text": "Under $100 per policy (excellent)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "insur_009",
+      "dimension": "technology",
+      "text": "What fraud detection systems and capabilities do you have?",
+      "help": "Automated fraud prevention saves 5-10% of claims costs",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No fraud detection",
+          "score": 0
+        },
+        {
+          "text": "Manual review only",
+          "score": 2
+        },
+        {
+          "text": "Rule-based detection",
+          "score": 3.5
+        },
+        {
+          "text": "ML-powered fraud detection",
+          "score": 4.5
+        },
+        {
+          "text": "AI + network analytics + SIU integration",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "insur_010",
+      "dimension": "customer",
+      "text": "What is your Net Promoter Score (NPS)?",
+      "help": "Customer satisfaction and loyalty. Insurance industry avg: 30-40",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not measured",
+          "score": 0
+        },
+        {
+          "text": "Below 30 (below average)",
+          "score": 2
+        },
+        {
+          "text": "30-45 (industry average)",
+          "score": 3.5
+        },
+        {
+          "text": "45-60 (above average)",
+          "score": 4.5
+        },
+        {
+          "text": "Above 60 (exceptional)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "insur_011",
+      "dimension": "business",
+      "text": "What reinsurance partnerships do you have?",
+      "help": "Reinsurance transfers risk and enables growth. Essential for scaling",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No reinsurance",
+          "score": 0
+        },
+        {
+          "text": "Planning reinsurance strategy",
+          "score": 2
+        },
+        {
+          "text": "1 reinsurance partner",
+          "score": 3.5
+        },
+        {
+          "text": "2-3 reinsurance partners",
+          "score": 4.5
+        },
+        {
+          "text": "Multiple tier-1 reinsurers + facultative",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "insur_012",
+      "dimension": "operations",
+      "text": "What is your claims automation and straight-through processing rate?",
+      "help": "% of claims processed without human intervention. Target: 50%+",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "0% automated (all manual)",
+          "score": 0
+        },
+        {
+          "text": "Under 25% automated",
+          "score": 2
+        },
+        {
+          "text": "25-50% automated",
+          "score": 3.5
+        },
+        {
+          "text": "50-75% automated (strong)",
+          "score": 4.5
+        },
+        {
+          "text": "Over 75% automated (excellent)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "insur_013",
+      "dimension": "financial",
+      "text": "What is your combined ratio (loss ratio + expense ratio)?",
+      "help": "Total losses + expenses / premiums. Under 100% = profitable. Target: <95%",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not calculated",
+          "score": 0
+        },
+        {
+          "text": "Above 110% (unprofitable)",
+          "score": 1.5
+        },
+        {
+          "text": "100-110% (breakeven)",
+          "score": 3
+        },
+        {
+          "text": "95-100% (profitable)",
+          "score": 4.5
+        },
+        {
+          "text": "Below 95% (very profitable)",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "insur_014",
+      "dimension": "customer",
+      "text": "What is your digital channel adoption rate?",
+      "help": "% of customers using mobile/web vs traditional agents. Target: 70%+",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracking digital adoption",
+          "score": 0
+        },
+        {
+          "text": "Below 40% digital",
+          "score": 2
+        },
+        {
+          "text": "40-60% digital",
+          "score": 3.5
+        },
+        {
+          "text": "60-80% digital (strong)",
+          "score": 4.5
+        },
+        {
+          "text": "Above 80% digital-first",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "insur_015",
+      "dimension": "technology",
+      "text": "What IoT and telematics integration do you have?",
+      "help": "Connected devices enable usage-based insurance and better risk assessment",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No IoT/telematics",
+          "score": 0
+        },
+        {
+          "text": "Planning IoT integration",
+          "score": 2
+        },
+        {
+          "text": "Pilot program with select customers",
+          "score": 3.5
+        },
+        {
+          "text": "IoT available to all customers",
+          "score": 4.5
+        },
+        {
+          "text": "Fully integrated IoT + real-time pricing + AI",
+          "score": 5
+        }
+      ]
+    }
+  ]
+}
