@@ -1,0 +1,284 @@
+{
+  "categories": [
+    {
+      "id": "saas",
+      "name": "SaaS (Software as a Service)",
+      "description": "Cloud-based software applications accessed through subscription models",
+      "icon": "☁️",
+      "examples": "CRM systems, project management tools, collaboration platforms",
+      "dimensionWeights": {
+        "business": 0.20,
+        "technology": 0.25,
+        "customer": 0.25,
+        "operations": 0.15,
+        "financial": 0.15
+      }
+    },
+    {
+      "id": "ai-ml",
+      "name": "AI & Machine Learning",
+      "description": "Artificial intelligence, deep learning, and automation solutions",
+      "icon": "🤖",
+      "examples": "NLP platforms, computer vision, predictive analytics",
+      "dimensionWeights": {
+        "business": 0.15,
+        "technology": 0.35,
+        "customer": 0.20,
+        "operations": 0.15,
+        "financial": 0.15
+      }
+    },
+    {
+      "id": "cybersecurity",
+      "name": "Cybersecurity",
+      "description": "Data protection, encryption, threat detection, and compliance solutions",
+      "icon": "🔒",
+      "examples": "Endpoint security, threat intelligence, identity management",
+      "dimensionWeights": {
+        "business": 0.20,
+        "technology": 0.30,
+        "customer": 0.20,
+        "operations": 0.15,
+        "financial": 0.15
+      }
+    },
+    {
+      "id": "fintech",
+      "name": "FinTech (Financial Technology)",
+      "description": "Digital financial services including payments, banking, and wealth management",
+      "icon": "💳",
+      "examples": "Payment platforms, digital banking, peer-to-peer lending",
+      "dimensionWeights": {
+        "business": 0.25,
+        "technology": 0.20,
+        "customer": 0.25,
+        "operations": 0.15,
+        "financial": 0.15
+      }
+    },
+    {
+      "id": "insurtech",
+      "name": "InsurTech",
+      "description": "Insurance innovation, risk assessment, and claims automation",
+      "icon": "🛡️",
+      "examples": "Digital insurance, claims processing, risk analytics",
+      "dimensionWeights": {
+        "business": 0.25,
+        "technology": 0.20,
+        "customer": 0.25,
+        "operations": 0.15,
+        "financial": 0.15
+      }
+    },
+    {
+      "id": "wealthtech",
+      "name": "WealthTech",
+      "description": "Investment platforms, robo-advisors, and portfolio management",
+      "icon": "📈",
+      "examples": "Robo-advisors, investment apps, portfolio tools",
+      "dimensionWeights": {
+        "business": 0.25,
+        "technology": 0.20,
+        "customer": 0.25,
+        "operations": 0.15,
+        "financial": 0.15
+      }
+    },
+    {
+      "id": "healthtech",
+      "name": "HealthTech",
+      "description": "Telemedicine, health monitoring, and patient engagement platforms",
+      "icon": "🏥",
+      "examples": "Telemedicine platforms, wearables, patient portals",
+      "dimensionWeights": {
+        "business": 0.20,
+        "technology": 0.25,
+        "customer": 0.25,
+        "operations": 0.15,
+        "financial": 0.15
+      }
+    },
+    {
+      "id": "biotech",
+      "name": "BioTech",
+      "description": "Drug development, genomics, and life sciences research",
+      "icon": "🧬",
+      "examples": "Pharmaceuticals, gene therapy, diagnostics",
+      "dimensionWeights": {
+        "business": 0.15,
+        "technology": 0.35,
+        "customer": 0.15,
+        "operations": 0.20,
+        "financial": 0.15
+      }
+    },
+    {
+      "id": "medtech",
+      "name": "MedTech",
+      "description": "Medical devices, diagnostics, and clinical technology",
+      "icon": "⚕️",
+      "examples": "Medical imaging, surgical devices, diagnostic tools",
+      "dimensionWeights": {
+        "business": 0.20,
+        "technology": 0.30,
+        "customer": 0.20,
+        "operations": 0.15,
+        "financial": 0.15
+      }
+    },
+    {
+      "id": "ecommerce",
+      "name": "E-Commerce",
+      "description": "Online retail, marketplaces, and direct-to-consumer brands",
+      "icon": "🛒",
+      "examples": "Online marketplaces, D2C brands, retail platforms",
+      "dimensionWeights": {
+        "business": 0.25,
+        "technology": 0.15,
+        "customer": 0.30,
+        "operations": 0.15,
+        "financial": 0.15
+      }
+    },
+    {
+      "id": "foodtech",
+      "name": "FoodTech",
+      "description": "Food delivery, meal kits, restaurant tech, and plant-based foods",
+      "icon": "🍕",
+      "examples": "Food delivery, ghost kitchens, meal planning",
+      "dimensionWeights": {
+        "business": 0.25,
+        "technology": 0.15,
+        "customer": 0.30,
+        "operations": 0.15,
+        "financial": 0.15
+      }
+    },
+    {
+      "id": "retailtech",
+      "name": "RetailTech",
+      "description": "POS systems, inventory management, and customer analytics",
+      "icon": "🏪",
+      "examples": "POS systems, inventory software, retail analytics",
+      "dimensionWeights": {
+        "business": 0.25,
+        "technology": 0.20,
+        "customer": 0.25,
+        "operations": 0.15,
+        "financial": 0.15
+      }
+    },
+    {
+      "id": "proptech",
+      "name": "PropTech (Real Estate)",
+      "description": "Property management, smart buildings, and real estate platforms",
+      "icon": "🏠",
+      "examples": "Property management, smart buildings, real estate marketplaces",
+      "dimensionWeights": {
+        "business": 0.25,
+        "technology": 0.20,
+        "customer": 0.25,
+        "operations": 0.15,
+        "financial": 0.15
+      }
+    },
+    {
+      "id": "logisticstech",
+      "name": "LogisticsTech",
+      "description": "Supply chain, delivery, and warehouse automation",
+      "icon": "📦",
+      "examples": "Supply chain management, last-mile delivery, warehouse automation",
+      "dimensionWeights": {
+        "business": 0.20,
+        "technology": 0.25,
+        "customer": 0.20,
+        "operations": 0.20,
+        "financial": 0.15
+      }
+    },
+    {
+      "id": "cleantech",
+      "name": "CleanTech",
+      "description": "Renewable energy, sustainability, and environmental solutions",
+      "icon": "🌱",
+      "examples": "Solar energy, carbon capture, recycling tech",
+      "dimensionWeights": {
+        "business": 0.20,
+        "technology": 0.30,
+        "customer": 0.15,
+        "operations": 0.20,
+        "financial": 0.15
+      }
+    },
+    {
+      "id": "legaltech",
+      "name": "LegalTech",
+      "description": "Contract automation, legal research, and compliance tools",
+      "icon": "⚖️",
+      "examples": "Contract management, legal research, compliance software",
+      "dimensionWeights": {
+        "business": 0.25,
+        "technology": 0.20,
+        "customer": 0.25,
+        "operations": 0.15,
+        "financial": 0.15
+      }
+    },
+    {
+      "id": "regtech",
+      "name": "RegTech (Regulatory Technology)",
+      "description": "Compliance automation, identity verification, KYC/AML solutions",
+      "icon": "📋",
+      "examples": "Identity verification, compliance monitoring, fraud detection",
+      "dimensionWeights": {
+        "business": 0.25,
+        "technology": 0.25,
+        "customer": 0.20,
+        "operations": 0.15,
+        "financial": 0.15
+      }
+    },
+    {
+      "id": "hrtech",
+      "name": "HR Tech",
+      "description": "Recruitment, payroll, employee management, and talent platforms",
+      "icon": "👥",
+      "examples": "Applicant tracking, payroll software, employee engagement",
+      "dimensionWeights": {
+        "business": 0.25,
+        "technology": 0.20,
+        "customer": 0.25,
+        "operations": 0.15,
+        "financial": 0.15
+      }
+    },
+    {
+      "id": "edtech",
+      "name": "EdTech (Education Technology)",
+      "description": "Online learning, course platforms, and educational apps",
+      "icon": "📚",
+      "examples": "Learning management systems, online courses, educational games",
+      "dimensionWeights": {
+        "business": 0.20,
+        "technology": 0.25,
+        "customer": 0.25,
+        "operations": 0.15,
+        "financial": 0.15
+      }
+    },
+    {
+      "id": "socialimpact",
+      "name": "Social Impact & Non-Profit Tech",
+      "description": "Mission-driven startups, social enterprises, and impact ventures",
+      "icon": "🌍",
+      "examples": "Social enterprises, non-profit platforms, impact investing",
+      "dimensionWeights": {
+        "business": 0.20,
+        "technology": 0.20,
+        "customer": 0.25,
+        "operations": 0.20,
+        "financial": 0.15
+      }
+    }
+  ]
+}

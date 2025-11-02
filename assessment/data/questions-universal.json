@@ -1,0 +1,329 @@
+{
+  "universalQuestions": [
+    {
+      "id": "bus_001",
+      "dimension": "business",
+      "text": "Have you clearly defined your value proposition?",
+      "help": "A clear value proposition explains what problem you solve and why customers should choose you",
+      "type": "multiple",
+      "options": [
+        {"text": "No, still exploring", "score": 0},
+        {"text": "Yes, but not validated", "score": 2.5},
+        {"text": "Yes, partially validated", "score": 4},
+        {"text": "Yes, fully validated with customers", "score": 5}
+      ]
+    },
+    {
+      "id": "bus_002",
+      "dimension": "business",
+      "text": "What is your estimated Total Addressable Market (TAM)?",
+      "help": "TAM represents the total market demand for your product or service",
+      "type": "multiple",
+      "options": [
+        {"text": "Not yet researched", "score": 0},
+        {"text": "Under $100M", "score": 2},
+        {"text": "$100M - $1B", "score": 4},
+        {"text": "Over $1B", "score": 5}
+      ]
+    },
+    {
+      "id": "bus_003",
+      "dimension": "business",
+      "text": "Do you have a clear competitive differentiation?",
+      "help": "What makes your solution unique compared to competitors?",
+      "type": "multiple",
+      "options": [
+        {"text": "No clear differentiation", "score": 0},
+        {"text": "Minimal differentiation", "score": 2},
+        {"text": "Strong differentiation", "score": 4},
+        {"text": "Unique market position", "score": 5}
+      ]
+    },
+    {
+      "id": "bus_004",
+      "dimension": "business",
+      "text": "Have you validated your revenue model?",
+      "help": "A validated revenue model has paying customers or proven willingness to pay",
+      "type": "multiple",
+      "options": [
+        {"text": "No revenue model yet", "score": 0},
+        {"text": "Model defined, not tested", "score": 2},
+        {"text": "Early revenue validation", "score": 4},
+        {"text": "Proven revenue model", "score": 5}
+      ]
+    },
+    {
+      "id": "bus_005",
+      "dimension": "business",
+      "text": "How well do you understand your competitors?",
+      "help": "Competitive analysis helps identify opportunities and threats",
+      "type": "multiple",
+      "options": [
+        {"text": "Limited knowledge", "score": 0},
+        {"text": "Basic understanding", "score": 2},
+        {"text": "Detailed competitive analysis", "score": 4},
+        {"text": "Comprehensive market mapping", "score": 5}
+      ]
+    },
+    {
+      "id": "tech_001",
+      "dimension": "technology",
+      "text": "What is your current product development stage?",
+      "help": "Your development stage indicates technical progress and risk",
+      "type": "multiple",
+      "options": [
+        {"text": "Idea/concept only", "score": 0},
+        {"text": "Prototype/wireframes", "score": 2},
+        {"text": "MVP in testing", "score": 4},
+        {"text": "Production-ready product", "score": 5}
+      ]
+    },
+    {
+      "id": "tech_002",
+      "dimension": "technology",
+      "text": "Is your technology stack scalable?",
+      "help": "Scalability determines your ability to grow user base without major rewrites",
+      "type": "multiple",
+      "options": [
+        {"text": "Not yet built", "score": 0},
+        {"text": "Basic architecture", "score": 2},
+        {"text": "Designed for scale", "score": 4},
+        {"text": "Proven scalability", "score": 5}
+      ]
+    },
+    {
+      "id": "tech_003",
+      "dimension": "technology",
+      "text": "Have you conducted security assessments?",
+      "help": "Security is critical for user trust and regulatory compliance",
+      "type": "multiple",
+      "options": [
+        {"text": "Not yet considered", "score": 0},
+        {"text": "Basic security measures", "score": 2},
+        {"text": "Security review completed", "score": 4},
+        {"text": "Regular security audits", "score": 5}
+      ]
+    },
+    {
+      "id": "tech_004",
+      "dimension": "technology",
+      "text": "Do you have any intellectual property (IP)?",
+      "help": "IP can provide competitive advantages and increase company valuation",
+      "type": "multiple",
+      "options": [
+        {"text": "No IP considerations", "score": 0},
+        {"text": "IP strategy defined", "score": 2},
+        {"text": "Patents filed/pending", "score": 4},
+        {"text": "IP granted/protected", "score": 5}
+      ]
+    },
+    {
+      "id": "tech_005",
+      "dimension": "technology",
+      "text": "What is your data/analytics infrastructure?",
+      "help": "Data-driven decisions accelerate product-market fit",
+      "type": "multiple",
+      "options": [
+        {"text": "No analytics", "score": 0},
+        {"text": "Basic metrics tracking", "score": 2},
+        {"text": "Key metrics tracked", "score": 4},
+        {"text": "Advanced analytics & insights", "score": 5}
+      ]
+    },
+    {
+      "id": "cust_001",
+      "dimension": "customer",
+      "text": "How many customer discovery interviews have you conducted?",
+      "help": "Customer interviews validate problem-solution fit",
+      "type": "multiple",
+      "options": [
+        {"text": "None yet", "score": 0},
+        {"text": "1-25 interviews", "score": 2},
+        {"text": "26-100 interviews", "score": 4},
+        {"text": "100+ interviews", "score": 5}
+      ]
+    },
+    {
+      "id": "cust_002",
+      "dimension": "customer",
+      "text": "How many paying customers do you have?",
+      "help": "Paying customers validate market demand and willingness to pay",
+      "type": "multiple",
+      "options": [
+        {"text": "No paying customers", "score": 0},
+        {"text": "1-10 customers", "score": 2},
+        {"text": "11-100 customers", "score": 4},
+        {"text": "100+ customers", "score": 5}
+      ]
+    },
+    {
+      "id": "cust_003",
+      "dimension": "customer",
+      "text": "What is your customer retention rate?",
+      "help": "High retention indicates product-market fit and customer satisfaction",
+      "type": "multiple",
+      "options": [
+        {"text": "Not yet measured", "score": 0},
+        {"text": "Below 40%", "score": 1},
+        {"text": "40-70%", "score": 3},
+        {"text": "Above 70%", "score": 5}
+      ]
+    },
+    {
+      "id": "cust_004",
+      "dimension": "customer",
+      "text": "Have you achieved product-market fit?",
+      "help": "PMF is when customers would be very disappointed without your product",
+      "type": "multiple",
+      "options": [
+        {"text": "Not yet", "score": 0},
+        {"text": "Early signals", "score": 2},
+        {"text": "Partial PMF", "score": 4},
+        {"text": "Strong PMF", "score": 5}
+      ]
+    },
+    {
+      "id": "cust_005",
+      "dimension": "customer",
+      "text": "Do you have a clear customer acquisition strategy?",
+      "help": "A repeatable acquisition strategy is essential for growth",
+      "type": "multiple",
+      "options": [
+        {"text": "No strategy yet", "score": 0},
+        {"text": "Strategy defined", "score": 2},
+        {"text": "Testing channels", "score": 4},
+        {"text": "Proven acquisition channels", "score": 5}
+      ]
+    },
+    {
+      "id": "ops_001",
+      "dimension": "operations",
+      "text": "How many full-time team members do you have?",
+      "help": "Team size indicates execution capacity and organizational maturity",
+      "type": "multiple",
+      "options": [
+        {"text": "Solo founder", "score": 1},
+        {"text": "2-5 members", "score": 3},
+        {"text": "6-15 members", "score": 4},
+        {"text": "15+ members", "score": 5}
+      ]
+    },
+    {
+      "id": "ops_002",
+      "dimension": "operations",
+      "text": "What is your team's relevant industry experience?",
+      "help": "Domain expertise accelerates product development and market understanding",
+      "type": "multiple",
+      "options": [
+        {"text": "Limited experience", "score": 1},
+        {"text": "Some experience", "score": 2},
+        {"text": "Strong industry experience", "score": 4},
+        {"text": "Serial entrepreneurs/experts", "score": 5}
+      ]
+    },
+    {
+      "id": "ops_003",
+      "dimension": "operations",
+      "text": "Do you have advisors or a board?",
+      "help": "External guidance provides strategic insights and credibility",
+      "type": "multiple",
+      "options": [
+        {"text": "No advisors", "score": 0},
+        {"text": "1-2 informal advisors", "score": 2},
+        {"text": "Active advisory board", "score": 4},
+        {"text": "Formal board of directors", "score": 5}
+      ]
+    },
+    {
+      "id": "ops_004",
+      "dimension": "operations",
+      "text": "Have you established key partnerships?",
+      "help": "Strategic partnerships can accelerate growth and provide resources",
+      "type": "multiple",
+      "options": [
+        {"text": "No partnerships", "score": 0},
+        {"text": "Early discussions", "score": 2},
+        {"text": "Some partnerships signed", "score": 4},
+        {"text": "Strategic partnerships active", "score": 5}
+      ]
+    },
+    {
+      "id": "ops_005",
+      "dimension": "operations",
+      "text": "Do you have defined processes and workflows?",
+      "help": "Operational efficiency enables scaling without chaos",
+      "type": "multiple",
+      "options": [
+        {"text": "Ad-hoc operations", "score": 0},
+        {"text": "Basic processes", "score": 2},
+        {"text": "Documented workflows", "score": 4},
+        {"text": "Optimized operations", "score": 5}
+      ]
+    },
+    {
+      "id": "fin_001",
+      "dimension": "financial",
+      "text": "What is your current monthly revenue (MRR/ARR)?",
+      "help": "Revenue demonstrates market validation and business viability",
+      "type": "multiple",
+      "options": [
+        {"text": "No revenue", "score": 0},
+        {"text": "$1-$10K/month", "score": 2},
+        {"text": "$10K-$100K/month", "score": 4},
+        {"text": "$100K+/month", "score": 5}
+      ]
+    },
+    {
+      "id": "fin_002",
+      "dimension": "financial",
+      "text": "Have you created a financial model?",
+      "help": "Financial modeling helps forecast growth and funding needs",
+      "type": "multiple",
+      "options": [
+        {"text": "No financial model", "score": 0},
+        {"text": "Basic projections", "score": 2},
+        {"text": "Detailed 3-year model", "score": 4},
+        {"text": "Model validated with actuals", "score": 5}
+      ]
+    },
+    {
+      "id": "fin_003",
+      "dimension": "financial",
+      "text": "Do you understand your unit economics?",
+      "help": "Unit economics (LTV:CAC ratio) determine profitability potential",
+      "type": "multiple",
+      "options": [
+        {"text": "Not yet analyzed", "score": 0},
+        {"text": "Initial calculations", "score": 2},
+        {"text": "Clear path to profitability", "score": 4},
+        {"text": "Positive unit economics", "score": 5}
+      ]
+    },
+    {
+      "id": "fin_004",
+      "dimension": "financial",
+      "text": "What is your current funding status?",
+      "help": "Funding stage indicates resources available and investor confidence",
+      "type": "multiple",
+      "options": [
+        {"text": "Bootstrapped", "score": 1},
+        {"text": "Friends & Family", "score": 2},
+        {"text": "Pre-seed/Angel", "score": 3},
+        {"text": "Seed or beyond", "score": 5}
+      ]
+    },
+    {
+      "id": "fin_005",
+      "dimension": "financial",
+      "text": "What is your current runway (months of cash)?",
+      "help": "Runway determines urgency and strategic options",
+      "type": "multiple",
+      "options": [
+        {"text": "Less than 6 months", "score": 1},
+        {"text": "6-12 months", "score": 3},
+        {"text": "12-24 months", "score": 4},
+        {"text": "24+ months or profitable", "score": 5}
+      ]
+    }
+  ]
+}
