@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment Results - IRL Platform</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #f8f9fa;
+            color: #1a1a1a;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .confetti {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .results-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .results-header p {
+            font-size: 1.125rem;
+            color: #666;
+        }
+
+        .irl-level-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: white;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        .irl-level-number {
+            font-size: 5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .irl-level-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .irl-level-description {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .score-display {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .overall-score {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        .overall-score-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-left: 0.5rem;
+        }
+
+        .chart-section {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .chart-section h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .chart-section p {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .chart-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .dimension-scores {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .dimension-scores h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .dimension-item {
+            margin-bottom: 2rem;
+        }
+
+        .dimension-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .dimension-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .dimension-score {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        .dimension-bar {
+            background: #e9ecef;
+            height: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .dimension-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #1a1a1a 0%, #444 100%);
+            transition: width 1s ease;
+        }
+
+        .actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(26, 26, 26, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #1a1a1a;
+            border: 2px solid #1a1a1a;
+        }
+
+        .btn-secondary:hover {
+            background: #f8f9fa;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 3px solid #e9ecef;
+            border-top-color: #1a1a1a;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .irl-level-number {
+                font-size: 3.5rem;
+            }
+
+            .irl-level-title {
+                font-size: 1.5rem;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="resultsContent">
+            <div class="loading">
+                <div class="spinner"></div>
+                <p style="margin-top: 1rem;">Loading your results...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assessment/engine/assessment-engine.js"></script>
+    <script>
+        const assessmentEngine = new AssessmentEngine();
+        let chartInstance = null;
+
+        async function init() {
+            // Load data
+            await assessmentEngine.loadCategories();
+            await assessmentEngine.loadQuestions();
+
+            // Get latest assessment from localStorage
+            const assessments = JSON.parse(localStorage.getItem('assessments') || '[]');
+            if (assessments.length === 0) {
+                document.getElementById('resultsContent').innerHTML = `
+                    <div class="loading">
+                        <h2>No assessment found</h2>
+                        <p style="color: #666; margin-top: 1rem;">Please complete an assessment first.</p>
+                        <a href="/assessment/ui/category-selection.html" class="btn btn-primary" style="margin-top: 2rem;">Start Assessment</a>
+                    </div>
+                `;
+                return;
+            }
+
+            const latestAssessment = assessments[assessments.length - 1];
+            assessmentEngine.currentAssessment = latestAssessment;
+
+            // Display results
+            displayResults();
+        }
+
+        function displayResults() {
+            const summary = assessmentEngine.getAssessmentSummary();
+            const container = document.getElementById('resultsContent');
+
+            container.innerHTML = `
+                <div class="results-header">
+                    <div class="confetti">🎉</div>
+                    <h1>Assessment Complete!</h1>
+                    <p>Here are your Investment Readiness Level results</p>
+                </div>
+
+                <div class="irl-level-card">
+                    <div class="irl-level-number">IRL ${summary.irlLevel}</div>
+                    <div class="irl-level-title">${summary.irlInfo.title}</div>
+                    <div class="irl-level-description">${summary.irlInfo.description}</div>
+                    <div class="score-display">
+                        <span class="overall-score">Overall Score:</span>
+                        <span class="overall-score-value">${summary.totalScore}/100</span>
+                    </div>
+                </div>
+
+                <div class="chart-section">
+                    <h2>Your Pentagon Assessment</h2>
+                    <p>This radar chart visualizes your strengths across the five key dimensions of startup readiness.</p>
+                    <div class="chart-container">
+                        <canvas id="pentagonChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="dimension-scores">
+                    <h2>Dimension Breakdown</h2>
+                    ${renderDimensionScores(summary.scores)}
+                </div>
+
+                <div class="actions">
+                    <a href="/index.html" class="btn btn-primary">Back to Dashboard</a>
+                    <a href="/assessment/ui/category-selection.html" class="btn btn-secondary">Take Another Assessment</a>
+                </div>
+            `;
+
+            // Create pentagon chart with animation
+            setTimeout(() => {
+                chartInstance = assessmentEngine.createPentagonChart('pentagonChart');
+            }, 100);
+
+            // Animate dimension bars
+            setTimeout(() => {
+                document.querySelectorAll('.dimension-bar-fill').forEach(bar => {
+                    bar.style.width = bar.getAttribute('data-width');
+                });
+            }, 300);
+        }
+
+        function renderDimensionScores(scores) {
+            const dimensions = [
+                { key: 'business', name: 'Business Model & Strategy', icon: '💼' },
+                { key: 'technology', name: 'Technology & Product', icon: '💻' },
+                { key: 'customer', name: 'Customer & Market', icon: '👥' },
+                { key: 'operations', name: 'Operations & Execution', icon: '⚙️' },
+                { key: 'financial', name: 'Financial & Funding', icon: '💰' }
+            ];
+
+            return dimensions.map(dim => `
+                <div class="dimension-item">
+                    <div class="dimension-header">
+                        <span class="dimension-name">
+                            ${dim.icon} ${dim.name}
+                        </span>
+                        <span class="dimension-score">${scores[dim.key]}/100</span>
+                    </div>
+                    <div class="dimension-bar">
+                        <div class="dimension-bar-fill" 
+                             data-width="${scores[dim.key]}%"
+                             style="width: 0%"></div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getScoreLevel(score) {
+            if (score >= 80) return 'Excellent';
+            if (score >= 60) return 'Good';
+            if (score >= 40) return 'Fair';
+            return 'Needs Improvement';
+        }
+
+        function getScoreColor(score) {
+            if (score >= 80) return '#22c55e';
+            if (score >= 60) return '#84cc16';
+            if (score >= 40) return '#f59e0b';
+            return '#ef4444';
+        }
+
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>
