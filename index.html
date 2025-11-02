@@ -957,13 +957,8 @@
         }
 
         function startAssessment() {
-            hideAllDashboards();
-            document.getElementById('assessmentSection').classList.remove('hidden');
-            assessmentData.currentQuestion = 0;
-            assessmentData.answers = [];
-            showQuestion();
+            window.location.href = "/assessment/ui/category-selection.html";
         }
-
         function showQuestion() {
             const question = assessmentData.questions[assessmentData.currentQuestion];
             const questionNum = assessmentData.currentQuestion + 1;
