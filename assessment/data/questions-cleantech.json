@@ -1,0 +1,440 @@
+{
+  "category": "cleantech",
+  "industryQuestions": [
+    {
+      "id": "clean_001",
+      "dimension": "operations",
+      "text": "What is your carbon reduction impact?",
+      "help": "Tons of CO2 prevented",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "clean_002",
+      "dimension": "financial",
+      "text": "What is your energy cost savings?",
+      "help": "Customer savings delivered",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "clean_003",
+      "dimension": "technology",
+      "text": "What is your energy efficiency gain?",
+      "help": "% improvement in efficiency",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "clean_004",
+      "dimension": "business",
+      "text": "How many installations/deployments?",
+      "help": "Customer adoption scale",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "None",
+          "score": 0
+        },
+        {
+          "text": "1-10",
+          "score": 2
+        },
+        {
+          "text": "11-50",
+          "score": 3.5
+        },
+        {
+          "text": "51-200",
+          "score": 4.5
+        },
+        {
+          "text": "200+",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "clean_005",
+      "dimension": "operations",
+      "text": "Do you have environmental certifications?",
+      "help": "LEED, Energy Star, B-Corp",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "Partial",
+          "score": 3.5
+        },
+        {
+          "text": "Yes",
+          "score": 4.5
+        },
+        {
+          "text": "Advanced",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "clean_006",
+      "dimension": "financial",
+      "text": "What is your payback period for customers?",
+      "help": "ROI timeline",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "clean_007",
+      "dimension": "technology",
+      "text": "What renewable energy source?",
+      "help": "Solar, wind, hydro, etc.",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "clean_008",
+      "dimension": "customer",
+      "text": "What is your customer energy savings %?",
+      "help": "Measured impact",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracking",
+          "score": 0
+        },
+        {
+          "text": "Below 60%",
+          "score": 2
+        },
+        {
+          "text": "60-75%",
+          "score": 3.5
+        },
+        {
+          "text": "75-90%",
+          "score": 4.5
+        },
+        {
+          "text": "Above 90%",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "clean_009",
+      "dimension": "operations",
+      "text": "What is your system uptime/reliability?",
+      "help": "Operational consistency",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "clean_010",
+      "dimension": "financial",
+      "text": "Do you have government incentives/credits?",
+      "help": "Tax credits, grants, subsidies",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "Partial",
+          "score": 3.5
+        },
+        {
+          "text": "Yes",
+          "score": 4.5
+        },
+        {
+          "text": "Advanced",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "clean_011",
+      "dimension": "business",
+      "text": "Do you have utility partnerships?",
+      "help": "Energy company relationships",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "Partial",
+          "score": 3.5
+        },
+        {
+          "text": "Yes",
+          "score": 4.5
+        },
+        {
+          "text": "Advanced",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "clean_012",
+      "dimension": "technology",
+      "text": "What is your grid integration capability?",
+      "help": "Smart grid compatibility",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "clean_013",
+      "dimension": "customer",
+      "text": "What is your NPS score?",
+      "help": "Customer satisfaction",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "clean_014",
+      "dimension": "operations",
+      "text": "What is your supply chain sustainability?",
+      "help": "Ethical sourcing, circular economy",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "clean_015",
+      "dimension": "financial",
+      "text": "What is your carbon credit revenue?",
+      "help": "Monetization of offsets",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    }
+  ]
+}

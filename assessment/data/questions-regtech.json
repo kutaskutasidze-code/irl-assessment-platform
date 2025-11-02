@@ -1,0 +1,440 @@
+{
+  "category": "regtech",
+  "industryQuestions": [
+    {
+      "id": "reg_001",
+      "dimension": "operations",
+      "text": "What regulations do you cover?",
+      "help": "AML, KYC, GDPR, SOX, etc.",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "reg_002",
+      "dimension": "technology",
+      "text": "What is your automation level?",
+      "help": "% of compliance automated",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "reg_003",
+      "dimension": "customer",
+      "text": "How many regulated entities use you?",
+      "help": "Banks, fintechs, etc.",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "None",
+          "score": 0
+        },
+        {
+          "text": "1-10",
+          "score": 2
+        },
+        {
+          "text": "11-50",
+          "score": 3.5
+        },
+        {
+          "text": "51-200",
+          "score": 4.5
+        },
+        {
+          "text": "200+",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "reg_004",
+      "dimension": "operations",
+      "text": "What is your false positive rate?",
+      "help": "Alert accuracy",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracking",
+          "score": 0
+        },
+        {
+          "text": "Below 60%",
+          "score": 2
+        },
+        {
+          "text": "60-75%",
+          "score": 3.5
+        },
+        {
+          "text": "75-90%",
+          "score": 4.5
+        },
+        {
+          "text": "Above 90%",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "reg_005",
+      "dimension": "financial",
+      "text": "What cost reduction do you deliver?",
+      "help": "Compliance cost savings %",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "reg_006",
+      "dimension": "technology",
+      "text": "Do you have AI/ML for risk detection?",
+      "help": "Intelligent monitoring",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "Partial",
+          "score": 3.5
+        },
+        {
+          "text": "Yes",
+          "score": 4.5
+        },
+        {
+          "text": "Advanced",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "reg_007",
+      "dimension": "operations",
+      "text": "What is your audit success rate?",
+      "help": "% of clients passing audits",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracking",
+          "score": 0
+        },
+        {
+          "text": "Below 60%",
+          "score": 2
+        },
+        {
+          "text": "60-75%",
+          "score": 3.5
+        },
+        {
+          "text": "75-90%",
+          "score": 4.5
+        },
+        {
+          "text": "Above 90%",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "reg_008",
+      "dimension": "business",
+      "text": "Do you have regulator partnerships?",
+      "help": "Regulatory sandbox, feedback",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "Partial",
+          "score": 3.5
+        },
+        {
+          "text": "Yes",
+          "score": 4.5
+        },
+        {
+          "text": "Advanced",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "reg_009",
+      "dimension": "financial",
+      "text": "What is your ACV?",
+      "help": "Average contract value",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "reg_010",
+      "dimension": "customer",
+      "text": "What is your customer retention?",
+      "help": "Annual renewal rate",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "reg_011",
+      "dimension": "technology",
+      "text": "Do you have real-time monitoring?",
+      "help": "Live compliance tracking",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "Partial",
+          "score": 3.5
+        },
+        {
+          "text": "Yes",
+          "score": 4.5
+        },
+        {
+          "text": "Advanced",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "reg_012",
+      "dimension": "operations",
+      "text": "What is your reporting automation?",
+      "help": "Automated regulatory filings",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "reg_013",
+      "dimension": "business",
+      "text": "How many jurisdictions covered?",
+      "help": "Geographic regulatory coverage",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "None",
+          "score": 0
+        },
+        {
+          "text": "1-10",
+          "score": 2
+        },
+        {
+          "text": "11-50",
+          "score": 3.5
+        },
+        {
+          "text": "51-200",
+          "score": 4.5
+        },
+        {
+          "text": "200+",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "reg_014",
+      "dimension": "financial",
+      "text": "What is your gross margin?",
+      "help": "Profitability",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "reg_015",
+      "dimension": "customer",
+      "text": "What is your time-to-compliance?",
+      "help": "Onboarding to compliant",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    }
+  ]
+}

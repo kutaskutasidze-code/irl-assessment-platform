@@ -1,0 +1,440 @@
+{
+  "category": "legaltech",
+  "industryQuestions": [
+    {
+      "id": "legal_001",
+      "dimension": "technology",
+      "text": "What legal workflows do you automate?",
+      "help": "Contract review, discovery, etc.",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "legal_002",
+      "dimension": "customer",
+      "text": "How many law firms/legal depts use you?",
+      "help": "Client base",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "None",
+          "score": 0
+        },
+        {
+          "text": "1-10",
+          "score": 2
+        },
+        {
+          "text": "11-50",
+          "score": 3.5
+        },
+        {
+          "text": "51-200",
+          "score": 4.5
+        },
+        {
+          "text": "200+",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "legal_003",
+      "dimension": "operations",
+      "text": "What is your accuracy rate?",
+      "help": "AI/automation accuracy",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracking",
+          "score": 0
+        },
+        {
+          "text": "Below 60%",
+          "score": 2
+        },
+        {
+          "text": "60-75%",
+          "score": 3.5
+        },
+        {
+          "text": "75-90%",
+          "score": 4.5
+        },
+        {
+          "text": "Above 90%",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "legal_004",
+      "dimension": "financial",
+      "text": "What time/cost savings do you deliver?",
+      "help": "% reduction in legal work",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "legal_005",
+      "dimension": "technology",
+      "text": "Do you have NLP/AI capabilities?",
+      "help": "Natural language processing",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "Partial",
+          "score": 3.5
+        },
+        {
+          "text": "Yes",
+          "score": 4.5
+        },
+        {
+          "text": "Advanced",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "legal_006",
+      "dimension": "customer",
+      "text": "What is your user adoption rate?",
+      "help": "% of law firm using daily",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracking",
+          "score": 0
+        },
+        {
+          "text": "Below 60%",
+          "score": 2
+        },
+        {
+          "text": "60-75%",
+          "score": 3.5
+        },
+        {
+          "text": "75-90%",
+          "score": 4.5
+        },
+        {
+          "text": "Above 90%",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "legal_007",
+      "dimension": "operations",
+      "text": "Do you have security/compliance certs?",
+      "help": "SOC 2, ISO, data protection",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "Partial",
+          "score": 3.5
+        },
+        {
+          "text": "Yes",
+          "score": 4.5
+        },
+        {
+          "text": "Advanced",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "legal_008",
+      "dimension": "business",
+      "text": "What practice areas do you serve?",
+      "help": "Litigation, corporate, IP, etc.",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "legal_009",
+      "dimension": "financial",
+      "text": "What is your average contract value?",
+      "help": "ACV per client",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "legal_010",
+      "dimension": "customer",
+      "text": "What is your NPS score?",
+      "help": "Attorney satisfaction",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "legal_011",
+      "dimension": "technology",
+      "text": "Do you have document assembly?",
+      "help": "Automated document generation",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "No",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "Partial",
+          "score": 3.5
+        },
+        {
+          "text": "Yes",
+          "score": 4.5
+        },
+        {
+          "text": "Advanced",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "legal_012",
+      "dimension": "operations",
+      "text": "What is your e-discovery capability?",
+      "help": "Large-scale doc review",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "legal_013",
+      "dimension": "business",
+      "text": "Do you integrate with legal software?",
+      "help": "Clio, Westlaw, LexisNexis",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracking",
+          "score": 0
+        },
+        {
+          "text": "Below 60%",
+          "score": 2
+        },
+        {
+          "text": "60-75%",
+          "score": 3.5
+        },
+        {
+          "text": "75-90%",
+          "score": 4.5
+        },
+        {
+          "text": "Above 90%",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "legal_014",
+      "dimension": "financial",
+      "text": "What is your gross margin?",
+      "help": "Profitability metric",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not started",
+          "score": 0
+        },
+        {
+          "text": "Planning",
+          "score": 2
+        },
+        {
+          "text": "In progress",
+          "score": 3.5
+        },
+        {
+          "text": "Implemented",
+          "score": 4.5
+        },
+        {
+          "text": "Optimized",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "id": "legal_015",
+      "dimension": "customer",
+      "text": "What is your case win rate improvement?",
+      "help": "Measured client outcomes",
+      "type": "multiple",
+      "options": [
+        {
+          "text": "Not tracking",
+          "score": 0
+        },
+        {
+          "text": "Below 60%",
+          "score": 2
+        },
+        {
+          "text": "60-75%",
+          "score": 3.5
+        },
+        {
+          "text": "75-90%",
+          "score": 4.5
+        },
+        {
+          "text": "Above 90%",
+          "score": 5
+        }
+      ]
+    }
+  ]
+}
