@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRL Platform - Innovation Readiness Level Assessment</title>
+    <meta name="description" content="Comprehensive IRL assessment platform for startups, universities, and organizations">
+    
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/features.css">
+    <link rel="stylesheet" href="css/account-types.css">
+    <link rel="stylesheet" href="css/modals.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">IRL</div>
+                <span>Platform</span>
+            </a>
+            <div class="nav-buttons">
+                <button class="btn btn-outline" onclick="showSignIn()">Sign In</button>
+                <button class="btn btn-gradient" onclick="showSignUp()">Get Started</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="fade-in-up">Measure Your Innovation Readiness Level</h1>
+        <p class="fade-in-up">Comprehensive assessment platform for startups, universities, and organizations to evaluate and track innovation maturity</p>
+        <div class="hero-buttons fade-in-up">
+            <button class="btn btn-primary" onclick="showSignUp()">Start Your Assessment</button>
+            <button class="btn btn-secondary" onclick="scrollToFeatures()">Learn More</button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2>Why Choose IRL Platform?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">1</div>
+                <h3 class="feature-title">Comprehensive Assessment</h3>
+                <p class="feature-description">20 detailed questions across 6 key dimensions to accurately measure your innovation readiness</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">2</div>
+                <h3 class="feature-title">Personalized Action Plans</h3>
+                <p class="feature-description">Receive customized recommendations and actionable insights based on your assessment results</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">3</div>
+                <h3 class="feature-title">Track Progress</h3>
+                <p class="feature-description">Monitor your innovation journey over time and measure improvements across all dimensions</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">4</div>
+                <h3 class="feature-title">Organization Management</h3>
+                <p class="feature-description">Universities and organizations can manage multiple startups and track their collective progress</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">5</div>
+                <h3 class="feature-title">Expert Curation</h3>
+                <p class="feature-description">Connect with experienced curators who provide guidance and create tailored action plans</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">6</div>
+                <h3 class="feature-title">Secure & Private</h3>
+                <p class="feature-description">Your data is encrypted and secure, with role-based access control for team collaboration</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Account Types Section -->
+    <section class="account-types">
+        <h2>Choose Your Account Type</h2>
+        <p class="account-types-subtitle">Select the account type that best fits your needs</p>
+        
+        <div class="account-cards">
+            <div class="account-card">
+                <div class="account-icon">S</div>
+                <h3 class="account-title">Startup</h3>
+                <p class="account-description">For innovative startups looking to assess and improve their readiness level</p>
+                <ul class="account-features">
+                    <li>Complete IRL assessments</li>
+                    <li>View personalized results</li>
+                    <li>Receive action plans</li>
+                    <li>Track progress over time</li>
+                </ul>
+                <button class="btn btn-gradient" onclick="showSignUp('startup')">Sign Up as Startup</button>
+            </div>
+            
+            <div class="account-card">
+                <div class="account-icon">O</div>
+                <h3 class="account-title">Organization</h3>
+                <p class="account-description">For universities, accelerators, and institutions managing multiple startups</p>
+                <ul class="account-features">
+                    <li>Manage multiple startups</li>
+                    <li>Create custom action plans</li>
+                    <li>View aggregate analytics</li>
+                    <li>Export detailed reports</li>
+                </ul>
+                <button class="btn btn-gradient" onclick="showSignUp('organization')">Sign Up as Organization</button>
+            </div>
+            
+            <div class="account-card">
+                <div class="account-icon">A</div>
+                <h3 class="account-title">Admin</h3>
+                <p class="account-description">Platform administrators with full system access and control</p>
+                <ul class="account-features">
+                    <li>Manage all users</li>
+                    <li>System configuration</li>
+                    <li>Platform analytics</li>
+                    <li>Full access control</li>
+                </ul>
+                <button class="btn btn-outline" onclick="showSignIn()">Admin Login</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact</a>
+                <a href="#">Support</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 IRL Platform. All rights reserved. | Powered by Startup Georgia</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sign In Modal -->
+    <div id="signInModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('signInModal')">×</button>
+            <h2>Welcome Back</h2>
+            <p class="modal-subtitle">Sign in to your account to continue</p>
+            
+            <form onsubmit="handleSignIn(event)">
+                <div class="form-group">
+                    <label for="signInEmail">Email Address</label>
+                    <input type="email" id="signInEmail" placeholder="you@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="signInPassword">Password</label>
+                    <input type="password" id="signInPassword" placeholder="Enter your password" required>
+                </div>
+                
+                <button type="submit" class="btn btn-gradient" style="width: 100%;">Sign In</button>
+            </form>
+            
+            <div class="form-divider">
+                <span>Demo Credentials</span>
+            </div>
+            
+            <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; font-size: 0.875rem; color: #666;">
+                <p><strong>Startup:</strong> startup@example.com / startup123</p>
+                <p><strong>Organization:</strong> org@example.com / org123</p>
+                <p style="margin-bottom: 0;"><strong>Admin:</strong> admin@example.com / admin123</p>
+            </div>
+            
+            <div class="form-footer">
+                Don't have an account? <a href="#" onclick="closeModal('signInModal'); showSignUp();">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div id="signUpModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('signUpModal')">×</button>
+            <h2>Create Account</h2>
+            <p class="modal-subtitle">Join the IRL Platform today</p>
+            
+            <form onsubmit="handleSignUp(event)">
+                <div class="form-group">
+                    <label for="signUpType">Account Type</label>
+                    <select id="signUpType" onchange="handleAccountTypeChange()" required>
+                        <option value="">Select account type...</option>
+                        <option value="startup">Startup</option>
+                        <option value="organization">University/Organization</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="signUpName">Full Name</label>
+                    <input type="text" id="signUpName" placeholder="John Doe" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="signUpEmail">Email Address</label>
+                    <input type="email" id="signUpEmail" placeholder="you@example.com" required>
+                </div>
+                
+                <div class="form-group" id="organizationField" style="display: none;">
+                    <label for="signUpOrg">Organization Name</label>
+                    <input type="text" id="signUpOrg" placeholder="University/Organization Name">
+                </div>
+                
+                <div class="form-group" id="startupField" style="display: none;">
+                    <label for="signUpStartup">Startup Name</label>
+                    <input type="text" id="signUpStartup" placeholder="Your Startup Name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="signUpPassword">Password</label>
+                    <input type="password" id="signUpPassword" placeholder="Create a password" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="signUpConfirmPassword">Confirm Password</label>
+                    <input type="password" id="signUpConfirmPassword" placeholder="Confirm your password" required>
+                </div>
+                
+                <button type="submit" class="btn btn-gradient" style="width: 100%;">Create Account</button>
+            </form>
+            
+            <div class="form-footer">
+                Already have an account? <a href="#" onclick="closeModal('signUpModal'); showSignIn();">Sign In</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="js/modals.js"></script>
+    <script src="js/forms.js"></script>
+    <script src="js/navigation.js"></script>
+</body>
+</html>
