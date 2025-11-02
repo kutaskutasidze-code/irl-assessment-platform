@@ -285,8 +285,8 @@ class AssessmentEngine {
   saveAssessmentToStorage() {
     const assessment = {
       ...this.currentAssessment,
-      userId: currentUser?.id,
-      userEmail: currentUser?.email
+      userId: null, // TODO: Integrate with auth system
+      userEmail: null // TODO: Integrate with auth system
     };
 
     // Save to localStorage
@@ -298,7 +298,7 @@ class AssessmentEngine {
     if (typeof mockDB !== 'undefined') {
       mockDB.assessments.push({
         id: mockDB.assessments.length + 1,
-        userId: currentUser?.id,
+        userId: null, // TODO: Integrate with auth system
         categoryId: assessment.categoryId,
         level: assessment.irlLevel,
         scores: assessment.scores,
