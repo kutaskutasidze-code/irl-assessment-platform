@@ -1,0 +1,32 @@
+/* Hero Section Styles */
+
+.hero {
+    margin-top: 72px;
+    padding: var(--spacing-3xl) var(--container-padding);
+    background: var(--background-alt);
+    color: var(--foreground);
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.hero h1 {
+    font-size: var(--font-size-6xl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-lg);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero p {
+    font-size: var(--font-size-lg);
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto var(--spacing-2xl);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+}
