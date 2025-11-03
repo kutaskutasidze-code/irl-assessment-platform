@@ -2,438 +2,213 @@
   "category": "socialimpact",
   "industryQuestions": [
     {
-      "id": "impact_001",
-      "dimension": "customer",
-      "text": "How many beneficiaries served?",
-      "help": "People impacted",
-      "type": "multiple",
-      "options": [
-        {
-          "text": "None",
-          "score": 0
-        },
-        {
-          "text": "1-10",
-          "score": 2
-        },
-        {
-          "text": "11-50",
-          "score": 3.5
-        },
-        {
-          "text": "51-200",
-          "score": 4.5
-        },
-        {
-          "text": "200+",
-          "score": 5
-        }
-      ]
-    },
-    {
-      "id": "impact_002",
-      "dimension": "operations",
-      "text": "What SDGs do you address?",
-      "help": "UN Sustainable Development Goals",
-      "type": "multiple",
-      "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
-      ]
-    },
-    {
-      "id": "impact_003",
-      "dimension": "financial",
-      "text": "What is your impact per dollar?",
-      "help": "Efficiency of impact",
-      "type": "multiple",
-      "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
-      ]
-    },
-    {
-      "id": "impact_004",
+      "id": "soc_001",
       "dimension": "business",
-      "text": "Do you have impact measurement framework?",
-      "help": "IRIS, GIIRS, Theory of Change",
+      "text": "How many beneficiaries do you serve?",
+      "help": "People/communities directly impacted",
       "type": "multiple",
       "options": [
-        {
-          "text": "No",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "Partial",
-          "score": 3.5
-        },
-        {
-          "text": "Yes",
-          "score": 4.5
-        },
-        {
-          "text": "Advanced",
-          "score": 5
-        }
+        {"text": "None", "score": 0},
+        {"text": "1-1,000", "score": 2},
+        {"text": "1,000-10,000", "score": 3.5},
+        {"text": "10,000-100,000", "score": 4.5},
+        {"text": "100,000+", "score": 5}
       ]
     },
     {
-      "id": "impact_005",
-      "dimension": "customer",
-      "text": "What measurable outcomes achieved?",
-      "help": "Lives improved, emissions reduced",
-      "type": "multiple",
-      "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
-      ]
-    },
-    {
-      "id": "impact_006",
+      "id": "soc_002",
       "dimension": "financial",
-      "text": "What is your revenue model?",
-      "help": "Grants, earned revenue, hybrid",
+      "text": "What is your funding model?",
+      "help": "Grants, donations, earned revenue",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
+        {"text": "No funding", "score": 0},
+        {"text": "Personal funds", "score": 1},
+        {"text": "Small grants", "score": 2.5},
+        {"text": "Multiple sources", "score": 4},
+        {"text": "Sustainable revenue", "score": 5}
       ]
     },
     {
-      "id": "impact_007",
+      "id": "soc_003",
       "dimension": "operations",
-      "text": "Do you have B-Corp or similar certification?",
-      "help": "Impact certification",
+      "text": "Do you measure social impact?",
+      "help": "SROI, Theory of Change, impact metrics",
       "type": "multiple",
       "options": [
-        {
-          "text": "No",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "Partial",
-          "score": 3.5
-        },
-        {
-          "text": "Yes",
-          "score": 4.5
-        },
-        {
-          "text": "Advanced",
-          "score": 5
-        }
+        {"text": "No", "score": 0},
+        {"text": "Qualitative only", "score": 2},
+        {"text": "Basic metrics", "score": 3.5},
+        {"text": "Comprehensive tracking", "score": 4.5},
+        {"text": "Third-party verified", "score": 5}
       ]
     },
     {
-      "id": "impact_008",
-      "dimension": "business",
-      "text": "How many stakeholder partnerships?",
-      "help": "NGOs, governments, corporates",
-      "type": "multiple",
-      "options": [
-        {
-          "text": "None",
-          "score": 0
-        },
-        {
-          "text": "1-10",
-          "score": 2
-        },
-        {
-          "text": "11-50",
-          "score": 3.5
-        },
-        {
-          "text": "51-200",
-          "score": 4.5
-        },
-        {
-          "text": "200+",
-          "score": 5
-        }
-      ]
-    },
-    {
-      "id": "impact_009",
+      "id": "soc_004",
       "dimension": "customer",
-      "text": "What is your beneficiary satisfaction?",
-      "help": "Feedback from those served",
+      "text": "What UN Sustainable Development Goals do you address?",
+      "help": "Number of SDGs your work impacts",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
+        {"text": "None defined", "score": 0},
+        {"text": "1 SDG", "score": 2},
+        {"text": "2-3 SDGs", "score": 3.5},
+        {"text": "4-5 SDGs", "score": 4.5},
+        {"text": "6+ SDGs", "score": 5}
       ]
     },
     {
-      "id": "impact_010",
+      "id": "soc_005",
+      "dimension": "technology",
+      "text": "Do you use technology to scale impact?",
+      "help": "Mobile apps, platforms, automation",
+      "type": "multiple",
+      "options": [
+        {"text": "No tech", "score": 0},
+        {"text": "Basic tools", "score": 2},
+        {"text": "Custom solution", "score": 3.5},
+        {"text": "Scalable platform", "score": 4.5},
+        {"text": "Advanced tech + AI", "score": 5}
+      ]
+    },
+    {
+      "id": "soc_006",
+      "dimension": "business",
+      "text": "Do you have partnership with NGOs/governments?",
+      "help": "Institutional partnerships",
+      "type": "multiple",
+      "options": [
+        {"text": "No", "score": 0},
+        {"text": "In discussions", "score": 2},
+        {"text": "1-2 partners", "score": 3.5},
+        {"text": "3-5 partners", "score": 4.5},
+        {"text": "6+ partners", "score": 5}
+      ]
+    },
+    {
+      "id": "soc_007",
+      "dimension": "financial",
+      "text": "What percentage of costs go to program delivery?",
+      "help": "Program efficiency ratio",
+      "type": "multiple",
+      "options": [
+        {"text": "Not tracked", "score": 0},
+        {"text": "Below 60%", "score": 2},
+        {"text": "60-75%", "score": 3.5},
+        {"text": "75-85%", "score": 4.5},
+        {"text": "Above 85%", "score": 5}
+      ]
+    },
+    {
+      "id": "soc_008",
+      "dimension": "operations",
+      "text": "Do you have a Theory of Change?",
+      "help": "Documented impact pathway",
+      "type": "multiple",
+      "options": [
+        {"text": "No", "score": 0},
+        {"text": "Draft", "score": 2},
+        {"text": "Documented", "score": 3.5},
+        {"text": "Tested & refined", "score": 4.5},
+        {"text": "Published & validated", "score": 5}
+      ]
+    },
+    {
+      "id": "soc_009",
+      "dimension": "customer",
+      "text": "What is your beneficiary satisfaction rate?",
+      "help": "Feedback from people you serve",
+      "type": "multiple",
+      "options": [
+        {"text": "Not measured", "score": 0},
+        {"text": "Below 70%", "score": 2},
+        {"text": "70-80%", "score": 3.5},
+        {"text": "80-90%", "score": 4.5},
+        {"text": "Above 90%", "score": 5}
+      ]
+    },
+    {
+      "id": "soc_010",
+      "dimension": "technology",
+      "text": "Do you collect data ethically and securely?",
+      "help": "Data privacy for vulnerable populations",
+      "type": "multiple",
+      "options": [
+        {"text": "No data collected", "score": 0},
+        {"text": "Basic protection", "score": 2},
+        {"text": "Consent protocols", "score": 3.5},
+        {"text": "GDPR compliant", "score": 4.5},
+        {"text": "Certified + audited", "score": 5}
+      ]
+    },
+    {
+      "id": "soc_011",
+      "dimension": "business",
+      "text": "Are you a registered nonprofit/B-Corp?",
+      "help": "Legal structure for social mission",
+      "type": "multiple",
+      "options": [
+        {"text": "No", "score": 0},
+        {"text": "In process", "score": 2},
+        {"text": "Nonprofit", "score": 3.5},
+        {"text": "B-Corp certified", "score": 4.5},
+        {"text": "Multiple certifications", "score": 5}
+      ]
+    },
+    {
+      "id": "soc_012",
       "dimension": "financial",
       "text": "What is your cost per beneficiary?",
-      "help": "Efficiency metric",
+      "help": "Cost efficiency of delivering impact",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
+        {"text": "Not calculated", "score": 0},
+        {"text": "Above $1,000", "score": 2},
+        {"text": "$500-$1,000", "score": 3},
+        {"text": "$100-$500", "score": 4},
+        {"text": "Below $100", "score": 5}
       ]
     },
     {
-      "id": "impact_011",
-      "dimension": "technology",
-      "text": "Do you have impact tracking technology?",
-      "help": "Data collection systems",
-      "type": "multiple",
-      "options": [
-        {
-          "text": "No",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "Partial",
-          "score": 3.5
-        },
-        {
-          "text": "Yes",
-          "score": 4.5
-        },
-        {
-          "text": "Advanced",
-          "score": 5
-        }
-      ]
-    },
-    {
-      "id": "impact_012",
+      "id": "soc_013",
       "dimension": "operations",
-      "text": "What is your program scalability?",
-      "help": "Geographic/population expansion",
+      "text": "Do you have impact reporting cycles?",
+      "help": "Regular stakeholder updates",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
+        {"text": "No", "score": 0},
+        {"text": "Annual only", "score": 2},
+        {"text": "Semi-annual", "score": 3.5},
+        {"text": "Quarterly", "score": 4.5},
+        {"text": "Real-time dashboards", "score": 5}
       ]
     },
     {
-      "id": "impact_013",
-      "dimension": "business",
-      "text": "Do you have grant/funding track record?",
-      "help": "Foundation support",
-      "type": "multiple",
-      "options": [
-        {
-          "text": "No",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "Partial",
-          "score": 3.5
-        },
-        {
-          "text": "Yes",
-          "score": 4.5
-        },
-        {
-          "text": "Advanced",
-          "score": 5
-        }
-      ]
-    },
-    {
-      "id": "impact_014",
-      "dimension": "financial",
-      "text": "What is your sustainability model?",
-      "help": "Path to financial self-sufficiency",
-      "type": "multiple",
-      "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
-      ]
-    },
-    {
-      "id": "impact_015",
+      "id": "soc_014",
       "dimension": "customer",
-      "text": "What is your community engagement level?",
-      "help": "Participation rates",
+      "text": "Do you involve beneficiaries in design?",
+      "help": "Human-centered, participatory design",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
+        {"text": "No", "score": 0},
+        {"text": "Occasional feedback", "score": 2},
+        {"text": "Regular consultation", "score": 3.5},
+        {"text": "Co-design process", "score": 4.5},
+        {"text": "Beneficiary-led", "score": 5}
+      ]
+    },
+    {
+      "id": "soc_015",
+      "dimension": "operations",
+      "text": "What is your Social Return on Investment (SROI)?",
+      "help": "Value created per dollar invested",
+      "type": "multiple",
+      "options": [
+        {"text": "Not measured", "score": 0},
+        {"text": "Below 2:1", "score": 2},
+        {"text": "2:1 to 4:1", "score": 3.5},
+        {"text": "4:1 to 6:1", "score": 4.5},
+        {"text": "Above 6:1", "score": 5}
       ]
     }
   ]
