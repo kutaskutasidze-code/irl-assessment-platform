@@ -215,7 +215,7 @@
 
         <div class="progress-bar">
             <div class="progress-info">
-                <span class="progress-text" id="progressText">Question 1 of 25</span>
+                <span class="progress-text" id="progressText">Loading...</span>
                 <span class="progress-text" id="dimensionText"></span>
             </div>
             <div class="progress-track">
@@ -239,34 +239,47 @@
         let selectedCategory = null;
 
         async function init() {
-            // Get category from URL
-            const params = new URLSearchParams(window.location.search);
-            const categoryId = params.get('category') || localStorage.getItem('selectedCategory');
+            try {
+                // Get category from URL
+                const params = new URLSearchParams(window.location.search);
+                const categoryId = params.get('category') || localStorage.getItem('selectedCategory');
 
-            if (!categoryId) {
-                window.location.href = 'category-selection.html';
-                return;
+                if (!categoryId) {
+                    window.location.href = 'category-selection.html';
+                    return;
+                }
+
+                // Load categories first
+                await assessmentEngine.loadCategories();
+                
+                selectedCategory = assessmentEngine.getCategoryById(categoryId);
+                if (!selectedCategory) {
+                    alert('Invalid category');
+                    window.location.href = 'category-selection.html';
+                    return;
+                }
+
+                // Start assessment (this sets the categoryId)
+                assessmentEngine.startAssessment(categoryId);
+
+                // Now load questions (requires categoryId to be set)
+                questions = await assessmentEngine.loadQuestions();
+                
+                // Show category header
+                displayCategoryHeader();
+                
+                // Show first question
+                displayQuestion();
+            } catch (error) {
+                console.error('Error initializing assessment:', error);
+                document.getElementById('questionContainer').innerHTML = `
+                    <div class="loading">
+                        <h2 style="color: #ef4444;">Error loading assessment</h2>
+                        <p style="color: #666; margin-top: 1rem;">${error.message}</p>
+                        <a href="category-selection.html" class="btn btn-primary" style="margin-top: 2rem; display: inline-block; text-decoration: none;">Back to Categories</a>
+                    </div>
+                `;
             }
-
-            // Load data
-            await assessmentEngine.loadCategories();
-            questions = await assessmentEngine.loadQuestions();
-            
-            selectedCategory = assessmentEngine.getCategoryById(categoryId);
-            if (!selectedCategory) {
-                alert('Invalid category');
-                window.location.href = 'category-selection.html';
-                return;
-            }
-
-            // Start assessment
-            assessmentEngine.startAssessment(categoryId);
-
-            // Show category header
-            displayCategoryHeader();
-            
-            // Show first question
-            displayQuestion();
         }
 
         function displayCategoryHeader() {
@@ -383,7 +396,8 @@
                     console.error("Error completing assessment:", error);
                     alert("Error saving assessment: " + error.message);
                 }
-            }, 2000);        }
+            }, 2000);
+        }
 
         // Initialize on load
         init();
