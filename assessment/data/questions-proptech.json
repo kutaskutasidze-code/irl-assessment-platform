@@ -1,0 +1,215 @@
+{
+  "category": "proptech",
+  "industryQuestions": [
+    {
+      "id": "prop_001",
+      "dimension": "business",
+      "text": "How many properties on your platform?",
+      "help": "Total listings or managed properties",
+      "type": "multiple",
+      "options": [
+        {"text": "None", "score": 0},
+        {"text": "1-100", "score": 2},
+        {"text": "100-1,000", "score": 3.5},
+        {"text": "1,000-10,000", "score": 4.5},
+        {"text": "10,000+", "score": 5}
+      ]
+    },
+    {
+      "id": "prop_002",
+      "dimension": "financial",
+      "text": "What is your total transaction volume?",
+      "help": "Annual property transactions processed",
+      "type": "multiple",
+      "options": [
+        {"text": "Below $1M", "score": 0},
+        {"text": "$1M-$10M", "score": 2},
+        {"text": "$10M-$100M", "score": 3.5},
+        {"text": "$100M-$1B", "score": 4.5},
+        {"text": "Above $1B", "score": 5}
+      ]
+    },
+    {
+      "id": "prop_003",
+      "dimension": "customer",
+      "text": "How many active users do you have?",
+      "help": "Monthly active renters/buyers/landlords",
+      "type": "multiple",
+      "options": [
+        {"text": "None", "score": 0},
+        {"text": "1-1,000", "score": 2},
+        {"text": "1,000-10,000", "score": 3.5},
+        {"text": "10,000-100,000", "score": 4.5},
+        {"text": "100,000+", "score": 5}
+      ]
+    },
+    {
+      "id": "prop_004",
+      "dimension": "technology",
+      "text": "Do you have virtual tour capabilities?",
+      "help": "3D tours, VR, or AR visualization",
+      "type": "multiple",
+      "options": [
+        {"text": "No", "score": 0},
+        {"text": "Photos only", "score": 2},
+        {"text": "360° photos", "score": 3.5},
+        {"text": "3D tours", "score": 4.5},
+        {"text": "VR/AR integrated", "score": 5}
+      ]
+    },
+    {
+      "id": "prop_005",
+      "dimension": "operations",
+      "text": "What is your average time to close?",
+      "help": "Days from listing to transaction",
+      "type": "multiple",
+      "options": [
+        {"text": "Not tracking", "score": 0},
+        {"text": "90+ days", "score": 2},
+        {"text": "60-90 days", "score": 3.5},
+        {"text": "30-60 days", "score": 4.5},
+        {"text": "Under 30 days", "score": 5}
+      ]
+    },
+    {
+      "id": "prop_006",
+      "dimension": "customer",
+      "text": "What is your customer satisfaction score?",
+      "help": "CSAT or NPS from users",
+      "type": "multiple",
+      "options": [
+        {"text": "Not tracking", "score": 0},
+        {"text": "Below 60%", "score": 1.5},
+        {"text": "60-75%", "score": 3},
+        {"text": "75-85%", "score": 4.5},
+        {"text": "Above 85%", "score": 5}
+      ]
+    },
+    {
+      "id": "prop_007",
+      "dimension": "technology",
+      "text": "Do you have AI-powered property valuation?",
+      "help": "Automated price estimation algorithms",
+      "type": "multiple",
+      "options": [
+        {"text": "No", "score": 0},
+        {"text": "Manual appraisal", "score": 2},
+        {"text": "Basic algorithms", "score": 3.5},
+        {"text": "ML models", "score": 4.5},
+        {"text": "Advanced AI", "score": 5}
+      ]
+    },
+    {
+      "id": "prop_008",
+      "dimension": "financial",
+      "text": "What is your revenue model?",
+      "help": "Commission, subscription, or transaction fees",
+      "type": "multiple",
+      "options": [
+        {"text": "No revenue", "score": 0},
+        {"text": "Listing fees", "score": 2},
+        {"text": "Commission only", "score": 3},
+        {"text": "Subscription + commission", "score": 4.5},
+        {"text": "Multi-revenue streams", "score": 5}
+      ]
+    },
+    {
+      "id": "prop_009",
+      "dimension": "business",
+      "text": "Do you have property management features?",
+      "help": "Maintenance, payments, tenant screening",
+      "type": "multiple",
+      "options": [
+        {"text": "No", "score": 0},
+        {"text": "Basic listing", "score": 2},
+        {"text": "Payments integrated", "score": 3.5},
+        {"text": "Full PM suite", "score": 4.5},
+        {"text": "Enterprise platform", "score": 5}
+      ]
+    },
+    {
+      "id": "prop_010",
+      "dimension": "operations",
+      "text": "What is your lead conversion rate?",
+      "help": "% of leads converting to transactions",
+      "type": "multiple",
+      "options": [
+        {"text": "Not tracking", "score": 0},
+        {"text": "Below 2%", "score": 2},
+        {"text": "2-5%", "score": 3.5},
+        {"text": "5-10%", "score": 4.5},
+        {"text": "Above 10%", "score": 5}
+      ]
+    },
+    {
+      "id": "prop_011",
+      "dimension": "customer",
+      "text": "Do you offer mortgage/financing integration?",
+      "help": "Pre-approval, loan comparison tools",
+      "type": "multiple",
+      "options": [
+        {"text": "No", "score": 0},
+        {"text": "Referral only", "score": 2},
+        {"text": "Calculator", "score": 3.5},
+        {"text": "Pre-approval", "score": 4.5},
+        {"text": "Full financing platform", "score": 5}
+      ]
+    },
+    {
+      "id": "prop_012",
+      "dimension": "technology",
+      "text": "Do you have IoT/smart home integration?",
+      "help": "Connected devices, energy monitoring",
+      "type": "multiple",
+      "options": [
+        {"text": "No", "score": 0},
+        {"text": "Planning", "score": 2},
+        {"text": "Basic sensors", "score": 3.5},
+        {"text": "Smart home ready", "score": 4.5},
+        {"text": "Full IoT ecosystem", "score": 5}
+      ]
+    },
+    {
+      "id": "prop_013",
+      "dimension": "financial",
+      "text": "What is your average commission rate?",
+      "help": "% of transaction value",
+      "type": "multiple",
+      "options": [
+        {"text": "No commissions", "score": 0},
+        {"text": "Below 1%", "score": 2},
+        {"text": "1-2%", "score": 3},
+        {"text": "2-3%", "score": 4},
+        {"text": "Above 3%", "score": 4.5}
+      ]
+    },
+    {
+      "id": "prop_014",
+      "dimension": "business",
+      "text": "Do you have marketplace network effects?",
+      "help": "Two-sided platform with buyers/sellers",
+      "type": "multiple",
+      "options": [
+        {"text": "No", "score": 0},
+        {"text": "One-sided", "score": 2},
+        {"text": "Basic two-sided", "score": 3.5},
+        {"text": "Strong network effects", "score": 4.5},
+        {"text": "Multi-sided platform", "score": 5}
+      ]
+    },
+    {
+      "id": "prop_015",
+      "dimension": "operations",
+      "text": "Do you have regulatory compliance systems?",
+      "help": "Fair housing, disclosure, escrow compliance",
+      "type": "multiple",
+      "options": [
+        {"text": "No", "score": 0},
+        {"text": "Manual process", "score": 2},
+        {"text": "Partial automation", "score": 3.5},
+        {"text": "Fully compliant", "score": 4.5},
+        {"text": "Automated + audited", "score": 5}
+      ]
+    }
+  ]
+}
