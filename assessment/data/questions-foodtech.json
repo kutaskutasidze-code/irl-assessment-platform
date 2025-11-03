@@ -3,437 +3,212 @@
   "industryQuestions": [
     {
       "id": "food_001",
-      "dimension": "operations",
-      "text": "What food safety certifications do you have?",
-      "help": "HACCP, SQF, GFSI, FDA registration",
+      "dimension": "business",
+      "text": "How many active delivery locations do you have?",
+      "help": "Ghost kitchens, restaurants, or outlets",
       "type": "multiple",
       "options": [
-        {
-          "text": "No",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "Partial",
-          "score": 3.5
-        },
-        {
-          "text": "Yes",
-          "score": 4.5
-        },
-        {
-          "text": "Advanced",
-          "score": 5
-        }
+        {"text": "None", "score": 0},
+        {"text": "1-3", "score": 2},
+        {"text": "4-10", "score": 3.5},
+        {"text": "11-25", "score": 4.5},
+        {"text": "25+", "score": 5}
       ]
     },
     {
       "id": "food_002",
-      "dimension": "operations",
-      "text": "What is your supply chain traceability?",
-      "help": "Farm to fork tracking capability",
+      "dimension": "financial",
+      "text": "What is your average order value (AOV)?",
+      "help": "Revenue per order",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
+        {"text": "Below $15", "score": 1},
+        {"text": "$15-$25", "score": 2.5},
+        {"text": "$25-$40", "score": 3.5},
+        {"text": "$40-$60", "score": 4.5},
+        {"text": "Above $60", "score": 5}
       ]
     },
     {
       "id": "food_003",
-      "dimension": "financial",
-      "text": "What is your gross margin per SKU?",
-      "help": "Profit after COGS",
+      "dimension": "customer",
+      "text": "How many daily orders do you process?",
+      "help": "Total orders per day across all locations",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
+        {"text": "None", "score": 0},
+        {"text": "1-50", "score": 2},
+        {"text": "51-200", "score": 3.5},
+        {"text": "201-500", "score": 4.5},
+        {"text": "500+", "score": 5}
       ]
     },
     {
       "id": "food_004",
-      "dimension": "customer",
-      "text": "What is your customer repeat purchase rate?",
-      "help": "% buying again",
+      "dimension": "operations",
+      "text": "What is your average delivery time?",
+      "help": "From order to delivery (minutes)",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not tracking",
-          "score": 0
-        },
-        {
-          "text": "Below 60%",
-          "score": 2
-        },
-        {
-          "text": "60-75%",
-          "score": 3.5
-        },
-        {
-          "text": "75-90%",
-          "score": 4.5
-        },
-        {
-          "text": "Above 90%",
-          "score": 5
-        }
+        {"text": "Not tracking", "score": 0},
+        {"text": "45+ min", "score": 2},
+        {"text": "30-45 min", "score": 3.5},
+        {"text": "20-30 min", "score": 4.5},
+        {"text": "Under 20 min", "score": 5}
       ]
     },
     {
       "id": "food_005",
-      "dimension": "technology",
-      "text": "Do you use cold chain monitoring?",
-      "help": "Temperature tracking and IoT",
+      "dimension": "financial",
+      "text": "What is your food cost percentage?",
+      "help": "Food costs / total sales",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
+        {"text": "Not tracking", "score": 0},
+        {"text": "Above 40%", "score": 1.5},
+        {"text": "35-40%", "score": 3},
+        {"text": "28-35%", "score": 4.5},
+        {"text": "Below 28%", "score": 5}
       ]
     },
     {
       "id": "food_006",
-      "dimension": "operations",
-      "text": "What is your shelf life management?",
-      "help": "Freshness and inventory turnover",
+      "dimension": "technology",
+      "text": "Do you use AI for demand forecasting?",
+      "help": "Predictive ordering and inventory",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
+        {"text": "No", "score": 0},
+        {"text": "Planning", "score": 2},
+        {"text": "Basic analytics", "score": 3.5},
+        {"text": "AI-powered", "score": 4.5},
+        {"text": "Advanced ML", "score": 5}
       ]
     },
     {
       "id": "food_007",
-      "dimension": "financial",
-      "text": "What is your food cost percentage?",
-      "help": "Ingredient cost as % of revenue",
+      "dimension": "operations",
+      "text": "What is your food waste percentage?",
+      "help": "% of food wasted vs produced",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
+        {"text": "Not tracking", "score": 0},
+        {"text": "Above 10%", "score": 1.5},
+        {"text": "7-10%", "score": 3},
+        {"text": "4-7%", "score": 4.5},
+        {"text": "Below 4%", "score": 5}
       ]
     },
     {
       "id": "food_008",
-      "dimension": "customer",
-      "text": "What is your average order value?",
-      "help": "Revenue per transaction",
+      "dimension": "business",
+      "text": "How many delivery platforms do you use?",
+      "help": "Uber Eats, DoorDash, Grubhub, etc.",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
+        {"text": "None", "score": 0},
+        {"text": "1 platform", "score": 2},
+        {"text": "2-3 platforms", "score": 3.5},
+        {"text": "4-5 platforms", "score": 4.5},
+        {"text": "Own + 5 platforms", "score": 5}
       ]
     },
     {
       "id": "food_009",
-      "dimension": "business",
-      "text": "How many retail/restaurant partnerships?",
-      "help": "Distribution channels",
+      "dimension": "customer",
+      "text": "What is your customer retention rate?",
+      "help": "% of customers ordering again within 30 days",
       "type": "multiple",
       "options": [
-        {
-          "text": "None",
-          "score": 0
-        },
-        {
-          "text": "1-10",
-          "score": 2
-        },
-        {
-          "text": "11-50",
-          "score": 3.5
-        },
-        {
-          "text": "51-200",
-          "score": 4.5
-        },
-        {
-          "text": "200+",
-          "score": 5
-        }
+        {"text": "Below 20%", "score": 1},
+        {"text": "20-30%", "score": 2.5},
+        {"text": "30-40%", "score": 3.5},
+        {"text": "40-50%", "score": 4.5},
+        {"text": "Above 50%", "score": 5}
       ]
     },
     {
       "id": "food_010",
-      "dimension": "operations",
-      "text": "What is your fulfillment time?",
-      "help": "Order to delivery speed",
+      "dimension": "technology",
+      "text": "Do you have kitchen automation systems?",
+      "help": "Robotics, automated cooking equipment",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
+        {"text": "No", "score": 0},
+        {"text": "Planning", "score": 2},
+        {"text": "Basic automation", "score": 3.5},
+        {"text": "Partial robotics", "score": 4.5},
+        {"text": "Fully automated", "score": 5}
       ]
     },
     {
       "id": "food_011",
-      "dimension": "technology",
-      "text": "Do you have demand forecasting?",
-      "help": "Predictive inventory management",
+      "dimension": "financial",
+      "text": "What is your profit margin per order?",
+      "help": "Net profit / order value",
       "type": "multiple",
       "options": [
-        {
-          "text": "No",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "Partial",
-          "score": 3.5
-        },
-        {
-          "text": "Yes",
-          "score": 4.5
-        },
-        {
-          "text": "Advanced",
-          "score": 5
-        }
+        {"text": "Negative", "score": 0},
+        {"text": "0-10%", "score": 2},
+        {"text": "10-15%", "score": 3.5},
+        {"text": "15-20%", "score": 4.5},
+        {"text": "Above 20%", "score": 5}
       ]
     },
     {
       "id": "food_012",
-      "dimension": "customer",
-      "text": "What is your NPS score?",
-      "help": "Customer satisfaction",
+      "dimension": "operations",
+      "text": "Do you have quality control systems?",
+      "help": "Temperature monitoring, freshness tracking",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
+        {"text": "No", "score": 0},
+        {"text": "Manual checks", "score": 2},
+        {"text": "Basic systems", "score": 3.5},
+        {"text": "IoT sensors", "score": 4.5},
+        {"text": "AI-powered QC", "score": 5}
       ]
     },
     {
       "id": "food_013",
-      "dimension": "operations",
-      "text": "What is your waste/spoilage rate?",
-      "help": "% of product that doesn't sell",
+      "dimension": "customer",
+      "text": "What is your average customer rating?",
+      "help": "Across all platforms",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not tracking",
-          "score": 0
-        },
-        {
-          "text": "Below 60%",
-          "score": 2
-        },
-        {
-          "text": "60-75%",
-          "score": 3.5
-        },
-        {
-          "text": "75-90%",
-          "score": 4.5
-        },
-        {
-          "text": "Above 90%",
-          "score": 5
-        }
+        {"text": "Below 3.5", "score": 0},
+        {"text": "3.5-4.0", "score": 2},
+        {"text": "4.0-4.3", "score": 3.5},
+        {"text": "4.3-4.7", "score": 4.5},
+        {"text": "Above 4.7", "score": 5}
       ]
     },
     {
       "id": "food_014",
       "dimension": "business",
-      "text": "Do you have sustainable sourcing?",
-      "help": "Organic, local, ethical sourcing",
+      "text": "Do you have virtual brands/concepts?",
+      "help": "Multiple brands from same kitchen",
       "type": "multiple",
       "options": [
-        {
-          "text": "No",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "Partial",
-          "score": 3.5
-        },
-        {
-          "text": "Yes",
-          "score": 4.5
-        },
-        {
-          "text": "Advanced",
-          "score": 5
-        }
+        {"text": "No", "score": 0},
+        {"text": "1 brand", "score": 2},
+        {"text": "2-3 brands", "score": 3.5},
+        {"text": "4-5 brands", "score": 4.5},
+        {"text": "6+ brands", "score": 5}
       ]
     },
     {
       "id": "food_015",
-      "dimension": "financial",
-      "text": "What is your CAC?",
-      "help": "Customer acquisition cost",
+      "dimension": "technology",
+      "text": "Do you have real-time inventory tracking?",
+      "help": "Automated ingredient management",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
+        {"text": "No", "score": 0},
+        {"text": "Spreadsheets", "score": 2},
+        {"text": "Basic software", "score": 3.5},
+        {"text": "IoT-enabled", "score": 4.5},
+        {"text": "AI-optimized", "score": 5}
       ]
     }
   ]
