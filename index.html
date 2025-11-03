@@ -919,7 +919,7 @@
                 row.innerHTML = `
                     <td>${startup.startupName}</td>
                     <td>${startup.email}</td>
-                    <td>${assessment ? assessment.level : '-'}</td>
+                    <td>${assessment ? assessment.irlLevel || assessment.level : '-'}</td>
                     <td>
                         <span class="badge ${assessment ? 'badge-success' : 'badge-warning'}">
                             ${assessment ? 'Completed' : 'Pending'}
@@ -1059,10 +1059,10 @@
             resultsContent.innerHTML = `
                 <div style="text-align: center; padding: 2rem;">
                     <div style="font-size: 4rem; font-weight: 700; color: #1a1a1a;">
-                        IRL ${assessment.level}
+                        IRL ${assessment.irlLevel || assessment.level}
                     </div>
-                    <h3 style="margin-top: 1rem;">${getIRLTitle(assessment.level)}</h3>
-                    <p style="color: #666; margin-top: 0.5rem;">${getIRLDescription(assessment.level)}</p>
+                    <h3 style="margin-top: 1rem;">${getIRLTitle(assessment.irlLevel || assessment.level)}</h3>
+                    <p style="color: #666; margin-top: 0.5rem;">${getIRLDescription(assessment.irlLevel || assessment.level)}</p>
                 </div>
             `;
         }
@@ -1222,7 +1222,7 @@ function viewStartup(startupId) {
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-label">IRL Level</div>
-                    <div class="stat-value">${assessment ? assessment.level : '-'}</div>
+                    <div class="stat-value">${assessment ? assessment.irlLevel || assessment.level : '-'}</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-label">Contact</div>
@@ -1243,8 +1243,8 @@ function viewStartup(startupId) {
                     <h2 class="card-title">Assessment Results & Answers</h2>
                     <div style="margin-bottom: 2rem;">
                         <div style="text-align: center; padding: 2rem; background: #f8f9fa; border-radius: 12px;">
-                            <div style="font-size: 3rem; font-weight: 700; color: #1a1a1a;">IRL ${assessment.level}</div>
-                            <h3 style="margin-top: 1rem;">${getIRLTitle(assessment.level)}</h3>
+                            <div style="font-size: 3rem; font-weight: 700; color: #1a1a1a;">IRL ${assessment.irlLevel || assessment.level}</div>
+                            <h3 style="margin-top: 1rem;">${getIRLTitle(assessment.irlLevel || assessment.level)}</h3>
                         </div>
                     </div>
                     
