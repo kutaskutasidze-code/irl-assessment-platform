@@ -1,0 +1,264 @@
+// Serverless-compatible server for Vercel
+const express = require('express');
+const cors = require('cors');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const { sql } = require('@vercel/postgres');
+
+const app = express();
+
+const JWT_SECRET = process.env.JWT_SECRET || 'change-this-in-production';
+
+// Middleware
+app.use(cors({
+  origin: '*',
+  credentials: true
+}));
+app.use(express.json());
+
+// Health check
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'healthy', timestamp: new Date().toISOString() });
+});
+
+app.get('/api', (req, res) => {
+  res.json({ 
+    message: 'IRL Assessment System API',
+    version: '1.0.0',
+    endpoints: {
+      health: '/api/health',
+      auth: '/api/auth/*',
+      assessments: '/api/assessments/*',
+      organization: '/api/organization/*',
+      admin: '/api/admin/*'
+    }
+  });
+});
+
+// Authentication middleware
+function authenticateToken(req, res, next) {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+
+  if (!token) {
+    return res.status(401).json({ error: 'Access token required' });
+  }
+
+  jwt.verify(token, JWT_SECRET, (err, user) => {
+    if (err) {
+      return res.status(403).json({ error: 'Invalid or expired token' });
+    }
+    req.user = user;
+    next();
+  });
+}
+
+// Role checking middleware
+function checkRole(...roles) {
+  return (req, res, next) => {
+    if (!roles.includes(req.user.user_type)) {
+      return res.status(403).json({ error: 'Insufficient permissions' });
+    }
+    next();
+  };
+}
+
+// AUTH ENDPOINTS
+app.post('/api/auth/register', async (req, res) => {
+  try {
+    const { email, password, user_type, name, organization, category, description } = req.body;
+
+    if (!email || !password || !user_type || !name) {
+      return res.status(400).json({ error: 'Missing required fields' });
+    }
+
+    if (!['startup', 'organization', 'admin'].includes(user_type)) {
+      return res.status(400).json({ error: 'Invalid user type' });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const result = await sql`
+      INSERT INTO users (email, password, user_type, name, organization) 
+      VALUES (${email}, ${hashedPassword}, ${user_type}, ${name}, ${organization})
+      RETURNING id, email, user_type, name
+    `;
+
+    const user = result.rows[0];
+
+    if (user_type === 'startup' && category) {
+      await sql`
+        INSERT INTO startup_profiles (user_id, category, description) 
+        VALUES (${user.id}, ${category}, ${description})
+      `;
+    }
+
+    const token = jwt.sign(
+      { id: user.id, email: user.email, user_type: user.user_type },
+      JWT_SECRET,
+      { expiresIn: '7d' }
+    );
+
+    res.json({ token, user });
+  } catch (error) {
+    if (error.code === '23505') {
+      res.status(400).json({ error: 'Email already registered' });
+    } else {
+      console.error('Registration error:', error);
+      res.status(500).json({ error: 'Registration failed' });
+    }
+  }
+});
+
+app.post('/api/auth/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const result = await sql`
+      SELECT * FROM users WHERE email = ${email}
+    `;
+
+    if (result.rows.length === 0) {
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
+
+    const user = result.rows[0];
+    const validPassword = await bcrypt.compare(password, user.password);
+
+    if (!validPassword) {
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
+
+    const token = jwt.sign(
+      { id: user.id, email: user.email, user_type: user.user_type },
+      JWT_SECRET,
+      { expiresIn: '7d' }
+    );
+
+    res.json({
+      token,
+      user: {
+        id: user.id,
+        email: user.email,
+        user_type: user.user_type,
+        name: user.name,
+        organization: user.organization
+      }
+    });
+  } catch (error) {
+    console.error('Login error:', error);
+    res.status(500).json({ error: 'Login failed' });
+  }
+});
+
+app.get('/api/auth/me', authenticateToken, async (req, res) => {
+  try {
+    const result = await sql`
+      SELECT id, email, user_type, name, organization 
+      FROM users WHERE id = ${req.user.id}
+    `;
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error('Get user error:', error);
+    res.status(500).json({ error: 'Failed to get user' });
+  }
+});
+
+// ASSESSMENT ENDPOINTS
+app.post('/api/assessments', authenticateToken, checkRole('startup'), async (req, res) => {
+  try {
+    const { category, answers } = req.body;
+
+    const scores = calculateScores(answers);
+    const irlLevel = calculateIRLLevel(scores);
+    const recommendations = generateRecommendations(scores, irlLevel);
+
+    const result = await sql`
+      INSERT INTO assessments (startup_id, category, answers, scores, irl_level, recommendations) 
+      VALUES (${req.user.id}, ${category}, ${JSON.stringify(answers)}, ${JSON.stringify(scores)}, ${irlLevel}, ${JSON.stringify(recommendations)})
+      RETURNING *
+    `;
+
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error('Create assessment error:', error);
+    res.status(500).json({ error: 'Failed to create assessment' });
+  }
+});
+
+app.get('/api/assessments', authenticateToken, checkRole('startup'), async (req, res) => {
+  try {
+    const result = await sql`
+      SELECT * FROM assessments WHERE startup_id = ${req.user.id} ORDER BY created_at DESC
+    `;
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Get assessments error:', error);
+    res.status(500).json({ error: 'Failed to get assessments' });
+  }
+});
+
+// Helper functions
+function calculateScores(answers) {
+  const scores = {
+    business: 0,
+    technology: 0,
+    customer: 0,
+    operations: 0,
+    financial: 0
+  };
+
+  // Simple scoring - count answered questions
+  Object.keys(answers).forEach(key => {
+    const value = parseInt(answers[key]) || 0;
+    // Distribute across dimensions (simplified)
+    scores.business += value / 5;
+    scores.technology += value / 5;
+    scores.customer += value / 5;
+    scores.operations += value / 5;
+    scores.financial += value / 5;
+  });
+
+  // Normalize to 0-100
+  Object.keys(scores).forEach(key => {
+    scores[key] = Math.min(100, Math.round(scores[key] * 5));
+  });
+
+  return scores;
+}
+
+function calculateIRLLevel(scores) {
+  const avgScore = Object.values(scores).reduce((a, b) => a + b, 0) / Object.keys(scores).length;
+  return Math.min(9, Math.max(1, Math.ceil(avgScore / 11)));
+}
+
+function generateRecommendations(scores, irlLevel) {
+  return {
+    level: irlLevel,
+    title: `IRL Level ${irlLevel}`,
+    description: 'Continue building your startup readiness'
+  };
+}
+
+// Admin endpoints
+app.get('/api/admin/stats', authenticateToken, checkRole('admin'), async (req, res) => {
+  try {
+    const stats = await sql`
+      SELECT 
+        (SELECT COUNT(*) FROM users WHERE user_type = 'startup') as total_startups,
+        (SELECT COUNT(*) FROM users WHERE user_type = 'organization') as total_organizations,
+        (SELECT COUNT(*) FROM assessments) as total_assessments
+    `;
+    res.json(stats.rows[0]);
+  } catch (error) {
+    console.error('Get stats error:', error);
+    res.status(500).json({ error: 'Failed to get stats' });
+  }
+});
+
+module.exports = app;
