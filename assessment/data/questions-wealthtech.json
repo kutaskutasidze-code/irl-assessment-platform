@@ -1,0 +1,215 @@
+{
+  "category": "wealthtech",
+  "industryQuestions": [
+    {
+      "id": "wth_001",
+      "dimension": "financial",
+      "text": "What is your Assets Under Management (AUM)?",
+      "help": "Total value of client assets managed",
+      "type": "multiple",
+      "options": [
+        {"text": "Below $1M", "score": 0},
+        {"text": "$1M-$10M", "score": 2},
+        {"text": "$10M-$100M", "score": 3.5},
+        {"text": "$100M-$1B", "score": 4.5},
+        {"text": "Above $1B", "score": 5}
+      ]
+    },
+    {
+      "id": "wth_002",
+      "dimension": "customer",
+      "text": "What is your average revenue per client?",
+      "help": "Annual revenue / number of clients",
+      "type": "multiple",
+      "options": [
+        {"text": "Below $500", "score": 1},
+        {"text": "$500-$2,000", "score": 2.5},
+        {"text": "$2,000-$5,000", "score": 3.5},
+        {"text": "$5,000-$10,000", "score": 4.5},
+        {"text": "Above $10,000", "score": 5}
+      ]
+    },
+    {
+      "id": "wth_003",
+      "dimension": "business",
+      "text": "How many active clients do you have?",
+      "help": "Total number of clients with active accounts",
+      "type": "multiple",
+      "options": [
+        {"text": "None", "score": 0},
+        {"text": "1-100", "score": 2},
+        {"text": "100-1,000", "score": 3.5},
+        {"text": "1,000-10,000", "score": 4.5},
+        {"text": "10,000+", "score": 5}
+      ]
+    },
+    {
+      "id": "wth_004",
+      "dimension": "technology",
+      "text": "Do you offer robo-advisory services?",
+      "help": "Automated portfolio management",
+      "type": "multiple",
+      "options": [
+        {"text": "No", "score": 0},
+        {"text": "Planning", "score": 2},
+        {"text": "Beta testing", "score": 3.5},
+        {"text": "Launched", "score": 4.5},
+        {"text": "Advanced AI", "score": 5}
+      ]
+    },
+    {
+      "id": "wth_005",
+      "dimension": "operations",
+      "text": "What is your client onboarding time?",
+      "help": "Days from signup to first trade",
+      "type": "multiple",
+      "options": [
+        {"text": "Not tracking", "score": 0},
+        {"text": "7+ days", "score": 2},
+        {"text": "3-7 days", "score": 3.5},
+        {"text": "1-3 days", "score": 4.5},
+        {"text": "Same day", "score": 5}
+      ]
+    },
+    {
+      "id": "wth_006",
+      "dimension": "customer",
+      "text": "What is your client retention rate?",
+      "help": "% of clients retained annually",
+      "type": "multiple",
+      "options": [
+        {"text": "Below 70%", "score": 1},
+        {"text": "70-80%", "score": 2.5},
+        {"text": "80-90%", "score": 3.5},
+        {"text": "90-95%", "score": 4.5},
+        {"text": "Above 95%", "score": 5}
+      ]
+    },
+    {
+      "id": "wth_007",
+      "dimension": "financial",
+      "text": "What is your AUM growth rate?",
+      "help": "YoY AUM growth percentage",
+      "type": "multiple",
+      "options": [
+        {"text": "Negative", "score": 0},
+        {"text": "0-20%", "score": 2},
+        {"text": "20-50%", "score": 3.5},
+        {"text": "50-100%", "score": 4.5},
+        {"text": "100%+", "score": 5}
+      ]
+    },
+    {
+      "id": "wth_008",
+      "dimension": "technology",
+      "text": "Do you offer tax-loss harvesting?",
+      "help": "Automated tax optimization",
+      "type": "multiple",
+      "options": [
+        {"text": "No", "score": 0},
+        {"text": "Planning", "score": 2},
+        {"text": "Manual process", "score": 3.5},
+        {"text": "Semi-automated", "score": 4.5},
+        {"text": "Fully automated", "score": 5}
+      ]
+    },
+    {
+      "id": "wth_009",
+      "dimension": "operations",
+      "text": "Are you a registered investment advisor (RIA)?",
+      "help": "SEC or state registration",
+      "type": "multiple",
+      "options": [
+        {"text": "Not registered", "score": 0},
+        {"text": "Application pending", "score": 2},
+        {"text": "State registered", "score": 3.5},
+        {"text": "SEC registered", "score": 4.5},
+        {"text": "Multi-jurisdiction", "score": 5}
+      ]
+    },
+    {
+      "id": "wth_010",
+      "dimension": "business",
+      "text": "What is your management fee structure?",
+      "help": "% of AUM charged annually",
+      "type": "multiple",
+      "options": [
+        {"text": "Not determined", "score": 0},
+        {"text": "1.0%+", "score": 2},
+        {"text": "0.5-1.0%", "score": 3.5},
+        {"text": "0.25-0.5%", "score": 4.5},
+        {"text": "Below 0.25%", "score": 5}
+      ]
+    },
+    {
+      "id": "wth_011",
+      "dimension": "technology",
+      "text": "Do you offer fractional share investing?",
+      "help": "Allow investments < 1 full share",
+      "type": "multiple",
+      "options": [
+        {"text": "No", "score": 0},
+        {"text": "Planning", "score": 2},
+        {"text": "Limited assets", "score": 3.5},
+        {"text": "Most assets", "score": 4.5},
+        {"text": "All assets", "score": 5}
+      ]
+    },
+    {
+      "id": "wth_012",
+      "dimension": "customer",
+      "text": "What is your average account size?",
+      "help": "Average AUM per client",
+      "type": "multiple",
+      "options": [
+        {"text": "Below $10K", "score": 1},
+        {"text": "$10K-$50K", "score": 2.5},
+        {"text": "$50K-$250K", "score": 3.5},
+        {"text": "$250K-$1M", "score": 4.5},
+        {"text": "Above $1M", "score": 5}
+      ]
+    },
+    {
+      "id": "wth_013",
+      "dimension": "financial",
+      "text": "What is your net revenue retention (NRR)?",
+      "help": "Revenue retained + expansion from existing clients",
+      "type": "multiple",
+      "options": [
+        {"text": "Not tracking", "score": 0},
+        {"text": "Below 90%", "score": 2},
+        {"text": "90-100%", "score": 3.5},
+        {"text": "100-120%", "score": 4.5},
+        {"text": "Above 120%", "score": 5}
+      ]
+    },
+    {
+      "id": "wth_014",
+      "dimension": "operations",
+      "text": "Do you offer financial planning tools?",
+      "help": "Goal-based planning, retirement calculators",
+      "type": "multiple",
+      "options": [
+        {"text": "No", "score": 0},
+        {"text": "Basic calculators", "score": 2},
+        {"text": "Goal tracking", "score": 3.5},
+        {"text": "Comprehensive planning", "score": 4.5},
+        {"text": "AI-powered advice", "score": 5}
+      ]
+    },
+    {
+      "id": "wth_015",
+      "dimension": "business",
+      "text": "What account types do you support?",
+      "help": "Taxable, IRA, 401k, etc.",
+      "type": "multiple",
+      "options": [
+        {"text": "1 type", "score": 1},
+        {"text": "2-3 types", "score": 2.5},
+        {"text": "4-5 types", "score": 3.5},
+        {"text": "6-8 types", "score": 4.5},
+        {"text": "All major types", "score": 5}
+      ]
+    }
+  ]
+}

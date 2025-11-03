@@ -2,213 +2,213 @@
   "category": "insurtech",
   "industryQuestions": [
     {
-      "id": "insurtech_001",
+      "id": "ins_001",
       "dimension": "financial",
-      "text": "What is your Combined Ratio (Loss Ratio + Expense Ratio)?",
-      "help": "Combined Ratio is the sum of claims paid and expenses divided by premiums. Below 100% indicates underwriting profit. Industry average is 96-100%.",
+      "text": "What is your loss ratio?",
+      "help": "Claims paid / premiums earned. Under 60% is excellent",
       "type": "multiple",
       "options": [
-        {"text": "Not yet calculated", "score": 0},
-        {"text": "Above 110% (unprofitable)", "score": 1},
+        {"text": "Not tracking", "score": 0},
+        {"text": "Above 80%", "score": 1},
+        {"text": "60-80%", "score": 3},
+        {"text": "40-60%", "score": 4.5},
+        {"text": "Below 40%", "score": 5}
+      ]
+    },
+    {
+      "id": "ins_002",
+      "dimension": "financial",
+      "text": "What is your combined ratio?",
+      "help": "Loss ratio + expense ratio. Under 100% = profitable",
+      "type": "multiple",
+      "options": [
+        {"text": "Not tracking", "score": 0},
+        {"text": "Above 110%", "score": 1},
         {"text": "100-110%", "score": 2.5},
-        {"text": "95-100% (near breakeven)", "score": 4},
-        {"text": "Below 95% (profitable)", "score": 5}
+        {"text": "90-100%", "score": 4},
+        {"text": "Below 90%", "score": 5}
       ]
     },
     {
-      "id": "insurtech_002",
-      "dimension": "financial",
-      "text": "What is your Loss Ratio?",
-      "help": "Loss Ratio = Claims Paid / Premiums Earned. Industry average is 55-70%. Lower is better.",
+      "id": "ins_003",
+      "dimension": "customer",
+      "text": "What is your policy renewal rate?",
+      "help": "% of policies renewed at term end",
+      "type": "multiple",
+      "options": [
+        {"text": "Below 60%", "score": 1},
+        {"text": "60-75%", "score": 2.5},
+        {"text": "75-85%", "score": 3.5},
+        {"text": "85-95%", "score": 4.5},
+        {"text": "Above 95%", "score": 5}
+      ]
+    },
+    {
+      "id": "ins_004",
+      "dimension": "operations",
+      "text": "What is your claims settlement time?",
+      "help": "From FNOL to claim paid (in days)",
       "type": "multiple",
       "options": [
         {"text": "Not tracking", "score": 0},
-        {"text": "Above 80%", "score": 1.5},
-        {"text": "70-80%", "score": 3},
-        {"text": "55-70% (industry standard)", "score": 4.5},
-        {"text": "Below 55%", "score": 5}
+        {"text": "30+ days", "score": 1.5},
+        {"text": "15-30 days", "score": 3},
+        {"text": "7-15 days", "score": 4},
+        {"text": "Under 7 days", "score": 5}
       ]
     },
     {
-      "id": "insurtech_003",
-      "dimension": "operations",
-      "text": "What is your average Underwriting Cycle Time?",
-      "help": "Time from application receipt to policy issuance. AI-driven insurtech targets <24 hours. Traditional: 3-7 days.",
-      "type": "multiple",
-      "options": [
-        {"text": "Over 7 days", "score": 1},
-        {"text": "3-7 days", "score": 2.5},
-        {"text": "1-3 days", "score": 3.5},
-        {"text": "Under 24 hours", "score": 4.5},
-        {"text": "Real-time (minutes)", "score": 5}
-      ]
-    },
-    {
-      "id": "insurtech_004",
-      "dimension": "operations",
-      "text": "What is your Claims Settlement Time?",
-      "help": "Average days from claim filing (FNOL) to settlement. Industry average: 30-45 days. Leading insurtech: <10 days.",
-      "type": "multiple",
-      "options": [
-        {"text": "Over 45 days", "score": 1},
-        {"text": "30-45 days", "score": 2.5},
-        {"text": "15-30 days", "score": 3.5},
-        {"text": "10-15 days", "score": 4.5},
-        {"text": "Under 10 days", "score": 5}
-      ]
-    },
-    {
-      "id": "insurtech_005",
-      "dimension": "technology",
-      "text": "What level of AI/ML automation do you have in underwriting?",
-      "help": "AI-driven underwriting can reduce processing time by 80% and improve loss ratios by 1-3%.",
-      "type": "multiple",
-      "options": [
-        {"text": "No automation", "score": 0},
-        {"text": "Basic rule-based automation", "score": 2},
-        {"text": "AI-assisted risk scoring", "score": 3.5},
-        {"text": "Full AI underwriting with human oversight", "score": 4.5},
-        {"text": "End-to-end AI with real-time pricing", "score": 5}
-      ]
-    },
-    {
-      "id": "insurtech_006",
-      "dimension": "technology",
-      "text": "Do you use IoT/Telematics data for risk assessment?",
-      "help": "Real-time data from wearables, smart homes, or vehicle telematics can reduce claim losses by 20%.",
-      "type": "multiple",
-      "options": [
-        {"text": "No IoT integration", "score": 0},
-        {"text": "Pilot program only", "score": 2},
-        {"text": "IoT data for select products", "score": 3.5},
-        {"text": "Comprehensive IoT integration", "score": 4.5},
-        {"text": "AI-powered IoT with predictive analytics", "score": 5}
-      ]
-    },
-    {
-      "id": "insurtech_007",
-      "dimension": "operations",
-      "text": "What is your Fraud Detection Rate?",
-      "help": "Insurance fraud costs $40B annually in the US. AI-driven fraud detection reduces fraudulent claims by 30%.",
-      "type": "multiple",
-      "options": [
-        {"text": "No fraud detection system", "score": 0},
-        {"text": "Manual review only", "score": 1.5},
-        {"text": "Rule-based fraud flagging", "score": 3},
-        {"text": "AI-powered fraud detection", "score": 4.5},
-        {"text": "ML with predictive fraud scoring", "score": 5}
-      ]
-    },
-    {
-      "id": "insurtech_008",
-      "dimension": "customer",
-      "text": "What is your Quote-to-Bind Conversion Rate?",
-      "help": "Percentage of quotes that convert to policies. Industry average: 15-25%. Top performers: 30%+.",
-      "type": "multiple",
-      "options": [
-        {"text": "Not tracking", "score": 0},
-        {"text": "Below 10%", "score": 1.5},
-        {"text": "10-20%", "score": 3},
-        {"text": "20-30%", "score": 4.5},
-        {"text": "Above 30%", "score": 5}
-      ]
-    },
-    {
-      "id": "insurtech_009",
-      "dimension": "customer",
-      "text": "What is your Customer Acquisition Cost (CAC)?",
-      "help": "Cost to acquire one new policyholder. Insurtech targets $50-$200 vs traditional $300-$1000.",
-      "type": "multiple",
-      "options": [
-        {"text": "Not tracking CAC", "score": 0},
-        {"text": "Above $500", "score": 2},
-        {"text": "$300-$500", "score": 3},
-        {"text": "$150-$300", "score": 4.5},
-        {"text": "Below $150", "score": 5}
-      ]
-    },
-    {
-      "id": "insurtech_010",
-      "dimension": "financial",
-      "text": "What is your Expense Ratio?",
-      "help": "Operational expenses / Premiums Earned. Industry average: 25-30%. Lower indicates efficiency.",
-      "type": "multiple",
-      "options": [
-        {"text": "Not calculated", "score": 0},
-        {"text": "Above 35%", "score": 1.5},
-        {"text": "30-35%", "score": 3},
-        {"text": "25-30% (industry standard)", "score": 4.5},
-        {"text": "Below 25%", "score": 5}
-      ]
-    },
-    {
-      "id": "insurtech_011",
-      "dimension": "operations",
-      "text": "Do you have Straight-Through Processing (STP) for claims?",
-      "help": "STP automates simple claims without human intervention, reducing costs by 40-60%.",
-      "type": "multiple",
-      "options": [
-        {"text": "No automation", "score": 0},
-        {"text": "Manual review for all claims", "score": 1.5},
-        {"text": "Partial automation (<25% STP)", "score": 3},
-        {"text": "STP for simple claims (25-50%)", "score": 4.5},
-        {"text": "Advanced STP (50%+ claims)", "score": 5}
-      ]
-    },
-    {
-      "id": "insurtech_012",
-      "dimension": "customer",
-      "text": "What is your Policy Renewal Rate?",
-      "help": "Percentage of policies renewed. Industry average: 75-85%. Best-in-class: 90%+.",
-      "type": "multiple",
-      "options": [
-        {"text": "Not tracking", "score": 0},
-        {"text": "Below 70%", "score": 1.5},
-        {"text": "70-80%", "score": 3},
-        {"text": "80-90%", "score": 4.5},
-        {"text": "Above 90%", "score": 5}
-      ]
-    },
-    {
-      "id": "insurtech_013",
-      "dimension": "technology",
-      "text": "Do you have an API-first platform?",
-      "help": "API-first architecture enables partnerships, embedded insurance, and ecosystem growth.",
-      "type": "multiple",
-      "options": [
-        {"text": "No APIs", "score": 0},
-        {"text": "Internal APIs only", "score": 2},
-        {"text": "Partner-facing APIs", "score": 3.5},
-        {"text": "Public API with documentation", "score": 4.5},
-        {"text": "API marketplace + webhooks", "score": 5}
-      ]
-    },
-    {
-      "id": "insurtech_014",
+      "id": "ins_005",
       "dimension": "business",
-      "text": "Have you achieved regulatory compliance (state licenses, data privacy)?",
-      "help": "Insurance is heavily regulated. Compliance with state regulations and GDPR/CCPA is critical.",
+      "text": "How many policies have you written?",
+      "help": "Total active policies",
       "type": "multiple",
       "options": [
-        {"text": "Not yet compliant", "score": 0},
-        {"text": "1-5 state licenses", "score": 2},
-        {"text": "5-20 state licenses", "score": 3.5},
-        {"text": "Multi-state compliance + data privacy", "score": 4.5},
-        {"text": "National compliance + international", "score": 5}
+        {"text": "None", "score": 0},
+        {"text": "1-1,000", "score": 2},
+        {"text": "1,000-10,000", "score": 3.5},
+        {"text": "10,000-100,000", "score": 4.5},
+        {"text": "100,000+", "score": 5}
       ]
     },
     {
-      "id": "insurtech_015",
-      "dimension": "business",
-      "text": "What is your Retention Ratio (premiums retained vs reinsured)?",
-      "help": "Higher retention = more risk but higher profit potential. Typical: 60-80% retention.",
+      "id": "ins_006",
+      "dimension": "technology",
+      "text": "Do you have AI-powered claims processing?",
+      "help": "Automated claims adjudication",
       "type": "multiple",
       "options": [
-        {"text": "Fully reinsured (0% retention)", "score": 1},
-        {"text": "20-40% retention", "score": 2.5},
-        {"text": "40-60% retention", "score": 3.5},
-        {"text": "60-80% retention", "score": 4.5},
-        {"text": "80%+ retention", "score": 5}
+        {"text": "No", "score": 0},
+        {"text": "Planning", "score": 2},
+        {"text": "Partial", "score": 3.5},
+        {"text": "Yes", "score": 4.5},
+        {"text": "Advanced", "score": 5}
+      ]
+    },
+    {
+      "id": "ins_007",
+      "dimension": "operations",
+      "text": "What is your fraud detection rate?",
+      "help": "% of fraudulent claims detected",
+      "type": "multiple",
+      "options": [
+        {"text": "Not tracking", "score": 0},
+        {"text": "Below 70%", "score": 2},
+        {"text": "70-85%", "score": 3.5},
+        {"text": "85-95%", "score": 4.5},
+        {"text": "Above 95%", "score": 5}
+      ]
+    },
+    {
+      "id": "ins_008",
+      "dimension": "business",
+      "text": "What insurance lines do you offer?",
+      "help": "Product diversification",
+      "type": "multiple",
+      "options": [
+        {"text": "None", "score": 0},
+        {"text": "1 line", "score": 2},
+        {"text": "2-3 lines", "score": 3.5},
+        {"text": "4-5 lines", "score": 4.5},
+        {"text": "6+ lines", "score": 5}
+      ]
+    },
+    {
+      "id": "ins_009",
+      "dimension": "financial",
+      "text": "What is your premium growth rate?",
+      "help": "YoY premium revenue growth",
+      "type": "multiple",
+      "options": [
+        {"text": "Negative", "score": 0},
+        {"text": "0-20%", "score": 2},
+        {"text": "20-50%", "score": 3.5},
+        {"text": "50-100%", "score": 4.5},
+        {"text": "100%+", "score": 5}
+      ]
+    },
+    {
+      "id": "ins_010",
+      "dimension": "customer",
+      "text": "What is your Net Promoter Score (NPS)?",
+      "help": "Customer satisfaction metric",
+      "type": "multiple",
+      "options": [
+        {"text": "Not tracking", "score": 0},
+        {"text": "Below 0", "score": 1},
+        {"text": "0-30", "score": 2.5},
+        {"text": "30-50", "score": 4},
+        {"text": "Above 50", "score": 5}
+      ]
+    },
+    {
+      "id": "ins_011",
+      "dimension": "technology",
+      "text": "Do you have real-time underwriting?",
+      "help": "Instant policy issuance",
+      "type": "multiple",
+      "options": [
+        {"text": "No", "score": 0},
+        {"text": "Planning", "score": 2},
+        {"text": "Partial", "score": 3.5},
+        {"text": "Yes", "score": 4.5},
+        {"text": "Advanced", "score": 5}
+      ]
+    },
+    {
+      "id": "ins_012",
+      "dimension": "operations",
+      "text": "What is your regulatory compliance score?",
+      "help": "Compliance with insurance regulations",
+      "type": "multiple",
+      "options": [
+        {"text": "Not compliant", "score": 0},
+        {"text": "Partially compliant", "score": 2},
+        {"text": "Mostly compliant", "score": 3.5},
+        {"text": "Fully compliant", "score": 4.5},
+        {"text": "Exceeds requirements", "score": 5}
+      ]
+    },
+    {
+      "id": "ins_013",
+      "dimension": "customer",
+      "text": "What is your customer acquisition cost (CAC)?",
+      "help": "Cost to acquire one policyholder",
+      "type": "multiple",
+      "options": [
+        {"text": "Not tracking", "score": 0},
+        {"text": "$500+", "score": 2},
+        {"text": "$250-$500", "score": 3.5},
+        {"text": "$100-$250", "score": 4.5},
+        {"text": "Below $100", "score": 5}
+      ]
+    },
+    {
+      "id": "ins_014",
+      "dimension": "business",
+      "text": "Do you have reinsurance partnerships?",
+      "help": "Risk transfer agreements",
+      "type": "multiple",
+      "options": [
+        {"text": "No", "score": 0},
+        {"text": "Negotiating", "score": 2},
+        {"text": "1 partner", "score": 3.5},
+        {"text": "2-3 partners", "score": 4.5},
+        {"text": "4+ partners", "score": 5}
+      ]
+    },
+    {
+      "id": "ins_015",
+      "dimension": "technology",
+      "text": "Do you use IoT/telematics for risk assessment?",
+      "help": "Connected devices for pricing",
+      "type": "multiple",
+      "options": [
+        {"text": "No", "score": 0},
+        {"text": "Research phase", "score": 2},
+        {"text": "Pilot program", "score": 3.5},
+        {"text": "Rolled out", "score": 4.5},
+        {"text": "Industry leader", "score": 5}
       ]
     }
   ]
