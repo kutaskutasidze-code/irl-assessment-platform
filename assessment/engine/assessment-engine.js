@@ -36,13 +36,27 @@ class AssessmentEngine {
 
   async loadQuestions() {
     try {
-      const response = await fetch('../data/questions-universal.json');
+      // Load industry-specific questions based on selected category
+      const categoryId = this.currentAssessment.categoryId;
+      
+      if (!categoryId) {
+        throw new Error('No category selected. Please select a category first.');
+      }
+
+      const response = await fetch(`../data/questions-${categoryId}.json`);
+      
+      if (!response.ok) {
+        throw new Error(`Failed to load questions for ${categoryId}`);
+      }
+      
       const data = await response.json();
-      this.questions = data.universalQuestions;
+      this.questions = data.industryQuestions;
+      
+      console.log(`Loaded ${this.questions.length} industry-specific questions for ${categoryId}`);
       return this.questions;
     } catch (error) {
       console.error('Error loading questions:', error);
-      return [];
+      throw error;
     }
   }
 
