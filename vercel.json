@@ -1,29 +1,41 @@
 {
   "version": 2,
-  "framework": null,
-  "buildCommand": "npm install",
-  "installCommand": "npm install",
-  "devCommand": "node server.js",
-  "env": {
-    "NODE_ENV": "production"
-  },
-  "build": {
-    "env": {
-      "NODE_ENV": "production"
+  "builds": [
+    {
+      "src": "api/*.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "public"
+      }
     }
-  },
+  ],
   "routes": [
     {
       "src": "/api/(.*)",
       "dest": "/api/index.js"
     },
     {
-      "src": "/(.*\\.(html|css|js|json|png|jpg|jpeg|gif|svg|ico))",
+      "src": "/(.*\\.(html|css|js|json|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot))",
       "dest": "/$1"
+    },
+    {
+      "src": "/assessment/(.*)",
+      "dest": "/assessment/$1"
+    },
+    {
+      "src": "/landing/(.*)",
+      "dest": "/landing/$1"
     },
     {
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ]
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
 }
