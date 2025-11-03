@@ -2,7 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { Pool } = require('pg');
+// Database - supports both PostgreSQL and SQLite
+const useSQLite = process.env.DATABASE_URL && process.env.DATABASE_URL.startsWith('sqlite');
+const pool = useSQLite ? null : require('pg').Pool;
 require('dotenv').config();
 
 const app = express();
@@ -87,7 +89,7 @@ async function initializeDatabase() {
     await client.query(`
       CREATE TABLE IF NOT EXISTS action_plans (
         id SERIAL PRIMARY KEY,
-        university_id INTEGER REFERENCES users(id),
+        organization_id INTEGER REFERENCES users(id),
         startup_id INTEGER REFERENCES users(id),
         title VARCHAR(255),
         description TEXT,
@@ -100,10 +102,10 @@ async function initializeDatabase() {
     await client.query(`
       CREATE TABLE IF NOT EXISTS curation_relationships (
         id SERIAL PRIMARY KEY,
-        university_id INTEGER REFERENCES users(id),
+        organization_id INTEGER REFERENCES users(id),
         startup_id INTEGER REFERENCES users(id),
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        UNIQUE(university_id, startup_id)
+        UNIQUE(organization_id, startup_id)
       )
     `);
 
@@ -166,7 +168,7 @@ app.post('/api/auth/register', async (req, res) => {
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
-    if (!['startup', 'university', 'admin'].includes(user_type)) {
+    if (!['startup', 'organization', 'admin'].includes(user_type)) {
       return res.status(400).json({ error: 'Invalid user type' });
     }
 
@@ -329,13 +331,13 @@ app.get('/api/assessments/:id', authenticateToken, async (req, res) => {
 });
 
 // ACTION PLAN ENDPOINTS
-app.post('/api/action-plans', authenticateToken, checkRole('university'), async (req, res) => {
+app.post('/api/action-plans', authenticateToken, checkRole('organization'), async (req, res) => {
   try {
     const { startup_id, title, description, status } = req.body;
 
     // Verify curation relationship
     const relationship = await pool.query(
-      'SELECT * FROM curation_relationships WHERE university_id = $1 AND startup_id = $2',
+      'SELECT * FROM curation_relationships WHERE organization_id = $1 AND startup_id = $2',
       [req.user.id, startup_id]
     );
 
@@ -344,7 +346,7 @@ app.post('/api/action-plans', authenticateToken, checkRole('university'), async 
     }
 
     const result = await pool.query(
-      'INSERT INTO action_plans (university_id, startup_id, title, description, status) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+      'INSERT INTO action_plans (organization_id, startup_id, title, description, status) VALUES ($1, $2, $3, $4, $5) RETURNING *',
       [req.user.id, startup_id, title, description, status || 'draft']
     );
 
@@ -358,9 +360,9 @@ app.post('/api/action-plans', authenticateToken, checkRole('university'), async 
 app.get('/api/action-plans/startup', authenticateToken, checkRole('startup'), async (req, res) => {
   try {
     const result = await pool.query(
-      `SELECT ap.*, u.name as university_name, u.organization 
+      `SELECT ap.*, u.name as organization_name, u.organization 
        FROM action_plans ap 
-       JOIN users u ON ap.university_id = u.id 
+       JOIN users u ON ap.organization_id = u.id 
        WHERE ap.startup_id = $1 AND ap.status = 'published'
        ORDER BY ap.created_at DESC`,
       [req.user.id]
@@ -373,14 +375,14 @@ app.get('/api/action-plans/startup', authenticateToken, checkRole('startup'), as
 });
 
 // UNIVERSITY ENDPOINTS
-app.get('/api/university/startups', authenticateToken, checkRole('university'), async (req, res) => {
+app.get('/api/university/startups', authenticateToken, checkRole('organization'), async (req, res) => {
   try {
     const result = await pool.query(
       `SELECT u.id, u.email, u.name, sp.category, sp.description, cr.created_at as curated_at
        FROM curation_relationships cr
        JOIN users u ON cr.startup_id = u.id
        LEFT JOIN startup_profiles sp ON u.id = sp.user_id
-       WHERE cr.university_id = $1
+       WHERE cr.organization_id = $1
        ORDER BY cr.created_at DESC`,
       [req.user.id]
     );
@@ -391,11 +393,11 @@ app.get('/api/university/startups', authenticateToken, checkRole('university'), 
   }
 });
 
-app.get('/api/university/startups/:id', authenticateToken, checkRole('university'), async (req, res) => {
+app.get('/api/university/startups/:id', authenticateToken, checkRole('organization'), async (req, res) => {
   try {
     // Verify curation relationship
     const relationship = await pool.query(
-      'SELECT * FROM curation_relationships WHERE university_id = $1 AND startup_id = $2',
+      'SELECT * FROM curation_relationships WHERE organization_id = $1 AND startup_id = $2',
       [req.user.id, req.params.id]
     );
 
@@ -420,7 +422,7 @@ app.get('/api/university/startups/:id', authenticateToken, checkRole('university
 
     // Get action plans
     const actionPlans = await pool.query(
-      'SELECT * FROM action_plans WHERE startup_id = $1 AND university_id = $2 ORDER BY created_at DESC',
+      'SELECT * FROM action_plans WHERE startup_id = $1 AND organization_id = $2 ORDER BY created_at DESC',
       [req.params.id, req.user.id]
     );
 
@@ -435,7 +437,7 @@ app.get('/api/university/startups/:id', authenticateToken, checkRole('university
   }
 });
 
-app.post('/api/university/curate', authenticateToken, checkRole('university'), async (req, res) => {
+app.post('/api/university/curate', authenticateToken, checkRole('organization'), async (req, res) => {
   try {
     const { startup_email } = req.body;
 
@@ -450,7 +452,7 @@ app.post('/api/university/curate', authenticateToken, checkRole('university'), a
     }
 
     const result = await pool.query(
-      'INSERT INTO curation_relationships (university_id, startup_id) VALUES ($1, $2) RETURNING *',
+      'INSERT INTO curation_relationships (organization_id, startup_id) VALUES ($1, $2) RETURNING *',
       [req.user.id, startup.rows[0].id]
     );
 
@@ -497,10 +499,10 @@ app.get('/api/admin/action-plans', authenticateToken, checkRole('admin'), async 
   try {
     const result = await pool.query(
       `SELECT ap.*, 
-       u1.name as university_name, u1.organization,
+       u1.name as organization_name, u1.organization,
        u2.name as startup_name, u2.email as startup_email
        FROM action_plans ap
-       JOIN users u1 ON ap.university_id = u1.id
+       JOIN users u1 ON ap.organization_id = u1.id
        JOIN users u2 ON ap.startup_id = u2.id
        ORDER BY ap.created_at DESC`
     );
@@ -516,7 +518,7 @@ app.get('/api/admin/stats', authenticateToken, checkRole('admin'), async (req, r
     const stats = await pool.query(`
       SELECT 
         (SELECT COUNT(*) FROM users WHERE user_type = 'startup') as total_startups,
-        (SELECT COUNT(*) FROM users WHERE user_type = 'university') as total_universities,
+        (SELECT COUNT(*) FROM users WHERE user_type = 'organization') as total_universities,
         (SELECT COUNT(*) FROM assessments) as total_assessments,
         (SELECT COUNT(*) FROM action_plans) as total_action_plans,
         (SELECT COUNT(*) FROM curation_relationships) as total_curations
