@@ -386,7 +386,10 @@
                 <div class="card">
                     <h2 class="card-title">Start Your IRL Assessment</h2>
                     <p class="card-description">Complete the comprehensive assessment to determine your Innovation Readiness Level and receive personalized recommendations.</p>
-                    <button class="btn btn-primary" onclick="startAssessment()">Begin Assessment</button>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <button class="btn btn-primary" onclick="startAssessment()">Begin Assessment</button>
+                        <button class="btn btn-secondary" id="viewResultsBtn" onclick="viewLastResults()" style="display: none;">View Last Results</button>
+                    </div>
                 </div>
 
                 <div id="resultsSection" class="card hidden">
@@ -890,6 +893,10 @@
                 // Show results
                 document.getElementById('resultsSection').classList.remove('hidden');
                 displayResults(latest);
+                
+                // Show View Results button
+                const viewResultsBtn = document.getElementById('viewResultsBtn');
+                if (viewResultsBtn) viewResultsBtn.style.display = 'inline-block';
             }
             
             document.getElementById('actionPlanCount').textContent = userActionPlans.length;
@@ -1055,6 +1062,24 @@
         }
 
         function displayResults(assessment) {
+            const resultsContent = document.getElementById('resultsContent');
+            resultsContent.innerHTML = `
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="font-size: 4rem; font-weight: 700; color: #1a1a1a;">
+                        IRL ${assessment.irlLevel || assessment.level}
+                    </div>
+                    <h3 style="margin-top: 1rem;">${getIRLTitle(assessment.irlLevel || assessment.level)}</h3>
+                    <p style="color: #666; margin-top: 0.5rem;">${getIRLDescription(assessment.irlLevel || assessment.level)}</p>
+                    <button class="btn btn-primary" onclick="viewLastResults()" style="margin-top: 2rem;">View Full Results</button>
+                </div>
+            `;
+        }
+
+        function viewLastResults() {
+            window.location.href = 'assessment/ui/results.html';
+        }
+
+        function displayResultsOld(assessment) {
             const resultsContent = document.getElementById('resultsContent');
             resultsContent.innerHTML = `
                 <div style="text-align: center; padding: 2rem;">
