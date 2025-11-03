@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assessment Results - IRL Platform</title>
+    <link rel="stylesheet" href="css/results-enhanced.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * {
@@ -257,6 +258,8 @@
     </div>
 
     <script src="../engine/assessment-engine.js"></script>
+    <script src="js/results-enhanced.js"></script>
+    <script src="js/display-results-enhanced.js"></script>
     <script>
         const assessmentEngine = new AssessmentEngine();
         let chartInstance = null;
@@ -285,7 +288,7 @@
             displayResults();
         }
 
-        function displayResults() {
+        function displayResultsOld() {
             const summary = assessmentEngine.getAssessmentSummary();
             const container = document.getElementById('resultsContent');
 
