@@ -3,437 +3,212 @@
   "industryQuestions": [
     {
       "id": "clean_001",
-      "dimension": "operations",
-      "text": "What is your carbon reduction impact?",
-      "help": "Tons of CO2 prevented",
+      "dimension": "business",
+      "text": "What is your primary cleantech focus?",
+      "help": "Solar, wind, carbon, water, waste, etc.",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
+        {"text": "Not defined", "score": 0},
+        {"text": "1 area", "score": 2},
+        {"text": "2 areas", "score": 3.5},
+        {"text": "3 areas", "score": 4.5},
+        {"text": "Platform approach", "score": 5}
       ]
     },
     {
       "id": "clean_002",
       "dimension": "financial",
-      "text": "What is your energy cost savings?",
-      "help": "Customer savings delivered",
+      "text": "Have you secured green financing?",
+      "help": "Green bonds, climate funds, carbon credits",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
+        {"text": "No", "score": 0},
+        {"text": "Applied", "score": 2},
+        {"text": "$100K-$1M", "score": 3.5},
+        {"text": "$1M-$10M", "score": 4.5},
+        {"text": "$10M+", "score": 5}
       ]
     },
     {
       "id": "clean_003",
-      "dimension": "technology",
-      "text": "What is your energy efficiency gain?",
-      "help": "% improvement in efficiency",
+      "dimension": "operations",
+      "text": "What CO2 reduction do you achieve?",
+      "help": "Tons of CO2 equivalent reduced annually",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
+        {"text": "Not measured", "score": 0},
+        {"text": "1-100 tons", "score": 2},
+        {"text": "100-1,000 tons", "score": 3.5},
+        {"text": "1,000-10,000 tons", "score": 4.5},
+        {"text": "10,000+ tons", "score": 5}
       ]
     },
     {
       "id": "clean_004",
-      "dimension": "business",
-      "text": "How many installations/deployments?",
-      "help": "Customer adoption scale",
+      "dimension": "technology",
+      "text": "Do you have patented cleantech IP?",
+      "help": "Patents on green technology",
       "type": "multiple",
       "options": [
-        {
-          "text": "None",
-          "score": 0
-        },
-        {
-          "text": "1-10",
-          "score": 2
-        },
-        {
-          "text": "11-50",
-          "score": 3.5
-        },
-        {
-          "text": "51-200",
-          "score": 4.5
-        },
-        {
-          "text": "200+",
-          "score": 5
-        }
+        {"text": "No", "score": 0},
+        {"text": "Provisional filed", "score": 2},
+        {"text": "Utility filed", "score": 3.5},
+        {"text": "1-2 granted", "score": 4.5},
+        {"text": "3+ granted", "score": 5}
       ]
     },
     {
       "id": "clean_005",
-      "dimension": "operations",
-      "text": "Do you have environmental certifications?",
-      "help": "LEED, Energy Star, B-Corp",
+      "dimension": "customer",
+      "text": "How many installations/deployments?",
+      "help": "Active cleantech installations",
       "type": "multiple",
       "options": [
-        {
-          "text": "No",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "Partial",
-          "score": 3.5
-        },
-        {
-          "text": "Yes",
-          "score": 4.5
-        },
-        {
-          "text": "Advanced",
-          "score": 5
-        }
+        {"text": "None", "score": 0},
+        {"text": "1-10", "score": 2},
+        {"text": "11-100", "score": 3.5},
+        {"text": "101-1,000", "score": 4.5},
+        {"text": "1,000+", "score": 5}
       ]
     },
     {
       "id": "clean_006",
       "dimension": "financial",
-      "text": "What is your payback period for customers?",
-      "help": "ROI timeline",
+      "text": "What is your energy cost savings?",
+      "help": "% cost reduction for customers",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
+        {"text": "Not proven", "score": 0},
+        {"text": "10-20%", "score": 2},
+        {"text": "20-35%", "score": 3.5},
+        {"text": "35-50%", "score": 4.5},
+        {"text": "Above 50%", "score": 5}
       ]
     },
     {
       "id": "clean_007",
       "dimension": "technology",
-      "text": "What renewable energy source?",
-      "help": "Solar, wind, hydro, etc.",
+      "text": "What is your energy conversion efficiency?",
+      "help": "% of energy captured/converted",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
+        {"text": "Not applicable", "score": 0},
+        {"text": "Below 15%", "score": 2},
+        {"text": "15-25%", "score": 3.5},
+        {"text": "25-40%", "score": 4.5},
+        {"text": "Above 40%", "score": 5}
       ]
     },
     {
       "id": "clean_008",
-      "dimension": "customer",
-      "text": "What is your customer energy savings %?",
-      "help": "Measured impact",
+      "dimension": "operations",
+      "text": "Do you have carbon credit certifications?",
+      "help": "Verified carbon offset programs",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not tracking",
-          "score": 0
-        },
-        {
-          "text": "Below 60%",
-          "score": 2
-        },
-        {
-          "text": "60-75%",
-          "score": 3.5
-        },
-        {
-          "text": "75-90%",
-          "score": 4.5
-        },
-        {
-          "text": "Above 90%",
-          "score": 5
-        }
+        {"text": "No", "score": 0},
+        {"text": "Applied", "score": 2},
+        {"text": "1 certification", "score": 3.5},
+        {"text": "Multiple certs", "score": 4.5},
+        {"text": "Trading platform", "score": 5}
       ]
     },
     {
       "id": "clean_009",
-      "dimension": "operations",
-      "text": "What is your system uptime/reliability?",
-      "help": "Operational consistency",
+      "dimension": "business",
+      "text": "Do you have corporate sustainability partnerships?",
+      "help": "B2B contracts with large enterprises",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
+        {"text": "No", "score": 0},
+        {"text": "In discussions", "score": 2},
+        {"text": "1 partnership", "score": 3.5},
+        {"text": "2-5 partnerships", "score": 4.5},
+        {"text": "6+ partnerships", "score": 5}
       ]
     },
     {
       "id": "clean_010",
-      "dimension": "financial",
-      "text": "Do you have government incentives/credits?",
-      "help": "Tax credits, grants, subsidies",
+      "dimension": "customer",
+      "text": "What is your payback period for customers?",
+      "help": "Time to ROI for installations",
       "type": "multiple",
       "options": [
-        {
-          "text": "No",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "Partial",
-          "score": 3.5
-        },
-        {
-          "text": "Yes",
-          "score": 4.5
-        },
-        {
-          "text": "Advanced",
-          "score": 5
-        }
+        {"text": "Not calculated", "score": 0},
+        {"text": "10+ years", "score": 1.5},
+        {"text": "5-10 years", "score": 3},
+        {"text": "2-5 years", "score": 4.5},
+        {"text": "Under 2 years", "score": 5}
       ]
     },
     {
       "id": "clean_011",
-      "dimension": "business",
-      "text": "Do you have utility partnerships?",
-      "help": "Energy company relationships",
+      "dimension": "technology",
+      "text": "Do you use IoT for monitoring?",
+      "help": "Sensors, real-time data, predictive maintenance",
       "type": "multiple",
       "options": [
-        {
-          "text": "No",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "Partial",
-          "score": 3.5
-        },
-        {
-          "text": "Yes",
-          "score": 4.5
-        },
-        {
-          "text": "Advanced",
-          "score": 5
-        }
+        {"text": "No", "score": 0},
+        {"text": "Manual monitoring", "score": 2},
+        {"text": "Basic sensors", "score": 3.5},
+        {"text": "IoT integrated", "score": 4.5},
+        {"text": "AI-powered analytics", "score": 5}
       ]
     },
     {
       "id": "clean_012",
-      "dimension": "technology",
-      "text": "What is your grid integration capability?",
-      "help": "Smart grid compatibility",
+      "dimension": "financial",
+      "text": "What is your revenue growth rate?",
+      "help": "YoY revenue growth",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
+        {"text": "Negative/no revenue", "score": 0},
+        {"text": "0-50%", "score": 2},
+        {"text": "50-100%", "score": 3.5},
+        {"text": "100-200%", "score": 4.5},
+        {"text": "200%+", "score": 5}
       ]
     },
     {
       "id": "clean_013",
-      "dimension": "customer",
-      "text": "What is your NPS score?",
-      "help": "Customer satisfaction",
+      "dimension": "operations",
+      "text": "Do you have ESG reporting systems?",
+      "help": "Environmental, Social, Governance metrics",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
+        {"text": "No", "score": 0},
+        {"text": "Manual tracking", "score": 2},
+        {"text": "Basic reporting", "score": 3.5},
+        {"text": "Automated dashboards", "score": 4.5},
+        {"text": "Third-party verified", "score": 5}
       ]
     },
     {
       "id": "clean_014",
-      "dimension": "operations",
-      "text": "What is your supply chain sustainability?",
-      "help": "Ethical sourcing, circular economy",
+      "dimension": "business",
+      "text": "Do you have government grants/subsidies?",
+      "help": "Public sector funding programs",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
+        {"text": "No", "score": 0},
+        {"text": "Applied", "score": 2},
+        {"text": "$50K-$500K", "score": 3.5},
+        {"text": "$500K-$2M", "score": 4.5},
+        {"text": "$2M+", "score": 5}
       ]
     },
     {
       "id": "clean_015",
-      "dimension": "financial",
-      "text": "What is your carbon credit revenue?",
-      "help": "Monetization of offsets",
+      "dimension": "customer",
+      "text": "What is your customer NPS?",
+      "help": "Net Promoter Score for sustainability impact",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
+        {"text": "Not tracking", "score": 0},
+        {"text": "Below 30", "score": 2},
+        {"text": "30-50", "score": 3.5},
+        {"text": "50-70", "score": 4.5},
+        {"text": "Above 70", "score": 5}
       ]
     }
   ]
