@@ -2,438 +2,213 @@
   "category": "retailtech",
   "industryQuestions": [
     {
-      "id": "retail_001",
-      "dimension": "technology",
-      "text": "What POS system capabilities do you have?",
-      "help": "Point of sale technology",
-      "type": "multiple",
-      "options": [
-        {
-          "text": "No",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "Partial",
-          "score": 3.5
-        },
-        {
-          "text": "Yes",
-          "score": 4.5
-        },
-        {
-          "text": "Advanced",
-          "score": 5
-        }
-      ]
-    },
-    {
-      "id": "retail_002",
-      "dimension": "customer",
-      "text": "What is your omnichannel integration?",
-      "help": "Online + offline experience",
-      "type": "multiple",
-      "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
-      ]
-    },
-    {
-      "id": "retail_003",
-      "dimension": "operations",
-      "text": "What is your inventory turnover rate?",
-      "help": "How fast inventory sells",
-      "type": "multiple",
-      "options": [
-        {
-          "text": "Not tracking",
-          "score": 0
-        },
-        {
-          "text": "Below 60%",
-          "score": 2
-        },
-        {
-          "text": "60-75%",
-          "score": 3.5
-        },
-        {
-          "text": "75-90%",
-          "score": 4.5
-        },
-        {
-          "text": "Above 90%",
-          "score": 5
-        }
-      ]
-    },
-    {
-      "id": "retail_004",
-      "dimension": "financial",
-      "text": "What is your average transaction value?",
-      "help": "Revenue per purchase",
-      "type": "multiple",
-      "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
-      ]
-    },
-    {
-      "id": "retail_005",
-      "dimension": "technology",
-      "text": "Do you have clienteling/CRM?",
-      "help": "Customer relationship management",
-      "type": "multiple",
-      "options": [
-        {
-          "text": "No",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "Partial",
-          "score": 3.5
-        },
-        {
-          "text": "Yes",
-          "score": 4.5
-        },
-        {
-          "text": "Advanced",
-          "score": 5
-        }
-      ]
-    },
-    {
-      "id": "retail_006",
-      "dimension": "customer",
-      "text": "What is your foot traffic analytics capability?",
-      "help": "In-store customer tracking",
-      "type": "multiple",
-      "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
-      ]
-    },
-    {
-      "id": "retail_007",
-      "dimension": "operations",
-      "text": "What is your stock-out rate?",
-      "help": "% of time products unavailable",
-      "type": "multiple",
-      "options": [
-        {
-          "text": "Not tracking",
-          "score": 0
-        },
-        {
-          "text": "Below 60%",
-          "score": 2
-        },
-        {
-          "text": "60-75%",
-          "score": 3.5
-        },
-        {
-          "text": "75-90%",
-          "score": 4.5
-        },
-        {
-          "text": "Above 90%",
-          "score": 5
-        }
-      ]
-    },
-    {
-      "id": "retail_008",
-      "dimension": "financial",
-      "text": "What is your same-store sales growth?",
-      "help": "Comparable store performance",
-      "type": "multiple",
-      "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
-      ]
-    },
-    {
-      "id": "retail_009",
-      "dimension": "technology",
-      "text": "Do you have dynamic pricing?",
-      "help": "AI-powered price optimization",
-      "type": "multiple",
-      "options": [
-        {
-          "text": "No",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "Partial",
-          "score": 3.5
-        },
-        {
-          "text": "Yes",
-          "score": 4.5
-        },
-        {
-          "text": "Advanced",
-          "score": 5
-        }
-      ]
-    },
-    {
-      "id": "retail_010",
-      "dimension": "customer",
-      "text": "What is your loyalty program enrollment?",
-      "help": "% of customers in loyalty",
-      "type": "multiple",
-      "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
-      ]
-    },
-    {
-      "id": "retail_011",
-      "dimension": "operations",
-      "text": "What is your employee turnover rate?",
-      "help": "Retail staff retention",
-      "type": "multiple",
-      "options": [
-        {
-          "text": "Not tracking",
-          "score": 0
-        },
-        {
-          "text": "Below 60%",
-          "score": 2
-        },
-        {
-          "text": "60-75%",
-          "score": 3.5
-        },
-        {
-          "text": "75-90%",
-          "score": 4.5
-        },
-        {
-          "text": "Above 90%",
-          "score": 5
-        }
-      ]
-    },
-    {
-      "id": "retail_012",
+      "id": "ret_001",
       "dimension": "business",
-      "text": "How many retail locations/clients?",
-      "help": "Market penetration",
+      "text": "How many retail locations use your solution?",
+      "help": "Stores, shops, or retail partners",
       "type": "multiple",
       "options": [
-        {
-          "text": "None",
-          "score": 0
-        },
-        {
-          "text": "1-10",
-          "score": 2
-        },
-        {
-          "text": "11-50",
-          "score": 3.5
-        },
-        {
-          "text": "51-200",
-          "score": 4.5
-        },
-        {
-          "text": "200+",
-          "score": 5
-        }
+        {"text": "None", "score": 0},
+        {"text": "1-10", "score": 2},
+        {"text": "11-50", "score": 3.5},
+        {"text": "51-200", "score": 4.5},
+        {"text": "200+", "score": 5}
       ]
     },
     {
-      "id": "retail_013",
-      "dimension": "technology",
-      "text": "Do you have AR/VR capabilities?",
-      "help": "Virtual try-on, visualization",
-      "type": "multiple",
-      "options": [
-        {
-          "text": "No",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "Partial",
-          "score": 3.5
-        },
-        {
-          "text": "Yes",
-          "score": 4.5
-        },
-        {
-          "text": "Advanced",
-          "score": 5
-        }
-      ]
-    },
-    {
-      "id": "retail_014",
-      "dimension": "customer",
-      "text": "What is your mobile payment adoption?",
-      "help": "% of mobile transactions",
-      "type": "multiple",
-      "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
-      ]
-    },
-    {
-      "id": "retail_015",
+      "id": "ret_002",
       "dimension": "financial",
-      "text": "What is your sales per square foot?",
-      "help": "Store productivity metric",
+      "text": "What is your GMV (Gross Merchandise Value)?",
+      "help": "Total value of goods sold through your platform",
       "type": "multiple",
       "options": [
-        {
-          "text": "Not started",
-          "score": 0
-        },
-        {
-          "text": "Planning",
-          "score": 2
-        },
-        {
-          "text": "In progress",
-          "score": 3.5
-        },
-        {
-          "text": "Implemented",
-          "score": 4.5
-        },
-        {
-          "text": "Optimized",
-          "score": 5
-        }
+        {"text": "Below $100K", "score": 0},
+        {"text": "$100K-$1M", "score": 2},
+        {"text": "$1M-$10M", "score": 3.5},
+        {"text": "$10M-$100M", "score": 4.5},
+        {"text": "Above $100M", "score": 5}
+      ]
+    },
+    {
+      "id": "ret_003",
+      "dimension": "customer",
+      "text": "What is your average transaction value?",
+      "help": "Average purchase amount per transaction",
+      "type": "multiple",
+      "options": [
+        {"text": "Below $25", "score": 1},
+        {"text": "$25-$50", "score": 2.5},
+        {"text": "$50-$100", "score": 3.5},
+        {"text": "$100-$250", "score": 4.5},
+        {"text": "Above $250", "score": 5}
+      ]
+    },
+    {
+      "id": "ret_004",
+      "dimension": "technology",
+      "text": "Do you have inventory management automation?",
+      "help": "Real-time stock tracking and replenishment",
+      "type": "multiple",
+      "options": [
+        {"text": "No", "score": 0},
+        {"text": "Manual tracking", "score": 2},
+        {"text": "Basic automation", "score": 3.5},
+        {"text": "AI-powered", "score": 4.5},
+        {"text": "Predictive + IoT", "score": 5}
+      ]
+    },
+    {
+      "id": "ret_005",
+      "dimension": "operations",
+      "text": "What is your inventory turnover ratio?",
+      "help": "How many times inventory is sold per year",
+      "type": "multiple",
+      "options": [
+        {"text": "Not tracking", "score": 0},
+        {"text": "Below 4x", "score": 2},
+        {"text": "4-8x", "score": 3.5},
+        {"text": "8-12x", "score": 4.5},
+        {"text": "Above 12x", "score": 5}
+      ]
+    },
+    {
+      "id": "ret_006",
+      "dimension": "customer",
+      "text": "What is your customer repeat purchase rate?",
+      "help": "% of customers making 2+ purchases",
+      "type": "multiple",
+      "options": [
+        {"text": "Below 20%", "score": 1},
+        {"text": "20-30%", "score": 2.5},
+        {"text": "30-40%", "score": 3.5},
+        {"text": "40-50%", "score": 4.5},
+        {"text": "Above 50%", "score": 5}
+      ]
+    },
+    {
+      "id": "ret_007",
+      "dimension": "technology",
+      "text": "Do you have omnichannel capabilities?",
+      "help": "Unified online + offline experience",
+      "type": "multiple",
+      "options": [
+        {"text": "No", "score": 0},
+        {"text": "Planning", "score": 2},
+        {"text": "Partial integration", "score": 3.5},
+        {"text": "Fully integrated", "score": 4.5},
+        {"text": "Advanced + AI", "score": 5}
+      ]
+    },
+    {
+      "id": "ret_008",
+      "dimension": "financial",
+      "text": "What is your gross margin?",
+      "help": "Revenue minus cost of goods sold",
+      "type": "multiple",
+      "options": [
+        {"text": "Below 20%", "score": 0},
+        {"text": "20-35%", "score": 2},
+        {"text": "35-50%", "score": 3.5},
+        {"text": "50-65%", "score": 4.5},
+        {"text": "Above 65%", "score": 5}
+      ]
+    },
+    {
+      "id": "ret_009",
+      "dimension": "business",
+      "text": "Do you have POS system integrations?",
+      "help": "Integration with major point-of-sale systems",
+      "type": "multiple",
+      "options": [
+        {"text": "No", "score": 0},
+        {"text": "1 integration", "score": 2},
+        {"text": "2-3 integrations", "score": 3.5},
+        {"text": "4-6 integrations", "score": 4.5},
+        {"text": "Universal API", "score": 5}
+      ]
+    },
+    {
+      "id": "ret_010",
+      "dimension": "operations",
+      "text": "What is your order fulfillment time?",
+      "help": "Time from order to shipment/pickup",
+      "type": "multiple",
+      "options": [
+        {"text": "Not tracking", "score": 0},
+        {"text": "3+ days", "score": 2},
+        {"text": "1-3 days", "score": 3.5},
+        {"text": "Same day", "score": 4.5},
+        {"text": "Under 2 hours", "score": 5}
+      ]
+    },
+    {
+      "id": "ret_011",
+      "dimension": "customer",
+      "text": "What is your Net Promoter Score (NPS)?",
+      "help": "Customer satisfaction and loyalty metric",
+      "type": "multiple",
+      "options": [
+        {"text": "Not tracking", "score": 0},
+        {"text": "Below 0", "score": 1},
+        {"text": "0-30", "score": 2.5},
+        {"text": "30-50", "score": 4},
+        {"text": "Above 50", "score": 5}
+      ]
+    },
+    {
+      "id": "ret_012",
+      "dimension": "technology",
+      "text": "Do you use AI for personalization?",
+      "help": "Product recommendations, dynamic pricing",
+      "type": "multiple",
+      "options": [
+        {"text": "No", "score": 0},
+        {"text": "Planning", "score": 2},
+        {"text": "Basic rules", "score": 3.5},
+        {"text": "ML-powered", "score": 4.5},
+        {"text": "Advanced AI", "score": 5}
+      ]
+    },
+    {
+      "id": "ret_013",
+      "dimension": "financial",
+      "text": "What is your customer acquisition cost (CAC)?",
+      "help": "Cost to acquire one customer",
+      "type": "multiple",
+      "options": [
+        {"text": "Not tracking", "score": 0},
+        {"text": "Above $50", "score": 2},
+        {"text": "$25-$50", "score": 3.5},
+        {"text": "$10-$25", "score": 4.5},
+        {"text": "Below $10", "score": 5}
+      ]
+    },
+    {
+      "id": "ret_014",
+      "dimension": "business",
+      "text": "Do you have loyalty/rewards program?",
+      "help": "Customer retention system",
+      "type": "multiple",
+      "options": [
+        {"text": "No", "score": 0},
+        {"text": "Planning", "score": 2},
+        {"text": "Basic program", "score": 3.5},
+        {"text": "Advanced tiers", "score": 4.5},
+        {"text": "AI-personalized", "score": 5}
+      ]
+    },
+    {
+      "id": "ret_015",
+      "dimension": "operations",
+      "text": "What is your return rate?",
+      "help": "% of orders returned",
+      "type": "multiple",
+      "options": [
+        {"text": "Not tracking", "score": 0},
+        {"text": "Above 15%", "score": 1.5},
+        {"text": "10-15%", "score": 3},
+        {"text": "5-10%", "score": 4},
+        {"text": "Below 5%", "score": 5}
       ]
     }
   ]
