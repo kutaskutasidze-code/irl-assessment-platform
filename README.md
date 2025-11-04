@@ -131,6 +131,7 @@ See [VERCEL_DEPLOYMENT.md](VERCEL_DEPLOYMENT.md) for detailed instructions.
 
 ## 🔄 Recent Updates
 
+- **Nov 4, 2024**: Vercel webhook trigger for deployment
 - **Nov 3, 2024**: Vercel deployment configuration added
 - **Nov 3, 2024**: Backend integration with PostgreSQL
 - **Nov 3, 2024**: Enhanced results visualization (Phase 2)
