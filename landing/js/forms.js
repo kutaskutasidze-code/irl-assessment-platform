@@ -29,12 +29,18 @@ function handleAccountTypeChange() {
 // Sign In Handler
 async function handleSignIn(event) {
     event.preventDefault();
+    console.log('Sign in submitted');
+    
     const email = document.getElementById('signInEmail').value;
     const password = document.getElementById('signInPassword').value;
+    
+    console.log('Attempting login for:', email);
     
     try {
         const apiService = new APIService();
         const response = await apiService.login(email, password);
+        
+        console.log('Login successful:', response);
         
         if (response.token) {
             localStorage.setItem('auth_token', response.token);
@@ -42,6 +48,7 @@ async function handleSignIn(event) {
             window.location.href = '/irl-assessment-platform/index.html';
         }
     } catch (error) {
+        console.error('Login error:', error);
         alert('Login failed: ' + error.message);
     }
 }
@@ -49,12 +56,15 @@ async function handleSignIn(event) {
 // Sign Up Handler
 async function handleSignUp(event) {
     event.preventDefault();
+    console.log('Sign up form submitted!');
     
     const type = document.getElementById('accountType').value;
     const name = document.getElementById('signUpName').value;
     const email = document.getElementById('signUpEmail').value;
     const password = document.getElementById('signUpPassword').value;
     const confirmPassword = document.getElementById('signUpConfirmPassword').value;
+    
+    console.log('Form data:', { type, name, email });
     
     if (password !== confirmPassword) {
         alert('Passwords do not match!');
@@ -75,16 +85,27 @@ async function handleSignUp(event) {
         userData.organization = document.getElementById('signUpOrg')?.value || name;
     }
     
+    console.log('Sending registration request:', userData);
+    
     try {
         const apiService = new APIService();
+        console.log('APIService created');
+        
         const response = await apiService.register(userData);
+        console.log('Registration response:', response);
         
         if (response.token) {
             localStorage.setItem('auth_token', response.token);
             localStorage.setItem('user', JSON.stringify(response.user));
+            alert('Registration successful! Redirecting to dashboard...');
             window.location.href = '/irl-assessment-platform/index.html';
+        } else {
+            alert('Registration failed: No token received');
         }
     } catch (error) {
-        alert('Registration failed: ' + error.message);
+        console.error('Registration error:', error);
+        alert('Registration failed: ' + (error.message || 'Unknown error'));
     }
 }
+
+console.log('Forms.js loaded successfully');
