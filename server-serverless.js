@@ -1,13 +1,19 @@
-// Serverless-compatible server for Vercel
+// Serverless server compatible with Supabase
 const express = require('express');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { sql } = require('@vercel/postgres');
+const { createClient } = require('@supabase/supabase-js');
 
 const app = express();
 
 const JWT_SECRET = process.env.JWT_SECRET || 'change-this-in-production';
+
+// Initialize Supabase client
+const supabase = createClient(
+  process.env.SUPABASE_URL || '',
+  process.env.SUPABASE_ANON_KEY || ''
+);
 
 // Middleware
 app.use(cors({
@@ -18,13 +24,18 @@ app.use(express.json());
 
 // Health check
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'healthy', timestamp: new Date().toISOString() });
+  res.json({ 
+    status: 'healthy', 
+    timestamp: new Date().toISOString(),
+    database: supabase ? 'connected' : 'disconnected'
+  });
 });
 
 app.get('/api', (req, res) => {
   res.json({ 
     message: 'IRL Assessment System API',
     version: '1.0.0',
+    database: 'Supabase',
     endpoints: {
       health: '/api/health',
       auth: '/api/auth/*',
@@ -78,19 +89,33 @@ app.post('/api/auth/register', async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const result = await sql`
-      INSERT INTO users (email, password, user_type, name, organization) 
-      VALUES (${email}, ${hashedPassword}, ${user_type}, ${name}, ${organization})
-      RETURNING id, email, user_type, name
-    `;
+    const { data: user, error } = await supabase
+      .from('users')
+      .insert([{ 
+        email, 
+        password: hashedPassword, 
+        user_type, 
+        name, 
+        organization 
+      }])
+      .select()
+      .single();
 
-    const user = result.rows[0];
+    if (error) {
+      if (error.code === '23505') {
+        return res.status(400).json({ error: 'Email already registered' });
+      }
+      throw error;
+    }
 
     if (user_type === 'startup' && category) {
-      await sql`
-        INSERT INTO startup_profiles (user_id, category, description) 
-        VALUES (${user.id}, ${category}, ${description})
-      `;
+      await supabase
+        .from('startup_profiles')
+        .insert([{ 
+          user_id: user.id, 
+          category, 
+          description 
+        }]);
     }
 
     const token = jwt.sign(
@@ -99,14 +124,10 @@ app.post('/api/auth/register', async (req, res) => {
       { expiresIn: '7d' }
     );
 
-    res.json({ token, user });
+    res.json({ token, user: { id: user.id, email: user.email, user_type: user.user_type, name: user.name } });
   } catch (error) {
-    if (error.code === '23505') {
-      res.status(400).json({ error: 'Email already registered' });
-    } else {
-      console.error('Registration error:', error);
-      res.status(500).json({ error: 'Registration failed' });
-    }
+    console.error('Registration error:', error);
+    res.status(500).json({ error: 'Registration failed' });
   }
 });
 
@@ -114,15 +135,16 @@ app.post('/api/auth/login', async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const result = await sql`
-      SELECT * FROM users WHERE email = ${email}
-    `;
+    const { data: users, error } = await supabase
+      .from('users')
+      .select('*')
+      .eq('email', email);
 
-    if (result.rows.length === 0) {
+    if (error || !users || users.length === 0) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
-    const user = result.rows[0];
+    const user = users[0];
     const validPassword = await bcrypt.compare(password, user.password);
 
     if (!validPassword) {
@@ -153,16 +175,17 @@ app.post('/api/auth/login', async (req, res) => {
 
 app.get('/api/auth/me', authenticateToken, async (req, res) => {
   try {
-    const result = await sql`
-      SELECT id, email, user_type, name, organization 
-      FROM users WHERE id = ${req.user.id}
-    `;
+    const { data: user, error } = await supabase
+      .from('users')
+      .select('id, email, user_type, name, organization')
+      .eq('id', req.user.id)
+      .single();
 
-    if (result.rows.length === 0) {
+    if (error || !user) {
       return res.status(404).json({ error: 'User not found' });
     }
 
-    res.json(result.rows[0]);
+    res.json(user);
   } catch (error) {
     console.error('Get user error:', error);
     res.status(500).json({ error: 'Failed to get user' });
@@ -178,13 +201,22 @@ app.post('/api/assessments', authenticateToken, checkRole('startup'), async (req
     const irlLevel = calculateIRLLevel(scores);
     const recommendations = generateRecommendations(scores, irlLevel);
 
-    const result = await sql`
-      INSERT INTO assessments (startup_id, category, answers, scores, irl_level, recommendations) 
-      VALUES (${req.user.id}, ${category}, ${JSON.stringify(answers)}, ${JSON.stringify(scores)}, ${irlLevel}, ${JSON.stringify(recommendations)})
-      RETURNING *
-    `;
+    const { data: assessment, error } = await supabase
+      .from('assessments')
+      .insert([{
+        startup_id: req.user.id,
+        category,
+        answers: JSON.stringify(answers),
+        scores: JSON.stringify(scores),
+        irl_level: irlLevel,
+        recommendations: JSON.stringify(recommendations)
+      }])
+      .select()
+      .single();
 
-    res.json(result.rows[0]);
+    if (error) throw error;
+
+    res.json(assessment);
   } catch (error) {
     console.error('Create assessment error:', error);
     res.status(500).json({ error: 'Failed to create assessment' });
@@ -193,10 +225,15 @@ app.post('/api/assessments', authenticateToken, checkRole('startup'), async (req
 
 app.get('/api/assessments', authenticateToken, checkRole('startup'), async (req, res) => {
   try {
-    const result = await sql`
-      SELECT * FROM assessments WHERE startup_id = ${req.user.id} ORDER BY created_at DESC
-    `;
-    res.json(result.rows);
+    const { data: assessments, error } = await supabase
+      .from('assessments')
+      .select('*')
+      .eq('startup_id', req.user.id)
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+
+    res.json(assessments);
   } catch (error) {
     console.error('Get assessments error:', error);
     res.status(500).json({ error: 'Failed to get assessments' });
@@ -213,10 +250,8 @@ function calculateScores(answers) {
     financial: 0
   };
 
-  // Simple scoring - count answered questions
   Object.keys(answers).forEach(key => {
     const value = parseInt(answers[key]) || 0;
-    // Distribute across dimensions (simplified)
     scores.business += value / 5;
     scores.technology += value / 5;
     scores.customer += value / 5;
@@ -224,7 +259,6 @@ function calculateScores(answers) {
     scores.financial += value / 5;
   });
 
-  // Normalize to 0-100
   Object.keys(scores).forEach(key => {
     scores[key] = Math.min(100, Math.round(scores[key] * 5));
   });
@@ -248,13 +282,25 @@ function generateRecommendations(scores, irlLevel) {
 // Admin endpoints
 app.get('/api/admin/stats', authenticateToken, checkRole('admin'), async (req, res) => {
   try {
-    const stats = await sql`
-      SELECT 
-        (SELECT COUNT(*) FROM users WHERE user_type = 'startup') as total_startups,
-        (SELECT COUNT(*) FROM users WHERE user_type = 'organization') as total_organizations,
-        (SELECT COUNT(*) FROM assessments) as total_assessments
-    `;
-    res.json(stats.rows[0]);
+    const { count: totalStartups } = await supabase
+      .from('users')
+      .select('*', { count: 'exact', head: true })
+      .eq('user_type', 'startup');
+
+    const { count: totalOrganizations } = await supabase
+      .from('users')
+      .select('*', { count: 'exact', head: true })
+      .eq('user_type', 'organization');
+
+    const { count: totalAssessments } = await supabase
+      .from('assessments')
+      .select('*', { count: 'exact', head: true });
+
+    res.json({
+      total_startups: totalStartups || 0,
+      total_organizations: totalOrganizations || 0,
+      total_assessments: totalAssessments || 0
+    });
   } catch (error) {
     console.error('Get stats error:', error);
     res.status(500).json({ error: 'Failed to get stats' });
