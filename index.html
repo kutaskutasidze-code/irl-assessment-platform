@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IRL Assessment Platform - Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/dashboard-api.js"></script>
     <style>
         * {
             margin: 0;
@@ -787,21 +788,16 @@
 
         function checkAuthentication() {
             // Check if coming from landing page with auth data
-            const authEmail = localStorage.getItem('authEmail');
-            const authPassword = localStorage.getItem('authPassword');
-            const signupData = localStorage.getItem('signupData');
-
-            if (authEmail && authPassword) {
-                // Try to login with stored credentials
-                const user = mockDB.users.find(u => u.email === authEmail && u.password === authPassword);
+            // Check authentication with real API
+            checkAuth().then(user => {
                 if (user) {
                     currentUser = user;
-                    window.currentUser = currentUser; // Update global
-                    localStorage.removeItem('authEmail');
-                    localStorage.removeItem('authPassword');
+                    window.currentUser = currentUser;
                     initializeDashboard();
                 } else {
                     redirectToLanding();
+                }
+            });
                 }
             } else if (signupData) {
                 // Handle new signup

@@ -2,7 +2,7 @@
 // Base URL - will use environment variable in production
 const API_BASE_URL = window.location.hostname === 'localhost' 
   ? 'http://localhost:3000' 
-  : 'https://your-backend-url.com'; // Update this with your actual backend URL
+  : 'https://irl-assessment-platform.vercel.app'; // Update this with your actual backend URL
 
 class APIService {
   constructor() {
