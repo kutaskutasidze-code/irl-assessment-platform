@@ -1,0 +1,14 @@
+Vercel has these Supabase variables:
+- SUPABASE_ANON_KEY ✅ (correct)
+- SUPABASE_JWT_SECRET ✅ (correct)
+- POSTGRES_URL (not used)
+- POSTGRES_HOST (not used)
+- POSTGRES_DATABASE (not used)
+
+Missing:
+- SUPABASE_URL
+
+You need to manually add:
+Name: SUPABASE_URL
+Value: https://mtzrkseneyiogpaqiorh.supabase.co
+Environment: All
