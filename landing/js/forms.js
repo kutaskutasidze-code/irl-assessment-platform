@@ -56,6 +56,8 @@ async function handleSignIn(event) {
 // Sign Up Handler
 async function handleSignUp(event) {
     event.preventDefault();
+    console.log('=== REGISTRATION STARTED ===');
+    console.log('APIService available:', typeof APIService);
     console.log('Sign up form submitted!');
     
     const type = document.getElementById('accountType').value;
@@ -88,8 +90,10 @@ async function handleSignUp(event) {
     console.log('Sending registration request:', userData);
     
     try {
+        console.log('Creating APIService instance...');
         const apiService = new APIService();
-        console.log('APIService created');
+        console.log('APIService created:', apiService);
+        console.log('API Base URL:', apiService.constructor.name);
         
         const response = await apiService.register(userData);
         console.log('Registration response:', response);
