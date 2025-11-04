@@ -108,5 +108,9 @@ function initializeDashboardWithUser(user) {
     }
 }
 
-// Load immediately
-loadDashboardData();
+// Wait for DOM to be ready
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", loadDashboardData);
+} else {
+    loadDashboardData();
+}
