@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="../../js/api-service.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assessment Results - IRL Platform</title>
@@ -259,12 +260,13 @@
 
     <script src="../engine/assessment-engine.js"></script>
     <script src="js/results-enhanced.js"></script>
+    <script src="js/results-api-loader.js"></script>
     <script src="js/display-results-enhanced.js"></script>
     <script>
         const assessmentEngine = new AssessmentEngine();
         let chartInstance = null;
 
-        async function init() {
+            const assessment = await loadAssessmentFromAPI();
             // Get latest assessment from localStorage
             const assessments = JSON.parse(localStorage.getItem('assessments') || '[]');
             if (assessments.length === 0) {
