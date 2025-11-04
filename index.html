@@ -815,7 +815,14 @@
                 initializeDashboard();
             } else {
                 // Check if user is already logged in
-                const savedUser = localStorage.getItem('currentUser');
+                // Check for JWT token from API login
+                const authToken = localStorage.getItem('auth_token');
+                if (authToken) {
+                    // User logged in via API, let dashboard-loader handle it
+                    initializeDashboard();
+                    return;
+                }
+                const savedUser = localStorage.getItem('user') || localStorage.getItem('currentUser');
                 if (savedUser) {
                     currentUser = JSON.parse(savedUser);
                     initializeDashboard();
