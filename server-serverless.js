@@ -34,7 +34,7 @@ app.get('/api/health', (req, res) => {
 app.get('/api', (req, res) => {
   res.json({ 
     message: 'IRL Assessment System API',
-    version: '1.0.0',
+    version: '1.0.1',
     database: 'Supabase',
     endpoints: {
       health: '/api/health',
