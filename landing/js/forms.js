@@ -1,11 +1,10 @@
 /**
- * Form Handling Module
- * Handles form submissions and validation
+ * Form Handling Module with API Integration
  */
 
 // Account Type Change Handler
 function handleAccountTypeChange() {
-    const type = document.getElementById('signUpType').value;
+    const type = document.getElementById('accountType').value;
     const orgField = document.getElementById('organizationField');
     const startupField = document.getElementById('startupField');
     
@@ -28,48 +27,64 @@ function handleAccountTypeChange() {
 }
 
 // Sign In Handler
-function handleSignIn(event) {
+async function handleSignIn(event) {
     event.preventDefault();
     const email = document.getElementById('signInEmail').value;
     const password = document.getElementById('signInPassword').value;
     
-    // Store credentials and redirect to main app
-    localStorage.setItem('authEmail', email);
-    localStorage.setItem('authPassword', password);
-    window.location.href = '/irl-assessment-platform/index.html';
+    try {
+        const apiService = new APIService();
+        const response = await apiService.login(email, password);
+        
+        if (response.token) {
+            localStorage.setItem('auth_token', response.token);
+            localStorage.setItem('user', JSON.stringify(response.user));
+            window.location.href = '/irl-assessment-platform/index.html';
+        }
+    } catch (error) {
+        alert('Login failed: ' + error.message);
+    }
 }
 
 // Sign Up Handler
-function handleSignUp(event) {
+async function handleSignUp(event) {
     event.preventDefault();
-    const type = document.getElementById('signUpType').value;
+    
+    const type = document.getElementById('accountType').value;
     const name = document.getElementById('signUpName').value;
     const email = document.getElementById('signUpEmail').value;
     const password = document.getElementById('signUpPassword').value;
     const confirmPassword = document.getElementById('signUpConfirmPassword').value;
     
-    // Validate passwords match
     if (password !== confirmPassword) {
         alert('Passwords do not match!');
         return;
     }
     
-    // Build user data object
     const userData = {
-        type: type,
+        user_type: type,
         name: name,
         email: email,
         password: password
     };
     
-    // Add type-specific fields
     if (type === 'startup') {
-        userData.startupName = document.getElementById('signUpStartup').value;
+        userData.category = 'General';
+        userData.description = document.getElementById('signUpStartup')?.value || name;
     } else if (type === 'organization') {
-        userData.organizationName = document.getElementById('signUpOrg').value;
+        userData.organization = document.getElementById('signUpOrg')?.value || name;
     }
     
-    // Store signup data and redirect to main app
-    localStorage.setItem('signupData', JSON.stringify(userData));
-    window.location.href = '/irl-assessment-platform/index.html';
+    try {
+        const apiService = new APIService();
+        const response = await apiService.register(userData);
+        
+        if (response.token) {
+            localStorage.setItem('auth_token', response.token);
+            localStorage.setItem('user', JSON.stringify(response.user));
+            window.location.href = '/irl-assessment-platform/index.html';
+        }
+    } catch (error) {
+        alert('Registration failed: ' + error.message);
+    }
 }
