@@ -7,7 +7,7 @@ const { createClient } = require('@supabase/supabase-js');
 
 const app = express();
 
-const JWT_SECRET = process.env.JWT_SECRET || 'change-this-in-production';
+const JWT_SECRET = process.env.SUPABASE_JWT_SECRET || process.env.JWT_SECRET || 'change-this-in-production';
 
 // Initialize Supabase client
 const supabase = createClient(
