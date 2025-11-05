@@ -894,37 +894,60 @@
             }
         }
 
-        function loadOrganizationData() {
-            const startups = mockDB.users.filter(u => u.type === 'startup' && u.organizationId === currentUser.id);
-            const assessments = mockDB.assessments.filter(a => 
-                a.organizationId === currentUser.id || startups.some(s => s.id === a.userId || s.id === a.startupId)
-            );
-            
-            document.getElementById('totalStartups').textContent = startups.length;
-            document.getElementById('completedAssessments').textContent = assessments.length;
-            
-            // Populate startups table
-            const tableBody = document.getElementById('startupsTable');
-            tableBody.innerHTML = '';
-            
-            startups.forEach(startup => {
-                const assessment = assessments.find(a => a.userId === startup.id || a.startupId === startup.id);
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${startup.startupName}</td>
-                    <td>${startup.email}</td>
-                    <td>${assessment ? assessment.irlLevel || assessment.level : '-'}</td>
-                    <td>
-                        <span class="badge ${assessment ? 'badge-success' : 'badge-warning'}">
-                            ${assessment ? 'Completed' : 'Pending'}
-                        </span>
-                    </td>
-                    <td>
-                        <button class="btn btn-secondary btn-sm" onclick="viewStartup(${startup.id})">View</button>
-                    </td>
-                `;
-                tableBody.appendChild(row);
-            });
+        async function loadOrganizationData() {
+            try {
+                // Fetch connected startups from API
+                const connections = await apiService.getMyConnections();
+                const connectedStartups = connections.filter(c => c.status === 'accepted');
+                
+                // Fetch assessments for connected startups
+                const assessments = mockDB.assessments.filter(a => 
+                    connectedStartups.some(cs => cs.startup_id === a.userId || cs.startup_id === a.startupId)
+                );
+                
+                document.getElementById('totalStartups').textContent = connectedStartups.length;
+                document.getElementById('completedAssessments').textContent = assessments.length;
+                document.getElementById('actionPlansCreated').textContent = mockDB.actionPlans.filter(ap => 
+                    connectedStartups.some(cs => cs.startup_id === ap.startupId)
+                ).length;
+                
+                // Calculate average IRL
+                const avgIrl = assessments.length > 0 
+                    ? (assessments.reduce((sum, a) => sum + (a.irlLevel || a.level || 0), 0) / assessments.length).toFixed(1)
+                    : '-';
+                document.getElementById('avgIRL').textContent = avgIrl;
+                
+                // Populate startups table
+                const tableBody = document.getElementById('startupsTable');
+                tableBody.innerHTML = '';
+                
+                if (connectedStartups.length === 0) {
+                    tableBody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 2rem; color: #7f8c8d;">No connected startups yet. Use the Startup Connections section below to invite startups.</td></tr>';
+                    return;
+                }
+                
+                connectedStartups.forEach(connection => {
+                    const assessment = assessments.find(a => a.userId === connection.startup_id || a.startupId === connection.startup_id);
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${connection.startup_name || 'Unknown'}</td>
+                        <td>${connection.startup_email || '-'}</td>
+                        <td>${assessment ? (assessment.irlLevel || assessment.level || '-') : '-'}</td>
+                        <td>
+                            <span class="badge ${assessment ? 'badge-success' : 'badge-warning'}">
+                                ${assessment ? 'Completed' : 'Pending'}
+                            </span>
+                        </td>
+                        <td>
+                            <button class="btn btn-secondary btn-sm" onclick="viewStartup(${connection.startup_id})">View</button>
+                        </td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            } catch (error) {
+                console.error('Error loading organization data:', error);
+                document.getElementById('startupsTable').innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 2rem; color: #e74c3c;">Error loading startups</td></tr>';
+            }
         }
 
         function loadAdminData() {
