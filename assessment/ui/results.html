@@ -266,6 +266,7 @@
         const assessmentEngine = new AssessmentEngine();
         let chartInstance = null;
 
+        (async function initResults() {
             const assessment = await loadAssessmentFromAPI();
             // Get latest assessment from localStorage
             const assessments = JSON.parse(localStorage.getItem('assessments') || '[]');
@@ -288,7 +289,7 @@
 
             // Display results (no need to load questions for results page)
             displayResults();
-        }
+        })();
 
         function displayResultsOld() {
             const summary = assessmentEngine.getAssessmentSummary();
