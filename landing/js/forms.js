@@ -4,7 +4,7 @@
 
 // Account Type Change Handler
 function handleAccountTypeChange() {
-    const type = document.getElementById('accountType').value;
+    const type = document.getElementById('signUpType').value;
     const orgField = document.getElementById('organizationField');
     const startupField = document.getElementById('startupField');
     
@@ -60,7 +60,7 @@ async function handleSignUp(event) {
     console.log('APIService available:', typeof APIService);
     console.log('Sign up form submitted!');
     
-    const type = document.getElementById('accountType').value;
+    const type = document.getElementById('signUpType').value;
     const name = document.getElementById('signUpName').value;
     const email = document.getElementById('signUpEmail').value;
     const password = document.getElementById('signUpPassword').value;
