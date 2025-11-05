@@ -683,4 +683,97 @@ app.post('/api/connections/respond', authenticateToken, async (req, res) => {
   }
 });
 
+// Action Plans endpoints
+app.post('/api/action-plans', authenticateToken, checkRole('organization'), async (req, res) => {
+  try {
+    const { startup_id, title, description, checklist } = req.body;
+
+    const { data: actionPlan, error } = await supabase
+      .from('action_plans')
+      .insert([{
+        organization_id: req.user.id,
+        startup_id,
+        title,
+        description,
+        checklist: JSON.stringify(checklist)
+      }])
+      .select()
+      .single();
+
+    if (error) throw error;
+
+    res.json(actionPlan);
+  } catch (error) {
+    console.error('Create action plan error:', error);
+    res.status(500).json({ error: 'Failed to create action plan' });
+  }
+});
+
+app.get('/api/action-plans/startup/:startupId', authenticateToken, async (req, res) => {
+  try {
+    const { startupId } = req.params;
+
+    const { data: actionPlans, error } = await supabase
+      .from('action_plans')
+      .select('*')
+      .eq('startup_id', startupId)
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+
+    res.json(actionPlans || []);
+  } catch (error) {
+    console.error('Get action plans error:', error);
+    res.status(500).json({ error: 'Failed to get action plans' });
+  }
+});
+
+app.get('/api/action-plans/my', authenticateToken, async (req, res) => {
+  try {
+    let query = supabase
+      .from('action_plans')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (req.user.type === 'startup') {
+      query = query.eq('startup_id', req.user.id);
+    } else if (req.user.type === 'organization') {
+      query = query.eq('organization_id', req.user.id);
+    }
+
+    const { data: actionPlans, error } = await query;
+
+    if (error) throw error;
+
+    res.json(actionPlans || []);
+  } catch (error) {
+    console.error('Get my action plans error:', error);
+    res.status(500).json({ error: 'Failed to get action plans' });
+  }
+});
+
+app.patch('/api/action-plans/:id', authenticateToken, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { checklist } = req.body;
+
+    const { data: actionPlan, error } = await supabase
+      .from('action_plans')
+      .update({ 
+        checklist: JSON.stringify(checklist),
+        updated_at: new Date().toISOString()
+      })
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (error) throw error;
+
+    res.json(actionPlan);
+  } catch (error) {
+    console.error('Update action plan error:', error);
+    res.status(500).json({ error: 'Failed to update action plan' });
+  }
+});
+
 module.exports = app;
