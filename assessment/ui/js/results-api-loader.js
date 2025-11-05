@@ -4,7 +4,7 @@ async function loadAssessmentFromAPI() {
     
     try {
         // Get all assessments
-        const assessments = await apiService.getAssessments();
+        const assessments = await apiService.getMyAssessments();
         
         if (assessments && assessments.length > 0) {
             // Get latest assessment
