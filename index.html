@@ -407,6 +407,20 @@
                         <!-- Action plans will be populated here -->
                     </div>
                 </div>
+
+                <div class="card">
+                    <h2 class="card-title">My Organizations</h2>
+                    <p class="card-description">Connect with organizations to get support and guidance</p>
+                    <button class="btn btn-primary" onclick="showJoinOrgModal()">Join an Organization</button>
+                    
+                    <div id="pendingInvitationsContainer" style="margin-top: 1.5rem;">
+                        <!-- Pending invitations will be populated here -->
+                    </div>
+                    
+                    <div id="connectedOrgsContainer" style="margin-top: 1.5rem;">
+                        <p style="color: #666;">Loading...</p>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -452,6 +466,12 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+                
+                <!-- Organization Connections Section -->
+                <div class="card" id="orgConnectionsSection" style="margin-top: 2rem;">
+                    <h2 class="card-title">Startup Connections</h2>
+                    <div id="orgConnectionsContainer"></div>
                 </div>
             </div>
         </div>
@@ -1439,6 +1459,8 @@ document.head.appendChild(styleElement);
 
     </script>
     <script src="dashboard-fixes.js"></script>
+    <script src="/irl-assessment-platform/js/startup-connections.js"></script>
+    <script src="/irl-assessment-platform/js/org-connections.js"></script>
     <script src="/irl-assessment-platform/js/dashboard-loader.js"></script>
 </body>
 </html>
