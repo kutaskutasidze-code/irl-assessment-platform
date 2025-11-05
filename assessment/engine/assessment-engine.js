@@ -330,21 +330,6 @@ async saveAssessment() {
         
         throw error;
     }
-}
-    // Also save to mockDB if available
-    if (typeof mockDB !== 'undefined') {
-      mockDB.assessments.push({
-        id: mockDB.assessments.length + 1,
-        userId: null, // TODO: Integrate with auth system
-        categoryId: assessment.categoryId,
-        level: assessment.irlLevel,
-        scores: assessment.scores,
-        answers: assessment.answers,
-        date: assessment.completedAt
-      });
-    }
-
-    return assessment;
   }
 }
 
