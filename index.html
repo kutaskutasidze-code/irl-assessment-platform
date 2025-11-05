@@ -788,32 +788,16 @@
         });
 
         function checkAuthentication() {
-            // Check if coming from landing page with auth data
             // Check authentication with real API
-            checkAuth().then(user => {
-                if (user) {
-                    currentUser = user;
-                    window.currentUser = currentUser;
-                    initializeDashboard();
-                } else {
-                    redirectToLanding();
-                }
-            });
-                }
-            } else if (signupData) {
-                // Handle new signup
-                const data = JSON.parse(signupData);
-                const newUser = {
-                    id: mockDB.users.length + 1,
-                    ...data
-                };
-                mockDB.users.push(newUser);
-                currentUser = newUser;
-                window.currentUser = currentUser; // Update global
-                localStorage.removeItem('signupData');
-                initializeDashboard();
-            } else {
+            const token = localStorage.getItem('auth_token');
+            const savedUser = localStorage.getItem('user');
+            
+            if (token && savedUser) {
                 // Let dashboard-loader.js handle initialization from API
+                console.log('Auth found, letting dashboard-loader initialize');
+            } else {
+                console.log('No auth found, redirecting to landing');
+                redirectToLanding();
             }
         }
 
