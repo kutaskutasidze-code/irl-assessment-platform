@@ -150,8 +150,88 @@ class APIService {
       return { status: 'unhealthy', error: error.message };
     }
   }
+
+  // ORGANIZATION CONNECTION METHODS
+  async searchStartups(query) {
+    return await this.request(`/api/organization/search-startups?query=${encodeURIComponent(query)}`);
+  }
+
+  async inviteStartup(startupId) {
+    return await this.request('/api/organization/invite-startup', {
+      method: 'POST',
+      body: JSON.stringify({ startup_id: startupId })
+    });
+  }
+
+  async getConnectedStartups() {
+    return await this.request('/api/organization/startups');
+  }
+
+  async getOrgPendingInvitations() {
+    return await this.request('/api/organization/pending-invitations');
+  }
+
+  async respondToRequest(connectionId, action) {
+    return await this.request('/api/organization/respond-request', {
+      method: 'POST',
+      body: JSON.stringify({ connection_id: connectionId, action })
+    });
+  }
+
+  // STARTUP CONNECTION METHODS
+  async searchOrganizations(query) {
+    return await this.request(`/api/startup/search-organizations?query=${encodeURIComponent(query)}`);
+  }
+
+  async requestJoinOrg(organizationId) {
+    return await this.request('/api/startup/request-join', {
+      method: 'POST',
+      body: JSON.stringify({ organization_id: organizationId })
+    });
+  }
+
+  async getConnectedOrgs() {
+    return await this.request('/api/startup/organizations');
+  }
+
+  async getStartupPendingInvitations() {
+    return await this.request('/api/startup/pending-invitations');
+  }
+
+  async respondToInvitation(connectionId, action) {
+    return await this.request('/api/startup/respond-invitation', {
+      method: 'POST',
+      body: JSON.stringify({ connection_id: connectionId, action })
+    });
+  }
+
+  // Generic connection methods
+  async getMyConnections() {
+    return await this.request('/api/connections/my-connections');
+  }
+
+  async sendConnectionRequest(targetId, invitedBy) {
+    return await this.request('/api/connections/send-request', {
+      method: 'POST',
+      body: JSON.stringify({ 
+        target_id: targetId, 
+        invited_by: invitedBy 
+      })
+    });
+  }
+
+  async respondToConnection(connectionId, action) {
+    return await this.request('/api/connections/respond', {
+      method: 'POST',
+      body: JSON.stringify({ 
+        connection_id: connectionId, 
+        action: action 
+      })
+    });
+  }
 }
 
 // Create global instance
 const apiService = new APIService();
 window.apiService = apiService;
+window.APIService = apiService;
