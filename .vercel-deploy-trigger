@@ -1,0 +1,4 @@
+# Force Vercel Deploy
+# Timestamp: 2025-11-05 12:15 UTC
+# This file forces Vercel to recognize changes
+BUILD_ID=$(date +%s)
