@@ -958,6 +958,9 @@
         }
 
         function startAssessment() {
+            console.log('Starting assessment...');
+            console.log('Auth token:', localStorage.getItem('auth_token'));
+            console.log('User:', localStorage.getItem('user'));
             window.location.href = "assessment/ui/category-selection.html";
         }
         function showQuestion() {
