@@ -375,12 +375,12 @@
                     <div class="stat-value" id="assessmentStatus">Not Started</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-label">Action Plans</div>
-                    <div class="stat-value" id="actionPlanCount">0</div>
+                    <div class="stat-label">Connected Organizations</div>
+                    <div class="stat-value" id="connectedOrgsCount">0</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-label">Last Updated</div>
-                    <div class="stat-value" id="lastUpdated">-</div>
+                    <div class="stat-label">Action Plans</div>
+                    <div class="stat-value" id="actionPlanCount">0</div>
                 </div>
             </div>
 
@@ -867,7 +867,7 @@
             loadAdminData();
         }
 
-        function loadStartupData() {
+        async function loadStartupData() {
             const userAssessments = mockDB.assessments.filter(a => a.userId === currentUser.id);
             const userActionPlans = mockDB.actionPlans.filter(a => a.startupId === currentUser.id);
             
@@ -875,7 +875,6 @@
                 const latest = userAssessments[userAssessments.length - 1];
                 document.getElementById('irlLevel').textContent = latest.level || '-';
                 document.getElementById('assessmentStatus').textContent = 'Completed';
-                document.getElementById('lastUpdated').textContent = new Date(latest.date).toLocaleDateString();
                 
                 // Show results
                 document.getElementById('resultsSection').classList.remove('hidden');
@@ -891,6 +890,16 @@
             if (userActionPlans.length > 0) {
                 document.getElementById('actionPlansSection').classList.remove('hidden');
                 displayActionPlans(userActionPlans);
+            }
+            
+            // Load connected organizations count
+            try {
+                const connections = await apiService.getMyConnections();
+                const connectedOrgs = connections.filter(c => c.status === 'accepted');
+                document.getElementById('connectedOrgsCount').textContent = connectedOrgs.length;
+            } catch (error) {
+                console.error('Error loading connected organizations:', error);
+                document.getElementById('connectedOrgsCount').textContent = '0';
             }
         }
 
