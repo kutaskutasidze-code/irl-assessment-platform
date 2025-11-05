@@ -575,4 +575,112 @@ app.post('/api/startup/respond-invitation', authenticateToken, checkRole('startu
   }
 });
 
+// Generic connection endpoints (work for both startups and orgs)
+app.get('/api/connections/my-connections', authenticateToken, async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const userType = req.user.type;
+
+    let query = supabase
+      .from('organization_connections')
+      .select(`
+        id,
+        organization_id,
+        startup_id,
+        status,
+        invited_by,
+        created_at,
+        organization:users!organization_connections_organization_id_fkey(id, email, organization_name:organization),
+        startup:users!organization_connections_startup_id_fkey(id, email, startup_name:name)
+      `);
+
+    if (userType === 'startup') {
+      query = query.eq('startup_id', userId);
+    } else if (userType === 'organization') {
+      query = query.eq('organization_id', userId);
+    }
+
+    const { data: connections, error } = await query;
+
+    if (error) throw error;
+
+    // Format the response
+    const formatted = (connections || []).map(conn => ({
+      id: conn.id,
+      organization_id: conn.organization_id,
+      startup_id: conn.startup_id,
+      status: conn.status,
+      invited_by: conn.invited_by,
+      created_at: conn.created_at,
+      organization_name: conn.organization?.organization_name,
+      organization_email: conn.organization?.email,
+      startup_name: conn.startup?.startup_name,
+      startup_email: conn.startup?.email
+    }));
+
+    res.json(formatted);
+  } catch (error) {
+    console.error('Get my connections error:', error);
+    res.status(500).json({ error: 'Failed to get connections' });
+  }
+});
+
+app.post('/api/connections/send-request', authenticateToken, async (req, res) => {
+  try {
+    const { target_id, invited_by } = req.body;
+    const userId = req.user.id;
+
+    let insertData = {
+      status: 'pending',
+      invited_by: invited_by,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
+    };
+
+    if (invited_by === 'startup') {
+      insertData.startup_id = userId;
+      insertData.organization_id = target_id;
+    } else if (invited_by === 'organization') {
+      insertData.organization_id = userId;
+      insertData.startup_id = target_id;
+    }
+
+    const { data: connection, error } = await supabase
+      .from('organization_connections')
+      .insert(insertData)
+      .select()
+      .single();
+
+    if (error) throw error;
+
+    res.json(connection);
+  } catch (error) {
+    console.error('Send request error:', error);
+    res.status(500).json({ error: 'Failed to send request' });
+  }
+});
+
+app.post('/api/connections/respond', authenticateToken, async (req, res) => {
+  try {
+    const { connection_id, action } = req.body;
+
+    const { data: connection, error } = await supabase
+      .from('organization_connections')
+      .update({ 
+        status: action === 'accepted' ? 'accepted' : 'rejected',
+        updated_at: new Date().toISOString()
+      })
+      .eq('id', connection_id)
+      .select()
+      .single();
+
+    if (error) throw error;
+
+    res.json(connection);
+  } catch (error) {
+    console.error('Respond to connection error:', error);
+    res.status(500).json({ error: 'Failed to respond to connection' });
+  }
+});
+
 module.exports = app;
