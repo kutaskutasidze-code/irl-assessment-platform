@@ -48,6 +48,19 @@ class OrgConnections {
         );
 
         let html = `
+            <!-- Search Section -->
+            <div style="margin-bottom: 2rem;">
+                <h3 style="margin-bottom: 1rem; color: #2c3e50;">Search & Invite Startups</h3>
+                <input type="text" id="startupSearch" placeholder="Search startups by name or email..." 
+                       style="width: 100%; padding: 0.875rem; margin-bottom: 1rem; border: 2px solid #e9ecef; border-radius: 8px; font-size: 1rem;">
+                <div id="startupSearchResults" style="max-height: 400px; overflow-y: auto;">
+                    ${availableStartups.length === 0 ? 
+                        '<p style="color: #7f8c8d;">No startups available</p>' :
+                        availableStartups.slice(0, 10).map(startup => this.renderAvailableStartup(startup)).join('')
+                    }
+                </div>
+            </div>
+            
             <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
                 <!-- Connected Startups -->
                 <div style="flex: 1; min-width: 300px;">
@@ -65,16 +78,6 @@ class OrgConnections {
                         '<p style="color: #7f8c8d;">No pending requests</p>' :
                         pendingRequests.map(req => this.renderJoinRequest(req)).join('')
                     }
-                </div>
-
-                <!-- Search & Invite Startups -->
-                <div style="flex: 1; min-width: 300px;">
-                    <h3 style="margin-bottom: 1rem; color: #2c3e50;">Search & Invite Startups</h3>
-                    <input type="text" id="startupSearch" placeholder="Search startups..." 
-                           style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 2px solid #e9ecef; border-radius: 8px;">
-                    <div id="startupSearchResults">
-                        ${availableStartups.slice(0, 10).map(startup => this.renderAvailableStartup(startup)).join('')}
-                    </div>
                 </div>
             </div>
         `;

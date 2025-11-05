@@ -46,6 +46,19 @@ class StartupConnections {
         );
 
         let html = `
+            <!-- Search Section -->
+            <div style="margin-bottom: 2rem;">
+                <h3 style="margin-bottom: 1rem; color: #2c3e50;">Search Organizations</h3>
+                <input type="text" id="orgSearch" placeholder="Search organizations by name or email..." 
+                       style="width: 100%; padding: 0.875rem; margin-bottom: 1rem; border: 2px solid #e9ecef; border-radius: 8px; font-size: 1rem;">
+                <div id="orgSearchResults" style="max-height: 400px; overflow-y: auto;">
+                    ${availableOrgs.length === 0 ? 
+                        '<p style="color: #7f8c8d;">No organizations available</p>' :
+                        availableOrgs.map(org => this.renderAvailableOrg(org)).join('')
+                    }
+                </div>
+            </div>
+            
             <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
                 <!-- Pending Invitations -->
                 <div style="flex: 1; min-width: 300px;">
@@ -63,16 +76,6 @@ class StartupConnections {
                         '<p style="color: #7f8c8d;">No pending requests</p>' :
                         pendingRequests.map(req => this.renderMyRequest(req)).join('')
                     }
-                </div>
-
-                <!-- Available Organizations -->
-                <div style="flex: 1; min-width: 300px;">
-                    <h3 style="margin-bottom: 1rem; color: #2c3e50;">Available Organizations</h3>
-                    <input type="text" id="orgSearch" placeholder="Search organizations..." 
-                           style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 2px solid #e9ecef; border-radius: 8px;">
-                    <div id="orgSearchResults">
-                        ${availableOrgs.map(org => this.renderAvailableOrg(org)).join('')}
-                    </div>
                 </div>
             </div>
         `;
