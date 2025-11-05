@@ -14,8 +14,8 @@ class StartupConnections {
     async loadConnections() {
         try {
             const [organizations, myConnections] = await Promise.all([
-                APIService.searchOrganizations(''),
-                APIService.getMyConnections()
+                apiService.searchOrganizations(''),
+                apiService.getMyConnections()
             ]);
 
             this.render(organizations, myConnections);
@@ -139,8 +139,8 @@ class StartupConnections {
 
     async handleSearch(query) {
         try {
-            const organizations = await APIService.searchOrganizations(query);
-            const myConnections = await APIService.getMyConnections();
+            const organizations = await apiService.searchOrganizations(query);
+            const myConnections = await apiService.getMyConnections();
             
             const connectedOrgIds = new Set(myConnections.map(c => c.organization_id));
             const availableOrgs = organizations.filter(org => !connectedOrgIds.has(org.id));
@@ -156,7 +156,7 @@ class StartupConnections {
 
     async sendJoinRequest(orgId) {
         try {
-            await APIService.sendConnectionRequest(orgId, 'startup');
+            await apiService.sendConnectionRequest(orgId, 'startup');
             alert('Join request sent!');
             await this.loadConnections();
         } catch (error) {
@@ -167,7 +167,7 @@ class StartupConnections {
 
     async handleInvitation(connectionId, action) {
         try {
-            await APIService.respondToConnection(connectionId, action);
+            await apiService.respondToConnection(connectionId, action);
             alert(`Invitation ${action}!`);
             await this.loadConnections();
         } catch (error) {
