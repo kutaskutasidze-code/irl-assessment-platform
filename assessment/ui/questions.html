@@ -381,14 +381,14 @@
             `;
 
             // Calculate scores
-            setTimeout(() => {
+            setTimeout(async () => {
                 try {
                     console.log("Starting score calculation...");
                     assessmentEngine.calculateScores();
                     console.log("Scores calculated:", assessmentEngine.currentAssessment.scores);
                     
                     console.log("Saving assessment...");
-                    assessmentEngine.saveAssessmentToStorage();
+                    await assessmentEngine.saveAssessment();
                     console.log("Assessment saved successfully");
                     
                     console.log("Redirecting to results...");
