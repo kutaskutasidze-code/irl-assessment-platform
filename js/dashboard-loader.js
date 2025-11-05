@@ -101,8 +101,16 @@ function initializeDashboardWithUser(user) {
     // Show the right one
     if (user.type === 'startup' && startupDash) {
         startupDash.classList.remove('hidden');
+        // Initialize startup connections UI
+        if (typeof startupConnections !== 'undefined') {
+            startupConnections.init();
+        }
     } else if (user.type === 'organization' && orgDash) {
         orgDash.classList.remove('hidden');
+        // Initialize org connections UI
+        if (typeof orgConnections !== 'undefined') {
+            orgConnections.init();
+        }
     } else if (user.type === 'admin' && adminDash) {
         adminDash.classList.remove('hidden');
     }
