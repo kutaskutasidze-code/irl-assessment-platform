@@ -527,38 +527,7 @@
 
     <script>
         // Mock Database
-        const mockDB = {
-            users: [
-                {
-                    id: 1,
-                    email: 'startup@example.com',
-                    password: 'startup123',
-                    name: 'John Startup',
-                    type: 'startup',
-                    startupName: 'InnoTech Solutions',
-                    organizationId: 2
-                },
-                {
-                    id: 2,
-                    email: 'org@example.com',
-                    password: 'org123',
-                    name: 'Sarah Organization',
-                    type: 'organization',
-                    organizationName: 'Tech University'
-                },
-                {
-                    id: 3,
-                    email: 'admin@example.com',
-                    password: 'admin123',
-                    name: 'Admin User',
-                    type: 'admin'
-                }
-            ],
-            assessments: [],
-            actionPlans: []
-        };
-
-        window.mockDB = mockDB; // Expose globally for assessment system
+        // Remove mockDB - using Supabase API now
         let currentUser = null;
         window.currentUser = currentUser; // Expose globally for assessment system
         let assessmentData = {
@@ -868,63 +837,57 @@
         }
 
         async function loadStartupData() {
-            const userAssessments = mockDB.assessments.filter(a => a.userId === currentUser.id);
-            const userActionPlans = mockDB.actionPlans.filter(a => a.startupId === currentUser.id);
-            
-            if (userAssessments.length > 0) {
-                const latest = userAssessments[userAssessments.length - 1];
-                document.getElementById('irlLevel').textContent = latest.level || '-';
-                document.getElementById('assessmentStatus').textContent = 'Completed';
-                
-                // Show results
-                document.getElementById('resultsSection').classList.remove('hidden');
-                displayResults(latest);
-                
-                // Show View Results button
-                const viewResultsBtn = document.getElementById('viewResultsBtn');
-                if (viewResultsBtn) viewResultsBtn.style.display = 'inline-block';
-            }
-            
-            document.getElementById('actionPlanCount').textContent = userActionPlans.length;
-            
-            if (userActionPlans.length > 0) {
-                document.getElementById('actionPlansSection').classList.remove('hidden');
-                displayActionPlans(userActionPlans);
-            }
-            
-            // Load connected organizations count
             try {
-                const connections = await apiService.getMyConnections();
+                // Fetch assessments and action plans from API
+                const [assessments, actionPlans] = await Promise.all([
+                    apiService.getMyAssessments().catch(() => []),
+                    apiService.getMyActionPlans().catch(() => [])
+                ]);
+                
+                if (assessments && assessments.length > 0) {
+                    const latest = assessments[0];
+                    document.getElementById('irlLevel').textContent = latest.irl_level || '-';
+                    document.getElementById('assessmentStatus').textContent = 'Completed';
+                    
+                    // Show results
+                    document.getElementById('resultsSection').classList.remove('hidden');
+                    displayResults(latest);
+                    
+                    // Show View Results button
+                    const viewResultsBtn = document.getElementById('viewResultsBtn');
+                    if (viewResultsBtn) viewResultsBtn.style.display = 'inline-block';
+                }
+                
+                document.getElementById('actionPlanCount').textContent = actionPlans?.length || 0;
+                
+                if (actionPlans && actionPlans.length > 0) {
+                    document.getElementById('actionPlansSection').classList.remove('hidden');
+                    displayActionPlans(actionPlans);
+                }
+                
+                // Load connected organizations count
+                const connections = await apiService.getMyConnections().catch(() => []);
                 const connectedOrgs = connections.filter(c => c.status === 'accepted');
                 document.getElementById('connectedOrgsCount').textContent = connectedOrgs.length;
             } catch (error) {
-                console.error('Error loading connected organizations:', error);
-                document.getElementById('connectedOrgsCount').textContent = '0';
+                console.error('Error loading startup data:', error);
             }
         }
 
         async function loadOrganizationData() {
             try {
-                // Fetch connected startups from API
-                const connections = await apiService.getMyConnections();
+                // Fetch connected startups and action plans from API
+                const [connections, actionPlans] = await Promise.all([
+                    apiService.getMyConnections(),
+                    apiService.getMyActionPlans().catch(() => [])
+                ]);
                 const connectedStartups = connections.filter(c => c.status === 'accepted');
                 
-                // Fetch assessments for connected startups
-                const assessments = mockDB.assessments.filter(a => 
-                    connectedStartups.some(cs => cs.startup_id === a.userId || cs.startup_id === a.startupId)
-                );
-                
+                // For now, we can't fetch assessments for other users, so stats will be basic
                 document.getElementById('totalStartups').textContent = connectedStartups.length;
-                document.getElementById('completedAssessments').textContent = assessments.length;
-                document.getElementById('actionPlansCreated').textContent = mockDB.actionPlans.filter(ap => 
-                    connectedStartups.some(cs => cs.startup_id === ap.startupId)
-                ).length;
-                
-                // Calculate average IRL
-                const avgIrl = assessments.length > 0 
-                    ? (assessments.reduce((sum, a) => sum + (a.irlLevel || a.level || 0), 0) / assessments.length).toFixed(1)
-                    : '-';
-                document.getElementById('avgIRL').textContent = avgIrl;
+                document.getElementById('completedAssessments').textContent = '0'; // Will need org assessment API
+                document.getElementById('actionPlansCreated').textContent = actionPlans?.length || 0;
+                document.getElementById('avgIRL').textContent = '-';
                 
                 // Populate startups table
                 const tableBody = document.getElementById('startupsTable');
@@ -936,16 +899,13 @@
                 }
                 
                 connectedStartups.forEach(connection => {
-                    const assessment = assessments.find(a => a.userId === connection.startup_id || a.startupId === connection.startup_id);
                     const row = document.createElement('tr');
                     row.innerHTML = `
                         <td>${connection.startup_name || 'Unknown'}</td>
                         <td>${connection.startup_email || '-'}</td>
-                        <td>${assessment ? (assessment.irlLevel || assessment.level || '-') : '-'}</td>
+                        <td>-</td>
                         <td>
-                            <span class="badge ${assessment ? 'badge-success' : 'badge-warning'}">
-                                ${assessment ? 'Completed' : 'Pending'}
-                            </span>
+                            <span class="badge badge-warning">Pending</span>
                         </td>
                         <td>
                             <button class="btn btn-secondary btn-sm" onclick="viewStartup(${connection.startup_id})">View</button>
@@ -1056,34 +1016,10 @@
         }
 
         function completeAssessment() {
-            // Calculate IRL level based on answers
-            const avgScore = assessmentData.answers.reduce((a, b) => a + b, 0) / assessmentData.answers.length;
-            const irlLevel = Math.min(9, Math.max(1, Math.ceil(avgScore * 3) + 1));
-            
-            // Save assessment
-            const assessment = {
-                id: mockDB.assessments.length + 1,
-                userId: currentUser.id,
-                level: irlLevel,
-                answers: assessmentData.answers,
-                date: new Date().toISOString()
-            };
-            
-            mockDB.assessments.push(assessment);
-            
-            // Show loading
-            document.getElementById('assessmentContent').innerHTML = `
-                <div class="loading">
-                    <div class="spinner"></div>
-                    <h2 style="margin-top: 1rem;">Calculating your IRL level...</h2>
-                </div>
-            `;
-            
-            // Show results after delay
-            setTimeout(() => {
-                hideAllDashboards();
-                showStartupDashboard();
-            }, 2000);
+            // Assessment now handled by assessment engine which saves to API
+            // Just redirect to dashboard
+            hideAllDashboards();
+            showStartupDashboard();
         }
 
         function displayResults(assessment) {
@@ -1160,43 +1096,49 @@
 function displayActionPlans(plans) {
     const content = document.getElementById('actionPlansContent');
     
-    if (plans.length === 0) {
+    if (!plans || plans.length === 0) {
         content.innerHTML = '<p style="color: #666;">No action plans assigned yet.</p>';
         return;
     }
     
-    content.innerHTML = plans.map(plan => `
-        <div style="padding: 1.5rem; background: #f8f9fa; border-radius: 12px; margin-bottom: 1rem;">
-            <h3 style="margin-bottom: 0.5rem;">${plan.title}</h3>
-            <p style="color: #666; margin-bottom: 1rem;">${plan.description}</p>
-            <div style="margin-bottom: 1rem;">
-                <strong>Progress: ${getCompletionPercentage(plan)}%</strong>
-                <div style="background: #e9ecef; height: 8px; border-radius: 4px; margin-top: 0.5rem; overflow: hidden;">
-                    <div style="background: #1a1a1a; height: 100%; width: ${getCompletionPercentage(plan)}%; transition: width 0.3s ease;"></div>
+    content.innerHTML = plans.map(plan => {
+        // Parse checklist if it's a string
+        const checklist = typeof plan.checklist === 'string' ? JSON.parse(plan.checklist) : plan.checklist;
+        const dateStr = plan.created_at || plan.date;
+        
+        return `
+            <div style="padding: 1.5rem; background: #f8f9fa; border-radius: 12px; margin-bottom: 1rem;">
+                <h3 style="margin-bottom: 0.5rem;">${plan.title}</h3>
+                <p style="color: #666; margin-bottom: 1rem;">${plan.description}</p>
+                <div style="margin-bottom: 1rem;">
+                    <strong>Progress: ${getCompletionPercentage({...plan, checklist})}%</strong>
+                    <div style="background: #e9ecef; height: 8px; border-radius: 4px; margin-top: 0.5rem; overflow: hidden;">
+                        <div style="background: #1a1a1a; height: 100%; width: ${getCompletionPercentage({...plan, checklist})}%; transition: width 0.3s ease;"></div>
+                    </div>
                 </div>
-            </div>
-            <div style="margin-bottom: 1rem;">
-                <strong>Checklist:</strong>
-                <div style="margin-top: 0.5rem;">
-                    ${plan.checklist.map((item, idx) => `
-                        <div style="padding: 0.75rem; background: white; border-radius: 6px; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.75rem;">
-                            <input 
-                                type="checkbox" 
-                                id="check-${plan.id}-${idx}"
-                                ${item.completed ? 'checked' : ''} 
-                                onchange="toggleChecklistItem(${plan.id}, ${idx})"
-                                style="width: 20px; height: 20px; cursor: pointer;">
-                            <label 
-                                for="check-${plan.id}-${idx}"
-                                style="flex: 1; cursor: pointer; ${item.completed ? 'text-decoration: line-through; color: #999;' : ''}"
-                            >${item.text}</label>
-                        </div>
-                    `).join('')}
+                <div style="margin-bottom: 1rem;">
+                    <strong>Checklist:</strong>
+                    <div style="margin-top: 0.5rem;">
+                        ${checklist.map((item, idx) => `
+                            <div style="padding: 0.75rem; background: white; border-radius: 6px; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.75rem;">
+                                <input 
+                                    type="checkbox" 
+                                    id="check-${plan.id}-${idx}"
+                                    ${item.completed ? 'checked' : ''} 
+                                    onchange="toggleChecklistItem(${plan.id}, ${idx})"
+                                    style="width: 20px; height: 20px; cursor: pointer;">
+                                <label 
+                                    for="check-${plan.id}-${idx}"
+                                    style="flex: 1; cursor: pointer; ${item.completed ? 'text-decoration: line-through; color: #999;' : ''}"
+                                >${item.text}</label>
+                            </div>
+                        `).join('')}
+                    </div>
                 </div>
+                <small style="color: #999;">Created: ${dateStr ? new Date(dateStr).toLocaleDateString() : 'Unknown'}</small>
             </div>
-            <small style="color: #999;">Created: ${new Date(plan.date).toLocaleDateString()}</small>
-        </div>
-    `).join('');
+        `;
+    }).join('');
 }
 
 // Add these new helper functions
@@ -1206,19 +1148,31 @@ function getCompletionPercentage(plan) {
     return Math.round((completed / plan.checklist.length) * 100);
 }
 
-function toggleChecklistItem(planId, itemIndex) {
-    const plan = mockDB.actionPlans.find(p => p.id === planId);
-    if (!plan) return;
-    
-    plan.checklist[itemIndex].completed = !plan.checklist[itemIndex].completed;
-    
-    const userActionPlans = mockDB.actionPlans.filter(a => a.startupId === currentUser.id);
-    displayActionPlans(userActionPlans);
-    
-    if (plan.checklist[itemIndex].completed) {
-        showToast('✓ Task marked as complete!');
-    } else {
-        showToast('Task unmarked');
+async function toggleChecklistItem(planId, itemIndex) {
+    try {
+        // Fetch current plan
+        const plans = await apiService.getMyActionPlans();
+        const plan = plans.find(p => p.id === planId);
+        if (!plan) return;
+        
+        // Parse checklist and toggle item
+        const checklist = typeof plan.checklist === 'string' ? JSON.parse(plan.checklist) : plan.checklist;
+        checklist[itemIndex].completed = !checklist[itemIndex].completed;
+        
+        // Update via API
+        await apiService.updateActionPlan(planId, checklist);
+        
+        // Reload action plans
+        const updatedPlans = await apiService.getMyActionPlans();
+        displayActionPlans(updatedPlans);
+        
+        if (checklist[itemIndex].completed) {
+            showToast('✓ Task marked as complete!');
+        } else {
+            showToast('Task unmarked');
+        }
+    } catch (error) {
+        console.error('Error toggling checklist item:', error);
     }
 }
 
@@ -1399,7 +1353,7 @@ function addChecklistItem() {
     container.appendChild(input);
 }
 
-function handleCreateActionPlan(event, startupId) {
+async function handleCreateActionPlan(event, startupId) {
     event.preventDefault();
     
     const title = document.getElementById('planTitle').value;
@@ -1416,20 +1370,14 @@ function handleCreateActionPlan(event, startupId) {
         return;
     }
     
-    const actionPlan = {
-        id: mockDB.actionPlans.length + 1,
-        startupId: startupId,
-        organizationId: currentUser.id,
-        title: title,
-        description: description,
-        checklist: checklist,
-        date: new Date().toISOString()
-    };
-    
-    mockDB.actionPlans.push(actionPlan);
-    
-    document.querySelector('.modal').remove();
-    viewStartup(startupId);
+    try {
+        await apiService.createActionPlan(startupId, title, description, checklist);
+        document.querySelector('.modal').remove();
+        viewStartup(startupId);
+    } catch (error) {
+        console.error('Error creating action plan:', error);
+        alert('Failed to create action plan');
+    }
 }
 
 // Add CSS animations

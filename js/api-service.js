@@ -229,6 +229,34 @@ class APIService {
       })
     });
   }
+
+  // Action Plans
+  async createActionPlan(startupId, title, description, checklist) {
+    return await this.request('/api/action-plans', {
+      method: 'POST',
+      body: JSON.stringify({
+        startup_id: startupId,
+        title,
+        description,
+        checklist
+      })
+    });
+  }
+
+  async getActionPlansForStartup(startupId) {
+    return await this.request(`/api/action-plans/startup/${startupId}`);
+  }
+
+  async getMyActionPlans() {
+    return await this.request('/api/action-plans/my');
+  }
+
+  async updateActionPlan(planId, checklist) {
+    return await this.request(`/api/action-plans/${planId}`, {
+      method: 'PATCH',
+      body: JSON.stringify({ checklist })
+    });
+  }
 }
 
 // Create global instance
