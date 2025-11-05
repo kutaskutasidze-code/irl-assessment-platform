@@ -963,6 +963,9 @@
             console.log('User:', localStorage.getItem('user'));
             window.location.href = "assessment/ui/category-selection.html";
         }
+        
+        // Make sure it's globally accessible
+        window.startAssessment = startAssessment;
         function showQuestion() {
             const question = assessmentData.questions[assessmentData.currentQuestion];
             const questionNum = assessmentData.currentQuestion + 1;

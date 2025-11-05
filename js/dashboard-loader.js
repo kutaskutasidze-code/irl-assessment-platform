@@ -42,7 +42,7 @@ async function loadDashboardData() {
                 // Load assessments if startup
                 if (user.user_type === 'startup') {
                     try {
-                        const assessments = await apiService.getAssessments();
+                        const assessments = await apiService.getMyAssessments();
                         window.userAssessments = assessments || [];
                         
                         console.log('Assessments loaded:', assessments);
