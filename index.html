@@ -481,8 +481,8 @@
                     </div>
                 </div>
                 
-                <!-- Startup Connections Section -->
-                <div class="card" id="startupConnectionsSection">
+                <!-- Startup Connections Section - Now in notification bell -->
+                <div class="card hidden" id="startupConnectionsSection">
                     <h2 class="card-title">Organization Connections</h2>
                     <p class="card-description">Search and connect with organizations to get support and guidance</p>
                     <div id="startupConnectionsContainer"></div>
@@ -534,8 +534,8 @@
                     </div>
                 </div>
                 
-                <!-- Organization Connections Section -->
-                <div class="card" id="orgConnectionsSection" style="margin-top: 2rem;">
+                <!-- Organization Connections Section - Now in notification bell -->
+                <div class="card hidden" id="orgConnectionsSection" style="margin-top: 2rem;">
                     <h2 class="card-title">Startup Connections</h2>
                     <div id="orgConnectionsContainer"></div>
                 </div>
@@ -839,6 +839,21 @@
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
+            // Fallback: Set currentUser from localStorage if not already set
+            if (!window.currentUser) {
+                const savedUser = localStorage.getItem('user');
+                if (savedUser) {
+                    const user = JSON.parse(savedUser);
+                    window.currentUser = {
+                        id: user.id,
+                        name: user.name,
+                        email: user.email,
+                        type: user.user_type || user.type,
+                        organization: user.organization
+                    };
+                    console.log('Fallback: Set currentUser from localStorage');
+                }
+            }
             checkAuthentication();
         });
 
@@ -867,6 +882,11 @@
             // Update header
             document.getElementById('userName').textContent = currentUser.name;
             document.getElementById('userRole').textContent = currentUser.type.charAt(0).toUpperCase() + currentUser.type.slice(1);
+
+            // Load notifications for the bell
+            if (currentUser) {
+                loadNotifications();
+            }
 
             // Show appropriate dashboard
             hideAllDashboards();
