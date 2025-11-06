@@ -317,6 +317,11 @@
             background: #333;
         }
 
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
         /* Modal */
         .modal {
             display: none;
@@ -455,6 +460,20 @@
 
         .form-footer a:hover {
             text-decoration: underline;
+        }
+
+        .error-message {
+            background: #fee;
+            color: #c33;
+            padding: 0.75rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
         }
 
         /* Footer */
@@ -668,7 +687,9 @@
             <h2>Welcome Back</h2>
             <p class="modal-subtitle">Sign in to your account to continue</p>
             
-            <form onsubmit="handleSignIn(event)">
+            <div id="signInError" class="error-message"></div>
+            
+            <form id="signInForm" onsubmit="handleSignIn(event)">
                 <div class="form-group">
                     <label for="signInEmail">Email Address</label>
                     <input type="email" id="signInEmail" placeholder="you@example.com" required>
@@ -679,7 +700,7 @@
                     <input type="password" id="signInPassword" placeholder="Enter your password" required>
                 </div>
                 
-                <button type="submit" class="btn btn-gradient" style="width: 100%;">Sign In</button>
+                <button type="submit" id="signInBtn" class="btn btn-gradient" style="width: 100%;">Sign In</button>
             </form>
             
             <div class="form-divider">
@@ -705,7 +726,9 @@
             <h2>Create Account</h2>
             <p class="modal-subtitle">Join the IRL Platform today</p>
             
-            <form onsubmit="handleSignUp(event)">
+            <div id="signUpError" class="error-message"></div>
+            
+            <form id="signUpForm" onsubmit="handleSignUp(event)">
                 <div class="form-group">
                     <label for="signUpType">Account Type</label>
                     <select id="signUpType" onchange="handleAccountTypeChange()" required>
@@ -745,23 +768,30 @@
                     <input type="password" id="signUpConfirmPassword" placeholder="Confirm your password" required>
                 </div>
                 
-                <button type="submit" class="btn btn-gradient" style="width: 100%;">Create Account</button>
+                <button type="submit" id="signUpBtn" class="btn btn-gradient" style="width: 100%;">Create Account</button>
             </form>
             
             <div class="form-footer">
-                Already have an account? <a href="#" onclick="closeModal('signUpModal'); showSignIn();">Sign Up</a>
+                Already have an account? <a href="#" onclick="closeModal('signUpModal'); showSignIn();">Sign In</a>
             </div>
         </div>
     </div>
 
     <script>
+        // API Configuration
+        const API_BASE_URL = window.location.hostname === 'localhost' 
+            ? 'http://localhost:3000' 
+            : 'https://irl-assessment-platform.vercel.app';
+
         // Modal Functions
         function showSignIn() {
             document.getElementById('signInModal').classList.add('active');
+            document.getElementById('signInError').classList.remove('show');
         }
 
         function showSignUp(type = null) {
             document.getElementById('signUpModal').classList.add('active');
+            document.getElementById('signUpError').classList.remove('show');
             if (type) {
                 document.getElementById('signUpType').value = type;
                 handleAccountTypeChange();
@@ -796,47 +826,123 @@
             }
         }
 
-        // Form Handlers
-        function handleSignIn(event) {
-            event.preventDefault();
-            const email = document.getElementById('signInEmail').value;
-            const password = document.getElementById('signInPassword').value;
-            
-            // Store credentials and redirect to main app
-            localStorage.setItem('authEmail', email);
-            localStorage.setItem('authPassword', password);
-            window.location.href = 'index.html';
+        // Show error message
+        function showError(elementId, message) {
+            const errorEl = document.getElementById(elementId);
+            errorEl.textContent = message;
+            errorEl.classList.add('show');
         }
 
-        function handleSignUp(event) {
+        // Sign In Handler - NOW CALLS API
+        async function handleSignIn(event) {
             event.preventDefault();
+            
+            const email = document.getElementById('signInEmail').value;
+            const password = document.getElementById('signInPassword').value;
+            const submitBtn = document.getElementById('signInBtn');
+            
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Signing in...';
+            
+            try {
+                console.log('Attempting login to:', API_BASE_URL + '/api/auth/login');
+                
+                const response = await fetch(API_BASE_URL + '/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+                
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.error || 'Login failed');
+                }
+                
+                // SUCCESS - Store token and redirect
+                console.log('Login successful! Token received:', data.token ? 'YES' : 'NO');
+                localStorage.setItem('auth_token', data.token);
+                
+                // Redirect to dashboard
+                window.location.href = 'index.html';
+                
+            } catch (error) {
+                console.error('Login error:', error);
+                showError('signInError', error.message || 'Login failed. Please try again.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Sign In';
+            }
+        }
+
+        // Sign Up Handler - NOW CALLS API
+        async function handleSignUp(event) {
+            event.preventDefault();
+            
             const type = document.getElementById('signUpType').value;
             const name = document.getElementById('signUpName').value;
             const email = document.getElementById('signUpEmail').value;
             const password = document.getElementById('signUpPassword').value;
             const confirmPassword = document.getElementById('signUpConfirmPassword').value;
+            const submitBtn = document.getElementById('signUpBtn');
             
+            // Validate passwords match
             if (password !== confirmPassword) {
-                alert('Passwords do not match!');
+                showError('signUpError', 'Passwords do not match!');
                 return;
             }
             
-            // Store signup data and redirect to main app
-            const userData = {
-                type: type,
-                name: name,
-                email: email,
-                password: password
-            };
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Creating account...';
             
-            if (type === 'startup') {
-                userData.startupName = document.getElementById('signUpStartup').value;
-            } else if (type === 'organization') {
-                userData.organizationName = document.getElementById('signUpOrg').value;
+            try {
+                // Build request data
+                const userData = {
+                    email,
+                    password,
+                    user_type: type,
+                    name
+                };
+                
+                // Add organization or startup name
+                if (type === 'startup') {
+                    userData.organization = document.getElementById('signUpStartup').value;
+                } else if (type === 'organization') {
+                    userData.organization = document.getElementById('signUpOrg').value;
+                }
+                
+                console.log('Attempting registration to:', API_BASE_URL + '/api/auth/register');
+                
+                const response = await fetch(API_BASE_URL + '/api/auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(userData)
+                });
+                
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.error || 'Registration failed');
+                }
+                
+                // SUCCESS - Store token and redirect
+                console.log('Registration successful! Token received:', data.token ? 'YES' : 'NO');
+                localStorage.setItem('auth_token', data.token);
+                
+                // Redirect to dashboard
+                window.location.href = 'index.html';
+                
+            } catch (error) {
+                console.error('Registration error:', error);
+                showError('signUpError', error.message || 'Registration failed. Please try again.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Create Account';
             }
-            
-            localStorage.setItem('signupData', JSON.stringify(userData));
-            window.location.href = 'index.html';
         }
 
         // Scroll to features
