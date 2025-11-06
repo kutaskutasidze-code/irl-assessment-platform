@@ -1540,14 +1540,17 @@ function showToast(message) {
 }
 
 // Replace the viewStartup function with this full implementation
-function viewStartup(startupId) {
-    const startup = mockDB.users.find(u => u.id === startupId);
-    const assessment = mockDB.assessments.find(a => a.userId === startupId || a.startupId === startupId);
-    
-    if (!startup) {
-        alert('Startup not found');
-        return;
-    }
+async function viewStartup(startupId) {
+    try {
+        // Fetch startup details and assessment
+        const startup = await apiService.getStartupById(startupId);
+        const assessmentResult = await apiService.getAssessmentByUserId(startupId);
+        const actionPlans = await apiService.getActionPlansByStartupId(startupId);
+        
+        if (!startup) {
+            showToast('Startup not found', 'error');
+            return;
+        }
     
     hideAllDashboards();
     
@@ -1561,7 +1564,7 @@ function viewStartup(startupId) {
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-label">IRL Level</div>
-                    <div class="stat-value">${assessment ? assessment.irlLevel || assessment.level : '-'}</div>
+                    <div class="stat-value">${assessmentResult ? assessmentResult.irl_level : '-'}</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-label">Contact</div>
@@ -1569,21 +1572,21 @@ function viewStartup(startupId) {
                 </div>
                 <div class="stat-card">
                     <div class="stat-label">Assessment Status</div>
-                    <div class="stat-value" style="font-size: 1rem;">${assessment ? 'Completed' : 'Not Started'}</div>
+                    <div class="stat-value" style="font-size: 1rem;">${assessmentResult ? 'Completed' : 'Not Started'}</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-label">Action Plans</div>
-                    <div class="stat-value">${mockDB.actionPlans.filter(a => a.startupId === startupId).length}</div>
+                    <div class="stat-value">${actionPlans.length}</div>
                 </div>
             </div>
             
-            ${assessment ? `
+            ${assessmentResult ? `
                 <div class="card">
                     <h2 class="card-title">Assessment Results & Answers</h2>
                     <div style="margin-bottom: 2rem;">
                         <div style="text-align: center; padding: 2rem; background: #f8f9fa; border-radius: 12px;">
-                            <div style="font-size: 3rem; font-weight: 700; color: #1a1a1a;">IRL ${assessment.irlLevel || assessment.level}</div>
-                            <h3 style="margin-top: 1rem;">${getIRLTitle(assessment.irlLevel || assessment.level)}</h3>
+                            <div style="font-size: 3rem; font-weight: 700; color: #1a1a1a;">IRL ${assessmentResult.irl_level}</div>
+                            <h3 style="margin-top: 1rem;">${getIRLTitle(assessmentResult.irl_level)}</h3>
                         </div>
                     </div>
                     
@@ -1594,7 +1597,7 @@ function viewStartup(startupId) {
                                 <div style="font-weight: 600; margin-bottom: 0.5rem;">Q${index + 1}: ${q.text}</div>
                                 <div style="color: #666; margin-bottom: 0.5rem; font-size: 0.875rem;">Dimension: ${q.dimension}</div>
                                 <div style="padding: 0.75rem; background: white; border-radius: 6px; border-left: 4px solid #1a1a1a;">
-                                    <strong>Answer:</strong> ${q.options[assessment.answers[index]]}
+                                    <strong>Answer:</strong> ${q.options[assessmentResult.answers[index]]}
                                 </div>
                             </div>
                         `).join('')}
@@ -1606,21 +1609,23 @@ function viewStartup(startupId) {
                 <h2 class="card-title">Action Plans</h2>
                 <button class="btn btn-primary" onclick="showCreateActionPlan(${startupId})">Create New Action Plan</button>
                 <div id="actionPlansList" style="margin-top: 2rem;">
-                    ${renderActionPlansForOrg(startupId)}
+                    ${renderActionPlansForOrg(actionPlans)}
                 </div>
             </div>
         </div>
     `;
+    } catch (error) {
+        console.error('Error loading startup:', error);
+        showToast('Failed to load startup details', 'error');
+    }
 }
 
-function renderActionPlansForOrg(startupId) {
-    const plans = mockDB.actionPlans.filter(a => a.startupId === startupId);
-    
-    if (plans.length === 0) {
+function renderActionPlansForOrg(actionPlans) {
+    if (!actionPlans || actionPlans.length === 0) {
         return '<p style="color: #666;">No action plans created yet.</p>';
     }
     
-    return plans.map(plan => `
+    return actionPlans.map(plan => `
         <div style="padding: 1.5rem; background: #f8f9fa; border-radius: 12px; margin-bottom: 1rem;">
             <h3 style="margin-bottom: 0.5rem;">${plan.title}</h3>
             <p style="color: #666; margin-bottom: 1rem;">${plan.description}</p>
