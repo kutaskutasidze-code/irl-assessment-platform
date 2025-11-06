@@ -1071,36 +1071,60 @@
                 ]);
                 const connectedStartups = connections.filter(c => c.status === 'accepted');
                 
-                // For now, we can't fetch assessments for other users, so stats will be basic
-                document.getElementById('totalStartups').textContent = connectedStartups.length;
-                document.getElementById('completedAssessments').textContent = '0'; // Will need org assessment API
-                document.getElementById('actionPlansCreated').textContent = actionPlans?.length || 0;
-                document.getElementById('avgIRL').textContent = '-';
-                
                 // Populate startups table
                 const tableBody = document.getElementById('startupsTable');
                 tableBody.innerHTML = '';
                 
                 if (connectedStartups.length === 0) {
                     tableBody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 2rem; color: #7f8c8d;">No connected startups yet. Use the Startup Connections section below to invite startups.</td></tr>';
+                    document.getElementById('totalStartups').textContent = '0';
+                    document.getElementById('completedAssessments').textContent = '0';
+                    document.getElementById('actionPlansCreated').textContent = actionPlans?.length || 0;
+                    document.getElementById('avgIRL').textContent = '-';
                     return;
                 }
                 
-                connectedStartups.forEach(connection => {
+                // Fetch assessment data for each startup and calculate stats
+                let completedCount = 0;
+                let totalIRL = 0;
+                
+                for (const connection of connectedStartups) {
+                    let assessment = null;
+                    try {
+                        assessment = await apiService.getAssessmentByUserId(connection.startup_id);
+                        if (assessment) {
+                            completedCount++;
+                            totalIRL += assessment.irl_level;
+                        }
+                    } catch (error) {
+                        console.log(`No assessment for startup ${connection.startup_id}`);
+                    }
+                    
                     const row = document.createElement('tr');
                     row.innerHTML = `
                         <td>${connection.startup_name || 'Unknown'}</td>
                         <td>${connection.startup_email || '-'}</td>
-                        <td>-</td>
+                        <td>${assessment ? `IRL ${assessment.irl_level}` : '-'}</td>
                         <td>
-                            <span class="badge badge-warning">Pending</span>
+                            ${assessment 
+                                ? `<span class="badge badge-success">Completed</span>`
+                                : `<span class="badge badge-warning">Not Started</span>`
+                            }
                         </td>
                         <td>
                             <button class="btn btn-secondary btn-sm" onclick="viewStartup(${connection.startup_id})">View</button>
                         </td>
                     `;
                     tableBody.appendChild(row);
-                });
+                }
+                
+                // Update stats after all data is fetched
+                document.getElementById('totalStartups').textContent = connectedStartups.length;
+                document.getElementById('completedAssessments').textContent = completedCount;
+                document.getElementById('actionPlansCreated').textContent = actionPlans?.length || 0;
+                document.getElementById('avgIRL').textContent = completedCount > 0 
+                    ? (totalIRL / completedCount).toFixed(1) 
+                    : '-';
             } catch (error) {
                 console.error('Error loading organization data:', error);
                 document.getElementById('startupsTable').innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 2rem; color: #e74c3c;">Error loading startups</td></tr>';
