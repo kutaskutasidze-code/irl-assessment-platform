@@ -46,6 +46,18 @@ app.get('/api', (req, res) => {
   });
 });
 
+// Root route handler
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'IRL Assessment Platform Backend API',
+    version: '1.0.1',
+    status: 'running',
+    frontend: 'https://kutaskutasidze-code.github.io/irl-assessment-platform/',
+    api_docs: '/api',
+    health_check: '/api/health'
+  });
+});
+
 // Authentication middleware
 function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization'];

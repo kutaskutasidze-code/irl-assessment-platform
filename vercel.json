@@ -12,11 +12,11 @@
       "dest": "/api/index.js"
     },
     {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "src": "/",
+      "dest": "/api/index.js"
     }
   ],
   "env": {
-    "BUILD_TIME": "2025-11-05T11:24:00Z"
+    "BUILD_TIME": "2025-11-06T15:30:00Z"
   }
 }
