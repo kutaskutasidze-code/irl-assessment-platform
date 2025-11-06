@@ -70,6 +70,83 @@
             gap: 1rem;
         }
 
+        /* Search Bar */
+        .search-container {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 2rem;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.75rem;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #1a1a1a;
+            background: white;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .search-results {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            max-height: 400px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+        }
+
+        .search-result-item {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #f8f9fa;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .search-result-item:hover {
+            background: #f8f9fa;
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .search-result-email {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        .search-empty {
+            padding: 2rem;
+            text-align: center;
+            color: #999;
+        }
+
         .user-details {
             text-align: right;
             margin-right: 1rem;
@@ -412,7 +489,24 @@
                 <div class="logo-icon">IRL</div>
                 <span>Platform</span>
             </a>
-            <div style="flex: 1;"></div>
+            
+            <!-- Search Bar -->
+            <div class="search-container" id="searchContainer" style="display: none;">
+                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="M21 21l-4.35-4.35"></path>
+                </svg>
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="search-input" 
+                    placeholder="Search organizations..." 
+                    oninput="handleSearch(this.value)"
+                    onfocus="this.parentElement.querySelector('.search-results').style.display = 'block'"
+                />
+                <div class="search-results" id="searchResults"></div>
+            </div>
+            
             <div class="notification-bell" id="notificationBell" onclick="toggleNotifications()" style="position: relative; cursor: pointer; margin-right: 2rem; display: none;">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
@@ -886,6 +980,7 @@
             // Load notifications for the bell
             if (currentUser) {
                 loadNotifications();
+                updateSearchBarVisibility();
             }
 
             // Show appropriate dashboard
@@ -1535,31 +1630,31 @@ async function loadNotifications() {
         }
         
         const connections = await apiService.getMyConnections();
-        const pendingConnections = connections.filter(c => c.status === 'pending');
         
         // Determine if user is org or startup to filter correctly
         const userType = currentUser?.type;
-        let relevantNotifications = [];
+        
+        // Get pending notifications for badge count
+        const pendingConnections = connections.filter(c => c.status === 'pending');
+        let relevantPending = [];
         
         if (userType === 'startup') {
-            // Startups see invitations from organizations
-            relevantNotifications = pendingConnections.filter(c => c.invited_by === 'organization');
+            relevantPending = pendingConnections.filter(c => c.invited_by === 'organization');
         } else if (userType === 'organization') {
-            // Organizations see join requests from startups
-            relevantNotifications = pendingConnections.filter(c => c.invited_by === 'startup');
+            relevantPending = pendingConnections.filter(c => c.invited_by === 'startup');
         }
         
-        // Update badge
+        // Update badge (only pending count)
         const badge = document.getElementById('notificationBadge');
-        
-        if (relevantNotifications.length > 0) {
-            badge.textContent = relevantNotifications.length;
+        if (relevantPending.length > 0) {
+            badge.textContent = relevantPending.length;
             badge.style.display = 'block';
         } else {
             badge.style.display = 'none';
         }
         
-        return relevantNotifications;
+        // Return all connections for history display
+        return { pending: relevantPending, all: connections };
     } catch (error) {
         console.error('Error loading notifications:', error);
         // Still show the bell even on error
@@ -1567,7 +1662,7 @@ async function loadNotifications() {
         if (bell) {
             bell.style.display = 'block';
         }
-        return [];
+        return { pending: [], all: [] };
     }
 }
 
@@ -1578,54 +1673,127 @@ async function toggleNotifications() {
         dropdown.style.display = 'none';
         notificationsOpen = false;
     } else {
-        const notifications = await loadNotifications();
-        renderNotifications(notifications);
+        const { pending, all } = await loadNotifications();
+        renderNotifications(pending, all);
         dropdown.style.display = 'block';
         notificationsOpen = true;
     }
 }
 
-function renderNotifications(notifications) {
+function renderNotifications(pending, allConnections) {
     const dropdown = document.getElementById('notificationsDropdown');
     const userType = currentUser?.type;
     
-    if (notifications.length === 0) {
-        dropdown.innerHTML = `
-            <div class="notification-header">Notifications</div>
-            <div class="notification-empty">No pending notifications</div>
-        `;
-        return;
-    }
+    const title = userType === 'startup' ? 'Notifications' : 'Notifications';
     
-    const title = userType === 'startup' ? 'Pending Invitations' : 'Join Requests';
+    // Separate connections by status
+    const accepted = allConnections.filter(c => c.status === 'accepted');
+    const rejected = allConnections.filter(c => c.status === 'rejected');
     
     dropdown.innerHTML = `
-        <div class="notification-header">${title} (${notifications.length})</div>
-        ${notifications.map(notif => renderNotificationItem(notif, userType)).join('')}
+        <div class="notification-header">${title}</div>
+        <div style="padding: 0.5rem 1.5rem; border-bottom: 1px solid #e9ecef;">
+            <button onclick="showNotificationTab('pending')" id="tab-pending" class="notification-tab active" style="padding: 0.5rem 1rem; margin-right: 0.5rem; border: none; background: #1a1a1a; color: white; border-radius: 6px; cursor: pointer; font-weight: 600;">Pending (${pending.length})</button>
+            <button onclick="showNotificationTab('accepted')" id="tab-accepted" class="notification-tab" style="padding: 0.5rem 1rem; margin-right: 0.5rem; border: none; background: #f8f9fa; color: #1a1a1a; border-radius: 6px; cursor: pointer;">Accepted (${accepted.length})</button>
+            <button onclick="showNotificationTab('rejected')" id="tab-rejected" class="notification-tab" style="padding: 0.5rem 1rem; border: none; background: #f8f9fa; color: #1a1a1a; border-radius: 6px; cursor: pointer;">History (${rejected.length})</button>
+        </div>
+        <div id="notification-content-pending" class="notification-tab-content">
+            ${pending.length === 0 ? '<div class="notification-empty">No pending notifications</div>' : pending.map(notif => renderNotificationItem(notif, userType, 'pending')).join('')}
+        </div>
+        <div id="notification-content-accepted" class="notification-tab-content" style="display: none;">
+            ${accepted.length === 0 ? '<div class="notification-empty">No accepted connections</div>' : accepted.map(notif => renderNotificationItem(notif, userType, 'accepted')).join('')}
+        </div>
+        <div id="notification-content-rejected" class="notification-tab-content" style="display: none;">
+            ${rejected.length === 0 ? '<div class="notification-empty">No rejected connections</div>' : rejected.map(notif => renderNotificationItem(notif, userType, 'rejected')).join('')}
+        </div>
     `;
 }
 
-function renderNotificationItem(notif, userType) {
-    if (userType === 'startup') {
-        return `
-            <div class="notification-item">
-                <strong>${notif.organization_name || 'Organization'}</strong> invited you to connect
-                <div style="margin-top: 0.5rem; display: flex; gap: 0.5rem;">
-                    <button class="btn btn-primary btn-sm" onclick="handleNotificationAction(${notif.id}, 'accepted')">Accept</button>
-                    <button class="btn btn-secondary btn-sm" onclick="handleNotificationAction(${notif.id}, 'rejected')">Decline</button>
+function showNotificationTab(tabName) {
+    // Update tab buttons
+    document.querySelectorAll('.notification-tab').forEach(tab => {
+        tab.style.background = '#f8f9fa';
+        tab.style.color = '#1a1a1a';
+        tab.classList.remove('active');
+    });
+    const activeTab = document.getElementById(`tab-${tabName}`);
+    if (activeTab) {
+        activeTab.style.background = '#1a1a1a';
+        activeTab.style.color = 'white';
+        activeTab.classList.add('active');
+    }
+    
+    // Update content
+    document.querySelectorAll('.notification-tab-content').forEach(content => {
+        content.style.display = 'none';
+    });
+    const activeContent = document.getElementById(`notification-content-${tabName}`);
+    if (activeContent) {
+        activeContent.style.display = 'block';
+    }
+}
+
+function renderNotificationItem(notif, userType, status) {
+    const date = notif.created_at ? new Date(notif.created_at).toLocaleDateString() : '';
+    
+    if (status === 'pending') {
+        if (userType === 'startup') {
+            return `
+                <div class="notification-item">
+                    <strong>${notif.organization_name || 'Organization'}</strong> invited you to connect
+                    <div style="font-size: 0.75rem; color: #999; margin-top: 0.25rem;">${date}</div>
+                    <div style="margin-top: 0.5rem; display: flex; gap: 0.5rem;">
+                        <button class="btn btn-primary btn-sm" onclick="handleNotificationAction(${notif.id}, 'accepted')">Accept</button>
+                        <button class="btn btn-secondary btn-sm" onclick="handleNotificationAction(${notif.id}, 'rejected')">Decline</button>
+                    </div>
                 </div>
-            </div>
-        `;
-    } else {
-        return `
-            <div class="notification-item">
-                <strong>${notif.startup_name || 'Startup'}</strong> wants to join
-                <div style="margin-top: 0.5rem; display: flex; gap: 0.5rem;">
-                    <button class="btn btn-primary btn-sm" onclick="handleNotificationAction(${notif.id}, 'accepted')">Approve</button>
-                    <button class="btn btn-secondary btn-sm" onclick="handleNotificationAction(${notif.id}, 'rejected')">Reject</button>
+            `;
+        } else {
+            return `
+                <div class="notification-item">
+                    <strong>${notif.startup_name || 'Startup'}</strong> wants to join
+                    <div style="font-size: 0.75rem; color: #999; margin-top: 0.25rem;">${date}</div>
+                    <div style="margin-top: 0.5rem; display: flex; gap: 0.5rem;">
+                        <button class="btn btn-primary btn-sm" onclick="handleNotificationAction(${notif.id}, 'accepted')">Approve</button>
+                        <button class="btn btn-secondary btn-sm" onclick="handleNotificationAction(${notif.id}, 'rejected')">Reject</button>
+                    </div>
                 </div>
-            </div>
-        `;
+            `;
+        }
+    } else if (status === 'accepted') {
+        if (userType === 'startup') {
+            return `
+                <div class="notification-item">
+                    <strong>${notif.organization_name || 'Organization'}</strong>
+                    <div style="font-size: 0.75rem; color: #22c55e; margin-top: 0.25rem;">✓ Connected • ${date}</div>
+                    <div style="font-size: 0.875rem; color: #666; margin-top: 0.25rem;">${notif.organization_email || ''}</div>
+                </div>
+            `;
+        } else {
+            return `
+                <div class="notification-item">
+                    <strong>${notif.startup_name || 'Startup'}</strong>
+                    <div style="font-size: 0.75rem; color: #22c55e; margin-top: 0.25rem;">✓ Connected • ${date}</div>
+                    <div style="font-size: 0.875rem; color: #666; margin-top: 0.25rem;">${notif.startup_email || ''}</div>
+                </div>
+            `;
+        }
+    } else if (status === 'rejected') {
+        if (userType === 'startup') {
+            return `
+                <div class="notification-item" style="opacity: 0.6;">
+                    <strong>${notif.organization_name || 'Organization'}</strong>
+                    <div style="font-size: 0.75rem; color: #ef4444; margin-top: 0.25rem;">✗ Declined • ${date}</div>
+                </div>
+            `;
+        } else {
+            return `
+                <div class="notification-item" style="opacity: 0.6;">
+                    <strong>${notif.startup_name || 'Startup'}</strong>
+                    <div style="font-size: 0.75rem; color: #ef4444; margin-top: 0.25rem;">✗ Rejected • ${date}</div>
+                </div>
+            `;
+        }
     }
 }
 
@@ -1664,6 +1832,91 @@ document.addEventListener('click', (e) => {
 // Load notifications on page load
 if (currentUser) {
     loadNotifications();
+}
+
+// Organization Search Functions
+let searchTimeout;
+
+async function handleSearch(query) {
+    clearTimeout(searchTimeout);
+    
+    const resultsContainer = document.getElementById('searchResults');
+    
+    if (query.trim().length < 2) {
+        resultsContainer.style.display = 'none';
+        return;
+    }
+    
+    // Debounce search
+    searchTimeout = setTimeout(async () => {
+        try {
+            resultsContainer.innerHTML = '<div class="search-empty">Searching...</div>';
+            resultsContainer.style.display = 'block';
+            
+            const results = await apiService.searchOrganizations(query);
+            
+            if (results.length === 0) {
+                resultsContainer.innerHTML = '<div class="search-empty">No organizations found</div>';
+                return;
+            }
+            
+            resultsContainer.innerHTML = results.map(org => `
+                <div class="search-result-item" onclick="selectOrganization(${org.id}, '${org.name.replace(/'/g, "\\'")}'${org.email ? `, '${org.email.replace(/'/g, "\\\'")'` : ''})">
+                    <div class="search-result-name">${org.name}</div>
+                    ${org.email ? `<div class="search-result-email">${org.email}</div>` : ''}
+                    <div class="search-result-email">${org.organization || 'Organization'}</div>
+                </div>
+            `).join('');
+        } catch (error) {
+            console.error('Search error:', error);
+            resultsContainer.innerHTML = '<div class="search-empty">Error searching organizations</div>';
+        }
+    }, 300);
+}
+
+async function selectOrganization(orgId, orgName, orgEmail) {
+    // Close search results
+    document.getElementById('searchResults').style.display = 'none';
+    document.getElementById('searchInput').value = '';
+    
+    if (!currentUser || currentUser.type !== 'startup') {
+        alert('Only startups can connect with organizations');
+        return;
+    }
+    
+    try {
+        await apiService.requestConnection(orgId);
+        showToast(`✓ Connection request sent to ${orgName}!`);
+    } catch (error) {
+        console.error('Error requesting connection:', error);
+        if (error.message.includes('already exists')) {
+            alert('You already have a connection with this organization');
+        } else {
+            alert('Failed to send connection request');
+        }
+    }
+}
+
+// Show/hide search bar based on user type
+function updateSearchBarVisibility() {
+    const searchContainer = document.getElementById('searchContainer');
+    if (searchContainer && currentUser && currentUser.type === 'startup') {
+        searchContainer.style.display = 'block';
+    }
+}
+
+// Close search results when clicking outside
+document.addEventListener('click', (e) => {
+    const searchContainer = document.getElementById('searchContainer');
+    const searchResults = document.getElementById('searchResults');
+    if (searchContainer && searchResults && !searchContainer.contains(e.target)) {
+        searchResults.style.display = 'none';
+    }
+});
+
+// Call updateSearchBarVisibility when dashboard loads
+if (currentUser) {
+    updateSearchBarVisibility();
 }
 
     </script>
