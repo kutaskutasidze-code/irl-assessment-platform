@@ -1794,7 +1794,7 @@ document.head.appendChild(styleElement);
 // Notification System
 let notificationsOpen = false;
 
-async function loadNotifications() {
+window.loadNotifications = async function loadNotifications() {
     try {
         // Always show the bell, even if no notifications
         const bell = document.getElementById('notificationBell');
@@ -2162,7 +2162,7 @@ async function selectOrganization(orgId, orgName, orgEmail) {
 }
 
 // Show/hide search bar based on user type
-function updateSearchBarVisibility() {
+window.updateSearchBarVisibility = function updateSearchBarVisibility() {
     const searchContainer = document.getElementById('searchContainer');
     if (searchContainer && currentUser && currentUser.type === 'startup') {
         searchContainer.style.display = 'block';

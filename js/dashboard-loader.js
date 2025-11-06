@@ -133,11 +133,21 @@ function initializeDashboardWithUser(user) {
     
     // Call notification and search visibility after dashboard is shown
     setTimeout(() => {
+        console.log('Calling loadNotifications and updateSearchBarVisibility...');
+        console.log('currentUser:', window.currentUser);
+        console.log('loadNotifications exists:', typeof loadNotifications);
+        console.log('updateSearchBarVisibility exists:', typeof updateSearchBarVisibility);
+        
         if (typeof loadNotifications === 'function') {
             loadNotifications();
+        } else {
+            console.error('loadNotifications is not defined!');
         }
+        
         if (typeof updateSearchBarVisibility === 'function') {
             updateSearchBarVisibility();
+        } else {
+            console.error('updateSearchBarVisibility is not defined!');
         }
     }, 100);
 }
