@@ -933,34 +933,19 @@
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
-            // Fallback: Set currentUser from localStorage if not already set
-            if (!window.currentUser) {
-                const savedUser = localStorage.getItem('user');
-                if (savedUser) {
-                    const user = JSON.parse(savedUser);
-                    window.currentUser = {
-                        id: user.id,
-                        name: user.name,
-                        email: user.email,
-                        type: user.user_type || user.type,
-                        organization: user.organization
-                    };
-                    console.log('Fallback: Set currentUser from localStorage');
-                }
-            }
+            // Check authentication - only need token, user data comes from API
             checkAuthentication();
         });
 
         function checkAuthentication() {
-            // Check authentication with real API
+            // Check authentication with real API - only check for token
             const token = localStorage.getItem('auth_token');
-            const savedUser = localStorage.getItem('user');
             
-            if (token && savedUser) {
+            if (token) {
                 // Let dashboard-loader.js handle initialization from API
-                console.log('Auth found, letting dashboard-loader initialize');
+                console.log('Auth token found, letting dashboard-loader initialize from API');
             } else {
-                console.log('No auth found, redirecting to landing');
+                console.log('No auth token found, redirecting to landing');
                 redirectToLanding();
             }
         }
@@ -970,9 +955,8 @@
         }
 
         function initializeDashboard() {
-            // Save current user to localStorage
-            localStorage.setItem('currentUser', JSON.stringify(currentUser));
-
+            // Note: currentUser is now set by dashboard-loader.js from API
+            
             // Update header
             document.getElementById('userName').textContent = currentUser.name;
             document.getElementById('userRole').textContent = currentUser.type.charAt(0).toUpperCase() + currentUser.type.slice(1);
@@ -1442,10 +1426,8 @@
         }
 
         function logout() {
-            // Clear all authentication data
-            localStorage.removeItem('currentUser');
+            // Clear only authentication token - no user data stored in localStorage
             localStorage.removeItem('auth_token');
-            localStorage.removeItem('user');
             
             // Clear any session storage as well
             sessionStorage.clear();

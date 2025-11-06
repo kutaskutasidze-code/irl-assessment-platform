@@ -43,8 +43,8 @@ async function handleSignIn(event) {
         console.log('Login successful:', response);
         
         if (response.token) {
+            // Only store the auth token, user data will be fetched from API
             localStorage.setItem('auth_token', response.token);
-            localStorage.setItem('user', JSON.stringify(response.user));
             window.location.href = '/irl-assessment-platform/index.html';
         }
     } catch (error) {
@@ -99,8 +99,8 @@ async function handleSignUp(event) {
         console.log('Registration response:', response);
         
         if (response.token) {
+            // Only store the auth token, user data will be fetched from API
             localStorage.setItem('auth_token', response.token);
-            localStorage.setItem('user', JSON.stringify(response.user));
             alert('Registration successful! Redirecting to dashboard...');
             window.location.href = '/irl-assessment-platform/index.html';
         } else {

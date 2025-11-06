@@ -3,21 +3,30 @@
 async function loadDashboardData() {
     try {
         const token = localStorage.getItem('auth_token');
-        const savedUser = localStorage.getItem('user');
         
-        if (!token && !savedUser) {
-            console.log('No auth, redirecting to landing');
+        if (!token) {
+            console.log('No auth token, redirecting to landing');
             window.location.href = '/irl-assessment-platform/landing/';
             return;
         }
         
-        // If we have a saved user from API login, use it to initialize
-        if (savedUser) {
-            const user = JSON.parse(savedUser);
-            window.currentUser = user;
+        // Always fetch fresh user data from API
+        const apiService = new APIService();
+        
+        try {
+            const user = await apiService.getCurrentUser();
             
-            // Convert API user format to dashboard format
-            const dashboardUser = {
+            if (!user) {
+                console.log('Failed to get user, redirecting to landing');
+                localStorage.removeItem('auth_token');
+                window.location.href = '/irl-assessment-platform/landing/';
+                return;
+            }
+            
+            console.log('User loaded from API:', user);
+            
+            // Set global currentUser from fresh API data
+            window.currentUser = {
                 id: user.id,
                 name: user.name,
                 email: user.email,
@@ -25,53 +34,57 @@ async function loadDashboardData() {
                 organization: user.organization
             };
             
-            // Initialize the dashboard with this user
-            initializeDashboardWithUser(dashboardUser);
-        }
-        
-        // Try to load fresh data from API
-        if (token) {
-            const apiService = new APIService();
+            // Initialize dashboard with API user data
+            initializeDashboardWithUser(window.currentUser);
             
-            try {
-                const user = await apiService.getCurrentUser();
-                window.currentUser = user;
-                
-                console.log('User loaded from API:', user);
-                
-                // Load assessments if startup
-                if (user.user_type === 'startup') {
-                    try {
-                        const assessments = await apiService.getMyAssessments();
-                        window.userAssessments = assessments || [];
-                        
-                        console.log('Assessments loaded:', assessments);
-                        
-                        // Update stats
-                        const countEl = document.querySelector('.stat-card:first-child .stat-value');
-                        if (countEl) {
-                            countEl.textContent = assessments.length;
-                        }
-                        
-                        if (assessments.length > 0) {
-                            const latest = assessments[0];
-                            const levelEl = document.querySelector('.stat-card:nth-child(2) .stat-value');
-                            if (levelEl) {
-                                levelEl.textContent = `Level ${latest.irl_level}`;
-                            }
-                        }
-                    } catch (error) {
-                        console.error('Failed to load assessments:', error);
-                    }
-                }
-            } catch (error) {
-                console.error('API load error:', error);
-                // Continue with saved user data
+            // Load user-specific data based on type
+            if (user.user_type === 'startup') {
+                await loadStartupData(apiService);
+            } else if (user.user_type === 'organization') {
+                await loadOrganizationData(apiService);
+            } else if (user.user_type === 'admin') {
+                await loadAdminData();
             }
+            
+        } catch (error) {
+            console.error('API load error:', error);
+            // If API fails, logout and redirect
+            localStorage.removeItem('auth_token');
+            window.location.href = '/irl-assessment-platform/landing/';
         }
         
     } catch (error) {
         console.error('Dashboard load error:', error);
+        window.location.href = '/irl-assessment-platform/landing/';
+    }
+}
+
+// Load startup-specific data
+async function loadStartupData(apiService) {
+    try {
+        const assessments = await apiService.getMyAssessments();
+        window.userAssessments = assessments || [];
+        
+        console.log('Assessments loaded:', assessments);
+        
+        // Trigger startup dashboard load
+        if (typeof showStartupDashboard === 'function') {
+            showStartupDashboard();
+        }
+    } catch (error) {
+        console.error('Failed to load startup data:', error);
+    }
+}
+
+// Load organization-specific data
+async function loadOrganizationData(apiService) {
+    try {
+        // Trigger organization dashboard load
+        if (typeof loadOrganizationData_Index === 'function') {
+            loadOrganizationData_Index();
+        }
+    } catch (error) {
+        console.error('Failed to load organization data:', error);
     }
 }
 
