@@ -88,6 +88,11 @@ function initializeDashboardWithUser(user) {
         userRoleEl.textContent = user.type.charAt(0).toUpperCase() + user.type.slice(1);
     }
     
+    // Load notifications for the bell
+    if (typeof loadNotifications === 'function') {
+        loadNotifications();
+    }
+    
     // Show appropriate dashboard
     const startupDash = document.getElementById('startupDashboard');
     const orgDash = document.getElementById('organizationDashboard');
