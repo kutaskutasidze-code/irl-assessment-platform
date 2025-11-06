@@ -67,9 +67,9 @@ async function loadStartupData(apiService) {
         
         console.log('Assessments loaded:', assessments);
         
-        // Trigger startup dashboard load
-        if (typeof showStartupDashboard === 'function') {
-            showStartupDashboard();
+        // Trigger startup dashboard load from index.html
+        if (typeof loadStartupData_Index === 'function') {
+            await loadStartupData_Index();
         }
     } catch (error) {
         console.error('Failed to load startup data:', error);
@@ -79,9 +79,9 @@ async function loadStartupData(apiService) {
 // Load organization-specific data
 async function loadOrganizationData(apiService) {
     try {
-        // Trigger organization dashboard load
+        // Trigger organization dashboard load from index.html
         if (typeof loadOrganizationData_Index === 'function') {
-            loadOrganizationData_Index();
+            await loadOrganizationData_Index();
         }
     } catch (error) {
         console.error('Failed to load organization data:', error);
@@ -102,16 +102,6 @@ function initializeDashboardWithUser(user) {
     }
     if (userRoleEl) {
         userRoleEl.textContent = user.type.charAt(0).toUpperCase() + user.type.slice(1);
-    }
-    
-    // Load notifications for the bell
-    if (typeof loadNotifications === 'function') {
-        loadNotifications();
-    }
-    
-    // Show search bar for startups
-    if (typeof updateSearchBarVisibility === 'function') {
-        updateSearchBarVisibility();
     }
     
     // Show appropriate dashboard
@@ -140,6 +130,16 @@ function initializeDashboardWithUser(user) {
     } else if (user.type === 'admin' && adminDash) {
         adminDash.classList.remove('hidden');
     }
+    
+    // Call notification and search visibility after dashboard is shown
+    setTimeout(() => {
+        if (typeof loadNotifications === 'function') {
+            loadNotifications();
+        }
+        if (typeof updateSearchBarVisibility === 'function') {
+            updateSearchBarVisibility();
+        }
+    }, 100);
 }
 
 // Wait for DOM to be ready
