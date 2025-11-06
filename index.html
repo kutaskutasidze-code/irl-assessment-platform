@@ -1528,6 +1528,12 @@ let notificationsOpen = false;
 
 async function loadNotifications() {
     try {
+        // Always show the bell, even if no notifications
+        const bell = document.getElementById('notificationBell');
+        if (bell) {
+            bell.style.display = 'block';
+        }
+        
         const connections = await apiService.getMyConnections();
         const pendingConnections = connections.filter(c => c.status === 'pending');
         
@@ -1545,20 +1551,22 @@ async function loadNotifications() {
         
         // Update badge
         const badge = document.getElementById('notificationBadge');
-        const bell = document.getElementById('notificationBell');
         
         if (relevantNotifications.length > 0) {
             badge.textContent = relevantNotifications.length;
             badge.style.display = 'block';
-            bell.style.display = 'block';
         } else {
             badge.style.display = 'none';
-            bell.style.display = 'block';
         }
         
         return relevantNotifications;
     } catch (error) {
         console.error('Error loading notifications:', error);
+        // Still show the bell even on error
+        const bell = document.getElementById('notificationBell');
+        if (bell) {
+            bell.style.display = 'block';
+        }
         return [];
     }
 }
