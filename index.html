@@ -1442,8 +1442,21 @@
         }
 
         function logout() {
+            // Clear all authentication data
             localStorage.removeItem('currentUser');
-            window.location.href = 'landing/index.html';
+            localStorage.removeItem('auth_token');
+            localStorage.removeItem('user');
+            
+            // Clear any session storage as well
+            sessionStorage.clear();
+            
+            // Show logout message
+            showToast('Logged out successfully', 'success');
+            
+            // Redirect to landing page after a brief delay
+            setTimeout(() => {
+                window.location.href = 'landing/index.html';
+            }, 500);
         }
 
         
