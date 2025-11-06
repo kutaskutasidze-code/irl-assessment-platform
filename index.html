@@ -991,14 +991,14 @@
             document.getElementById('startupName').textContent = currentUser.startupName || currentUser.name;
             
             // Load startup data
-            loadStartupData();
+            loadStartupData_Index();
         }
 
         function showOrganizationDashboard() {
             document.getElementById('organizationDashboard').classList.remove('hidden');
             
             // Load organization data
-            loadOrganizationData();
+            loadOrganizationData_Index();
         }
 
         function showAdminDashboard() {
@@ -1008,7 +1008,7 @@
             loadAdminData();
         }
 
-        async function loadStartupData() {
+        async function loadStartupData_Index() {
             try {
                 // Fetch assessments and action plans from API
                 const [assessments, actionPlans] = await Promise.all([
@@ -1046,7 +1046,7 @@
             }
         }
 
-        async function loadOrganizationData() {
+        async function loadOrganizationData_Index() {
             try {
                 // Fetch connected startups and action plans from API
                 const [connections, actionPlans] = await Promise.all([
