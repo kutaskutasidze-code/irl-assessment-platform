@@ -1691,20 +1691,30 @@ function renderNotifications(pending, allConnections) {
     const rejected = allConnections.filter(c => c.status === 'rejected');
     
     dropdown.innerHTML = `
-        <div class="notification-header">${title}</div>
-        <div style="padding: 0.5rem 1.5rem; border-bottom: 1px solid #e9ecef;">
-            <button onclick="showNotificationTab('pending')" id="tab-pending" class="notification-tab active" style="padding: 0.5rem 1rem; margin-right: 0.5rem; border: none; background: #1a1a1a; color: white; border-radius: 6px; cursor: pointer; font-weight: 600;">Pending (${pending.length})</button>
-            <button onclick="showNotificationTab('accepted')" id="tab-accepted" class="notification-tab" style="padding: 0.5rem 1rem; margin-right: 0.5rem; border: none; background: #f8f9fa; color: #1a1a1a; border-radius: 6px; cursor: pointer;">Accepted (${accepted.length})</button>
-            <button onclick="showNotificationTab('rejected')" id="tab-rejected" class="notification-tab" style="padding: 0.5rem 1rem; border: none; background: #f8f9fa; color: #1a1a1a; border-radius: 6px; cursor: pointer;">History (${rejected.length})</button>
+        <div class="notification-header" style="display: flex; justify-content: space-between; align-items: center;">
+            <span>${title}</span>
+            <span style="font-size: 0.875rem; font-weight: normal; color: #666;">
+                ${pending.length} pending
+            </span>
+        </div>
+        <div style="padding: 0.5rem 1.5rem; border-bottom: 1px solid #e9ecef; display: flex; gap: 0.5rem;">
+            <button onclick="showNotificationTab('pending')" id="tab-pending" class="notification-tab active" style="padding: 0.5rem 1rem; border: none; background: #1a1a1a; color: white; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.875rem;">Pending (${pending.length})</button>
+            <button onclick="showNotificationTab('accepted')" id="tab-accepted" class="notification-tab" style="padding: 0.5rem 1rem; border: none; background: #f8f9fa; color: #1a1a1a; border-radius: 6px; cursor: pointer; font-size: 0.875rem;">Connected (${accepted.length})</button>
+            <button onclick="showNotificationTab('rejected')" id="tab-rejected" class="notification-tab" style="padding: 0.5rem 1rem; border: none; background: #f8f9fa; color: #1a1a1a; border-radius: 6px; cursor: pointer; font-size: 0.875rem;">Declined (${rejected.length})</button>
         </div>
         <div id="notification-content-pending" class="notification-tab-content">
             ${pending.length === 0 ? '<div class="notification-empty">No pending notifications</div>' : pending.map(notif => renderNotificationItem(notif, userType, 'pending')).join('')}
         </div>
         <div id="notification-content-accepted" class="notification-tab-content" style="display: none;">
-            ${accepted.length === 0 ? '<div class="notification-empty">No accepted connections</div>' : accepted.map(notif => renderNotificationItem(notif, userType, 'accepted')).join('')}
+            ${accepted.length === 0 ? '<div class="notification-empty">No connected organizations yet</div>' : accepted.map(notif => renderNotificationItem(notif, userType, 'accepted')).join('')}
         </div>
         <div id="notification-content-rejected" class="notification-tab-content" style="display: none;">
-            ${rejected.length === 0 ? '<div class="notification-empty">No rejected connections</div>' : rejected.map(notif => renderNotificationItem(notif, userType, 'rejected')).join('')}
+            ${rejected.length === 0 ? '<div class="notification-empty">No declined connections</div>' : `
+                ${rejected.map(notif => renderNotificationItem(notif, userType, 'rejected')).join('')}
+                <div style="padding: 1rem 1.5rem; text-align: center; border-top: 1px solid #f8f9fa;">
+                    <button class="btn btn-secondary btn-sm" onclick="clearNotificationHistory()" style="font-size: 0.75rem;">Clear History</button>
+                </div>
+            `}
         </div>
     `;
 }
@@ -1735,65 +1745,99 @@ function showNotificationTab(tabName) {
 
 function renderNotificationItem(notif, userType, status) {
     const date = notif.created_at ? new Date(notif.created_at).toLocaleDateString() : '';
+    const timeAgo = notif.created_at ? formatTimeAgo(new Date(notif.created_at)) : '';
+    const initiator = notif.invited_by;
     
     if (status === 'pending') {
         if (userType === 'startup') {
             return `
-                <div class="notification-item">
-                    <strong>${notif.organization_name || 'Organization'}</strong> invited you to connect
-                    <div style="font-size: 0.75rem; color: #999; margin-top: 0.25rem;">${date}</div>
-                    <div style="margin-top: 0.5rem; display: flex; gap: 0.5rem;">
-                        <button class="btn btn-primary btn-sm" onclick="handleNotificationAction(${notif.id}, 'accepted')">Accept</button>
-                        <button class="btn btn-secondary btn-sm" onclick="handleNotificationAction(${notif.id}, 'rejected')">Decline</button>
+                <div class="notification-item" style="border-left: 4px solid #fb923c;">
+                    <div style="display: flex; align-items: start; gap: 0.75rem;">
+                        <div style="width: 40px; height: 40px; background: #fb923c; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; flex-shrink: 0;">
+                            ${(notif.organization_name || 'O').charAt(0).toUpperCase()}
+                        </div>
+                        <div style="flex: 1;">
+                            <strong>${notif.organization_name || 'Organization'}</strong> invited you to connect
+                            <div style="font-size: 0.75rem; color: #999; margin-top: 0.25rem;">
+                                ${timeAgo} • ${date}
+                            </div>
+                            <div style="font-size: 0.875rem; color: #666; margin-top: 0.25rem;">${notif.organization_email || ''}</div>
+                            <div style="margin-top: 0.75rem; display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary btn-sm" onclick="handleNotificationAction(${notif.id}, 'accepted')">Accept</button>
+                                <button class="btn btn-secondary btn-sm" onclick="handleNotificationAction(${notif.id}, 'rejected')">Decline</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             `;
         } else {
             return `
-                <div class="notification-item">
-                    <strong>${notif.startup_name || 'Startup'}</strong> wants to join
-                    <div style="font-size: 0.75rem; color: #999; margin-top: 0.25rem;">${date}</div>
-                    <div style="margin-top: 0.5rem; display: flex; gap: 0.5rem;">
-                        <button class="btn btn-primary btn-sm" onclick="handleNotificationAction(${notif.id}, 'accepted')">Approve</button>
-                        <button class="btn btn-secondary btn-sm" onclick="handleNotificationAction(${notif.id}, 'rejected')">Reject</button>
+                <div class="notification-item" style="border-left: 4px solid #fb923c;">
+                    <div style="display: flex; align-items: start; gap: 0.75rem;">
+                        <div style="width: 40px; height: 40px; background: #fb923c; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; flex-shrink: 0;">
+                            ${(notif.startup_name || 'S').charAt(0).toUpperCase()}
+                        </div>
+                        <div style="flex: 1;">
+                            <strong>${notif.startup_name || 'Startup'}</strong> wants to join
+                            <div style="font-size: 0.75rem; color: #999; margin-top: 0.25rem;">
+                                ${timeAgo} • ${date}
+                            </div>
+                            <div style="font-size: 0.875rem; color: #666; margin-top: 0.25rem;">${notif.startup_email || ''}</div>
+                            <div style="margin-top: 0.75rem; display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary btn-sm" onclick="handleNotificationAction(${notif.id}, 'accepted')">Approve</button>
+                                <button class="btn btn-secondary btn-sm" onclick="handleNotificationAction(${notif.id}, 'rejected')">Reject</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             `;
         }
     } else if (status === 'accepted') {
-        if (userType === 'startup') {
-            return `
-                <div class="notification-item">
-                    <strong>${notif.organization_name || 'Organization'}</strong>
-                    <div style="font-size: 0.75rem; color: #22c55e; margin-top: 0.25rem;">✓ Connected • ${date}</div>
-                    <div style="font-size: 0.875rem; color: #666; margin-top: 0.25rem;">${notif.organization_email || ''}</div>
+        const otherPartyName = userType === 'startup' ? notif.organization_name : notif.startup_name;
+        const otherPartyEmail = userType === 'startup' ? notif.organization_email : notif.startup_email;
+        const actionText = initiator === userType ? 'You connected with' : `${otherPartyName} accepted your request`;
+        
+        return `
+            <div class="notification-item" style="border-left: 4px solid #22c55e;">
+                <div style="display: flex; align-items: start; gap: 0.75rem;">
+                    <div style="width: 40px; height: 40px; background: #22c55e; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; flex-shrink: 0;">
+                        ✓
+                    </div>
+                    <div style="flex: 1;">
+                        <div><strong>${otherPartyName || 'Partner'}</strong></div>
+                        <div style="font-size: 0.875rem; color: #22c55e; margin-top: 0.25rem;">
+                            ${initiator === userType ? 'Connection accepted' : 'Your request was accepted'}
+                        </div>
+                        <div style="font-size: 0.75rem; color: #999; margin-top: 0.25rem;">
+                            ${timeAgo} • ${date}
+                        </div>
+                        <div style="font-size: 0.875rem; color: #666; margin-top: 0.25rem;">${otherPartyEmail || ''}</div>
+                    </div>
                 </div>
-            `;
-        } else {
-            return `
-                <div class="notification-item">
-                    <strong>${notif.startup_name || 'Startup'}</strong>
-                    <div style="font-size: 0.75rem; color: #22c55e; margin-top: 0.25rem;">✓ Connected • ${date}</div>
-                    <div style="font-size: 0.875rem; color: #666; margin-top: 0.25rem;">${notif.startup_email || ''}</div>
-                </div>
-            `;
-        }
+            </div>
+        `;
     } else if (status === 'rejected') {
-        if (userType === 'startup') {
-            return `
-                <div class="notification-item" style="opacity: 0.6;">
-                    <strong>${notif.organization_name || 'Organization'}</strong>
-                    <div style="font-size: 0.75rem; color: #ef4444; margin-top: 0.25rem;">✗ Declined • ${date}</div>
+        const otherPartyName = userType === 'startup' ? notif.organization_name : notif.startup_name;
+        const actionText = initiator === userType ? 'You declined' : 'Your request was declined by';
+        
+        return `
+            <div class="notification-item" style="opacity: 0.6; border-left: 4px solid #ef4444;">
+                <div style="display: flex; align-items: start; gap: 0.75rem;">
+                    <div style="width: 40px; height: 40px; background: #ef4444; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; flex-shrink: 0;">
+                        ✗
+                    </div>
+                    <div style="flex: 1;">
+                        <div><strong>${otherPartyName || 'Connection'}</strong></div>
+                        <div style="font-size: 0.875rem; color: #ef4444; margin-top: 0.25rem;">
+                            ${initiator === userType ? 'You declined this connection' : 'Connection declined'}
+                        </div>
+                        <div style="font-size: 0.75rem; color: #999; margin-top: 0.25rem;">
+                            ${timeAgo} • ${date}
+                        </div>
+                    </div>
                 </div>
-            `;
-        } else {
-            return `
-                <div class="notification-item" style="opacity: 0.6;">
-                    <strong>${notif.startup_name || 'Startup'}</strong>
-                    <div style="font-size: 0.75rem; color: #ef4444; margin-top: 0.25rem;">✗ Rejected • ${date}</div>
-                </div>
-            `;
-        }
+            </div>
+        `;
     }
 }
 
@@ -1816,6 +1860,57 @@ async function handleNotificationAction(connectionId, action) {
     } catch (error) {
         console.error('Error handling notification:', error);
         alert('Failed to process request');
+    }
+}
+
+// Helper function to format time ago
+function formatTimeAgo(date) {
+    const seconds = Math.floor((new Date() - date) / 1000);
+    
+    if (seconds < 60) return 'just now';
+    
+    const minutes = Math.floor(seconds / 60);
+    if (minutes < 60) return `${minutes}m ago`;
+    
+    const hours = Math.floor(minutes / 60);
+    if (hours < 24) return `${hours}h ago`;
+    
+    const days = Math.floor(hours / 24);
+    if (days < 7) return `${days}d ago`;
+    
+    const weeks = Math.floor(days / 7);
+    if (weeks < 4) return `${weeks}w ago`;
+    
+    const months = Math.floor(days / 30);
+    if (months < 12) return `${months}mo ago`;
+    
+    const years = Math.floor(days / 365);
+    return `${years}y ago`;
+}
+
+// Clear notification history (rejected connections)
+async function clearNotificationHistory() {
+    if (!confirm('Are you sure you want to clear your notification history? This will remove all declined connections from view.')) {
+        return;
+    }
+    
+    try {
+        const connections = await apiService.getMyConnections();
+        const rejected = connections.filter(c => c.status === 'rejected');
+        
+        // Delete all rejected connections
+        for (const conn of rejected) {
+            await apiService.deleteConnection(conn.id);
+        }
+        
+        showToast('✓ Notification history cleared');
+        
+        // Refresh notifications
+        await toggleNotifications();
+        await toggleNotifications();
+    } catch (error) {
+        console.error('Error clearing history:', error);
+        alert('Failed to clear notification history');
     }
 }
 
