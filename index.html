@@ -1545,6 +1545,7 @@ async function toggleChecklistItem(planId, itemIndex) {
         }
     } catch (error) {
         console.error('Error toggling checklist item:', error);
+        showToast(error.message || 'Failed to update task', 'error');
     }
 }
 
@@ -1743,17 +1744,18 @@ async function handleCreateActionPlan(event, startupId) {
         .map(text => ({ text, completed: false }));
     
     if (checklist.length === 0) {
-        alert('Please add at least one checklist item');
+        showToast('Please add at least one checklist item', 'error');
         return;
     }
     
     try {
         await apiService.createActionPlan(startupId, title, description, checklist);
         document.querySelector('.modal').remove();
+        showToast('Action plan created successfully!', 'success');
         viewStartup(startupId);
     } catch (error) {
         console.error('Error creating action plan:', error);
-        alert('Failed to create action plan');
+        showToast(error.message || 'Failed to create action plan', 'error');
     }
 }
 
@@ -2048,7 +2050,7 @@ async function handleNotificationAction(connectionId, action) {
         showToast(action === 'accepted' ? '✓ Connection accepted!' : 'Connection declined');
     } catch (error) {
         console.error('Error handling notification:', error);
-        alert('Failed to process request');
+        showToast(error.message || 'Failed to process request', 'error');
     }
 }
 
@@ -2153,7 +2155,7 @@ async function handleSearch(query) {
             `).join('');
         } catch (error) {
             console.error('Search error:', error);
-            resultsContainer.innerHTML = '<div class="search-empty">Error searching organizations</div>';
+            resultsContainer.innerHTML = `<div class="search-empty">${error.message || 'Error searching organizations'}</div>`;
         }
     }, 300);
 }
@@ -2164,7 +2166,7 @@ async function selectOrganization(orgId, orgName, orgEmail) {
     document.getElementById('searchInput').value = '';
     
     if (!currentUser || currentUser.type !== 'startup') {
-        alert('Only startups can connect with organizations');
+        showToast('Only startups can connect with organizations', 'error');
         return;
     }
     
@@ -2173,11 +2175,7 @@ async function selectOrganization(orgId, orgName, orgEmail) {
         showToast(`✓ Connection request sent to ${orgName}!`);
     } catch (error) {
         console.error('Error requesting connection:', error);
-        if (error.message.includes('already exists')) {
-            alert('You already have a connection with this organization');
-        } else {
-            alert('Failed to send connection request');
-        }
+        showToast(error.message || 'Failed to send connection request', 'error');
     }
 }
 
