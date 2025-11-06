@@ -1796,10 +1796,22 @@ let notificationsOpen = false;
 
 window.loadNotifications = async function loadNotifications() {
     try {
-        // Always show the bell, even if no notifications
+        console.log('[loadNotifications] Starting...');
+        console.log('[loadNotifications] currentUser:', window.currentUser);
+        
+        // FORCE show the bell with multiple methods
         const bell = document.getElementById('notificationBell');
+        console.log('[loadNotifications] Bell element:', bell);
+        
         if (bell) {
             bell.style.display = 'block';
+            bell.style.visibility = 'visible';
+            bell.style.opacity = '1';
+            bell.classList.remove('hidden');
+            console.log('[loadNotifications] Bell forced visible');
+        } else {
+            console.error('[loadNotifications] Bell element NOT FOUND!');
+            return;
         }
         
         const connections = await apiService.getMyConnections();
@@ -2163,9 +2175,20 @@ async function selectOrganization(orgId, orgName, orgEmail) {
 
 // Show/hide search bar based on user type
 window.updateSearchBarVisibility = function updateSearchBarVisibility() {
+    console.log('[updateSearchBarVisibility] Starting...');
+    console.log('[updateSearchBarVisibility] currentUser:', window.currentUser);
+    
     const searchContainer = document.getElementById('searchContainer');
+    console.log('[updateSearchBarVisibility] Search container:', searchContainer);
+    
     if (searchContainer && currentUser && currentUser.type === 'startup') {
         searchContainer.style.display = 'block';
+        searchContainer.style.visibility = 'visible';
+        searchContainer.style.opacity = '1';
+        searchContainer.classList.remove('hidden');
+        console.log('[updateSearchBarVisibility] Search bar forced visible for startup');
+    } else {
+        console.log('[updateSearchBarVisibility] Conditions not met. SearchContainer:', !!searchContainer, 'currentUser:', !!currentUser, 'isStartup:', currentUser?.type === 'startup');
     }
 }
 
