@@ -27,7 +27,8 @@ app.get('/api/health', (req, res) => {
   res.json({ 
     status: 'healthy', 
     timestamp: new Date().toISOString(),
-    database: supabase ? 'connected' : 'disconnected'
+    database: supabase ? 'connected' : 'disconnected',
+    jwtConfigured: JWT_SECRET && JWT_SECRET !== 'change-this-in-production' ? 'yes' : 'no'
   });
 });
 
@@ -64,12 +65,23 @@ function authenticateToken(req, res, next) {
   const token = authHeader && authHeader.split(' ')[1];
 
   if (!token) {
+    console.log('No token provided');
     return res.status(401).json({ error: 'Access token required' });
   }
 
   jwt.verify(token, JWT_SECRET, (err, user) => {
     if (err) {
-      return res.status(403).json({ error: 'Invalid or expired token' });
+      console.error('Token verification failed:', err.message);
+      console.error('JWT_SECRET being used:', JWT_SECRET ? 'SET' : 'NOT SET');
+      
+      // More specific error messages
+      if (err.name === 'TokenExpiredError') {
+        return res.status(401).json({ error: 'Token expired. Please log in again.' });
+      } else if (err.name === 'JsonWebTokenError') {
+        return res.status(403).json({ error: 'Invalid token. Please log in again.' });
+      } else {
+        return res.status(403).json({ error: 'Token verification failed. Please log in again.' });
+      }
     }
     req.user = user;
     next();
@@ -133,8 +145,11 @@ app.post('/api/auth/register', async (req, res) => {
     const token = jwt.sign(
       { id: user.id, email: user.email, user_type: user.user_type },
       JWT_SECRET,
-      { expiresIn: '7d' }
+      { expiresIn: '30d' }  // Extended to 30 days
     );
+    
+    console.log('Login successful for:', user.email, 'Type:', user.user_type);
+    console.log('Token generated with secret:', JWT_SECRET ? 'SET' : 'NOT SET');
 
     res.json({ token, user: { id: user.id, email: user.email, user_type: user.user_type, name: user.name } });
   } catch (error) {
@@ -166,8 +181,11 @@ app.post('/api/auth/login', async (req, res) => {
     const token = jwt.sign(
       { id: user.id, email: user.email, user_type: user.user_type },
       JWT_SECRET,
-      { expiresIn: '7d' }
+      { expiresIn: '30d' }  // Extended to 30 days
     );
+    
+    console.log('Registration successful for:', user.email, 'Type:', user.user_type);
+    console.log('Token generated with secret:', JWT_SECRET ? 'SET' : 'NOT SET');
 
     res.json({
       token,
