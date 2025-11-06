@@ -77,6 +77,9 @@ async function loadDashboardData() {
 
 // Helper function to initialize dashboard with user data
 function initializeDashboardWithUser(user) {
+    // Set global currentUser
+    window.currentUser = user;
+    
     // Update header
     const userNameEl = document.getElementById('userName');
     const userRoleEl = document.getElementById('userRole');
@@ -91,6 +94,11 @@ function initializeDashboardWithUser(user) {
     // Load notifications for the bell
     if (typeof loadNotifications === 'function') {
         loadNotifications();
+    }
+    
+    // Show search bar for startups
+    if (typeof updateSearchBarVisibility === 'function') {
+        updateSearchBarVisibility();
     }
     
     // Show appropriate dashboard
