@@ -26,14 +26,65 @@ class APIService {
         headers
       });
 
-      const data = await response.json();
+      // Handle non-JSON responses
+      const contentType = response.headers.get('content-type');
+      let data;
+      
+      if (contentType && contentType.includes('application/json')) {
+        data = await response.json();
+      } else {
+        const text = await response.text();
+        data = { message: text };
+      }
 
       if (!response.ok) {
-        throw new Error(data.error || 'API request failed');
+        // Create user-friendly error messages
+        let errorMessage = data.error || data.message || 'Request failed';
+        
+        switch (response.status) {
+          case 400:
+            errorMessage = data.error || 'Invalid request. Please check your input.';
+            break;
+          case 401:
+            errorMessage = 'Session expired. Please log in again.';
+            // Auto-logout on 401
+            this.clearToken();
+            setTimeout(() => {
+              window.location.href = 'landing/index.html';
+            }, 2000);
+            break;
+          case 403:
+            errorMessage = 'You do not have permission to perform this action.';
+            break;
+          case 404:
+            errorMessage = data.error || 'Resource not found.';
+            break;
+          case 409:
+            errorMessage = data.error || 'This action conflicts with existing data.';
+            break;
+          case 500:
+            errorMessage = 'Server error. Please try again later.';
+            break;
+          case 503:
+            errorMessage = 'Service temporarily unavailable. Please try again later.';
+            break;
+        }
+        
+        const error = new Error(errorMessage);
+        error.status = response.status;
+        error.data = data;
+        throw error;
       }
 
       return data;
     } catch (error) {
+      // Handle network errors
+      if (error.message === 'Failed to fetch' || error.name === 'TypeError') {
+        const networkError = new Error('Network error. Please check your internet connection.');
+        console.error('API Network Error:', error);
+        throw networkError;
+      }
+      
       console.error('API Error:', error);
       throw error;
     }
