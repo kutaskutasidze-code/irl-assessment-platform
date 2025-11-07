@@ -781,43 +781,42 @@
         });
 
         function checkAuthentication() {
-            // Check if coming from landing page with auth data
-            const authEmail = localStorage.getItem('authEmail');
-            const authPassword = localStorage.getItem('authPassword');
-            const signupData = localStorage.getItem('signupData');
-
-            if (authEmail && authPassword) {
-                // Try to login with stored credentials
-                const user = mockDB.users.find(u => u.email === authEmail && u.password === authPassword);
-                if (user) {
-                    currentUser = user;
-                    localStorage.removeItem('authEmail');
-                    localStorage.removeItem('authPassword');
+            console.log('Checking authentication...');
+            
+            // Check for JWT token (new auth system)
+            const token = localStorage.getItem('authToken');
+            const userData = localStorage.getItem('userData');
+            
+            if (token && userData) {
+                console.log('Found JWT token and user data');
+                try {
+                    currentUser = JSON.parse(userData);
+                    console.log('Current user:', currentUser);
                     initializeDashboard();
-                } else {
-                    redirectToLanding();
-                }
-            } else if (signupData) {
-                // Handle new signup
-                const data = JSON.parse(signupData);
-                const newUser = {
-                    id: mockDB.users.length + 1,
-                    ...data
-                };
-                mockDB.users.push(newUser);
-                currentUser = newUser;
-                localStorage.removeItem('signupData');
-                initializeDashboard();
-            } else {
-                // Check if user is already logged in
-                const savedUser = localStorage.getItem('currentUser');
-                if (savedUser) {
-                    currentUser = JSON.parse(savedUser);
-                    initializeDashboard();
-                } else {
-                    redirectToLanding();
+                    return;
+                } catch (e) {
+                    console.error('Failed to parse user data:', e);
+                    localStorage.removeItem('authToken');
+                    localStorage.removeItem('userData');
                 }
             }
+            
+            // Fallback: Check old auth method
+            const savedUser = localStorage.getItem('currentUser');
+            if (savedUser) {
+                console.log('Found saved user (old method)');
+                try {
+                    currentUser = JSON.parse(savedUser);
+                    initializeDashboard();
+                    return;
+                } catch (e) {
+                    console.error('Failed to parse saved user:', e);
+                }
+            }
+            
+            // No valid auth found
+            console.log('No authentication found, redirecting to landing page');
+            redirectToLanding();
         }
 
         function redirectToLanding() {
