@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRL Assessment Platform - Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-details {
+            text-align: right;
+            margin-right: 1rem;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .user-role {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Dashboard Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .card-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #f8f9fa;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: #666;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        /* Status Badges */
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-success {
+            background: rgba(34, 197, 94, 0.1);
+            color: #22c55e;
+        }
+
+        .badge-warning {
+            background: rgba(251, 146, 60, 0.1);
+            color: #fb923c;
+        }
+
+        .badge-info {
+            background: rgba(102, 126, 234, 0.1);
+            color: #1a1a1a;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.875rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #1a1a1a;
+            border: 2px solid #1a1a1a;
+        }
+
+        .btn-secondary:hover {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+        }
+
+        /* Assessment Specific */
+        .assessment-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .question-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+        }
+
+        .question-number {
+            font-size: 0.875rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .question-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .question-help {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .answer-option {
+            background: #f8f9fa;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .answer-option:hover {
+            border-color: #1a1a1a;
+            background: white;
+        }
+
+        .answer-option.selected {
+            border-color: #1a1a1a;
+            background: white;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+        }
+
+        /* Hide/Show Classes */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+
+        .empty-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 3px solid #e9ecef;
+            border-top-color: #1a1a1a;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">IRL</div>
+                <span>Platform</span>
+            </a>
+            <div class="user-info">
+                <div class="user-details">
+                    <div class="user-name" id="userName">Loading...</div>
+                    <div class="user-role" id="userRole">...</div>
+                </div>
+                <button class="btn btn-secondary btn-sm" onclick="logout()">Logout</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Startup Dashboard -->
+        <div id="startupDashboard" class="hidden">
+            <h1 class="section-title">Welcome back, <span id="startupName"></span>!</h1>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Your IRL Level</div>
+                    <div class="stat-value" id="irlLevel">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Assessment Status</div>
+                    <div class="stat-value" id="assessmentStatus">Not Started</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Action Plans</div>
+                    <div class="stat-value" id="actionPlanCount">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Last Updated</div>
+                    <div class="stat-value" id="lastUpdated">-</div>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <div class="card">
+                    <h2 class="card-title">Start Your IRL Assessment</h2>
+                    <p class="card-description">Complete the comprehensive assessment to determine your Innovation Readiness Level and receive personalized recommendations.</p>
+                    <button class="btn btn-primary" onclick="startAssessment()">Begin Assessment</button>
+                </div>
+
+                <div id="resultsSection" class="card hidden">
+                    <h2 class="card-title">Your Assessment Results</h2>
+                    <div id="resultsContent">
+                        <!-- Results will be populated here -->
+                    </div>
+                </div>
+
+                <div id="actionPlansSection" class="card hidden">
+                    <h2 class="card-title">Your Action Plans</h2>
+                    <div id="actionPlansContent">
+                        <!-- Action plans will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Organization Dashboard -->
+        <div id="organizationDashboard" class="hidden">
+            <h1 class="section-title">Organization Dashboard</h1>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Total Startups</div>
+                    <div class="stat-value" id="totalStartups">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Completed Assessments</div>
+                    <div class="stat-value" id="completedAssessments">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Action Plans Created</div>
+                    <div class="stat-value" id="actionPlansCreated">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Average IRL</div>
+                    <div class="stat-value" id="avgIRL">-</div>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <div class="card">
+                    <h2 class="card-title">Managed Startups</h2>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Startup Name</th>
+                                    <th>Contact</th>
+                                    <th>IRL Level</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="startupsTable">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Dashboard -->
+        <div id="adminDashboard" class="hidden">
+            <h1 class="section-title">Admin Dashboard</h1>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Total Users</div>
+                    <div class="stat-value" id="totalUsers">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Organizations</div>
+                    <div class="stat-value" id="totalOrgs">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Startups</div>
+                    <div class="stat-value" id="totalStartupsAdmin">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Assessments</div>
+                    <div class="stat-value" id="totalAssessments">0</div>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <div class="card">
+                    <h2 class="card-title">All Users</h2>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Type</th>
+                                    <th>Organization</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTable">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Assessment Section (Hidden by default) -->
+        <div id="assessmentSection" class="hidden">
+            <div class="assessment-container">
+                <div id="assessmentContent">
+                    <!-- Assessment questions will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mock Database
+        const mockDB = {
+            users: [
+                {
+                    id: 1,
+                    email: 'startup@example.com',
+                    password: 'startup123',
+                    name: 'John Startup',
+                    type: 'startup',
+                    startupName: 'InnoTech Solutions',
+                    organizationId: 2
+                },
+                {
+                    id: 2,
+                    email: 'org@example.com',
+                    password: 'org123',
+                    name: 'Sarah Organization',
+                    type: 'organization',
+                    organizationName: 'Tech University'
+                },
+                {
+                    id: 3,
+                    email: 'admin@example.com',
+                    password: 'admin123',
+                    name: 'Admin User',
+                    type: 'admin'
+                }
+            ],
+            assessments: [],
+            actionPlans: []
+        };
+
+        let currentUser = null;
+        let assessmentData = {
+            currentQuestion: 0,
+            answers: [],
+            questions: [
+                // Customer Readiness (Questions 1-3)
+                {
+                    text: "How many customer interviews have you conducted?",
+                    help: "Customer interviews validate problem-solution fit",
+                    dimension: 'Customer',
+                    options: [
+                        "No interviews yet",
+                        "1-10 interviews",
+                        "11-50 interviews",
+                        "More than 50 interviews"
+                    ]
+                },
+                {
+                    text: "What is the status of your MVP/prototype?",
+                    help: "A working prototype validates technical feasibility",
+                    dimension: 'Technology',
+                    options: [
+                        "No prototype yet",
+                        "In development",
+                        "Internal testing",
+                        "Beta testing with users"
+                    ]
+                },
+                {
+                    text: "How many paying customers do you have?",
+                    help: "Paying customers validate market demand",
+                    dimension: 'Customer',
+                    options: [
+                        "No paying customers",
+                        "1-5 customers",
+                        "6-20 customers",
+                        "More than 20 customers"
+                    ]
+                },
+                // Business Model (Questions 4-6)
+                {
+                    text: "What is your monthly recurring revenue (MRR)?",
+                    help: "Revenue indicates business viability",
+                    dimension: 'Business',
+                    options: [
+                        "No revenue yet",
+                        "$1-$1,000",
+                        "$1,001-$10,000",
+                        "More than $10,000"
+                    ]
+                },
+                {
+                    text: "Have you validated your unit economics?",
+                    help: "Understanding CAC vs LTV is crucial",
+                    dimension: 'Business',
+                    options: [
+                        "Not yet analyzed",
+                        "Initial calculations done",
+                        "Path to profitability clear",
+                        "Positive unit economics proven"
+                    ]
+                },
+                {
+                    text: "What is your business model status?",
+                    help: "A clear business model drives growth",
+                    dimension: 'Business',
+                    options: [
+                        "Still exploring",
+                        "Model defined",
+                        "Model tested",
+                        "Model validated with revenue"
+                    ]
+                },
+                // Team Readiness (Questions 7-9)
+                {
+                    text: "How many full-time team members do you have?",
+                    help: "Team size indicates execution capacity",
+                    dimension: 'Team',
+                    options: [
+                        "Solo founder",
+                        "2-3 members",
+                        "4-6 members",
+                        "More than 6 members"
+                    ]
+                },
+                {
+                    text: "What is the team's relevant experience?",
+                    help: "Domain expertise accelerates success",
+                    dimension: 'Team',
+                    options: [
+                        "Limited experience",
+                        "Some relevant experience",
+                        "Strong industry experience",
+                        "Serial entrepreneurs/experts"
+                    ]
+                },
+                {
+                    text: "Do you have advisors or mentors?",
+                    help: "External guidance provides valuable insights",
+                    dimension: 'Team',
+                    options: [
+                        "No advisors",
+                        "1-2 informal advisors",
+                        "3-5 engaged advisors",
+                        "Strong advisory board"
+                    ]
+                },
+                // Technology Readiness (Questions 10-12)
+                {
+                    text: "What is your technology stack maturity?",
+                    help: "Scalable architecture supports growth",
+                    dimension: 'Technology',
+                    options: [
+                        "Not built yet",
+                        "Basic architecture",
+                        "Solid foundation",
+                        "Scalable and robust"
+                    ]
+                },
+                {
+                    text: "Have you conducted security audits?",
+                    help: "Security is crucial for customer trust",
+                    dimension: 'Technology',
+                    options: [
+                        "Not considered",
+                        "Basic security measures",
+                        "Security review done",
+                        "Regular security audits"
+                    ]
+                },
+                {
+                    text: "What is your data/analytics infrastructure?",
+                    help: "Data-driven decisions accelerate growth",
+                    dimension: 'Technology',
+                    options: [
+                        "No analytics",
+                        "Basic metrics",
+                        "Key metrics tracked",
+                        "Advanced analytics"
+                    ]
+                },
+                // Funding Readiness (Questions 13-15)
+                {
+                    text: "What is your current funding status?",
+                    help: "Funding enables scaling and growth",
+                    dimension: 'Funding',
+                    options: [
+                        "Bootstrapped",
+                        "Friends & Family",
+                        "Angel/Pre-seed",
+                        "Seed or beyond"
+                    ]
+                },
+                {
+                    text: "What is your runway (months)?",
+                    help: "Runway determines urgency and options",
+                    dimension: 'Funding',
+                    options: [
+                        "Less than 3 months",
+                        "3-6 months",
+                        "6-12 months",
+                        "More than 12 months"
+                    ]
+                },
+                {
+                    text: "Do you have a financial model?",
+                    help: "Financial planning is essential for fundraising",
+                    dimension: 'Funding',
+                    options: [
+                        "No financial model",
+                        "Basic projections",
+                        "Detailed model",
+                        "Model validated with actuals"
+                    ]
+                },
+                // Market Readiness (Questions 16-18)
+                {
+                    text: "Have you achieved product-market fit?",
+                    help: "PMF is when users would be disappointed without your product",
+                    dimension: 'Market',
+                    options: [
+                        "Not yet",
+                        "Early signals",
+                        "Partial PMF",
+                        "Strong PMF"
+                    ]
+                },
+                {
+                    text: "What is your customer retention rate?",
+                    help: "Retention shows product stickiness",
+                    dimension: 'Market',
+                    options: [
+                        "Not measured",
+                        "Less than 40%",
+                        "40-70%",
+                        "More than 70%"
+                    ]
+                },
+                {
+                    text: "How strong is your competitive advantage?",
+                    help: "Differentiation drives sustainable growth",
+                    dimension: 'Market',
+                    options: [
+                        "No clear advantage",
+                        "Minimal differentiation",
+                        "Strong differentiation",
+                        "Market leader"
+                    ]
+                },
+                // Legal/IP (Questions 19-20)
+                {
+                    text: "What is your intellectual property status?",
+                    help: "IP protection can provide competitive advantages",
+                    dimension: 'Legal',
+                    options: [
+                        "No IP considerations",
+                        "IP strategy planned",
+                        "IP filed/pending",
+                        "IP granted/protected"
+                    ]
+                },
+                {
+                    text: "What is your regulatory compliance status?",
+                    help: "Compliance is crucial for scaling safely",
+                    dimension: 'Legal',
+                    options: [
+                        "Not yet addressed",
+                        "Understanding requirements",
+                        "Partially compliant",
+                        "Fully compliant"
+                    ]
+                }
+            ]
+        };
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAuthentication();
+        });
+
+        function checkAuthentication() {
+            // Check if coming from landing page with auth data
+            const authEmail = localStorage.getItem('authEmail');
+            const authPassword = localStorage.getItem('authPassword');
+            const signupData = localStorage.getItem('signupData');
+
+            if (authEmail && authPassword) {
+                // Try to login with stored credentials
+                const user = mockDB.users.find(u => u.email === authEmail && u.password === authPassword);
+                if (user) {
+                    currentUser = user;
+                    localStorage.removeItem('authEmail');
+                    localStorage.removeItem('authPassword');
+                    initializeDashboard();
+                } else {
+                    redirectToLanding();
+                }
+            } else if (signupData) {
+                // Handle new signup
+                const data = JSON.parse(signupData);
+                const newUser = {
+                    id: mockDB.users.length + 1,
+                    ...data
+                };
+                mockDB.users.push(newUser);
+                currentUser = newUser;
+                localStorage.removeItem('signupData');
+                initializeDashboard();
+            } else {
+                // Check if user is already logged in
+                const savedUser = localStorage.getItem('currentUser');
+                if (savedUser) {
+                    currentUser = JSON.parse(savedUser);
+                    initializeDashboard();
+                } else {
+                    redirectToLanding();
+                }
+            }
+        }
+
+        function redirectToLanding() {
+            window.location.href = 'landing.html';
+        }
+
+        function initializeDashboard() {
+            // Save current user to localStorage
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+            // Update header
+            document.getElementById('userName').textContent = currentUser.name;
+            document.getElementById('userRole').textContent = currentUser.type.charAt(0).toUpperCase() + currentUser.type.slice(1);
+
+            // Show appropriate dashboard
+            hideAllDashboards();
+            
+            if (currentUser.type === 'startup') {
+                showStartupDashboard();
+            } else if (currentUser.type === 'organization') {
+                showOrganizationDashboard();
+            } else if (currentUser.type === 'admin') {
+                showAdminDashboard();
+            }
+        }
+
+        function hideAllDashboards() {
+            document.getElementById('startupDashboard').classList.add('hidden');
+            document.getElementById('organizationDashboard').classList.add('hidden');
+            document.getElementById('adminDashboard').classList.add('hidden');
+            document.getElementById('assessmentSection').classList.add('hidden');
+        }
+
+        function showStartupDashboard() {
+            document.getElementById('startupDashboard').classList.remove('hidden');
+            document.getElementById('startupName').textContent = currentUser.startupName || currentUser.name;
+            
+            // Load startup data
+            loadStartupData();
+        }
+
+        function showOrganizationDashboard() {
+            document.getElementById('organizationDashboard').classList.remove('hidden');
+            
+            // Load organization data
+            loadOrganizationData();
+        }
+
+        function showAdminDashboard() {
+            document.getElementById('adminDashboard').classList.remove('hidden');
+            
+            // Load admin data
+            loadAdminData();
+        }
+
+        function loadStartupData() {
+            const userAssessments = mockDB.assessments.filter(a => a.userId === currentUser.id);
+            const userActionPlans = mockDB.actionPlans.filter(a => a.startupId === currentUser.id);
+            
+            if (userAssessments.length > 0) {
+                const latest = userAssessments[userAssessments.length - 1];
+                document.getElementById('irlLevel').textContent = latest.level || '-';
+                document.getElementById('assessmentStatus').textContent = 'Completed';
+                document.getElementById('lastUpdated').textContent = new Date(latest.date).toLocaleDateString();
+                
+                // Show results
+                document.getElementById('resultsSection').classList.remove('hidden');
+                displayResults(latest);
+            }
+            
+            document.getElementById('actionPlanCount').textContent = userActionPlans.length;
+            
+            if (userActionPlans.length > 0) {
+                document.getElementById('actionPlansSection').classList.remove('hidden');
+                displayActionPlans(userActionPlans);
+            }
+        }
+
+        function loadOrganizationData() {
+            const startups = mockDB.users.filter(u => u.type === 'startup' && u.organizationId === currentUser.id);
+            const assessments = mockDB.assessments.filter(a => 
+                startups.some(s => s.id === a.userId)
+            );
+            
+            document.getElementById('totalStartups').textContent = startups.length;
+            document.getElementById('completedAssessments').textContent = assessments.length;
+            
+            // Populate startups table
+            const tableBody = document.getElementById('startupsTable');
+            tableBody.innerHTML = '';
+            
+            startups.forEach(startup => {
+                const assessment = assessments.find(a => a.userId === startup.id);
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${startup.startupName}</td>
+                    <td>${startup.email}</td>
+                    <td>${assessment ? assessment.level : '-'}</td>
+                    <td>
+                        <span class="badge ${assessment ? 'badge-success' : 'badge-warning'}">
+                            ${assessment ? 'Completed' : 'Pending'}
+                        </span>
+                    </td>
+                    <td>
+                        <button class="btn btn-secondary btn-sm" onclick="viewStartup(${startup.id})">View</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function loadAdminData() {
+            const users = mockDB.users;
+            const organizations = users.filter(u => u.type === 'organization');
+            const startups = users.filter(u => u.type === 'startup');
+            
+            document.getElementById('totalUsers').textContent = users.length;
+            document.getElementById('totalOrgs').textContent = organizations.length;
+            document.getElementById('totalStartupsAdmin').textContent = startups.length;
+            document.getElementById('totalAssessments').textContent = mockDB.assessments.length;
+            
+            // Populate users table
+            const tableBody = document.getElementById('usersTable');
+            tableBody.innerHTML = '';
+            
+            users.forEach(user => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${user.name}</td>
+                    <td>${user.email}</td>
+                    <td><span class="badge badge-info">${user.type}</span></td>
+                    <td>${user.organizationName || user.startupName || '-'}</td>
+                    <td><span class="badge badge-success">Active</span></td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function startAssessment() {
+            hideAllDashboards();
+            document.getElementById('assessmentSection').classList.remove('hidden');
+            assessmentData.currentQuestion = 0;
+            assessmentData.answers = [];
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const question = assessmentData.questions[assessmentData.currentQuestion];
+            const questionNum = assessmentData.currentQuestion + 1;
+            const totalQuestions = assessmentData.questions.length;
+            
+            const content = document.getElementById('assessmentContent');
+            content.innerHTML = `
+                <div class="question-card">
+                    <div class="question-number">Question ${questionNum} of ${totalQuestions}</div>
+                    <h2 class="question-text">${question.text}</h2>
+                    <p class="question-help">${question.help}</p>
+                    
+                    <div class="answer-options">
+                        ${question.options.map((option, index) => `
+                            <div class="answer-option" onclick="selectAnswer(${index}, this)">
+                                <span>${option}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                        ${assessmentData.currentQuestion > 0 ? '<button class="btn btn-secondary" onclick="previousQuestion()">Previous</button>' : ''}
+                        <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>
+                            ${questionNum === totalQuestions ? 'Complete Assessment' : 'Next'}
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectAnswer(value, element) {
+            // Remove previous selection
+            document.querySelectorAll('.answer-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Add selection
+            element.classList.add('selected');
+            assessmentData.answers[assessmentData.currentQuestion] = value;
+            
+            // Enable next button
+            document.getElementById('nextBtn').disabled = false;
+        }
+
+        function nextQuestion() {
+            if (assessmentData.currentQuestion < assessmentData.questions.length - 1) {
+                assessmentData.currentQuestion++;
+                showQuestion();
+            } else {
+                completeAssessment();
+            }
+        }
+
+        function previousQuestion() {
+            if (assessmentData.currentQuestion > 0) {
+                assessmentData.currentQuestion--;
+                showQuestion();
+            }
+        }
+
+        function completeAssessment() {
+            // Calculate IRL level based on answers
+            const avgScore = assessmentData.answers.reduce((a, b) => a + b, 0) / assessmentData.answers.length;
+            const irlLevel = Math.min(9, Math.max(1, Math.ceil(avgScore * 3) + 1));
+            
+            // Save assessment
+            const assessment = {
+                id: mockDB.assessments.length + 1,
+                userId: currentUser.id,
+                level: irlLevel,
+                answers: assessmentData.answers,
+                date: new Date().toISOString()
+            };
+            
+            mockDB.assessments.push(assessment);
+            
+            // Show loading
+            document.getElementById('assessmentContent').innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <h2 style="margin-top: 1rem;">Calculating your IRL level...</h2>
+                </div>
+            `;
+            
+            // Show results after delay
+            setTimeout(() => {
+                hideAllDashboards();
+                showStartupDashboard();
+            }, 2000);
+        }
+
+        function displayResults(assessment) {
+            const resultsContent = document.getElementById('resultsContent');
+            resultsContent.innerHTML = `
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="font-size: 4rem; font-weight: 700; color: #1a1a1a;">
+                        IRL ${assessment.level}
+                    </div>
+                    <h3 style="margin-top: 1rem;">${getIRLTitle(assessment.level)}</h3>
+                    <p style="color: #666; margin-top: 0.5rem;">${getIRLDescription(assessment.level)}</p>
+                </div>
+            `;
+        }
+
+        function displayActionPlans(plans) {
+            const content = document.getElementById('actionPlansContent');
+            content.innerHTML = plans.map(plan => `
+                <div style="padding: 1rem; border-left: 4px solid #1a1a1a; margin-bottom: 1rem;">
+                    <h4>${plan.title}</h4>
+                    <p style="color: #666;">${plan.description}</p>
+                    <small style="color: #999;">Created: ${new Date(plan.date).toLocaleDateString()}</small>
+                </div>
+            `).join('');
+        }
+
+        function getIRLTitle(level) {
+            const titles = {
+                1: "Hypothesis Stage",
+                2: "Basic Research Stage",
+                3: "Applied Research Stage",
+                4: "Proof of Concept Stage",
+                5: "Solution Validation Stage",
+                6: "Market Validation Stage",
+                7: "Solution Complete Stage",
+                8: "Initial Adoption Stage",
+                9: "Market Ready Stage"
+            };
+            return titles[level] || "Assessment Complete";
+        }
+
+        function getIRLDescription(level) {
+            const descriptions = {
+                1: "You're at the beginning of your innovation journey.",
+                2: "Your concept is taking shape through research.",
+                3: "You're developing and testing solution concepts.",
+                4: "Technical feasibility has been demonstrated.",
+                5: "Your solution has been validated with early adopters.",
+                6: "Market demand is confirmed.",
+                7: "Your solution is complete and ready for launch.",
+                8: "You have initial customers successfully using your innovation.",
+                9: "Your innovation has proven market success."
+            };
+            return descriptions[level] || "Your assessment is complete.";
+        }
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'landing.html';
+        }
+
+        function viewStartup(startupId) {
+            // Implementation for viewing startup details
+            alert('View startup ' + startupId);
+        }
+    </script>
+</body>
+</html>
